@@ -22,7 +22,7 @@ function provide(resolver, compDef, wire) {
         params
     })
     .then(response => {
-        let result = what ? what : response;
+        let result = what ? response.data[what] : response;
         resolver.resolve(result);
     })
     .catch(error => resolver.reject(error));

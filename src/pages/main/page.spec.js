@@ -21,7 +21,10 @@ export default {
         performancePlugin
     ],
 
-    @provide({endpoint: getEndpoint('topStories'), what: 'topNews'})
+    @provide({
+        endpoint: getEndpoint('topStories'), 
+        what: 'topNews'
+    })
     topNews: [itemLarge, 2, itemMedium, 4],
 
     // requests
@@ -70,7 +73,7 @@ export default {
         create: {
             module: controller,
             args: [
-                // {$ref: 'topStories'}
+                {$ref: 'topNews'}
             ]
         }
     }
