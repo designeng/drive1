@@ -7,9 +7,10 @@ var webpack = require('webpack');
 
 module.exports = {
     context: __dirname + '/src',
-    entry: {
-        demoPage    : './client/index.js'
-    },
+    entry: [
+        'webpack-hot-middleware/client?reload=true',
+        './client/index.js'
+    ],
     // output: {
     //     filename: './public/build/[name].js',
 
