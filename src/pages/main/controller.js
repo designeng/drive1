@@ -1,7 +1,7 @@
-export default function controller(brandsList) {
-    brandsList().then(context => {
-        console.log("brandsList >>>>>>", context);
-    }).otherwise(error => {
-        console.log("brandsList ERROR >>>>>>", error);
-    })
+export default function controller(childContextFunc) {
+    // childContextFunc().then(context => {
+    //     console.log("childContextFunc context >>>>>>", context);
+    // }).otherwise(error => {
+    //     console.log("childContextFunc ERROR >>>>>>", error);
+    // })
 }

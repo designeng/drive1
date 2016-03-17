@@ -1,6 +1,5 @@
 import axios from 'axios';
 import _ from 'underscore';
-import $ from 'jquery';
 
 function resolve(resolver, options, response) {
     let output = options.output;
@@ -43,12 +42,6 @@ function request(resolver, compDef, wire) {
         resolve(resolver, compDef.options, response)
     })
     .catch(error => resolver.reject(error));
-
-    // $.get( url, response => {
-    //     resolve(resolver, compDef.options, response)
-    // }).fail( error => {
-    //     resolver.reject(error)
-    // });
 }
 
 export default function requestPlugin(options) {
