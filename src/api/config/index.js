@@ -13,6 +13,7 @@ const endpoints = {
     testDrives: "/items/test_drives",
     topStories: "/items/top_stories",
     topBlogs: "/items/top_blogs",
+    topVideos: "/items/top_videos",
 }
 
 function getBaseUrl() {
@@ -22,5 +23,8 @@ function getBaseUrl() {
 export default config;
 
 export function getEndpoint(item) {
+    if(!endpoints[item]) {
+        throw new Error('No such endpoint: ' + item);
+    }
     return getBaseUrl() + endpoints[item];
 }

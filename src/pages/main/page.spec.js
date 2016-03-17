@@ -3,7 +3,9 @@ import requestPlugin     from '../../plugins/api/request';
 import performancePlugin from '../../plugins/performance';
 import Handlebars        from 'handlebars';
 
+import { getEndpoint }   from '../../api/config';
 import { getPage, getBody } from '../common/page';
+import controller from './controller';
 
 export default {
     $plugins: [
@@ -11,6 +13,32 @@ export default {
         requestPlugin,
         performancePlugin
     ],
+
+    // requests
+    topStories: {
+        request: {
+            url: getEndpoint('topStories'),
+        }
+    },
+
+    topVideos: {
+        request: {
+            url: getEndpoint('topVideos'),
+        }
+    },
+
+    topBlogs: {
+        request: {
+            url: getEndpoint('topBlogs'),
+        }
+    },
+
+    numbers: {
+        request: {
+            url: getEndpoint('numbers'),
+        }
+    },
+    // end requests
 
     page: {
         create: {
@@ -20,5 +48,14 @@ export default {
         }
     },
 
-    body: getBody()
+    body: getBody(),
+
+    controller: {
+        create: {
+            module: controller,
+            args: [
+                {$ref: 'topStories'}
+            ]
+        }
+    }
 }
