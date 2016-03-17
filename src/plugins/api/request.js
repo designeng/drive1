@@ -5,13 +5,13 @@ import $ from 'jquery';
 function resolve(resolver, options, response) {
     let output = options.output;
 
-    let property = output.property || 'data'
+    let property = output && output.property || 'data'
     if(!_.isString(property)) {
         throw new Error('[requestPlugin:] Property should be a string.');
     }
     response = response[property];
 
-    if(output.skip) {
+    if(output && output.skip) {
         response = _.filter(response, (item, index) => {
             return output.skip.indexOf(index) == -1;
         })

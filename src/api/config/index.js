@@ -8,7 +8,8 @@ const config = {
 const endpoints = {
     numbers: "/content/numbers",
     special: "/content/special",
-    brands:  "/content/brands",
+    brands:  "/static/brands",
+    cities: "/static/cities",
     news:   "/items/news",
     testDrives: "/items/test_drives",
     topStories: "/items/top_stories",

@@ -8,6 +8,7 @@ import { getPage, getBody } from '../common/page';
 import controller from './controller';
 
 import brandsList        from './brandsList.spec';
+import topControls       from './topControls.spec';
 
 export default {
     $plugins: [
@@ -17,37 +18,39 @@ export default {
     ],
 
     // requests
-    topStories: {
-        request: {
-            url: getEndpoint('topStories'),
+    // topStories: {
+    //     request: {
+    //         url: getEndpoint('topStories'),
 
-            // topNews
-            // mainNews
-        }
-    },
+    //         // topNews
+    //         // mainNews
+    //     }
+    // },
 
-    topVideos: {
-        request: {
-            url: getEndpoint('topVideos'),
-        }
-    },
+    // topVideos: {
+    //     request: {
+    //         url: getEndpoint('topVideos'),
+    //     }
+    // },
 
-    topBlogs: {
-        request: {
-            url: getEndpoint('topBlogs'),
-        }
-    },
+    // topBlogs: {
+    //     request: {
+    //         url: getEndpoint('topBlogs'),
+    //     }
+    // },
 
-    numbers: {
-        request: {
-            url: getEndpoint('numbers'),
-        }
-    },
+    // numbers: {
+    //     request: {
+    //         url: getEndpoint('numbers'),
+    //     }
+    // },
     // end requests
 
-    // defer
     @deferWire({spec: brandsList})
     brandsList: {},
+
+    @deferWire({spec: topControls})
+    topControls: {},
 
     page: {
         create: {
@@ -63,7 +66,9 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'topStories'}
+                // {$ref: 'topStories'}
+                {$ref: 'brandsList'},
+                {$ref: 'topControls'}
             ]
         }
     }
