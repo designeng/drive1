@@ -1,12 +1,12 @@
-import homePageSpec from './pages/home/page.spec';
+import mainPageSpec from './pages/main/page.spec';
 import demoPageSpec from './pages/demo/page.spec';
 
 import notFoundSpec from './pages/404/page.spec';
 
 const routes = [
       {   
-            url: '/home', 
-            routeSpec: homePageSpec
+            url: '/main', 
+            routeSpec: mainPageSpec
       },
       {   
             url: '/demo', 

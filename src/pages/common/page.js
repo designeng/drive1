@@ -1,6 +1,7 @@
 import carcass              from 'drive-templates/build/carcass';
 import head                 from 'drive-templates/build/head';
 
+import body                 from 'drive-templates/build/body';
 import additionalNav        from 'drive-templates/build/additionalNav';
 import blogEntry            from 'drive-templates/build/blogEntry';
 import bottomScripts        from 'drive-templates/build/bottomScripts';
@@ -34,5 +35,12 @@ export function getPage(pageTemplate) {
     return carcass({
         head: getHead(),
         header: "header...."
+    })
+}
+
+export function getBody(pageTemplate) {
+    return body({
+        header: "header....123",
+        bottomScripts: bottomScripts()
     })
 }

@@ -3,9 +3,7 @@ import requestPlugin     from '../../plugins/api/request';
 import performancePlugin from '../../plugins/performance';
 import Handlebars        from 'handlebars';
 
-import { getPage }       from '../common/page';
-
-
+import { getPage, getBody } from '../common/page';
 
 export default {
     $plugins: [
@@ -20,5 +18,7 @@ export default {
             args: [
             ]
         }
-    }
+    },
+
+    body: getBody()
 }

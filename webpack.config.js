@@ -5,17 +5,23 @@ var webpack = require('webpack');
 
 module.exports = {
     context: __dirname + '/src',
-    entry: [
-        'webpack-hot-middleware/client?reload=true',
-        './client/index.js'
-    ],
+    entry: {
+        test: [
+            'webpack-hot-middleware/client?reload=true',
+            './client/index.js'
+        ],
+        main: [
+            'webpack-hot-middleware/client?reload=true',
+            './client/main/index.js'
+        ]
+    },
     // output: {
     //     filename: './public/build/[name].js',
 
     // },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: '/static/'
     },
     module: {
@@ -31,5 +37,8 @@ module.exports = {
         // new webpack.EnvironmentPlugin('NODE_ENV'),
         new webpack.HotModuleReplacementPlugin(),
     ],
-    devtool: 'source-map'
+    devtool: 'source-map',
+    node: {
+        fs: "empty" // avoids error messages
+    }
 }
