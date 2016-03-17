@@ -1,0 +1,47 @@
+{
+  "name": "webpack-handlebars-SSR-demo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "runner.js",
+  "scripts": {
+    "clean": "rimraf -rf public/build",
+    "webpack": "npm run clean & NODE_ENV=client webpack --watch --config webpack.config.js",
+    "runner": "NODE_ENV=build node ./runner",
+    "start": "NODE_ENV=server COMPILATION_MODE=server node ./runner",
+    "smoke-demo": "NODE_ENV=smoke-demo node ./runner",
+    "smoke": "NODE_ENV=smoke node ./runner",
+    "refresh-wire": "rimraf -rf node_modules/essential-wire && npm install",
+    "refresh-tpl": "rimraf -rf node_modules/drive-templates && npm install drive-templates",
+    "test": "node ./curl-test"
+  },
+  "keywords": [],
+  "author": "Denis Savenok <denissavenok@gmail.com> (http://designeng.github.io/)",
+  "license": "ISC",
+  "dependencies": {
+    "adler-32": "^0.3.0",
+    "axios": "^0.9.1",
+    "chalk": "^1.1.1",
+    "drive-templates": "git://github.com/designeng/drive-templates",
+    "essential-wire": "git://github.com/designeng/essential-wire",
+    "handlebars": "^4.0.5",
+    "install": "^0.4.4",
+    "jquery": "^2.2.0",
+    "moment": "^2.12.0",
+    "npm": "^3.7.2",
+    "serve-favicon": "^2.3.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "chalk": "^1.1.1",
+    "cheerio": "^0.20.0",
+    "express": "^4.13.3",
+    "handlebars-template-loader": "^0.5.4",
+    "node-notifier": "^4.4.0",
+    "rimraf": "^2.5.1",
+    "webpack": "^1.12.12"
+  }
+}

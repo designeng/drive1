@@ -1,0 +1,154 @@
+.field:before, .field:after {content: ""; display: table;}
+.field:after {clear: both;}
+.field {margin: 0 0 0 380px; padding: 0 0 7px; zoom: 1;}
+.field-optional .legend label {color: #808080;}
+
+.legend {float: left; width: 383px; margin: 3px 0 0 -400px; font: bold 17px/19px sans-serif; text-align: right;}
+.legend label {word-wrap: break-word; zoom: 1;}
+
+.form input,
+.form textarea {font-size: 14px; margin: 0 0 5px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.form select {font-size: 17px; margin: 0 0 5px;}
+
+.form input[type=checkbox],
+.form input[type=radio] {width: 20px; height: 21px; font-size: 12px; margin-top: 0; vertical-align: middle;}
+.form-highlight input[type=checkbox]:checked + label,
+.form-highlight input[type=radio]:checked + label {font-weight: bold;}
+
+.optional {color: #999;}
+
+.charcounter {margin: 0 0 0 5px; color: #808080; font-size: 11px;}
+
+.req {position: relative; top: -1px; display: inline-block; width: 1ex; margin-right: -1ex; font-size: 18px; font-style: normal; color: #c00; text-align: left;}
+
+.form-legend-notes {display: block; margin-top: 2px; color: #808080; font: normal 11px/13px sans-serif; text-shadow: 1px 1px #fff;}
+.form-legend-notes-em {color: #900;}
+
+.form-notes {display: inline-block; color: #808080; font: 11px/1.1 sans-serif; text-shadow: 1px 1px #fff;}
+
+.form-list li {position: relative; margin-bottom: 5px;}
+.form-list input {position: absolute; top: 0;}
+.form-list label {display: inline-block; margin: 0 0 0 25px; padding-top: 4px; line-height: 1.1;}
+
+/* company feedback */
+.form-cf {margin: 15px 0 0;}
+.form-cf .field {margin-left: 0;}
+.form-cf .legend {width: 150px; margin-left: -160px; font: bold 14px/16px sans-serif;}
+.form-cf input,
+.form-cf textarea {font-size: 13px;}
+.form-cf select {font-size: 13px;}
+
+/* compact */
+.form-compact .field {margin: 0 0 0 280px;}
+.form-compact .legend {width: 283px; margin: 3px 0 0 -300px;}
+
+/* validation */
+.validation-summary-errors {margin: 15px 0; border: 1px solid #fefccb; background: #fefccb; padding: 13px 15px; font: 12px/1.2 sans-serif;}
+.validation-summary-errors a {color: #000; text-decoration: underline;}
+.validation-summary-errors ul {}
+.validation-summary-errors li {margin: 10px 0 0;}
+.validation-summary-errors li:first-child {margin: 0;}
+
+.field-validation-error {position: relative; display: inline-block; max-width: 410px; padding: 5px 9px; border: 1px solid #fefccb; background: #fefccb; font: 11px/1.2 sans-serif; vertical-align: top;}
+.field-validation-error a {color: #000; text-decoration: underline;}
+
+/* sell */
+.carselect-spin {position: relative; display: inline-block; width: 22px; height: 22px; margin: 0 0 6px 3px; vertical-align: middle;}
+
+.sell-intro {margin: 0 0 25px 90px;}
+.sell-intro h3 {display: inline-block; font: bold 20px/25px sans-serif; padding: 0 5px; margin: 0 0 3px -5px; background: #fff799; text-shadow: none;}
+.ie7 .sell-intro h3 {display: inline;}
+.sell-intro p {margin: 0; font-size: 17px;}
+
+.sell-intro-bpic {float: right; margin: -20px 0 0 20px;}
+.sell-intro-pic {position: absolute; margin: -5px 0 0 -90px; width: 68px; height: 70px; background: url(/images/pics/signs.png) no-repeat;}
+.sell-intro-pic-2 {background-position: 0 -68px;}
+.sell-intro-pic-3 {background-position: 0 -136px;}
+
+.sell-intro-form {clear: both; margin: 40px 0 0 70px;}
+.sell-intro-chk {margin: 0 0 15px 20px;}
+
+.sell-intro-button {position: relative; display: inline-block; margin: 0 0 15px 20px; vertical-align: top;}
+.sell-intro-button button {display: block;}
+.sell-intro-button .form-notes {float: left; width: 100%; margin: 10px -999px 0 1px;}
+.ie7 .sell-intro-button {display: inline; padding-bottom: 40px;}
+.ie7 .sell-intro-button .form-notes {position: absolute; left: 0;}
+
+.sell-confirm-text {font: 17px/1.4 sans-serif;}
+.sell-confirm-input {width: 7em; margin: 0 0 10px; padding: 4px 8px; font-size: 40px;}
+.sell-confirm-buttons button {margin: 0 15px 0 0;}
+
+/* uploader */
+.plupload-wrapper {position: relative; display: inline-block; font-size: 12px/1 sans-serif;}
+.ie7 .plupload-wrapper {display: inline;}
+/*.plupload-button span,*/
+.plupload-button {display: inline-block; margin: 5px 1em 10px 0; font: bold 14px/1 sans-serif; color: #4b5b73; border-bottom: 1px dotted #4b5b73; cursor: pointer;}
+.ie7 .plupload-button {margin-top: 1px;}
+/*
+.plupload-button-ready {background: white; padding: 3px 4px; margin: -3px -4px; border: 0;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+*/
+.plupload-button-ready span {margin: 0;}
+.plupload-filelist {}
+.ie7 .plupload-filelist {border-bottom: 1px solid #e8e8e8;}
+.plupload-file {margin: 0 0 3px;}
+.plupload-file-number {margin-right: .3em;}
+.plupload-file-name {color: #000; margin-right: .5em;}
+.plupload-file-size {font-size: 11px; color: #808080; margin-right: .7em;}
+.plupload-file-progress {position: relative; display: inline-block; width: 100px; height: 6px; margin-right: .7em; border: 1px solid #808080;}
+.ie7 .plupload-file-progress {margin: 3px .7em 3px 0;}
+.plupload-file-progress span {display: block; height: 6px; background: #808080;}
+.plupload-file-action {margin-right: .7em; font-size: 11px; color: #808080; border-bottom: 1px dotted #808080; cursor: pointer;}
+.plupload-file-error-info {color: #900; margin-right: .7em; display: block; font-size: 11px;}
+
+/* imagelist */
+.imagelist {margin: 0 -35px 0 0; line-height: 0; zoom: 1;}
+.imagelist-item {position: relative; display: inline-block; vertical-align: middle; margin: 5px 10px 5px 0; padding: 4px; background: #fff; border: 1px solid #d8d8d8; border-width: 0 1px 1px 0; text-align: center;}
+.ie7 .imagelist-item {display: inline;}
+.imagelist-pic {position: relative; display: block; margin: 0 auto; cursor: move; line-height: 0;}
+.imagelist-pic-mask,
+.imagelist-pic-overlay {position: absolute; display: block; left: 0; top: 0; width: 100%; height: 100%;}
+.imagelist-pic-overlay {background: #000; background: rgba(0,0,0,.6);}
+.ie .imagelist-pic-overlay {filter: alpha(opacity=40);}
+.ie7 .imagelist-pic {margin: 0;}
+.imagelist-number {display: none;}
+/*
+.imagelist-number {position: absolute; top: 4px; left: 4px; padding: 0 3px; background: #666; color: #fff; font: bold 11px/13px sans-serif;}
+*/
+.imagelist-controls {margin: 2px 0 0; font: 11px/17px sans-serif; color: #808080; text-align: left;}
+.imagelist-control {padding: 1px;}
+.imagelist-control-caption {border-bottom: 1px dotted #808080; cursor: pointer;}
+.imagelist-control .i {display: inline-block; width: 12px; height: 12px; margin: 0 3px 1px 0; vertical-align: middle; text-indent: 0;}
+.imagelist-crop .i {background-position: -162px -163px;}
+.imagelist-remove .i {background-position: -162px -176px;}
+.imagelist-remove-confirm {background: #c00; margin: 1px 0 0; color: #fff; line-height: 16px; text-align: center; cursor: pointer;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.imagelist-imagelist-current {opacity: .4; filter: alpha(opacity=40);}
+.imagelist-imagelist-dragger {opacity: .8; filter: alpha(opacity=80); z-index: 2;}
+
+.imagelist-remove-overlay {position: absolute; width: 100%; bottom: 0; left: 0; padding-top: 1px; background: #fff; font: 11px/20px sans-serif; text-align: center;}
+
+.imagelist-bin {display: block; border: 1px dashed #808080; width: 100px; height: 200px; margin-bottom: 10px; vertical-align: middle;}
+
+/* crop dialog */
+.dialog-crop-description {font: 11px/1.2 sans-serif; margin: 0 0 7px; color: #808080;}
+.dialog-crop-preview {line-height: 0;}
+.dialog-crop-buttons {text-align: right; margin: 7px 0 0;}
+
+/* crop */
+.crop {position: relative; line-height: 0;}
+.crop-mask-bg,
+.crop-mask,
+.crop-overlay {position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+.crop-mask {cursor: move;}
+.crop-overlay {background: #000; background: rgba(0,0,0,.4);}
+.ie .crop-overlay {filter: alpha(opacity=40);}
+.crop-border {position: absolute; background: url(/images/crop/ants.gif);}
+.crop-handle {position: absolute; background: #fff; background: rgba(255,255,255,.5); border: 1px solid #000; overflow: hidden;}
+.ie .crop-handle {filter: alpha(opacity=50);}

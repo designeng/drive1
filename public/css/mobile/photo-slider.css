@@ -1,0 +1,25 @@
+/**
+ * Horizontal gallery gradient overlay
+ */
+
+@media screen and (max-width: 800px) {
+    .photo-slider {
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        pointer-events: none;
+        z-index: 2;
+        background: none;
+    }
+        .photo-slider:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            z-index: 2;
+            box-shadow: 0 0 40px 15px rgb(0, 0, 0);
+        }
+}

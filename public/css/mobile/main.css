@@ -1,0 +1,124 @@
+/**
+ * Main page
+ */
+
+@media screen and (max-width: 800px) {
+
+    /* Hide unnecessary blocks */
+
+    #index-com-news,
+    .index-news-ext,
+    .index-number,
+    .index-technews,
+    .index-video-header,
+    #index-video .ii {
+        display: none;
+    }
+
+    /* Overrides */
+
+    #index-news-list {
+        -webkit-box-ordinal-group: 2;
+                order: 1;
+        position: inherit;
+        width: auto;
+        padding: 0;
+        margin-top: 10px;
+    }
+        /* Explicitly restyle standard news item image & text to override more specific site rules */
+        #index-top-news .news-item-link__image {
+            max-width: 115px;
+            max-height: 67px;
+        }
+        #index-top-news .news-item-caption__text {
+            font: normal 15px/1.2 sans-serif;
+            width: auto;
+        }
+
+
+    .index-news-list-more {
+        color: rgb(68, 84, 111);
+    }
+
+    #index-video {
+        float: none;
+        width: auto;
+        position: inherit;
+        padding-top: 0;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        -webkit-box-ordinal-group: 3;
+                order: 2;
+    }
+
+    .vidcard {
+        display: -webkit-inline-box;
+        display: inline-flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        width: auto;
+        height: auto;
+        margin: 0 10px;
+        background: none;
+        /* Flex wrong click target fix */
+        z-index: 2;
+    }
+        .vidcard:not(:first-of-type) {
+            margin-top: 10px;
+        }
+
+    .vidcard .vidcard-caption {
+        font: normal 15px/1.2 sans-serif;
+        background: #404850;
+    }
+    .vidcard .vidcard-caption:before {
+        content: "Видео: ";
+    }
+
+    /* Fit video thumbnail the same way as .image-wrapper fits image */
+    .vidcard .thumb {
+        width: auto;
+        height: auto;
+        position: relative;
+        padding-top: 75%;
+        overflow: hidden;
+    }
+    .thumb .thumb__image {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+        /* Zoom image to hide black bars */
+        -webkit-transform: scale(1.35);
+                transform: scale(1.35);
+    }
+}
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+    #index-video {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+                flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .vidcard {
+        -webkit-box-flex: 50%;
+                flex: 50%;
+        /* Android 4.2 fix */
+        width: 49%;
+        margin: 0;
+    }
+        .vidcard:not(:first-of-type) {
+            margin-top: 0;
+        }
+        .vidcard .vidcard-caption {
+            font: inherit;
+        }
+}

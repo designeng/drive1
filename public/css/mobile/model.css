@@ -1,0 +1,185 @@
+/**
+ * Model page
+ */
+
+@media screen and (max-width: 800px) {
+
+    /* Hide unnecessary blocks */
+
+    .frame-photo-border,
+    .car-ncap,
+    .car-d2experience,
+    .car-builds-compare-all,
+    .car-builds-table-compare,
+    .car-description,
+    .car-company-list-header,
+    .car-relatednews-list-news,
+    .car-teasers,
+    .car-drive2-link,
+    .buttons-dv,
+    .lightbox {
+        display: none !important;
+    }
+
+    /* Overrides */
+
+    .car-builds-table-price,
+    .car-builds-table-compare {
+        text-align: left;
+    }
+
+    .car-builds-table a {
+        pointer-events: none;
+        color: rgb(0, 0, 0);
+        cursor: default;
+    }
+        .car-builds-table .car-build-link {
+            color: rgb(68, 84, 111);
+            pointer-events: auto;
+            text-decoration: underline;
+            z-index: 2;
+        }
+
+    .car-builds-header,
+    .car-similar-header,
+    .car-relatednews-header,
+    .car-drive2-header {
+        margin: 12px 24px;
+    }
+
+    .car-builds {
+        margin: 0;
+    }
+
+    /* Make builds table mobile friendly */
+
+    .car-builds-table table,
+    .car-builds-table tbody,
+    .car-builds-table th,
+    .car-builds-table tr,
+    .car-builds-table td {
+        display: block;
+    }
+
+    .car-builds-table thead {
+        display: none;
+    }
+
+    .car-builds-table tr:nth-child(even),
+    .car-builds-table tr:nth-child(even):hover {
+        background: rgb(253, 253, 253);
+    }
+
+    /* Disable hover behavior */
+    .car-builds-table tbody tr:hover {
+        background: inherit;
+    }
+
+    .car-builds-table td,
+    .car-builds-table tbody th,
+    .car-builds-table .car-builds-table-title {
+        position: relative;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 50%;
+    }
+
+    .car-builds-table td:before,
+    .car-builds-table tbody th:before {
+        position: absolute;
+        top: 12px;
+        left: 48px;
+        width: 35%;
+        padding-right: 12px;
+        white-space: nowrap;
+    }
+
+    .car-builds-table tbody th:before {
+        content: "Название";
+    }
+
+    .car-builds-table td:nth-of-type(1):before {
+        content: "Цена";
+    }
+
+    .car-builds-table td:nth-of-type(2):before {
+        content: "Мотор";
+    }
+
+    .car-builds-table td:nth-of-type(3):before {
+        content: "л. с.";
+    }
+
+    .car-builds-table td:nth-of-type(4):before {
+        content: "Привод";
+    }
+
+    .car-builds-table td:nth-of-type(5):before {
+        content: "Коробка передач";
+    }
+
+    .car-builds-table td:nth-of-type(6):before {
+        content: "Сравнение";
+    }
+
+    /* Override the above rules for banner placement cell */
+    .dv-mobile-row td {
+        padding-left: 0;
+        margin: 0 15px 0 25px;
+        white-space: normal;
+    }
+    .dv-mobile-row td:before {
+        content: initial;
+        display: none;
+        margin: 0 30px;
+    }
+
+    /* Photos section */
+
+    .car-main-photo {
+        margin: 0;
+    }
+
+    /* Similar cars section */
+
+    .car-similar-list {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        margin: 6px 0 12px;
+    }
+
+    /* Related news section */
+
+    .car-relatednews {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+    }
+
+    /* Explicitly restyle standard news item image & text to override more specific site rules */
+    .car-relatednews .news-item-link__image {
+        max-width: 115px;
+        max-height: 67px;
+    }
+
+    .car-relatednews .news-item-caption__text {
+        color: rgb(68, 84, 111);
+        font: normal 15px/1.2 sans-serif;
+        width: auto;
+    }
+
+    .car-relatednews-list-articles {
+        margin: 0;
+        float: none;
+    }
+}
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+
+}

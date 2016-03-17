@@ -1,0 +1,74 @@
+.c-social-share {
+    display: block;
+    z-index: 15;
+    position: fixed;
+    right: 35px;
+    bottom: 25px;
+}
+
+.c-social-share__item {
+    position: relative;
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 15px 0 0;
+    padding: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    outline: none;
+    border-radius: 100%;
+}
+    .c-social-share__item:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 50% 50% no-repeat;
+        background-size: 100%;
+    }
+    .c-social-share__item--twitter {
+        background: #31adf4;
+    }
+    .c-social-share__item--twitter:after {
+        background-image: url(/images/social/twitter.svg);
+    }
+    .c-social-share__item--fb {
+        background: #4861a3;
+    }
+    .c-social-share__item--fb:after {
+        background-image: url(/images/social/fb.svg);
+    }
+    .c-social-share__item--ok {
+        background: #f2812e;
+    }
+    .c-social-share__item--ok:after {
+        background-image: url(/images/social/ok.svg);
+    }
+    .c-social-share__item--vk {
+        background: #5c82ab;
+    }
+    .c-social-share__item--vk:after {
+        background-image: url(/images/social/vk.svg);
+    }
+    .c-social-share__item--viber {
+        background: #7c529e;
+    }
+    .c-social-share__item--viber:after {
+        background-image: url(/images/social/viber.svg);
+    }
+    .c-social-share__item--whatsapp {
+        background: #0f9d58;
+    }
+    .c-social-share__item--whatsapp:after {
+        background-image: url(/images/social/whatsapp.svg);
+    }
+    .c-social-share__item--share {
+        background: #808080;
+    }
+    .c-social-share__item--share:after {
+        background-image: url(/images/social/share.svg);
+    }

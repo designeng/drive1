@@ -1,0 +1,162 @@
+/**
+ * Article page
+ *
+ * Total hack because article HTML is fetched from database along with classes
+ * and therefore is not directly editable to impose BEM conventions
+ */
+
+@media screen and (max-width: 800px) {
+
+    /* Hide unnecessary blocks */
+
+    .brand-header,
+    .poll,
+    .dv-bottom,
+    .article-social-container,
+    .article-commentslink,
+    .hr,
+    .feedsub,
+    .article-spacer,
+    .article-header,
+    .article-gallery,
+    .article-date,
+    .rshadow,
+    .bshadow {
+        display: none;
+    }
+
+    /* Overrides */
+
+    #article {
+        padding: 0 12px 12px;
+    }
+
+    .article a {
+        color: rgb(68, 84, 111);
+        text-decoration: underline;
+    }
+
+    .article a,
+    .article a:hover {
+        background: none;
+    }
+
+    .afigure-caption a {
+        color: #808080;
+        text-decoration: none;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAABAQMAAACFRD4kAAAAA1BMVEVLW3NL9vviAAAAAXRSTlNANjqZ9gAAAApJREFUeAFjAAEAAAUAATbQiN0AAAAASUVORK5CYII=) 0 94% repeat-x;
+    }
+
+    .dropcap {
+        float: none;
+        font: inherit;
+        height: auto;
+        margin: 0 -4px 0 0;
+        padding: 0;
+        color: inherit;
+        text-shadow: none;
+        background: none;
+    }
+
+    .article-readmore {
+        width: auto;
+        margin: 0 15px;
+    }
+
+    .summary a {
+        text-decoration: none;
+    }
+
+    .afigure-title {
+        width: 90%;
+        top: 12px;
+        left: 12px;
+    }
+
+    /* Stretch main image */
+
+    .afigure {
+        width: auto;
+        height: auto;
+    }
+        .afigure img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+        }
+        .afigure-caption {
+            margin-left: 12px;
+        }
+        .afigure-caption p {
+            margin-bottom: 0;
+        }
+
+    /* Restyle article summary */
+
+    .afigure-main .summary {
+        width: auto;
+        font: bold 14px/1.1 sans-serif;
+    }
+
+    .afigure-main .afigure-pic:after {
+        background: none;
+    }
+
+    .article-readmore-caption {
+        margin-left: 12px;
+    }
+        .article-readmore-caption:after {
+            content: ":";
+        }
+
+    .article-header-mobile {
+        display: block;
+    }
+
+    .afigure-title .meta {
+        font: 11px/1.25 sans-serif;
+        color: rgba(236, 236, 236, 0.7);
+        text-shadow: none;
+    }
+
+    .article .afigure-main-sd {
+        margin-left: -25px;
+    }
+
+    /* Stretch inline images */
+
+    .afigure-hd .afigure-pic {
+        margin: 0 -25px;
+    }
+
+    .afigure-pic {
+        padding: 0;
+    }
+
+    /* Stretch video to device screen */
+
+    .afigure-hd .afigure-pic.video-wrapper-mobile {
+        display: block;
+        position: relative;
+        height: 0;
+        padding-bottom: 56.25%;
+        padding-top: 0;
+    }
+        .video-wrapper-mobile > iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+}
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+    .article-header-mobile {
+        display: none;
+    }
+
+    .article-header {
+        display: block;
+    }
+}

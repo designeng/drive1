@@ -1,0 +1,189 @@
+/**
+ * Brand news page
+ */
+
+@media screen and (max-width: 800px) {
+
+    /* Hide unnecessary blocks */
+
+    .brand-side-dv,
+    .brand-company-blog-list,
+    .open-page-top,
+    .company-list-cards,
+    .brand-buy-header,
+    .ncard-stub,
+    .brand-header {
+        display: none;
+    }
+
+    /* Overrides */
+
+    .brand-header-mobile {
+        padding: 12px 24px 0;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-ordinal-group: 3;
+                order: 2;
+    }
+
+    /* News section */
+
+    #brand-news-list {
+        -webkit-box-ordinal-group: 4;
+                order: 3;
+        position: inherit;
+        width: auto;
+        padding: 0;
+    }
+        #brand-news-list .news-item:first-child {
+            padding-top: 0;
+        }
+
+    /* Test drive section */
+
+    #brand-td-list {
+        margin: 0;
+        width: auto;
+        -webkit-box-ordinal-group: 2;
+                order: 1;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        flex-wrap: nowrap;
+    }
+        /* Explicitly restyle standard news item image & text to override more specific site rules */
+        #brand-td-list .news-item-link__image {
+            max-width: 115px;
+            max-height: 67px;
+        }
+
+        #brand-td-list .news-item-caption__text {
+            color: rgb(68, 84, 111);
+            font: normal 15px/1.2 sans-serif;
+            width: auto;
+        }
+
+        #brand-td-list .news-item .i {
+            display: none;
+        }
+
+    .testdrives-more .show-more-link {
+        margin: 0;
+    }
+    
+    .brand-readmore {
+        margin: 0 15px;
+    }
+
+    /* Car catalogue */
+    /* TODO: Use common .news-item classes in future versions */
+
+    #brand-icons-list {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        margin: 6px 0 12px;
+    }
+
+    .car-icon {
+        margin: 0;
+        padding: 6px 12px;
+        background: transparent;
+        border-radius: 0;
+        -webkit-transition: none;
+        transition: none;
+        display: block;
+    }
+
+    .car-icon .car-icon-image {
+        display: table-cell;
+        margin: 0;
+        min-width: 160px;
+    }
+
+    .car-icon .car-icon-caption {
+        display: table-cell;
+        font: normal 15px/1.2 sans-serif;
+        margin: 0;
+        text-align: inherit;
+        width: auto;
+        float: none;
+        vertical-align: middle;
+    }
+
+    /* Car catalogue "Show more" link */
+
+    .expand-mobile-trigger {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    .expand-mobile-trigger-label {
+        display: block;
+        -webkit-box-flex: 100%;
+                flex: 100%;
+    }
+        .expand-mobile-trigger:checked ~ .expand-mobile-trigger-label {
+            display: none;
+        }
+
+    .car-icon:nth-of-type(n + 6) {
+        display: none;
+    }
+        .expand-mobile-trigger:checked ~ .car-icon:nth-of-type(n + 6) {
+            display: block;
+        }
+}
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+    /* Explicitly restyle standard top news item so it reacts to orientation change */
+    #brand-td-list .top-news-item:first-child {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+                flex-direction: row;
+    }
+
+    #brand-td-list .top-news-item__caption {
+        color: rgb(3, 3, 3);
+        position: static;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-flex: 50%;
+                flex: 50%;
+        /* Android 4.2 fix */
+        width: 50%;
+    }
+
+    #brand-td-list .image-fitter-mobile {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-flex: 50%;
+                flex: 50%;
+        /* Android 4.2 fix */
+        width: 50%;
+    }
+
+    #brand-td-list .top-news-item .i {
+        display: none;
+    }
+
+    #brand-icons-list {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+                flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #brand-icons-list .car-icon {
+        display: inline-block;
+        /* Less than 50% due to flex containers ignoring paddings & margins of child elements */
+        -webkit-box-flex: 45%;
+                flex: 45%;
+        /* Android 4.2 fix */
+        width: 45%;
+    }
+}

@@ -1,0 +1,118 @@
+/**
+ * Model page
+ */
+
+@media screen and (max-width: 800px) {
+
+    /* Hide unnecessary blocks */
+
+    .page-car-icon,
+    .build-compare,
+    .build-price-shadow,
+    .build-meta,
+    .build-info-chk,
+    .error-feedback,
+    .build-price-item-link,
+    .build-dv {
+        display: none !important;
+    }
+
+    /* Overrides */
+
+    .build-info-col {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    .car-build-header {
+        margin: 12px 24px;
+    }
+
+    .build-price {
+        float: none;
+        width: auto;
+        height: auto;
+        margin: 0;
+    }
+
+    .build-photos {
+        margin: 0;
+    }
+
+    .build-info {
+        clear: none;
+        margin: 0 12px;
+    }
+
+    /* Make build info table mobile friendly */
+
+    .build-info .car-build-table {
+        margin: 0 auto;
+    }
+
+    .car-build-table td,
+    .car-build-table th {
+        padding: 6px 0;
+    }
+
+    .car-build-table tr {
+        pointer-events: none;
+        overflow: hidden;
+        display: block;
+        position: relative;
+        z-index: 2;
+    }
+
+    .car-build-table tr th:after,
+    .car-build-table tr td:first-of-type:before {
+        position: absolute;
+        content: "..................................."
+            "..................................."
+            "..................................."
+            "...................................";
+        letter-spacing: 0.25em;
+        background: #e8e8e8;
+        z-index: -1;
+    }
+
+    .car-build-table tr td:first-of-type:before {
+        left: 0;
+    }
+
+    .car-build-table th {
+        padding-right: 0.25em;
+        background: #e8e8e8;
+        display: inline-block;
+    }
+
+    .car-build-table td:first-of-type {
+        float: right;
+        text-align: right;
+        padding-left: 0.25em;
+        background: #e8e8e8;
+        display: inline-block;
+    }
+
+    .build-info caption {
+        margin: 12px 12px;
+        display: block;
+        text-shadow: none;
+    }
+
+    .build-info-pack {
+        border-bottom: none;
+        cursor: none;
+    }
+
+    /* Footnote */
+
+    .build-notes {
+        width: auto;
+        margin: 24px 24px 0;
+    }
+}
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+
+}
