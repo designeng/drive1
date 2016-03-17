@@ -20,6 +20,7 @@ import nav                  from 'drive-templates/build/nav';
 import sprContainer         from 'drive-templates/build/sprContainer';
 import topControls          from 'drive-templates/build/topControls';
 import videoThumbnail       from 'drive-templates/build/videoThumbnail';
+import brandsList           from 'drive-templates/build/brandsList';
 
 const cacheReset = "v1"
 

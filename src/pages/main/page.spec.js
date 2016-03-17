@@ -1,11 +1,13 @@
 import wireDebugPlugin   from 'essential-wire/source/debug';
 import requestPlugin     from '../../plugins/api/request';
 import performancePlugin from '../../plugins/performance';
-import Handlebars        from 'handlebars';
+import deferWire         from '../../decorators/deferWire';
 
 import { getEndpoint }   from '../../api/config';
 import { getPage, getBody } from '../common/page';
 import controller from './controller';
+
+import brandsList        from './brandsList.spec';
 
 export default {
     $plugins: [
@@ -18,6 +20,9 @@ export default {
     topStories: {
         request: {
             url: getEndpoint('topStories'),
+
+            // topNews
+            // mainNews
         }
     },
 
@@ -39,6 +44,10 @@ export default {
         }
     },
     // end requests
+
+    // defer
+    @deferWire({spec: brandsList})
+    brandsList: {},
 
     page: {
         create: {
