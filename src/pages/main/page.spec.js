@@ -1,5 +1,4 @@
 import wireDebugPlugin   from 'essential-wire/source/debug';
-import requestPlugin     from '../../plugins/api/request';
 import performancePlugin from '../../plugins/performance';
 
 import deferWire         from '../../decorators/deferWire';
@@ -17,7 +16,6 @@ import itemMedium           from 'drive-templates/build/itemMed';
 export default {
     $plugins: [
         wireDebugPlugin,
-        requestPlugin,
         performancePlugin
     ],
 
