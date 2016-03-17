@@ -5,11 +5,7 @@ import Handlebars        from 'handlebars';
 
 import { preprocessNews, getPage } from './preprocessors';
 
-import { 
-    getNewsUrl, 
-    getNewsBlockTemplateUrl, 
-    getPageTemplateUrl
-} from '../../api/config';
+import { getEndpoint }   from '../../api/config';
 
 export default {
     $plugins: [
@@ -20,7 +16,7 @@ export default {
 
     news: {
         request: {
-            url: getNewsUrl(),
+            url: getEndpoint('news'),
             params: {
                 count: 8
             },

@@ -38,6 +38,13 @@ export function getPage(pageTemplate) {
     })
 }
 
+export function getPage(pageTemplate) {
+    return carcass({
+        head: getHead(),
+        header: "header...."
+    })
+}
+
 
 // https://dev.drive.ru/api/v1/static/brands
 const brands = [{"id":"acura","name":"Acura","backgroundOffset":0},{"id":"alfaromeo","name":"Alfa Romeo","backgroundOffset":-29}];
