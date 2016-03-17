@@ -5,20 +5,22 @@ const config = {
     version: 'v1'
 }
 
+const endpoints = {
+    numbers: "/content/numbers",
+    special: "/content/special",
+    brands:  "/content/brands",
+    news:   "/items/news",
+    testDrives: "/items/test_drives",
+    topStories: "/items/top_stories",
+    topBlogs: "/items/top_blogs",
+}
+
 function getBaseUrl() {
     return config.protocol + '://' + config.host + '/' + config.baseDir + '/' + config.version
 }
 
 export default config;
 
-export function getNewsUrl() {
-    return getBaseUrl() + '/items/news';
-}
-
-export function getPageTemplateUrl() {
-    return getBaseUrl() + '/static/pages/carcass';
-}
-
-export function getNewsBlockTemplateUrl() {
-    return getBaseUrl() + '/static/blocks/news_item';
+export function getEndpoint(item) {
+    return getBaseUrl() + endpoints[item];
 }

@@ -38,9 +38,15 @@ export function getPage(pageTemplate) {
     })
 }
 
+
+// https://dev.drive.ru/api/v1/static/brands
+const brands = [{"id":"acura","name":"Acura","backgroundOffset":0},{"id":"alfaromeo","name":"Alfa Romeo","backgroundOffset":-29}];
 export function getBody(pageTemplate) {
     return body({
-        header: "header....123",
+        header: "header....12345",
+
+        // skipping mobileNav
+        mobileMenuTrigger: mobileMenuTrigger(),
         bottomScripts: bottomScripts()
     })
 }
