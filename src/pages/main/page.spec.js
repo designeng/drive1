@@ -1,8 +1,12 @@
-import wireDebugPlugin   from 'essential-wire/source/debug';
-import performancePlugin from '../../plugins/performance';
+import _ from 'underscore';
+
+import wireDebugPlugin      from 'essential-wire/source/debug';
+import performancePlugin    from '../../plugins/performance';
+import providePlugin        from '../../plugins/api/provide';
+import transformPlugin      from '../../plugins/transform';
 
 import deferWire         from '../../decorators/deferWire';
-import provide, { preprocess } from '../../decorators/provide';
+// import provide from '../../decorators/provide';
 
 import { getEndpoint }   from '../../api/config';
 import { getPage, getBody } from '../common/page';
@@ -16,75 +20,82 @@ const markupNews = () => {
 
 }
 
+var crop = function(x) {
+    return x.slice(0, 2)
+}
+
+export default function arrangePlugin(options) {
+    const arrange = (resolver, facet, wire) => {
+        let target = facet.target;
+        facet.target.html = "SOME HTML";
+
+        resolver.resolve(facet.target);
+    }
+
+    return {
+        facets: {
+            arrange: {
+                'ready:after': arrange
+            }
+        }
+    }
+}
+
 export default {
     $plugins: [
         wireDebugPlugin,
-        performancePlugin
+        performancePlugin,
+        providePlugin,
+        transformPlugin,
+        arrangePlugin
     ],
 
-    @preprocess({
-
-    })
-    @provide({
-        endpoint: getEndpoint('topStories'), 
-        what: 'topNews'
-    })
-    topNews: {},
-
-
-    // topNews: {
-    //     preprocess: markupNews,
-    //     args: [itemLarge, 2, itemMedium, 4]
-    // },
-
-    // requests
-    // topStories: {
-    //     request: {
-    //         url: getEndpoint('topStories'),
-
-    //         // topNews
-    //         // mainNews
-    //     }
-    // },
-
-    // topVideos: {
-    //     request: {
-    //         url: getEndpoint('topVideos'),
-    //     }
-    // },
-
-    // topBlogs: {
-    //     request: {
-    //         url: getEndpoint('topBlogs'),
-    //     }
-    // },
-
-    // numbers: {
-    //     request: {
-    //         url: getEndpoint('numbers'),
-    //     }
-    // },
-    // end requests
-
-    // @deferWire({spec: brandsList})
-    // brandsList: {},
-
-    page: {
-        create: {
-            module: getPage,
-            args: [
-            ]
+    topStoriesRequest: {
+        request: {
+            endpoint: getEndpoint('topStories'),
         }
     },
 
-    body: getBody(),
+    topVideosRequest: {
+        request: {
+            endpoint: getEndpoint('topVideos'),
+        }
+    },
 
-    controller: {
+    topBlogsRequest: {
+        request: {
+            endpoint: getEndpoint('topBlogs'),
+        }
+    },
+
+    cellarRequest: {
+        request: {
+            endpoint: getEndpoint('numbers'),
+        }
+    },
+
+    // page: {
+    //     create: {
+    //         module: getPage,
+    //         args: [
+    //         ]
+    //     }
+    // },
+
+    // body: getBody(),
+
+    body: {
         create: {
             module: controller,
             args: [
-                {$ref: 'topNews'}
+                {$ref: 'topStoriesRequest'},
+                {$ref: 'topVideosRequest'},
+                {$ref: 'topBlogsRequest'},
+                {$ref: 'cellarRequest'},
             ]
+        },
+        arrange: {
+
         }
     }
 }

@@ -13,6 +13,7 @@ const run = (pageSpec) => {
 
     pipeline(tasks).then(
         (context) => {
+            console.log("CONTEXT::::::", context);
             $('body').html(context.body);
         },
         (error) => {

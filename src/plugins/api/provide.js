@@ -31,7 +31,9 @@ function provide(resolver, compDef, wire) {
 export default function providePlugin(options) {
     return {
         factories: {
-            provide
+            provide,
+            // alias
+            request: provide
         }
     }
 }
