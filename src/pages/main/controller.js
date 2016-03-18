@@ -1,12 +1,33 @@
 import _ from 'underscore';
+
+import carcass              from 'drive-templates/build/carcass';
+import head                 from 'drive-templates/build/head';
+import body                 from 'drive-templates/build/body';
+
+import citySelector         from 'drive-templates/build/citySelector';
+import additionalNav        from 'drive-templates/build/additionalNav';
+import bottomScripts        from 'drive-templates/build/bottomScripts';
+import delimiter            from 'drive-templates/build/delimiter';
+import description          from 'drive-templates/build/description';
+import footer               from 'drive-templates/build/footer';
+import header               from 'drive-templates/build/header';
+import keywords             from 'drive-templates/build/keywords';
+import logo                 from 'drive-templates/build/logo';
+import mobileMenuTrigger    from 'drive-templates/build/mobileMenuTrigger';
+import mobileNav            from 'drive-templates/build/mobileNav';
+import nav                  from 'drive-templates/build/nav';
+import sprContainer         from 'drive-templates/build/sprContainer';
+import topControls          from 'drive-templates/build/topControls';
+import brandsList           from 'drive-templates/build/brandsList';
+
 import pageContent          from 'drive-templates/build/pages/main';
 
-// TODO: rename templete?
+// TODO: rename template?
 import itemLarge            from 'drive-templates/build/itemLarge';
 import itemMedium           from 'drive-templates/build/itemMed';
 import itemCompact          from 'drive-templates/build/itemCompact';
 
-// TODO: rename templete?
+// TODO: rename template?
 import videoThumbnail       from 'drive-templates/build/videoThumbnail';
 import blogEntry            from 'drive-templates/build/blogEntry';
 
@@ -45,7 +66,7 @@ const topBlogsHtml = (items) => {
     }, '');
 }
 
-const composeToHtml = (topNews, mainNews, topVideos, topBlogs, cellar) => {
+const composePageContentHtml = (topNews, mainNews, topVideos, topBlogs, cellar) => {
     return pageContent({
         topNews: largeNewsHtml(topNews.slice(0, 2)) + mediumNewsHtml(topNews.slice(2)),
         mainNews: mainNewsHtml(mainNews),
@@ -55,18 +76,44 @@ const composeToHtml = (topNews, mainNews, topVideos, topBlogs, cellar) => {
     })
 }
 
-function controller(topStories, topVideos, topBlogs, cellar) {
+const headerHtml = (cities) => {
+    return header({
+        topControls: topControls(),
+        logo: logo(),
+        citySelector: citySelector(cities),
+        nav: nav()
+    })
+}
+
+function controller(topStories, topVideos, topBlogs, cellar, cities) {
 
     let topNews     = topStories.data['topNews']
     let mainNews    = topStories.data['mainNews']
 
-    let html = composeToHtml(
+    let pageContentHtml = composePageContentHtml(
         topNews,
         mainNews,
         topVideos,
         topBlogs,
         cellar.data
-    )
+    );
+
+    let html = carcass({
+        // TODO: how to define htmlClass?
+        htmlClass: '',
+        head: head(),
+        body: body({
+            mobileMenuTrigger: mobileMenuTrigger(),
+            header: headerHtml(cities),
+            mobileNav: mobileNav(),
+            additionalNav: additionalNav(),
+            page: pageContentHtml,
+            footer: footer(),
+            // TODO: should be helper?
+            sprContainer: sprContainer(),
+            bottomScripts: bottomScripts()
+        })
+    });
 
     return {
         html

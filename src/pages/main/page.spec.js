@@ -15,8 +15,7 @@ export default {
         wireDebugPlugin,
         performancePlugin,
         providePlugin,
-        transformPlugin,
-        arrangePlugin
+        transformPlugin
     ],
 
     topStoriesRequest: {
@@ -43,6 +42,12 @@ export default {
         }
     },
 
+    citiesRequest: {
+        request: {
+            endpoint: getEndpoint('cities'),
+        }
+    },
+
     body: {
         create: {
             module: controller,
@@ -51,6 +56,7 @@ export default {
                 {$ref: 'topVideosRequest'},
                 {$ref: 'topBlogsRequest'},
                 {$ref: 'cellarRequest'},
+                {$ref: 'citiesRequest'},
             ]
         }
     }
