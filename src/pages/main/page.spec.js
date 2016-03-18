@@ -2,7 +2,7 @@ import _ from 'underscore';
 
 import wireDebugPlugin      from 'essential-wire/source/debug';
 import performancePlugin    from '../../plugins/performance';
-import providePlugin        from '../../plugins/api/provide';
+import requestPlugin        from '../../plugins/api/request';
 import transformPlugin      from '../../plugins/transform';
 
 import { getEndpoint }   from '../../api/config';
@@ -13,7 +13,7 @@ export default {
     $plugins: [
         wireDebugPlugin,
         performancePlugin,
-        providePlugin,
+        requestPlugin,
         transformPlugin
     ],
 

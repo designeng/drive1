@@ -91,15 +91,15 @@ function controller(topStories, topVideos, topBlogs, cellar, brands, cities) {
 
     // console.log(chalk.green("brands:::::", brands.data));
 
-    let topNews     = topStories.data['topNews']
-    let mainNews    = topStories.data['mainNews']
+    let topNews     = topStories['topNews']
+    let mainNews    = topStories['mainNews']
 
     let pageContentHtml = composePageContentHtml(
         topNews,
         mainNews,
-        topVideos.data,
-        topBlogs.data,
-        cellar.data
+        topVideos,
+        topBlogs,
+        cellar
     );
 
     let html = carcass({
@@ -108,12 +108,12 @@ function controller(topStories, topVideos, topBlogs, cellar, brands, cities) {
         body: body({
             mobileMenuTrigger: mobileMenuTrigger(),
             header: headerHtml({
-                cities: cities.data
+                cities
             }),
             mobileNav: mobileNav(),
             additionalNav: additionalNav(),
             brandsList: brandsList({
-                brands: brands.data
+                brands
             }),
             page: pageContentHtml,
             footer: footer(),
