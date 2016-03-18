@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import chalk from 'chalk';
 
 import carcass              from 'drive-templates/build/carcass';
 import head                 from 'drive-templates/build/head';
@@ -31,6 +32,7 @@ import itemCompact          from 'drive-templates/build/itemCompact';
 import videoThumbnail       from 'drive-templates/build/videoThumbnail';
 import blogEntry            from 'drive-templates/build/blogEntry';
 
+// TODO: refactor to DRY
 const largeNewsHtml = (items) => {
     return _.reduce(items, (result, item) => {
         result = result + itemLarge(item);
@@ -87,6 +89,8 @@ const headerHtml = (cities) => {
 
 function controller(topStories, topVideos, topBlogs, cellar, cities) {
 
+    // console.log(chalk.green("topBlogs:::::", topBlogs.data));
+
     let topNews     = topStories.data['topNews']
     let mainNews    = topStories.data['mainNews']
 
@@ -94,12 +98,11 @@ function controller(topStories, topVideos, topBlogs, cellar, cities) {
         topNews,
         mainNews,
         topVideos,
-        topBlogs,
+        topBlogs.data,
         cellar.data
     );
 
     let html = carcass({
-        // TODO: how to define htmlClass?
         htmlClass: '',
         head: head(),
         body: body({

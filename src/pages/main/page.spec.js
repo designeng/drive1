@@ -1,5 +1,4 @@
 import _ from 'underscore';
-import chalk from 'chalk';
 
 import wireDebugPlugin      from 'essential-wire/source/debug';
 import performancePlugin    from '../../plugins/performance';
