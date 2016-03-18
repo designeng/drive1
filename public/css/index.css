@@ -16,7 +16,7 @@ h3 {margin: 12px 0;}
 #index-com-news {position: absolute; left: 460px; top: 0; width: 230px; font-size: 12px;}
 #index-com-news ul {position: relative; overflow: hidden;}
 #index-com-news h3 {position: relative; margin: 0; padding: 12px 0 12px 15px; background: #e8e8e8; zoom: 1;}
-#index-com-news h3 ins {position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url(/images/open-page-shadow.png) repeat-y;}
+#index-com-news h3 ins {position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url(https://dev.drive.ru/images/open-page-shadow.png) repeat-y;}
 #index-com-news li,
 #index-com-news .more {padding: 0 20px 15px 15px;}
 #index-com-news ul .index-com-news-caption {color: #808080; font-size: 11px;}
