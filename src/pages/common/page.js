@@ -11,7 +11,7 @@ import footer               from 'drive-templates/build/footer';
 import header               from 'drive-templates/build/header';
 import itemCompact          from 'drive-templates/build/itemCompact';
 import itemLarge            from 'drive-templates/build/itemLarge';
-import itemMed              from 'drive-templates/build/itemMed';
+import itemMed              from 'drive-templates/build/itemMedium';
 import keywords             from 'drive-templates/build/keywords';
 import logo                 from 'drive-templates/build/logo';
 import mobileMenuTrigger    from 'drive-templates/build/mobileMenuTrigger';

@@ -12,27 +12,16 @@ export default {
         requestPlugin,
     ],
 
-    topStoriesRequest: {
+    testDrivesRequest: {
         request: {
-            endpoint: getEndpoint('topStories'),
+            endpoint: getEndpoint('testDrives'),
         }
     },
 
-    topVideosRequest: {
+    // TODO: the same endpoint brandsRequest
+    brandFilterRequest: {
         request: {
-            endpoint: getEndpoint('topVideos'),
-        }
-    },
-
-    topBlogsRequest: {
-        request: {
-            endpoint: getEndpoint('topBlogs'),
-        }
-    },
-
-    cellarRequest: {
-        request: {
-            endpoint: getEndpoint('numbers'),
+            endpoint: getEndpoint('brands'),
         }
     },
 
@@ -52,10 +41,8 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'topStoriesRequest'},
-                {$ref: 'topVideosRequest'},
-                {$ref: 'topBlogsRequest'},
-                {$ref: 'cellarRequest'},
+                {$ref: 'brandFilterRequest'},
+                {$ref: 'testDrivesRequest'},
                 {$ref: 'brandsRequest'},
                 {$ref: 'citiesRequest'},
             ]

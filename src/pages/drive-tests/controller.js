@@ -1,3 +1,5 @@
+// testDrives page!
+
 import _ from 'underscore';
 import chalk from 'chalk';
 
@@ -18,77 +20,64 @@ import header               from 'drive-templates/build/header';
 import keywords             from 'drive-templates/build/keywords';
 import logo                 from 'drive-templates/build/logo';
 import mobileMenuTrigger    from 'drive-templates/build/mobileMenuTrigger';
+
 import mobileNav            from 'drive-templates/build/mobileNav';
 import nav                  from 'drive-templates/build/nav';
 import sprContainer         from 'drive-templates/build/sprContainer';
 import topControls          from 'drive-templates/build/topControls';
 import brandsList           from 'drive-templates/build/brandsList';
 
-import pageContent          from 'drive-templates/build/pages/main';
+import brandFilter          from 'drive-templates/build/brandFilter';
 
-// TODO: rename template?
+import pageContent          from 'drive-templates/build/pages/testDrives';
+
 import itemLarge            from 'drive-templates/build/itemLarge';
 import itemMedium           from 'drive-templates/build/itemMedium';
-import itemCompact          from 'drive-templates/build/itemCompact';
 
-// TODO: rename template?
-import videoThumbnail       from 'drive-templates/build/videoThumbnail';
-import blogEntry            from 'drive-templates/build/blogEntry';
-
-const preprocessNews = (items) => {
-    return _.map(items, (item) => {
-        return _.extend({}, item, {
-            time    : moment.unix(item.time).fromNow(),
-            caption : item.caption.replace(/\{(.*?)\}/, function(match, aText) {
-                return '<a href="' + item.url + '">' + aText + '</a>';
-            })
-        });
-    });
-}
+// const preprocessNews = (items) => {
+//     return _.map(items, (item) => {
+//         return _.extend({}, item, {
+//             time    : moment.unix(item.time).fromNow(),
+//             caption : item.caption.replace(/\{(.*?)\}/, function(match, aText) {
+//                 return '<a href="' + item.url + '">' + aText + '</a>';
+//             })
+//         });
+//     });
+// }
 
 // TODO: refactor to DRY
-const largeNewsHtml = (items) => {
+const largeItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
         result = result + itemLarge(item);
         return result;
     }, '');
 }
 
-const mediumNewsHtml = (items) => {
+const mediumItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
         result = result + itemMedium(item);
         return result;
     }, '');
 }
 
-const mainNewsHtml = (items) => {
+const brandFilterHtml = (items) => {
     return _.reduce(items, (result, item) => {
-        result = result + itemCompact(item);
+        result = result + brandFilter(item);
         return result;
     }, '');
 }
 
-const topVideosHtml = (items) => {
+const testDrivesHtml = (items) => {
     return _.reduce(items, (result, item) => {
-        result = result + videoThumbnail(item);
+        result = result + brandFilter(item);
         return result;
     }, '');
 }
 
-const topBlogsHtml = (items) => {
-    return _.reduce(items, (result, item) => {
-        result = result + blogEntry(item);
-        return result;
-    }, '');
-}
-
-const composePageContentHtml = (topNews, mainNews, topVideos, topBlogs, cellar) => {
+const composePageContentHtml = (brandFilter, testDrives) => {
     return pageContent({
-        topNews: largeNewsHtml(topNews.slice(0, 2)) + mediumNewsHtml(topNews.slice(2)),
-        mainNews: mainNewsHtml(mainNews),
-        topVideos: topVideosHtml(topVideos),
-        topBlogs: topBlogsHtml(topBlogs),
-        suggestedReading: cellar
+        brandFilter: brandFilterHtml(brandFilter),
+        testDrives: largeItemsHtml(testDrives.slice(0, 2)) + mediumItemsHtml(testDrives.slice(2, 14)),
     })
 }
 
@@ -101,19 +90,13 @@ const headerHtml = (cities) => {
     })
 }
 
-function controller(topStories, topVideos, topBlogs, cellar, brands, cities) {
+function controller(brandFilter, testDrives, brands, cities) {
 
     // console.log(chalk.green("brands:::::", brands.data));
 
-    let topNews     = topStories['topNews'];
-    let mainNews    = preprocessNews(topStories['mainNews']);
-
     let pageContentHtml = composePageContentHtml(
-        topNews,
-        mainNews,
-        topVideos,
-        topBlogs,
-        cellar
+        brandFilter,
+        testDrives
     );
 
     let html = carcass({
