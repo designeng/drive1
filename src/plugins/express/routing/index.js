@@ -10,8 +10,8 @@ import bootstrapSpec from '../../../bootstrap.spec';
 function routeMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
-    const bootstrapTask = () => {
-        return rootWire(bootstrapSpec);
+    const bootstrapTask = (context) => {
+        return context ? context.wire(bootstrapSpec) : rootWire(bootstrapSpec)
     }
 
     const routes = facet.options.routes;
@@ -29,8 +29,11 @@ function routeMiddleware(resolver, facet, wire) {
 
             // TODO: unshift task with environment spec wiring
             if(route.url === '/404error') {
-                const { query } = url.parse(req.url, true);
-                _.extend(environment, { requestUrl: query.url });
+                const requestUrlTask = () => {
+                    const { query } = url.parse(req.url, true);
+                    return rootWire(_.extend(environment, { requestUrl: query.url }));
+                }
+                tasks.unshift(requestUrlTask);
             }
 
             pipeline(tasks).then(
@@ -50,12 +53,19 @@ function routeMiddleware(resolver, facet, wire) {
     });
 }
 
+const isKnownUrl = (urls, url) => {
+    return _.indexOf(urls, url) != -1 ? true : false;
+}
+
 function routeNotFoundMiddleware(resolver, facet, wire) {
     const target = facet.target;
+    let knownRoutes = facet.options.knownRoutes;
+
+    let knownUrls = _.pluck(knownRoutes, 'url');
 
     target.get("/*", function (req, res) {
         console.log(chalk.red("NOT FOUND:::", req.url));
-        // res.redirect('/404error?url=' + req.url);
+        res.redirect('/404error?url=' + req.url);
     });
 
     resolver.resolve(target);

@@ -5,10 +5,16 @@ import demoPageSpec           from './pages/demo/page.spec';
 import notFoundSpec           from './pages/404/page.spec';
 
 const routes = [
+      // TODO: handle aliases?
+      {   
+            url: '/', 
+            routeSpec: mainPageSpec
+      },
       {   
             url: '/main', 
             routeSpec: mainPageSpec
       },
+
       {   
             url: '/drive-tests', 
             routeSpec: driveTestsPageSpec

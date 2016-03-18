@@ -2,20 +2,19 @@ import wireDebugPlugin   from 'essential-wire/source/debug';
 import requestPlugin     from '../../plugins/api/request';
 import _                 from 'underscore';
 
+import controller from './controller';
+
 export default {
     $plugins: [
         wireDebugPlugin,
         requestPlugin
     ],
 
-    page: {
+    body: {
         create: {
-            module: (page, url) => {
-                return page({ items:  'Страница ' + url + ' не найдена'});
-            },
+            module: controller,
             args: [
-                () => {}, //noop
-                {$ref: 'requestUrl'}
+                {$ref: 'requestUrl'},
             ]
         }
     }
