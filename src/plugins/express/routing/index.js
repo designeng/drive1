@@ -53,15 +53,8 @@ function routeMiddleware(resolver, facet, wire) {
     });
 }
 
-const isKnownUrl = (urls, url) => {
-    return _.indexOf(urls, url) != -1 ? true : false;
-}
-
 function routeNotFoundMiddleware(resolver, facet, wire) {
     const target = facet.target;
-    let knownRoutes = facet.options.knownRoutes;
-
-    let knownUrls = _.pluck(knownRoutes, 'url');
 
     target.get("/*", function (req, res) {
         console.log(chalk.red("NOT FOUND:::", req.url));
