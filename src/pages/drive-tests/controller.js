@@ -74,10 +74,12 @@ const testDrivesHtml = (items) => {
     }, '');
 }
 
-const composePageContentHtml = (brandFilter, testDrives) => {
+const composePageContentHtml = (brandFilterData, testDrivesData) => {
     return pageContent({
-        brandFilter: brandFilterHtml(brandFilter),
-        testDrives: largeItemsHtml(testDrives.slice(0, 2)) + mediumItemsHtml(testDrives.slice(2, 14)),
+        brandFilter: brandFilter({
+            brands: brandFilterData
+        }),
+        testDrives: largeItemsHtml(testDrivesData.slice(0, 2)) + mediumItemsHtml(testDrivesData.slice(2, 14)),
     })
 }
 
@@ -90,13 +92,13 @@ const headerHtml = (cities) => {
     })
 }
 
-function controller(brandFilter, testDrives, brands, cities) {
+function controller(brandFilterData, testDrivesData, brands, cities) {
 
     // console.log(chalk.green("brands:::::", brands.data));
 
     let pageContentHtml = composePageContentHtml(
-        brandFilter,
-        testDrives
+        brandFilterData,
+        testDrivesData
     );
 
     let html = carcass({
