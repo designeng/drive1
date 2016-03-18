@@ -97,7 +97,7 @@ function controller(topStories, topVideos, topBlogs, cellar, cities) {
     let pageContentHtml = composePageContentHtml(
         topNews,
         mainNews,
-        topVideos,
+        topVideos.data,
         topBlogs.data,
         cellar.data
     );
