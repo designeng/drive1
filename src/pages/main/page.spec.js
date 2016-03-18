@@ -2,7 +2,7 @@ import wireDebugPlugin   from 'essential-wire/source/debug';
 import performancePlugin from '../../plugins/performance';
 
 import deferWire         from '../../decorators/deferWire';
-import provide           from '../../decorators/provide';
+import provide, { preprocess } from '../../decorators/provide';
 
 import { getEndpoint }   from '../../api/config';
 import { getPage, getBody } from '../common/page';
@@ -12,6 +12,9 @@ import itemCompact          from 'drive-templates/build/itemCompact';
 import itemLarge            from 'drive-templates/build/itemLarge';
 import itemMedium           from 'drive-templates/build/itemMed';
 
+const markupNews = () => {
+
+}
 
 export default {
     $plugins: [
@@ -19,11 +22,20 @@ export default {
         performancePlugin
     ],
 
+    @preprocess({
+
+    })
     @provide({
         endpoint: getEndpoint('topStories'), 
         what: 'topNews'
     })
-    topNews: [itemLarge, 2, itemMedium, 4],
+    topNews: {},
+
+
+    // topNews: {
+    //     preprocess: markupNews,
+    //     args: [itemLarge, 2, itemMedium, 4]
+    // },
 
     // requests
     // topStories: {
