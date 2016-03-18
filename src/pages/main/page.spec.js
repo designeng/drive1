@@ -41,6 +41,12 @@ export default {
         }
     },
 
+    brandsRequest: {
+        request: {
+            endpoint: getEndpoint('brands'),
+        }
+    },
+
     citiesRequest: {
         request: {
             endpoint: getEndpoint('cities'),
@@ -55,6 +61,7 @@ export default {
                 {$ref: 'topVideosRequest'},
                 {$ref: 'topBlogsRequest'},
                 {$ref: 'cellarRequest'},
+                {$ref: 'brandsRequest'},
                 {$ref: 'citiesRequest'},
             ]
         }

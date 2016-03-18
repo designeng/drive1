@@ -87,9 +87,9 @@ const headerHtml = (cities) => {
     })
 }
 
-function controller(topStories, topVideos, topBlogs, cellar, cities) {
+function controller(topStories, topVideos, topBlogs, cellar, brands, cities) {
 
-    // console.log(chalk.green("topBlogs:::::", topBlogs.data));
+    // console.log(chalk.green("brands:::::", brands.data));
 
     let topNews     = topStories.data['topNews']
     let mainNews    = topStories.data['mainNews']
@@ -107,9 +107,14 @@ function controller(topStories, topVideos, topBlogs, cellar, cities) {
         head: head(),
         body: body({
             mobileMenuTrigger: mobileMenuTrigger(),
-            header: headerHtml(cities),
+            header: headerHtml({
+                cities: cities.data
+            }),
             mobileNav: mobileNav(),
             additionalNav: additionalNav(),
+            brandsList: brandsList({
+                brands: brands.data
+            }),
             page: pageContentHtml,
             footer: footer(),
             // TODO: should be helper?
