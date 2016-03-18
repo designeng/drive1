@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import chalk from 'chalk';
 
 import wireDebugPlugin      from 'essential-wire/source/debug';
 import performancePlugin    from '../../plugins/performance';
@@ -12,10 +13,6 @@ import { getEndpoint }   from '../../api/config';
 import { getPage, getBody } from '../common/page';
 import controller from './controller';
 
-import itemCompact          from 'drive-templates/build/itemCompact';
-import itemLarge            from 'drive-templates/build/itemLarge';
-import itemMedium           from 'drive-templates/build/itemMed';
-
 const markupNews = () => {
 
 }
@@ -27,7 +24,18 @@ var crop = function(x) {
 export default function arrangePlugin(options) {
     const arrange = (resolver, facet, wire) => {
         let target = facet.target;
-        facet.target.html = "SOME HTML";
+
+        let top2 = facet.target.topNews.slice(0, 2)
+        // let medium4 = facet.target.topNews.slice(2)
+
+        let LargeNewsHtml = _.reduce(top2, (result, item) => {
+            result = result + itemLarge(item);
+            return result;
+        }, '');
+
+        console.log(chalk.green("LargeNewsHtml:::",LargeNewsHtml));
+
+        facet.target.html = LargeNewsHtml
 
         resolver.resolve(facet.target);
     }
@@ -74,16 +82,6 @@ export default {
         }
     },
 
-    // page: {
-    //     create: {
-    //         module: getPage,
-    //         args: [
-    //         ]
-    //     }
-    // },
-
-    // body: getBody(),
-
     body: {
         create: {
             module: controller,
@@ -94,8 +92,8 @@ export default {
                 {$ref: 'cellarRequest'},
             ]
         },
-        arrange: {
+        // arrange: {
 
-        }
+        // }
     }
 }
