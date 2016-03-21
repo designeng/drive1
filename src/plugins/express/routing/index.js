@@ -9,14 +9,6 @@ import isArticlePage from '../../../utils/isArticlePage';
 
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 
-function isMatch(bounds, item) {
-    if(_.isArray(bounds)) {
-        return _.indexOf(bounds, item) != -1;
-    } else if(_.isRegExp(bounds)) {
-        return item.match(bounds)
-    }
-}
-
 function routeMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
