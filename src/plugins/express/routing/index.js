@@ -7,6 +7,10 @@ import rootWire from 'essential-wire';
 
 import bootstrapSpec from '../../../bootstrap.spec';
 
+function inArray(array, item) {
+    return _.indexOf(array, item) != -1;
+}
+
 function routeMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
@@ -60,39 +64,29 @@ function articlePageMiddleware(resolver, facet, wire) {
         fragments
     }) => {
         let fragmentKeys = _.keys(fragments);
-        // fragmentKeys.forEach(key => {
-        //     fragments[key] 
-        // })
 
-        console.log(chalk.yellow("BOUNDS:::", fragments[1].bounds));
-
-        target.use(function (req, res, next) {
+        target.get('/*', function (req, res, next) {
             let requestUrl = req.url;
             const requestUrlArr = requestUrl.split('/');
             // remove 0 blank element
             requestUrlArr.shift();
 
-            // requestUrlArr.length < 2 - unpossible here. Sould be handles d on routeMiddleware step
+            // requestUrlArr.length < 2 - unpossible here. Sould be handled on routeMiddleware step
             if(requestUrlArr.length > fragments.length || requestUrlArr.length < 2){
                 next()
             }
 
-            if(requestUrlArr[0] == 2) {
-                if(_.indexOf(fragments[0].bounds, requestUrlArr[0]) != -1 && requestUrlArr[1].match(fragments[2])) {
+            if(requestUrlArr.length == 2) {
+                if(inArray(fragments[0].bounds, requestUrlArr[0]) && requestUrlArr[1].match(fragments[2])) {
                     res.end("Article..... 2");
-                } else {
-                    next()
                 }
-            } else if(requestUrlArr[0] == 3) {
-                if(_.indexOf(fragments[0].bounds, requestUrlArr[0]) != -1 && _.indexOf(fragments[1].bounds, requestUrlArr[1]) != -1 && requestUrlArr[2].match(fragments[2])) {
+            } else if(requestUrlArr.length == 3) {
+                if(inArray(fragments[0].bounds, requestUrlArr[0]) && inArray(fragments[1].bounds, requestUrlArr[1]) && requestUrlArr[2].match(fragments[2])) {
                     res.end("Article..... 3");
-                } else {
-                    next()
                 }
             }
 
             console.log(chalk.yellow("requestUrlArr:::", requestUrl, requestUrlArr, requestUrlArr.length));
-            next()
         });
     })
 

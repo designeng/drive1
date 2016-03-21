@@ -54,7 +54,7 @@ export default {
             fragments: [
                 {bounds: {$ref: 'categories'}},
                 {bounds: {$ref: 'brands'}, require: false},
-                /^\d+$\.html/
+                /([a-zA-Z0-9\.])+(.html|.htm)$/
             ]
         },
         static: {
