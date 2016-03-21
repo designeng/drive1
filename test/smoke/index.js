@@ -5,6 +5,7 @@ import { expect }   from 'chai';
 import cheerio      from 'cheerio';
 import chalk        from 'chalk';
 
+// TODO: use pages/bootstrap ?
 import bootstrapSpec    from '../../src/bootstrap.spec';
 import mainPageSpec     from '../../src/pages/home/page.spec';
 

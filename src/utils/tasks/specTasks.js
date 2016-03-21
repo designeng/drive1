@@ -1,5 +1,5 @@
 import rootWire from 'essential-wire';
-import bootstrapSpec from '../../bootstrap.spec';
+import bootstrapSpec from '../../pages/bootstrap/bootstrap.spec';
 
 export const bootstrapTask = (context) => {
     return context ? context.wire(bootstrapSpec) : rootWire(bootstrapSpec)
