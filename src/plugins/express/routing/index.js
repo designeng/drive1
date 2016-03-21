@@ -6,6 +6,7 @@ import pipeline from 'when/pipeline';
 import rootWire from 'essential-wire';
 
 import isArticlePage from '../../../utils/isArticlePage';
+import articlePageSpec from '../../../pages/article/page.spec';
 
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 
@@ -41,7 +42,6 @@ function routeMiddleware(resolver, facet, wire) {
             pipeline(tasks).then(
                 (context) => {
                     console.log(chalk.green("context:::::", JSON.stringify(context.body)));
-                    // res.status(200).end(_.result(context, 'body'));
                     res.status(200).end(context.body.html);
                 },
                 (error) => {
@@ -59,8 +59,7 @@ function articlePageMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
     wire(facet.options).then(({
-        fragments,
-        articlePageSpec
+        fragments
     }) => {
         let fragmentKeys = _.keys(fragments);
 
@@ -72,7 +71,31 @@ function articlePageMiddleware(resolver, facet, wire) {
 
             let _isArticlePage = isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds);
 
-            res.end("" + _isArticlePage)
+            if(_isArticlePage) {
+
+                var articleId = requestUrl.match(/([^\/]+)(?=\.\w+$)/)[0];
+
+                let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
+
+                const articleTask = () => {
+                    return rootWire({
+                        articleId: articleId
+                    });
+                }
+                tasks.unshift(articleTask);
+
+                pipeline(tasks).then(
+                    (context) => {
+                        console.log(chalk.green("context:::::articleId::", context.articleId));
+                        res.status(200).end(context.body.html);
+                    },
+                    (error) => {
+                        console.log(chalk.red("error:::::", error));
+                        res.status(500).end(error)
+                    }
+                );
+            }
+            
             console.log(chalk.yellow("requestUrlArr:::", requestUrlArr, _isArticlePage));
         });
     })

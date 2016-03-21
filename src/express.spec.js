@@ -6,8 +6,6 @@ import expressAppPlugin     from './plugins/express/application';
 import expressRoutingMiddlewarePlugin from './plugins/express/routing';
 import webpackMiddlewarePlugin        from './plugins/express/webpack/middleware';
 
-import articlePageSpec      from './pages/article/page.spec';
-
 import webpackConfig        from '../webpack.config';
 
 import { getEndpoint }      from './config/api';
@@ -18,7 +16,7 @@ import routes from './routes';
 
 export default {
     $plugins: [
-        wireDebugPlugin,
+        // wireDebugPlugin,
         requestPlugin,
         expressAppPlugin,
         webpackMiddlewarePlugin,
@@ -57,8 +55,7 @@ export default {
                 {bounds: {$ref: 'categories'}},
                 {bounds: {$ref: 'brands'}, require: false},
                 {bounds: /([a-zA-Z0-9\.])+(.html|.htm)$/}
-            ],
-            articlePageSpec: articlePageSpec
+            ]
         },
         static: {
             dir: './public'

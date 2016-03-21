@@ -1,18 +1,18 @@
 import wireDebugPlugin      from 'essential-wire/source/debug';
 import requestPlugin        from '../../plugins/api/request';
 
-import { getEndpoint, getArticleEndpoint }   from '../../config/api';
+import { getEndpoint, getArticleEndpoint } from '../../config/api';
 import controller from './controller';
 
 export default {
     $plugins: [
-        wireDebugPlugin,
+        // wireDebugPlugin,
         requestPlugin,
-    ],
+    ], 
 
     articleRequest: {
         request: {
-            endpoint: getArticleEndpoint({$ref: 'articleId'}),
+            endpoint: [getEndpoint('article'), "/", {$ref: 'articleId'}],
         }
     },
 
@@ -35,6 +35,7 @@ export default {
                 {$ref: 'articleRequest'},
                 {$ref: 'brandsRequest'},
                 {$ref: 'citiesRequest'},
+                {$ref: 'articleId'},
             ]
         }
     }

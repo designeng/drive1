@@ -1,4 +1,5 @@
-// article.hbs
+import chalk from 'chalk';
+
 import carcass              from 'drive-templates/build/carcass';
 import head                 from 'drive-templates/build/head';
 import body                 from 'drive-templates/build/body';
@@ -13,11 +14,12 @@ import hr                   from 'drive-templates/build/partials/hr';
 
 
 
-function controller(article, brands, cities) {
+function controller(article, brands, cities, articleId) {
 
+    console.log(chalk.green("article:::::", JSON.stringify(article), articleId));
 
     return {
-        html: article
+        html: JSON.stringify(article)
     }
 }
 
