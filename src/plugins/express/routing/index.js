@@ -5,8 +5,9 @@ import chalk from 'chalk';
 import pipeline from 'when/pipeline';
 import rootWire from 'essential-wire';
 
-import bootstrapSpec from '../../../bootstrap.spec';
 import isArticlePage from '../../../utils/isArticlePage';
+
+import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 
 function isMatch(bounds, item) {
     if(_.isArray(bounds)) {
@@ -19,10 +20,6 @@ function isMatch(bounds, item) {
 function routeMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
-    const bootstrapTask = (context) => {
-        return context ? context.wire(bootstrapSpec) : rootWire(bootstrapSpec)
-    }
-
     const routes = facet.options.routes;
 
     routes.forEach(route => {
@@ -30,11 +27,7 @@ function routeMiddleware(resolver, facet, wire) {
             let routeSpec = route.routeSpec;
             let environment = {};
 
-            const routeTask = (context) => {
-                return context.wire(routeSpec)
-            }
-
-            let tasks = [bootstrapTask, routeTask];
+            let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
             // TODO: unshift task with environment spec wiring
             if(route.url === '/404error') {
@@ -66,7 +59,8 @@ function articlePageMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
     wire(facet.options).then(({
-        fragments
+        fragments,
+        articlePageSpec
     }) => {
         let fragmentKeys = _.keys(fragments);
 
@@ -76,10 +70,10 @@ function articlePageMiddleware(resolver, facet, wire) {
             // remove 0 blank element
             requestUrlArr.shift();
 
-            let isReallyArticlePage = isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds);
+            let _isArticlePage = isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds);
 
-            res.end("" + isReallyArticlePage)
-            console.log(chalk.yellow("requestUrlArr:::", requestUrlArr, isReallyArticlePage));
+            res.end("" + _isArticlePage)
+            console.log(chalk.yellow("requestUrlArr:::", requestUrlArr, _isArticlePage));
         });
     })
 

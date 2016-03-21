@@ -15,6 +15,8 @@ const endpoints = {
     cities: "/static/cities",
     news:   "/items/news",
     testDrives: "/items/test_drives",
+    // TODO: to rest:
+    articles: "/item"
 }
 
 function getBaseUrl() {
@@ -28,4 +30,8 @@ export function getEndpoint(item) {
         throw new Error('No such endpoint: ' + item);
     }
     return getBaseUrl() + endpoints[item];
+}
+
+export function getArticleEndpoint(articleId) {
+    return getBaseUrl() + endpoints['articles'] + "/" + articleId;
 }

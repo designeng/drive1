@@ -10,3 +10,15 @@ import articleMeta          from 'drive-templates/build/partials/articleMeta';
 import articleTitle         from 'drive-templates/build/partials/articleTitle';
 import brandedArticleHeader from 'drive-templates/build/partials/brandedArticleHeader';
 import hr                   from 'drive-templates/build/partials/hr';
+
+
+
+function controller(article, brands, cities) {
+
+
+    return {
+        html: article
+    }
+}
+
+export default controller;
