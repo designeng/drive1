@@ -6,5 +6,4 @@ export default {
     ],
 
     // bootstrap something useful for all pages here
-
 }

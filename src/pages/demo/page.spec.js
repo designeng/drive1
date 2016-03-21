@@ -4,7 +4,7 @@ import performancePlugin from '../../plugins/performance';
 
 import { preprocessNews, getPage } from './preprocessors';
 
-import { getEndpoint }   from '../../api/config';
+import { getEndpoint }   from '../../config/api';
 
 export default {
     $plugins: [
