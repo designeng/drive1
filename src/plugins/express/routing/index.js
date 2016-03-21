@@ -7,8 +7,12 @@ import rootWire from 'essential-wire';
 
 import bootstrapSpec from '../../../bootstrap.spec';
 
-function inArray(array, item) {
-    return _.indexOf(array, item) != -1;
+function isMatch(bounds, item) {
+    if(_.isArray(bounds)) {
+        return _.indexOf(bounds, item) != -1;
+    } else if(_.isRegExp(bounds)) {
+        return item.match(bounds)
+    }
 }
 
 function routeMiddleware(resolver, facet, wire) {
@@ -77,11 +81,15 @@ function articlePageMiddleware(resolver, facet, wire) {
             }
 
             if(requestUrlArr.length == 2) {
-                if(inArray(fragments[0].bounds, requestUrlArr[0]) && requestUrlArr[1].match(fragments[2])) {
+                if(isMatch(fragments[0].bounds, requestUrlArr[0]) 
+                    && requestUrlArr[1].match(fragments[2])) {
                     res.end("Article..... 2");
                 }
             } else if(requestUrlArr.length == 3) {
-                if(inArray(fragments[0].bounds, requestUrlArr[0]) && inArray(fragments[1].bounds, requestUrlArr[1]) && requestUrlArr[2].match(fragments[2])) {
+                if(isMatch(fragments[0].bounds, requestUrlArr[0]) 
+                    && isMatch(fragments[1].bounds, requestUrlArr[1]) 
+                    && isMatch(fragments[2].bounds, requestUrlArr[2])
+                ) {
                     res.end("Article..... 3");
                 }
             }
