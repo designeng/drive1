@@ -6,7 +6,6 @@ import pipeline from 'when/pipeline';
 import rootWire from 'essential-wire';
 
 import isArticlePage from '../../../utils/isArticlePage';
-import articlePageSpec from '../../../pages/article/page.spec';
 
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 
@@ -59,7 +58,8 @@ function articlePageMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
     wire(facet.options).then(({
-        fragments
+        fragments,
+        articlePage
     }) => {
         let fragmentKeys = _.keys(fragments);
 
@@ -75,14 +75,15 @@ function articlePageMiddleware(resolver, facet, wire) {
 
                 var articleId = requestUrl.match(/([^\/]+)(?=\.\w+$)/)[0];
 
-                let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
+                let tasks = [bootstrapTask];
 
                 const articleTask = () => {
-                    return rootWire({
+                    return articlePage({
                         articleId: articleId
                     });
                 }
-                tasks.unshift(articleTask);
+
+                tasks.push(articleTask);
 
                 pipeline(tasks).then(
                     (context) => {
@@ -95,8 +96,6 @@ function articlePageMiddleware(resolver, facet, wire) {
                     }
                 );
             }
-            
-            console.log(chalk.yellow("requestUrlArr:::", requestUrlArr, _isArticlePage));
         });
     })
 
