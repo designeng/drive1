@@ -58,12 +58,10 @@ function articlePageMiddleware(resolver, facet, wire) {
         target.get('*', function (req, res, next) {
             let requestUrl = req.url;
             const requestUrlArr = requestUrl.split('/');
-            // remove 0 blank element
+            // remove zero blank element
             requestUrlArr.shift();
 
-            let _isArticlePage = isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds);
-
-            if(_isArticlePage) {
+            if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
 
                 var articleId = requestUrl.match(/([^\/]+)(?=\.\w+$)/)[0];
 
@@ -76,11 +74,9 @@ function articlePageMiddleware(resolver, facet, wire) {
 
                 pipeline(tasks).then(
                     (context) => {
-                        console.log(chalk.green("context:::::articleId::", context.articleId));
                         res.status(200).end(context.body.html);
                     },
                     (error) => {
-                        console.log(chalk.red("error:::::", error));
                         res.status(500).end(error)
                     }
                 );
