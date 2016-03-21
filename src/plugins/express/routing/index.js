@@ -6,6 +6,7 @@ import pipeline from 'when/pipeline';
 import rootWire from 'essential-wire';
 
 import bootstrapSpec from '../../../bootstrap.spec';
+import isArticlePage from '../../../utils/isArticlePage';
 
 function isMatch(bounds, item) {
     if(_.isArray(bounds)) {
@@ -69,32 +70,16 @@ function articlePageMiddleware(resolver, facet, wire) {
     }) => {
         let fragmentKeys = _.keys(fragments);
 
-        target.get('/*', function (req, res, next) {
+        target.get('*', function (req, res, next) {
             let requestUrl = req.url;
             const requestUrlArr = requestUrl.split('/');
             // remove 0 blank element
             requestUrlArr.shift();
 
-            // requestUrlArr.length < 2 - unpossible here. Sould be handled on routeMiddleware step
-            if(requestUrlArr.length > fragments.length || requestUrlArr.length < 2){
-                next()
-            }
+            let isReallyArticlePage = isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds);
 
-            if(requestUrlArr.length == 2) {
-                if(isMatch(fragments[0].bounds, requestUrlArr[0]) 
-                    && requestUrlArr[1].match(fragments[2])) {
-                    res.end("Article..... 2");
-                }
-            } else if(requestUrlArr.length == 3) {
-                if(isMatch(fragments[0].bounds, requestUrlArr[0]) 
-                    && isMatch(fragments[1].bounds, requestUrlArr[1]) 
-                    && isMatch(fragments[2].bounds, requestUrlArr[2])
-                ) {
-                    res.end("Article..... 3");
-                }
-            }
-
-            console.log(chalk.yellow("requestUrlArr:::", requestUrl, requestUrlArr, requestUrlArr.length));
+            res.end("" + isReallyArticlePage)
+            console.log(chalk.yellow("requestUrlArr:::", requestUrlArr, isReallyArticlePage));
         });
     })
 

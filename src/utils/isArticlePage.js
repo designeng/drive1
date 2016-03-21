@@ -1,22 +1,29 @@
-export default isArticlePage(requestUrl, maxFragmentsCount) {
-    const requestUrlArr = requestUrl.split('/');
+import _  from 'underscore';
+
+function isMatch(bounds, item) {
+    if(_.isArray(bounds)) {
+        return _.indexOf(bounds, item) != -1 ? 1 : 0
+    } else if(_.isRegExp(bounds)) {
+        return item.match(bounds) ? 1 : 0
+    }
+}
+
+export default function isArticlePage(requestUrlArr, firstBounds, middleBounds, lastBounds) {
+    let isArticlePage = 1;
+
+    let first = requestUrlArr.shift();
+    let last  = requestUrlArr.pop();
     
-    // remove 0 blank element
-    requestUrlArr.shift();
-
-    if(requestUrlArr.length > maxFragmentsCount || requestUrlArr.length < 2){
-        return false;
+    if(isMatch(firstBounds, first) && isMatch(lastBounds, last)) {
+        isArticlePage *= 1;
     }
 
-    if(requestUrlArr.length == 2) {
-        if(inArray(fragments[0].bounds, requestUrlArr[0]) && requestUrlArr[1].match(fragments[2])) {
-            return "Article..... 2";
-        }
-    } else if(requestUrlArr.length == 3) {
-        if(inArray(fragments[0].bounds, requestUrlArr[0]) && inArray(fragments[1].bounds, requestUrlArr[1]) && requestUrlArr[2].match(fragments[2])) {
-            return "Article..... 3";
-        }
-    }
+    isArticlePage = _.reduce(requestUrlArr, (result, item) => {
+        let multiplier = isMatch(middleBounds, item);
+        return result *= multiplier;
+    }, isArticlePage)
+
+    return isArticlePage;
 }
 
 // console.log(chalk.yellow("requestUrlArr:::", requestUrl, requestUrlArr, requestUrlArr.length));
