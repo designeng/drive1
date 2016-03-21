@@ -6,7 +6,7 @@ import expressAppPlugin     from './plugins/express/application';
 import expressRoutingMiddlewarePlugin from './plugins/express/routing';
 import webpackMiddlewarePlugin        from './plugins/express/webpack/middleware';
 
-import articlePageSpec from './pages/article/page.spec';
+import articlePageSpec      from './pages/article/page.spec';
 
 import webpackConfig        from '../webpack.config';
 

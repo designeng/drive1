@@ -6,7 +6,7 @@ import controller from './controller';
 
 export default {
     $plugins: [
-        // wireDebugPlugin,
+        wireDebugPlugin,
         requestPlugin,
     ], 
 
