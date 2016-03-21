@@ -18,22 +18,10 @@ export default {
         }
     },
 
-    // TODO: the same endpoint brandsRequest
+    // TODO: the same endpoint brandsRequest?
     brandFilterRequest: {
         request: {
             endpoint: getEndpoint('brands'),
-        }
-    },
-
-    brandsRequest: {
-        request: {
-            endpoint: getEndpoint('brands'),
-        }
-    },
-
-    citiesRequest: {
-        request: {
-            endpoint: getEndpoint('cities'),
         }
     },
 
@@ -43,8 +31,7 @@ export default {
             args: [
                 {$ref: 'brandFilterRequest'},
                 {$ref: 'testDrivesRequest'},
-                {$ref: 'brandsRequest'},
-                {$ref: 'citiesRequest'},
+                {$ref: 'getCarcassFn'},
             ]
         }
     }

@@ -6,30 +6,9 @@ import chalk from 'chalk';
 import moment from 'moment';
 moment.locale('ru');
 
-import carcass              from 'drive-templates/build/carcass';
-import head                 from 'drive-templates/build/head';
-import body                 from 'drive-templates/build/body';
-
-import citySelector         from 'drive-templates/build/citySelector';
-import additionalNav        from 'drive-templates/build/additionalNav';
-import bottomScripts        from 'drive-templates/build/bottomScripts';
-import delimiter            from 'drive-templates/build/delimiter';
-import description          from 'drive-templates/build/description';
-import footer               from 'drive-templates/build/footer';
-import header               from 'drive-templates/build/header';
-import keywords             from 'drive-templates/build/keywords';
-import logo                 from 'drive-templates/build/logo';
-import mobileMenuTrigger    from 'drive-templates/build/mobileMenuTrigger';
-
-import mobileNav            from 'drive-templates/build/mobileNav';
-import nav                  from 'drive-templates/build/nav';
-import sprContainer         from 'drive-templates/build/sprContainer';
-import topControls          from 'drive-templates/build/topControls';
-import brandsList           from 'drive-templates/build/brandsList';
+import pageContent          from 'drive-templates/build/pages/testDrives';
 
 import brandFilter          from 'drive-templates/build/brandFilter';
-
-import pageContent          from 'drive-templates/build/pages/testDrives';
 
 import itemLarge            from 'drive-templates/build/itemLarge';
 import itemMedium           from 'drive-templates/build/itemMedium';
@@ -83,16 +62,7 @@ const composePageContentHtml = (brandFilterData, testDrivesData) => {
     })
 }
 
-const headerHtml = (cities) => {
-    return header({
-        topControls: topControls(),
-        logo: logo(),
-        citySelector: citySelector(cities),
-        nav: nav()
-    })
-}
-
-function controller(brandFilterData, testDrivesData, brands, cities) {
+function controller(brandFilterData, testDrivesData, getCarcassFn) {
 
     // console.log(chalk.green("brands:::::", brands.data));
 
@@ -101,28 +71,8 @@ function controller(brandFilterData, testDrivesData, brands, cities) {
         testDrivesData
     );
 
-    let html = carcass({
-        htmlClass: '',
-        head: head(),
-        body: body({
-            mobileMenuTrigger: mobileMenuTrigger(),
-            header: headerHtml({
-                cities
-            }),
-            mobileNav: mobileNav(),
-            additionalNav: additionalNav(),
-            brandsList: brandsList({
-                brands
-            }),
-            page: pageContentHtml,
-            footer: footer(),
-            sprContainer: sprContainer(),
-            bottomScripts: bottomScripts()
-        })
-    });
-
     return {
-        html
+        html: getCarcassFn(pageContentHtml)
     }
 }
 
