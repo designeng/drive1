@@ -1,3 +1,6 @@
+import _  from 'underscore';
+import pluck  from './utils/pluck';
+
 import wireDebugPlugin      from 'essential-wire/source/debug';
 import expressAppPlugin     from './plugins/express/application';
 import expressRoutingMiddlewarePlugin from './plugins/express/routing';
@@ -21,11 +24,21 @@ export default {
     ],
 
     // TODO: should be api endpoint?
-    categories: categories,
+    categories: _.keys(categories),
 
-    brands: {
+    brandsRequest: {
         request: {
             endpoint: getEndpoint('brands')
+        }
+    },
+
+    brands: {
+        create: {
+            module: pluck,
+            args: [
+                {$ref: 'brandsRequest'},
+                'id'
+            ]
         }
     },
 
@@ -35,15 +48,14 @@ export default {
             webpackConfig: webpackConfig
         },
         routeMiddleware: {
-            routes: routes,
-            articlesRoutes: {
-                fragment0: {$ref: 'categories'},
-                fragment1: {
-                    bounds: {$ref: 'brands'},
-                    required: false
-                },
-                fragment2: /^\d+$\.html/,
-            }
+            routes: routes
+        },
+        articlePageMiddleware: {
+            fragments: [
+                {bounds: {$ref: 'categories'}},
+                {bounds: {$ref: 'brands'}, require: false},
+                /^\d+$\.html/
+            ]
         },
         static: {
             dir: './public'
@@ -54,7 +66,7 @@ export default {
         favicon: {
             path: './public/assets/favicon.ico'
         },
-        routeNotFoundMiddleware: {},
+        // routeNotFoundMiddleware: {},
         server: {
             port            : process.env.PORT || 3000,
             verbose         : true
