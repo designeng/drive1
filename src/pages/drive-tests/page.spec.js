@@ -18,18 +18,11 @@ export default {
         }
     },
 
-    // TODO: the same endpoint brandsRequest?
-    brandFilterRequest: {
-        request: {
-            endpoint: getEndpoint('brands'),
-        }
-    },
-
     body: {
         create: {
             module: controller,
             args: [
-                {$ref: 'brandFilterRequest'},
+                {$ref: 'brandsRequest'},
                 {$ref: 'testDrivesRequest'},
                 {$ref: 'getCarcassFn'},
             ]

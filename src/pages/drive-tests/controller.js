@@ -64,8 +64,6 @@ const composePageContentHtml = (brandFilterData, testDrivesData) => {
 
 function controller(brandFilterData, testDrivesData, getCarcassFn) {
 
-    // console.log(chalk.green("brands:::::", brands.data));
-
     let pageContentHtml = composePageContentHtml(
         brandFilterData,
         testDrivesData
