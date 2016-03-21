@@ -18,16 +18,25 @@ registerPartials({
     'hr': hr
 });
 
-const composePageContentHtml = () => {
+const composePageContentHtml = (articleData) => {
     return articlePageContent({
+        сaption: articleData.сaption,
+        time: articleData.time,
+        company: articleData.company,
+        dropcap: articleData.dropcap,
+        video: articleData.video,
+        lead: articleData.lead,
+        gallery: articleData.gallery,
         
+        articleContent: articleData.articleContent,
+        commentsCount: articleData.commentsCount,
     })
 }
 
 function controller(articleData, articleId, getCarcassFn) {
 
     let pageContentHtml = composePageContentHtml(
-        
+        articleData
     );
 
     return {
