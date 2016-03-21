@@ -16,26 +16,13 @@ export default {
         }
     },
 
-    brandsRequest: {
-        request: {
-            endpoint: getEndpoint('brands'),
-        }
-    },
-
-    citiesRequest: {
-        request: {
-            endpoint: getEndpoint('cities'),
-        }
-    },
-
     body: {
         create: {
             module: controller,
             args: [
                 {$ref: 'articleRequest'},
-                {$ref: 'brandsRequest'},
-                {$ref: 'citiesRequest'},
                 {$ref: 'articleId'},
+                {$ref: 'getCarcassFn'},
             ]
         }
     }
