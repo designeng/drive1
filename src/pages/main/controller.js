@@ -74,8 +74,6 @@ const composePageContentHtml = (topNews, mainNews, topVideos, topBlogs, cellar) 
 
 function controller(topStories, topVideos, topBlogs, cellar, getCarcassFn) {
 
-    // console.log(chalk.green("brands:::::", brands.data));
-
     let topNews     = topStories['topNews'];
     let mainNews    = preprocessNews(topStories['mainNews']);
 

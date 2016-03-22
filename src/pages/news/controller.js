@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import chalk from 'chalk';
 
 import pageContent          from 'drive-templates/build/pages/news';
 
@@ -18,6 +19,8 @@ const composePageContentHtml = (newsData) => {
 }
 
 function controller(newsData, getCarcassFn) {
+
+    console.log(chalk.green("newsData:::::", newsData));
 
     let pageContentHtml = composePageContentHtml(
         newsData
