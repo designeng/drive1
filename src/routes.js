@@ -1,6 +1,7 @@
 import _  from 'underscore';
 import mainPageSpec           from './pages/main/page.spec';
 import driveTestsPageSpec     from './pages/drive-tests/page.spec';
+import videoPageSpec          from './pages/video/page.spec';
 import demoPageSpec           from './pages/demo/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
@@ -9,7 +10,7 @@ import notFoundSpec           from './pages/404/page.spec';
 
 let routesUnderConstruction = [
       'companies',
-      'video',
+      // 'video',
       'talk',
       'talks',
       'kunst',
@@ -37,10 +38,13 @@ const routes = [
             url: '/main',
             routeSpec: mainPageSpec
       },
-
       {
             url: '/drive-tests',
             routeSpec: driveTestsPageSpec
+      },
+      {
+            url: '/video',
+            routeSpec: videoPageSpec
       },
 
       {
