@@ -7,6 +7,7 @@ import noopPageSpec           from './pages/noop/page.spec';
 
 import notFoundSpec           from './pages/404/page.spec';
 
+// TODO: make it work
 let routesUnderConstruction = [
       'companies',
       'video',
@@ -27,11 +28,11 @@ let routesUnderConstruction = [
       'feedback'
 ]
 
-routesUnderConstruction = _.map(routesUnderConstruction, (item) => {
-      return "\\b" + item + "\\b"
-})
+// routesUnderConstruction = _.map(routesUnderConstruction, (item) => {
+//       return "\\b" + item + "\\b"
+// })
 
-routesUnderConstruction = '/' + routesUnderConstruction.join('|')
+// routesUnderConstruction = '/' + routesUnderConstruction.join('|')
 
 
 const routes = [
@@ -51,7 +52,7 @@ const routes = [
       },
 
       // {   
-      //       url: routesUnderConstruction, 
+      //       url: routesUnderConstruction,
       //       routeSpec: noopPageSpec
       // },
 
@@ -65,5 +66,14 @@ const routes = [
             routeSpec: demoPageSpec
       },
 ]
+
+_.each(routesUnderConstruction, (item) => {
+      routes.push({
+            url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
+            routeSpec: noopPageSpec
+      })
+});
+
+// /^\/about(?:\/(?=$))?$/i
 
 export default routes;
