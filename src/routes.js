@@ -29,27 +29,27 @@ let routesUnderConstruction = [
 
 const routes = [
       // TODO: handle aliases?
-      {   
-            url: '/', 
+      {
+            url: '/',
             routeSpec: mainPageSpec
       },
-      {   
-            url: '/main', 
+      {
+            url: '/main',
             routeSpec: mainPageSpec
       },
 
-      {   
-            url: '/drive-tests', 
+      {
+            url: '/drive-tests',
             routeSpec: driveTestsPageSpec
       },
 
-      {   
-            url: '/404error', 
+      {
+            url: '/404error',
             routeSpec: notFoundSpec
       },
 
-      {   
-            url: '/demo', 
+      {
+            url: '/demo',
             routeSpec: demoPageSpec
       },
 ]
