@@ -1,8 +1,38 @@
+import _  from 'underscore';
 import mainPageSpec           from './pages/main/page.spec';
 import driveTestsPageSpec     from './pages/drive-tests/page.spec';
 import demoPageSpec           from './pages/demo/page.spec';
 
+import noopPageSpec           from './pages/noop/page.spec';
+
 import notFoundSpec           from './pages/404/page.spec';
+
+let routesUnderConstruction = [
+      'companies',
+      'video',
+      'talk',
+      'talks',
+      'kunst',
+      'russia',
+      'autosport',
+      'spy',
+      'business',
+      'technic',
+      'columns',
+      'about',
+      'ad',
+      'd2b',
+      'rewrite',
+      'moderation',
+      'feedback'
+]
+
+routesUnderConstruction = _.map(routesUnderConstruction, (item) => {
+      return "\\b" + item + "\\b"
+})
+
+routesUnderConstruction = '/' + routesUnderConstruction.join('|')
+
 
 const routes = [
       // TODO: handle aliases?
@@ -19,14 +49,21 @@ const routes = [
             url: '/drive-tests', 
             routeSpec: driveTestsPageSpec
       },
+
+      // {   
+      //       url: routesUnderConstruction, 
+      //       routeSpec: noopPageSpec
+      // },
+
+      {   
+            url: '/404error', 
+            routeSpec: notFoundSpec
+      },
+
       {   
             url: '/demo', 
             routeSpec: demoPageSpec
       },
-      {   
-            url: '/404error', 
-            routeSpec: notFoundSpec
-      }
 ]
 
 export default routes;
