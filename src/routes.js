@@ -7,7 +7,6 @@ import noopPageSpec           from './pages/noop/page.spec';
 
 import notFoundSpec           from './pages/404/page.spec';
 
-// TODO: make it work
 let routesUnderConstruction = [
       'companies',
       'video',
@@ -28,13 +27,6 @@ let routesUnderConstruction = [
       'feedback'
 ]
 
-// routesUnderConstruction = _.map(routesUnderConstruction, (item) => {
-//       return "\\b" + item + "\\b"
-// })
-
-// routesUnderConstruction = '/' + routesUnderConstruction.join('|')
-
-
 const routes = [
       // TODO: handle aliases?
       {   
@@ -50,11 +42,6 @@ const routes = [
             url: '/drive-tests', 
             routeSpec: driveTestsPageSpec
       },
-
-      // {   
-      //       url: routesUnderConstruction,
-      //       routeSpec: noopPageSpec
-      // },
 
       {   
             url: '/404error', 
@@ -73,7 +60,5 @@ _.each(routesUnderConstruction, (item) => {
             routeSpec: noopPageSpec
       })
 });
-
-// /^\/about(?:\/(?=$))?$/i
 
 export default routes;
