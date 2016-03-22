@@ -17,10 +17,6 @@ const expressTask = (context) => {
     return context.wire(expressSpec);
 }
 
-// const expressTask = () => {
-//     return wire(expressSpec);
-// }
-
 pipeline([expressBootstrapTask, expressTask]).then(context => {
     console.log(chalk.blue("Wiring time: " + timer.end()));
 }).otherwise(error => console.error("ERROR:::", error));
