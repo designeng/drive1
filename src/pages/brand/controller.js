@@ -1,5 +1,3 @@
-// testDrives page!
-
 import _ from 'underscore';
 import chalk from 'chalk';
 
@@ -16,7 +14,6 @@ import dealerItem           from 'drive-templates/build/dealerItem';
 import blogEntriesList      from 'drive-templates/build/blogEntriesList';
 import blogEntry            from 'drive-templates/build/blogEntry';
 
-// TODO: refactor to DRY
 const largeItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
         result = result + itemLarge(item);
