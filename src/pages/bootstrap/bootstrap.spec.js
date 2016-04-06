@@ -6,7 +6,7 @@ import getCarcassFn from './getCarcassFn';
 
 export default {
     $plugins: [
-        wireDebugPlugin,
+        // wireDebugPlugin,
         requestPlugin,
     ],
 

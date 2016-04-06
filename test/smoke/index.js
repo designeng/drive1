@@ -5,22 +5,28 @@ import { expect }   from 'chai';
 import cheerio      from 'cheerio';
 import chalk        from 'chalk';
 
-// TODO: use pages/bootstrap ?
-import bootstrapSpec    from '../../src/bootstrap.spec';
-import mainPageSpec     from '../../src/pages/home/page.spec';
+import bootstrapSpec    from '../../src/pages/bootstrap/bootstrap.spec';
+import pageSpec         from '../../src/pages/article/page.spec';
 
-const bootstrapTask = () => {
-    return wire(bootstrapSpec);
+const bootstrapTask = (context) => {
+    return context ? context.wire(bootstrapSpec) : wire(bootstrapSpec);
 }
 
 const pageTask = (context) => {
-    return context.wire(mainPageSpec);
+    return context.wire(pageSpec);
 }
 
-pipeline([bootstrapTask, pageTask]).then(context => {
+const articleTask = () => {
+    let articleId = '56f10fe0ec05c49f0500079e';
+    return wire({ articleId });
+}
+
+const tasks = [bootstrapTask, pageTask];
+
+tasks.unshift(articleTask);
+
+pipeline(tasks).then(context => {
     expect(context).to.be.ok;
-    expect(context.pageHead).to.be.a('function');
-    expect(context.pageTemplate).to.be.a('function');
     
     console.log(chalk.green("Tests passed"));
 }).otherwise(error => console.error(chalk.red("ERROR:::"), chalk.blue(error)));
