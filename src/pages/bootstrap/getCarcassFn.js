@@ -13,9 +13,22 @@ import logo                 from 'drive-templates/build/logo';
 import mobileMenuTrigger    from 'drive-templates/build/mobileMenuTrigger';
 import mobileNav            from 'drive-templates/build/mobileNav';
 import nav                  from 'drive-templates/build/nav';
-import sprContainer         from 'drive-templates/build/sprContainer';
 import topControls          from 'drive-templates/build/topControls';
 import brandsList           from 'drive-templates/build/brandsList';
+
+import sprite               from 'drive-templates/build/partials/sprite';
+import backgroundSprite     from 'drive-templates/build/partials/backgroundSprite';
+import hr                   from 'drive-templates/build/partials/hr';
+import ins                  from 'drive-templates/build/partials/ins';
+
+import registerPartials from '../../utils/handlebars/registerPartials';
+
+registerPartials({
+    'sprite': sprite,
+    'backgroundSprite': backgroundSprite,
+    'ins': ins,
+    'hr': hr
+});
 
 const headerHtml = (cities) => {
     return header({
@@ -44,7 +57,6 @@ function getCarcass(brands, cities) {
                 }),
                 page: pageContentHtml,
                 footer: footer(),
-                sprContainer: sprContainer(),
                 bottomScripts: bottomScripts()
             })
         })

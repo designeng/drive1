@@ -4,6 +4,7 @@ import newsPageSpec           from './pages/news/page.spec';
 import driveTestsPageSpec     from './pages/drive-tests/page.spec';
 import videoPageSpec          from './pages/video/page.spec';
 import demoPageSpec           from './pages/demo/page.spec';
+import brandPageSpec           from './pages/brand/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
@@ -26,7 +27,7 @@ let routesUnderConstruction = [
       'rewrite',
       'moderation',
       'feedback'
-]
+];
 
 const routes = [
       // TODO: handle aliases?
@@ -55,12 +56,15 @@ const routes = [
             url: '/404error',
             routeSpec: notFoundSpec
       },
-
       {
             url: '/demo',
             routeSpec: demoPageSpec
       },
-]
+      {
+            url: '/brand',
+            routeSpec: brandPageSpec
+      }
+];
 
 _.each(routesUnderConstruction, (item) => {
       routes.push({
