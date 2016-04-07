@@ -15,11 +15,10 @@ const newsHtml = (items) => {
 const composePageContentHtml = (newsData) => {
     return pageContent({
         newsItems: newsHtml(newsData)
-    })
+    });
 }
 
 function controller(newsData, getCarcassFn) {
-
     console.log(chalk.green("newsData:::::", newsData));
 
     let pageContentHtml = composePageContentHtml(
@@ -28,7 +27,7 @@ function controller(newsData, getCarcassFn) {
 
     return {
         html: getCarcassFn(pageContentHtml)
-    }
+    };
 }
 
 export default controller;

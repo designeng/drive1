@@ -9,12 +9,18 @@ export default {
     $plugins: [
         wireDebugPlugin,
         performancePlugin,
-        requestPlugin,
+        requestPlugin
     ],
 
     testDrivesRequest: {
         request: {
-            endpoint: getEndpoint('testDrives'),
+            endpoint: getEndpoint('testDrives')
+        }
+    },
+
+    modelsRequest: {
+        request: {
+            endpoint: getEndpoint('models')
         }
     },
 
@@ -22,9 +28,9 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'brandsRequest'},
+                {$ref: 'modelsRequest'},
                 {$ref: 'testDrivesRequest'},
-                {$ref: 'getCarcassFn'},
+                {$ref: 'getCarcassFn'}
             ]
         }
     }

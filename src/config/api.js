@@ -16,6 +16,7 @@ const endpoints = {
     news            : "/items/news",
     testDrives      : "/items/test_drives",
     video           : "/items/videos",
+    models          : "/items/models?brand=audi",   // TODO: remove hard coded brand name
     // TODO: to rest:
     article         : "/item"
 }

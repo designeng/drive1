@@ -2,6 +2,7 @@ import _ from 'underscore';
 import chalk from 'chalk';
 
 import moment from 'moment';
+
 moment.locale('ru');
 
 import pageContent          from '../../templates/build/pages/brand';
@@ -19,30 +20,38 @@ const largeItemsHtml = (items) => {
         result = result + itemLarge(item);
         return result;
     }, '');
-}
+};
 
 const mediumItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
         result = result + itemMedium(item);
         return result;
     }, '');
-}
+};
 
-const composePageContentHtml = (brandFilterData, testDrivesData) => {
+const carIconsHtml = (items) => {
+    return _.reduce(items, (result, item) => {
+        result = result + carIcon(item);
+        return result;
+    }, '');
+};
+
+const composePageContentHtml = (carIconsData, testDrivesData) => {
     return pageContent({
         testDrives: largeItemsHtml(testDrivesData.slice(0, 2)) + mediumItemsHtml(testDrivesData.slice(2, 14)),
-    })
-}
+        carIcons: carIconsHtml(carIconsData)
+    });
+};
 
-function controller(brandFilterData, testDrivesData, getCarcassFn) {
+function controller(carIconsData, testDrivesData, getCarcassFn) {
     let pageContentHtml = composePageContentHtml(
-        brandFilterData,
+        carIconsData,
         testDrivesData
     );
 
     return {
         html: getCarcassFn(pageContentHtml)
-    }
+    };
 }
 
 export default controller;
