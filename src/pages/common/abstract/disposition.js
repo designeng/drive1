@@ -44,7 +44,7 @@
 //         {{{footer}}}
 //     </div>
 // </div>
-// {{{sprContainer}}}
+// {{{backgroundSprite}}}
 // {{{bottomScripts}}}
 
 // ===================== utils ========================
@@ -80,7 +80,7 @@ body({
 
 footer()
 
-+ {{{ sprContainer }}}
++ {{{ backgroundSprite }}}
 + {{{ bottomScripts }}}
 
 // ===================== / pageWrapper (carcass) ========================
