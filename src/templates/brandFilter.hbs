@@ -1,0 +1,8 @@
+<div class="testdrives-nav">
+    <select onchange="document.location.href=this.options[this.selectedIndex].value">
+        <option value="/drive-tests/">Все марки</option>
+        {{#each brands}}
+            <option value="/{{this.id}}/drive-tests/">{{this.name}}</option>
+        {{/each}}
+    </select>
+</div>

@@ -1,0 +1,13 @@
+<div class="bnav-w">
+    <div id="bnav" class="bnav hgr">
+        <ul class="bnav-list">
+            {{#each brands}}
+                <li style="background-position: 0px {{this.backgroundOffset}}px;">
+                    <a class="brand" href="/{{this.id}}">{{this.name}}</a>
+                </li>
+            {{/each}}
+        </ul>
+        <div class="i"></div>
+    </div>
+</div>
+<script>new drv.Bnav;</script>

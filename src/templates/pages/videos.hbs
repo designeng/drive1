@@ -1,0 +1,19 @@
+<div id="main" class="cf video-list-container">
+    <div class="spr page-top-shadow"></div>
+    {{! /static/brands }}
+    {{{brandFilter}}}
+    <h1 class="video-header">
+        Видео
+        {{#if brand}}
+            <a href="/{{brand.id}}">{{brand.name}}</a>
+        {{/if}}
+    </h1>
+    {{#if videoItems}}
+        {{! /items/videos }}
+        {{{videoItems}}}
+    {{else}}
+        <div id="article" class="article cf">
+            К сожалению, для данной марки нет видеороликов.
+        </div>
+    {{/if}}
+</div>

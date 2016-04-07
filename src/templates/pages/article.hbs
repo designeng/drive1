@@ -1,0 +1,81 @@
+<div id="main" class="cf article-main">
+    <div class="spr page-top-shadow"></div>
+    <div id="article" class="article cf hreview" itemscope itemtype="http://schema.org/NewsArticle">
+        <meta itemprop="headline" content="{{сaption}}"/>
+        <meta itemprop="datePublished" content="{{time}}"/>
+        {{#if company.id}}
+            {{> brandedArticleHeader}}
+        {{else}}
+            {{> articleHeader}}
+        {{/if}}
+        <script>
+            var RndNum4NoCash = Math.round(Math.random() * 1000000000);
+            var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
+            new Image().src = '//ad.adriver.ru/cgi-bin/rle.cgi?sid=1&bt=21&ad=546039&pid=2143214&bid=4107018&bn=4107018&rnd={{adriverRnd}}';
+        </script>
+		<span class="description">
+			<p class="lead" itemprop="description">
+                {{#if dropcap}}
+                    <span class="dropcap">{{dropcap}}</span>
+                {{/if}}
+                {{#if video}}
+                    {{{video}}}
+                {{/if}}
+                {{#if lead}}
+                    {{{lead}}}
+                {{/if}}
+            </p>
+		</span>
+        {{{articleContent}}}
+    </div>
+    <script>new drv.Article;</script>
+    {{#if gallery}}
+        <div class="article-gallery">
+            <h3>Крупным планом</h3>
+            <div class="gallery">
+                {{#each gallery}}
+                    <a href="{{this.fullImageUrl}}>" target="_blank" itemscope itemtype="http://schema.org/ImageObject">
+                        <meta itemprop="width" content="120">
+                        <meta itemprop="height" content="90">
+                        <img src="{{this.thumbImageUrl}}" width="120" height="90" itemprop="contentUrl">
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    {{/if}}
+    <div class="article-spacer" style="clear: both; margin: -20px 0; padding: 1px 0 0;"></div>
+    <div class="article-social-container">
+        {{#if commentsCount}}
+            <div class="article-commentslink">
+                <a class="article-commentslink-active" href="/talk/comments/{{id}}.html">Комментарии</a> {{commentsCount}}
+            </div>
+        {{else}}
+            <div class="article-commentslink">
+                <a href="/talk/comments/{{id}}.html">Комментариев пока нет</a>
+            </div>
+        {{/if}}
+        {{! TODO: Social block }}
+        <div class="article-vk-widget">
+            <!-- VK Widget -->
+            <div id="vk_subscribe"></div>
+            <script type="text/javascript">
+                VK.Widgets.Subscribe("vk_subscribe", {mode: 2}, -48156068);
+            </script>
+        </div>
+    </div>
+    {{> hr}}
+    <div class="feedsub">
+        <div class="feedsub-close" data-action="feedsubs.close">Закрыть</div>
+        <div class="feedsub-text">
+            <a class="sbutton sbutton-big sbutton-green feedsub-button" href="http://eepurl.com/bPK1R9" data-action="feedsubs.subs">Подписаться на рассылку</a>
+            Подпишитесь, чтобы ничего не пропустить. Каждый вечер мы будем присылать вам одно письмо со всеми опубликованными материалами. Просто и удобно.
+        </div>
+        {{> hr}}
+    </div>
+    <script>new drv.FeedSubs;</script>
+    {{! TODO: Mobile banner }}
+    {{! TODO: Teasers }}
+    <div class="article-readmore news-list">
+        <script id="amVlT7V0P8U_ISEh">if (window.relap) window.relap.ar('amVlT7V0P8U_ISEh');</script>
+    </div>
+</div>

@@ -6,12 +6,12 @@ import chalk from 'chalk';
 import moment from 'moment';
 moment.locale('ru');
 
-import pageContent          from 'drive-templates/build/pages/testDrives';
+import pageContent          from '../../templates/build/pages/testDrives';
 
-import brandFilter          from 'drive-templates/build/brandFilter';
+import brandFilter          from '../../templates/build/brandFilter';
 
-import itemLarge            from 'drive-templates/build/itemLarge';
-import itemMedium           from 'drive-templates/build/itemMedium';
+import itemLarge            from '../../templates/build/itemLarge';
+import itemMedium           from '../../templates/build/itemMedium';
 
 // const preprocessNews = (items) => {
 //     return _.map(items, (item) => {

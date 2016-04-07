@@ -1,0 +1,11 @@
+{{! shadowClass: ncard-shr, ncard-shl }}
+<a href="{{url}}" class="top-news-item ncard ncard-big {{shadowClass}}">
+    <div class="image-wrapper image-wrapper_big">
+        <img class="top-news-item__image" src="{{imageUrl}}" width="460" height="260" alt="">
+    </div>
+    {{> sprite spriteClass=vgr}}
+    <strong class="top-news-item__caption">
+        {{{caption}}}
+    </strong>
+    {{> ins}}
+</a>

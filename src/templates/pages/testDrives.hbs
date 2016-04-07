@@ -1,0 +1,28 @@
+<div id="main" class="cf">
+    <div class="spr page-top-shadow"></div>
+    {{! /static/brands }}
+    {{{brandFilter}}}
+    <h1 class="test-drives-header">
+        Тест-драйвы
+        {{#if brand}}
+            <a href="/{{brand.id}}">{{brand.name}}</a>
+        {{/if}}
+    </h1>
+    <div class="testdrives">
+        <div class="spr open-page-top"></div>
+        <div class="hgr open-page">
+            <div class="hgr open-page-i cf top-news-list">
+                <div class="i clip clip-top"></div>
+                {{! /items/test_drives }}
+                {{{testDrives}}}
+                <div id="testdrives-all" class="testdrives-all-mobile" style="display: none;">
+                    {{! /items/test_drives }}
+                    {{{testDrivesMore}}}
+                </div>
+                <div class="i clip clip-bottom"></div>
+            </div>
+        </div>
+        <div class="spr open-page-bottom"></div>
+    </div>
+    {{{showMoreButton}}}
+</div>

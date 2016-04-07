@@ -1,0 +1,25 @@
+<div id="top">
+    <div id="nav-top">
+        <ul>
+            <li><a href="{{loginUrl}}">Войти</a></li>
+            <li><a href="{{signupUrl}}">Регистрация</a></li>
+            <li><a href="//www.drive2.ru/recovery/">Забыли пароль?</a></li>
+        </ul>
+        <ul style="display: none;">
+            <li><a id="nav-top-user" href="//www.drive2.ru/users/">user</a></li>
+            <li><a href="//www.drive2.ru/my/profile/">Профиль</a></li>
+            <li><a href="{{logoutUrl}}">Выход</a></li>
+        </ul>
+    </div>
+
+    <script>drv.loginInit();</script>
+
+    {{! /content/special }}
+    {{{specialTitle}}}
+
+    <form id="site-search" action="/sitesearch/">
+        <input type="text" name="q"><button class="i" type="submit">Найти</button>
+        <input type="hidden" name="cx" value="009724753791916455779:ldzabcymo5c">
+        <input type="hidden" name="ie" value="UTF-8">
+    </form>
+</div>

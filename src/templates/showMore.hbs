@@ -1,0 +1,12 @@
+<div class="show-more-link show-more-trigger">
+    {{#if newsAndTestDrives}}
+        <span class="news-list-more mobile-hidden">
+            Посмотреть <a href="/news/{{brand.id}}">больше новостей</a>
+            или <a href="/{{brand.id}}/drive-tests">тест-драйвов {{brand.name}}</a>
+        </span>
+    {{else}}
+        <span class="news-list-more desktop-hidden">
+            <a href="/news/{{brand.id}}">Посмотреть больше новостей</a>
+        </span>
+    {{/if}}
+</div>

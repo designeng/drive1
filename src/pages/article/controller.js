@@ -1,12 +1,12 @@
 import chalk from 'chalk';
 
-import articlePageContent   from 'drive-templates/build/pages/article';
+import articlePageContent   from '../../templates/build/pages/article';
 
-import articleHeader        from 'drive-templates/build/partials/articleHeader';
-import articleMeta          from 'drive-templates/build/partials/articleMeta';
-import articleTitle         from 'drive-templates/build/partials/articleTitle';
-import brandedArticleHeader from 'drive-templates/build/partials/brandedArticleHeader';
-import hr                   from 'drive-templates/build/partials/hr';
+import articleHeader        from '../../templates/build/partials/articleHeader';
+import articleMeta          from '../../templates/build/partials/articleMeta';
+import articleTitle         from '../../templates/build/partials/articleTitle';
+import brandedArticleHeader from '../../templates/build/partials/brandedArticleHeader';
+import hr                   from '../../templates/build/partials/hr';
 
 import registerPartials from '../../utils/handlebars/registerPartials';
 

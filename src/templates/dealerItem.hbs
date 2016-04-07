@@ -1,0 +1,27 @@
+<div class="ccard">
+    {{#if logoUrl}}
+        <div class="ccard-pic">
+            <a href="/company/{{id}}.html">
+                <img src="{{logoUrl}}" width="100" height="100">
+            </a>
+        </div>
+    {{else}}
+        <div class="ccard-pic">
+            <a href="/company/{{id}}.html">
+                <img src="/images/default/company-pic.jpg" width="100" height="100">
+            </a>
+        </div>
+    {{/if}}
+    <div class="ccard-caption">
+        <a href="/company/{{id}}.html">{{caption}}</a>
+    </div>
+    <div class="ccard-info">
+        {{title}}
+        <br>
+        г. {{city}}, {{address}}
+        <br>
+    </div>
+    <div class="ccard-more">
+        <a href="/company/{{id}}.html">Больше информации</a>
+    </div>
+</div>

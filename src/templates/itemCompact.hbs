@@ -1,0 +1,20 @@
+<div class="nncard news-item">
+    <a class="news-item-link" href="{{url}}">
+        <img class="news-item-link__image" data-action="zoom" src="{{imageUrl}}" width="115" height="67" alt="">
+        <span class="news-item-link__click-area"></span>
+    </a>
+    <div class="header news-item-caption">
+        {{#if brandName}}
+            {{#if brandUrl}}
+                <strong class="news-item-caption__category">
+                    <a href="{{brandUrl}}">{{ brandName }}</a>
+                </strong>
+            {{/if}}
+        {{else}}
+            {{#if time}}
+                <strong class="news-item-caption__category">{{time}}</strong>
+            {{/if}}
+        {{/if}}
+        <h4 class="news-item-caption__text">{{{caption}}}</h4>
+    </div>
+</div>

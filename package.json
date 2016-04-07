@@ -12,7 +12,6 @@
     "smoke-demo": "NODE_ENV=smoke-demo node ./runner",
     "smoke": "NODE_ENV=smoke node ./runner",
     "refresh-wire": "rimraf -rf node_modules/essential-wire && npm install",
-    "refresh-tpl": "rimraf -rf node_modules/drive-templates && npm install drive-templates",
     "test": "node ./curl-test"
   },
   "keywords": [],

@@ -1,0 +1,13 @@
+<div id="city" data-action="citysel.show" title="Выберите город">
+    <span>Москва</span>
+    {{> sprite}}
+</div>
+<div id="city-sel" style="display: none;">
+    <i class="i" data-action="citysel.close" title="Закрыть"></i>
+    <ul>
+        {{#each cities}}
+            <li data-value="{{this.code}}">{{this.name}}</li>
+        {{/each}}
+    </ul>
+</div>
+<script>new drv.City;</script>

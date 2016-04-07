@@ -1,9 +1,9 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
-import pageContent          from 'drive-templates/build/pages/news';
+import pageContent          from '../../templates/build/pages/news';
 
-import itemCompact          from 'drive-templates/build/itemCompact';
+import itemCompact          from '../../templates/build/itemCompact';
 
 const newsHtml = (items) => {
     return _.reduce(items, (result, item) => {

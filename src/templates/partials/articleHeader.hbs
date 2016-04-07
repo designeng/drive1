@@ -1,0 +1,46 @@
+{{debug}}
+{{#if headerImage}}
+    {{#if wideImage}}
+        <div class="afigure afigure-hd afigure-main cf">
+            <div class="afigure-pic">
+                {{{headerImage}}}
+                <div class="spr"></div>
+            </div>
+            <div class="afigure-title">
+                {{> articleTitle}}
+                {{> articleMeta}}
+            </div>
+            <div class="afigure-caption">
+                <p>
+                    {{headerImageDescription}}
+                </p>
+            </div>
+        </div>
+    {{else}}
+        <div class="article-header">
+            {{> articleTitle}}
+            <table class="afigure-main-sd">
+                <tr>
+                    <td rowspan="2" class="afigure-main-sd-pic">
+                        {{{headerImage}}}
+                    </td>
+                    <td class="afigure-main-sd-title">
+                        {{> articleMeta}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="afigure-main-sd-caption">
+                        <div class="afigure-main-sd-caption-i">
+                            <p>
+                                {{headerImageDescription}}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {{/if}}
+{{else}}
+    {{> articleTitle}}
+    <div class="article-date">{{time}}</div>
+{{/if}}

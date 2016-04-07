@@ -1,0 +1,13 @@
+<div class="article-company-pic">
+    {{#if company.logo}}
+        <a href="/company/{{company.id}}.html"><img src="{{company.logoUrl}}" itemprop="image" width="100" height="100"></a>
+    {{else}}
+        <a href="/company/{{company.id}}.html"><img src="/images/default/company-pic.jpg" itemprop="image" width="100" height="100"></a>
+    {{/if}}
+</div>
+{{> articleTitle}}
+{{#if time}}
+    <div class="article-date">
+        {{time}}
+    </div>
+{{/if}}

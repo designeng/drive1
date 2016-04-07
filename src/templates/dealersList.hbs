@@ -1,0 +1,8 @@
+<h3 class="brand-buy-header">Купить {{brand.name}} у официального дилера в {{city.name}}</h3>
+<div class="company-list-cards company-list-cards-2col">
+    {{! List of paid companies }}
+    {{{dealersItems}}}
+    <div>
+        <a href="/companies/{{brand.id}}/?city={{city.id}}"><b>Посмотреть {{companiesCount}}</b></a>
+    </div>
+</div>

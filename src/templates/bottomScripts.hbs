@@ -1,0 +1,88 @@
+<script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+
+<script>
+    drv.preloadImages();
+
+    var navTrigger = document.querySelector('.nav-mobile-trigger');
+
+    if (navTrigger) {
+        navTrigger.addEventListener('click', function() {
+            var navActive = navTrigger.checked ? 'true' : 'false';
+
+            document.querySelector('html').setAttribute('data-nav-active', navActive);
+            document.querySelector('body').setAttribute('data-nav-active', navActive);
+        });
+
+        document.querySelector('.nav-mobile').addEventListener('touchstart', function(e) {
+            if (e.currentTarget.scrollTop === 0) {
+                e.currentTarget.scrollTop = 1;
+            } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
+                e.currentTarget.scrollTop -= 1;
+            }
+        });
+
+        document.querySelector('.nav-mobile').addEventListener('touchmove', function(e) {
+            e.stopPropagation();
+        });
+    }
+</script>
+
+<script>
+    var _comscore = _comscore || [];
+    _comscore.push({ c1: "2", c2: "20077035" });
+    (function() {
+        var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+        s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+        el.parentNode.insertBefore(s, el);
+    })();
+</script>
+
+<noscript>
+    <img src="http://b.scorecardresearch.com/p?c1=2&c2=20077035&cv=2.0&cj=1" />
+</noscript>
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-212471-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+<script type="text/javascript">
+    var _top100q = _top100q || [];
+    _top100q.push(['setAccount', '894485']);
+    _top100q.push(['trackPageview']);
+
+    (function(){
+        var pa = document.createElement("script");
+        pa.type = "text/javascript";
+        pa.async = true;
+        pa.src = ("https:" == document.location.protocol ? "https:" : "http:") + "//st.top100.ru/top100/top100.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(pa, s);
+    })();
+</script>
+<noscript>
+    <a href="http://top100.rambler.ru/navi/894485/">
+        <img src="http://counter.rambler.ru/top100.cnt?894485" alt="Rambler's Top100" border="0" />
+    </a>
+</noscript>
+
+<script type="text/javascript">new Image().src = "//counter.yadro.ru/hit;DRIVE?r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"" : ";s"+screen.width+"*"+screen.height+"*" + (screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u"+escape(document.URL) +  ";" +Math.random();</script>
+
+<!-- tns-counter.ru -->
+<script type="text/javascript">
+    var img = new Image();
+    img.src = '//www.tns-counter.ru/V13a***R>' + document.referrer.replace(/\*/g,'%2a') + '*drive_ru/ru/UTF-8/tmsec=drive_total/' + Math.round(Math.random() * 1000000000);
+</script>
+
+<noscript>
+    <img src="//www.tns-counter.ru/V13a****drive_ru/ru/UTF-8/tmsec=drive_total/" width="1" height="1" alt="">
+</noscript>
+
+{{! TODO: Conditionally inserted scripts }}

@@ -4,16 +4,16 @@ import chalk from 'chalk';
 import moment from 'moment';
 moment.locale('ru');
 
-import pageContent          from 'drive-templates/build/pages/main';
+import pageContent          from '../../templates/build/pages/main';
 
 // TODO: rename template?
-import itemLarge            from 'drive-templates/build/itemLarge';
-import itemMedium           from 'drive-templates/build/itemMedium';
-import itemCompact          from 'drive-templates/build/itemCompact';
+import itemLarge            from '../../templates/build/itemLarge';
+import itemMedium           from '../../templates/build/itemMedium';
+import itemCompact          from '../../templates/build/itemCompact';
 
 // TODO: rename template?
-import videoThumbnail       from 'drive-templates/build/videoThumbnail';
-import blogEntry            from 'drive-templates/build/blogEntry';
+import videoThumbnail       from '../../templates/build/videoThumbnail';
+import blogEntry            from '../../templates/build/blogEntry';
 
 const preprocessNews = (items) => {
     return _.map(items, (item) => {

@@ -1,0 +1,16 @@
+<div id="main" class="cf">
+    <div class="spr page-top-shadow"></div>
+    <h1 class="page-header">
+        Новости
+        {{#if brand}}
+            <a href="/{{brand.id}}">{{brand.name}}</a>
+        {{/if}}
+    </h1>
+    {{{adTeaser}}}
+    <div class="col-1">
+        <div class="nncard-list news-list">
+            {{! /items/news }}
+            {{{newsItems}}}
+        </div>
+    </div>
+</div>
