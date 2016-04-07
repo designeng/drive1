@@ -4,6 +4,7 @@
   "description": "",
   "main": "runner.js",
   "scripts": {
+    "build-tpl": "gulp build && npm start",
     "clean": "rimraf -rf public/build",
     "webpack": "npm run clean & NODE_ENV=client webpack --watch --config webpack.config.js",
     "runner": "NODE_ENV=build node ./runner",
