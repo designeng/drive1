@@ -65,6 +65,8 @@ blocks — шаблоны блоков и каркаса
   * partials/brandedArticleHeader — брендированная шапка (например, для поста в блоге компании)
   * partials/articleMeta — информация об авторе и дата публикации
   * partials/articleTitle — заголовок
+* pages/model — страница модели машины (например, Audi A3 Sportback)
+* pages/configuration — страница комплектации модели (например, Audi A3 Sportback 1.2 TFSI 6G Attraction)
 
 ### Блоки
 #### Служебные
