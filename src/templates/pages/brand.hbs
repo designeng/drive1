@@ -5,6 +5,7 @@
     <h1 class="brand-header">{{brand.name}} в России</h1>
     <div id="brand-icons-list">
         <input type="checkbox" id="expand-mobile-trigger" class="expand-mobile-trigger">
+        {{! /items/cars/{brand}/models }}
         {{{carIcons}}}
         <label for="expand-mobile-trigger" class="expand-mobile-trigger-label show-more-link">Показать больше моделей</label>
     </div>
@@ -14,9 +15,11 @@
             <div class="i clip clip-top"></div>
             <h1 class="brand-header-mobile">Новости {{brand.name}}</h1>
             <div id="brand-news-list" class="news-list">
+                {{! /items/news?brand={brandName} }}
                 {{{newsItems}}}
             </div>
             <div id="brand-td-list" class="top-news-list">
+                {{! /items/test_drives?brand={brandName} }}
 		        {{{testDrives}}}
             </div>
             <div class="i clip clip-bottom"></div>
@@ -25,12 +28,14 @@
     {{> backgroundSprite spriteClass=open-page-bottom}}
     {{#if dealersList}}
         <h3 class="brand-buy-header">Купить {{brand.name}} у официального дилера в {{city.name}}</h3>
+        {{! /items/companies?brand={brandName}&city={cityId} }}
         {{{dealersList}}}
     {{/if}}
     {{#if blogEntries}}
         <div class="brand-company-blog-list">
             <h3>Блоги компаний</h3>
             <ul>
+                {{! /items/blogs?brand={brandName}&city={cityId} }}
                 {{{blogEntries}}}
             </ul>
         </div>
