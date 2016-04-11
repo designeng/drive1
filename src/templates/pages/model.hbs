@@ -45,7 +45,6 @@
         {{> hr}}
         {{! TODO: Add this block conditionally }}
         <div class="car-builds">
-            {{{configurations}}}
             <div class="car-builds-compare-all"><a target=_blank href="/compare/?<? foreach ($d3[builds] as $key => $value) { ?>id=<?=$value[id]?>&<? } ?>">Сравнить все комплектации</a></div>
             <h2 class="car-builds-header">Комплектации и цены {{caption}}</h2>
             <div class="car-builds-table">
@@ -64,188 +63,98 @@
                     </thead>
                     <tbody>
                     {{#each configurations}}
-
+                        <tr>
+                            <th class="car-builds-table-title">
+                                <a class="compare-link car-build-link" href="{{this.url}}">{{this.caption}}</a>
+                            </th>
+                            <td class="car-builds-table-price">
+                                <a href="{{this.url}}">{{this.price}}</a>
+                            </td>
+                            <td><a href="{{this.url}}">{{this.engine}}</a></td>
+                            <td><a href="{{this.url}}">{{this.power}}</a></td>
+                            <td><a href="{{this.url}}">{{this.gearing}}</a></td>
+                            <td><a href="{{this.url}}">{{this.transmission}}</a></td>
+                            <td class="car-builds-table-compare">
+                                <span class="compare-button" data-action="compare.add" data-id="{{this.id}}">добавить</span>
+                            </td>
+                        </tr>
                     {{/each}}
-                    <tr>
-                        <th class="car-builds-table-title"><a class="compare-link car-build-link" href="<?=$value[url]?>"><?=$value[caption]?></a></th>
-                        <td class="car-builds-table-price"><a href="<?=$value[url]?>"><?=str_replace (" ","&thinsp;",$value[sprice])?></a></td>
-                        <td><a href="<?=$value[url]?>"><?=$value[engine]?></a></td>
-                        <td><a href="<?=$value[url]?>"><?=$value[power]?></a></td>
-                        <td><a href="<?=$value[url]?>"><?=$value[drive]?></a></td>
-                        <td><a href="<?=$value[url]?>"><?=$value[transmission]?></a></td>
-                        <td class="car-builds-table-compare"><span class="compare-button" data-action="compare.add" data-id="<?=$value[id]?>">добавить</span></td>
-                    </tr>
-                    <tr class="dv-mobile-row">
-                        <td colspan="7">
-                            {{! TODO: Table banner }}
-                        </td>
-                    </tr>
+                    {{! TODO: Table ad }}
                     </tbody>
                 </table>
             </div>
         </div>
-
         {{> hr}}
-
         {{! TODO: Video ad }}
-
-        {{{dealersList}}}
-        {{{news}}}
-
-    <? if ($companies_count>0) { ?>
-
-    <div class="car-button">
         {{! TODO: Button ad }}
-    </div>
-
-    <h2 class="car-company-list-header">Купить <?=$d3[rcaption]?> у официального дилера в <?=$C[cities2][$C[city]]?></h2>
-
-    <div class="company-list-cards company-list-cards-2col">
-
-        <? foreach ($companies_payed as $key=>$value) { ?>
-        <div class="ccard">
-
-            <? if ($value[logo]) { ?>
-            <div class="ccard-pic"><a href="/company/<?=$value[_id]?>.html"><img src="<?=lib::thumb (15,$value[logo]);?>" width="100" height="100"></a></div>
-            <? } else { ?>
-            <div class="ccard-pic"><a href="/company/<?=$value[_id]?>.html"><img src="/images/default/company-pic.jpg" width="100" height="100"></a></div>
-            <? } ?>
-
-            <div class="ccard-caption"><a href="/company/<?=$value[_id]?>.html"><?=$value[Caption]?></a></div>
-            <div class="ccard-info">
-                <?=$value[Title]?><br>
-                г. <?=$value[City]?>, <?=$value[Address]?><br>
-
-
-            </div>
-            <div class="ccard-more"><a href="/company/<?=$value[_id]?>.html">Больше информации</a></div>
-        </div>
-        <? } ?>
-
-        <div>
-            <? if ($companies_brand) { ?>
-            <a href="/companies/<?=$url[mark]?>/?city=<?=$C[city]?>"><b>Посмотреть <?=lib::incline ($companies_count, $text="0 компаний 1 компанию 2 компании 5 компаний 13 компаний")?></b></a>
-            <? } else { ?>
-            <a href="/companies/<?=$url[mark]?>/?city=<?=$C[city]?>"><b>Посмотреть <?=lib::incline ($companies_count, $text="0 компаний 1 компанию 2 компании 5 компаний 13 компаний")?></b></a>
-            <? } ?>
-        </div>
-
-    </div>
-
-    <div class="hr"><hr></div>
-
-    <? } ?>
-
-
-    <? if (count($entries) + count($drives) > 0) { ?>
-    <? $hidden_class = count($drives) == 0 ? ' mobile-hidden' : ''; ?>
-    <div class="car-relatednews cf">
-        <h2 class="car-relatednews-header<?=$hidden_class?>">Почитать новости и тест-драйвы <?=$d3[rcaption]?></h2>
-        <div class="car-relatednews-list-articles news-item-list">
-            <? if (count($drives) > 0) { ?>
-            <h2 class="car-relatednews-header-mobile">Новости <?=$d3[rcaption]?></h2>
-            <? } ?>
-            <? foreach ($drives as $k=>$entry) { ?>
-            <a class="ncard news-item" href="<?=$entry[url]?>">
-                <div class="news-item-link">
-                    <img class="news-item-link__image" src="<?=lib::thumb (4,$entry[apic],$entry[apicsrc]);?>" height="130" width="230">
+        {{#if dealersList}}
+            <h2 class="car-company-list-header">Купить {{brand.name}} у официального дилера в {{city.name}}</h2>
+            {{{dealersList}}}
+        {{/if}}
+        {{> hr}}
+        <div class="car-relatednews cf">
+            <h2 class="car-relatednews-header">Почитать новости и тест-драйвы {{brand.name}}</h2>
+            {{#if testDrives}}
+                <div class="car-relatednews-list-articles news-item-list">
+                    {{{testDrives}}}
                 </div>
-                <i class="i"></i>
-                <div class="news-item-caption">
-                    <strong class="news-item-caption__text"><?=lib::headerlink ($entry[header], "")?></strong>
+            {{/if}}
+            {{#if news}}
+                <div class="car-relatednews-list-news">
+                    <ul>
+                        {{{news}}}
+                    </ul>
                 </div>
-                <ins></ins>
-            </a>
-            <? } ?>
-
+            {{/if}}
         </div>
-
-
-        <div class="car-relatednews-list-news">
-            <ul>
-                <? foreach ($entries as $key => $entry) { ?>
-                <li><?=lib::headerlink ($entry[header], $entry[url])?></li>
-                <? } ?>
+        {{> hr}}
+        <div class="car-d2experience">
+            <h2 class="car-d2experience-header">Отзывы владельцев </h2>
+            {{! TODO: Only show this span for unauthenticated users }}
+            <span class="car-d2experience-info">Советы по ремонту, обслуживанию и тюнингу {{brand.name}}. С инструкциями и фотографиями от реальных владельцев.</span>
+            <ul class="car-d2experience-tags">
+                {{#each experience}}
+                    <li>
+                        <a href="{{this.url}}" target=_blank>{{this.caption}}</a>&nbsp;{{this.count}}</li>
+                {{/each}}
             </ul>
         </div>
-    </div>
-
-    <div class="hr"><hr></div>
-    <? } ?>
-
-    <? if (count($d3[experience])) { ?>
-    <div class="car-d2experience">
-        <h2 class="car-d2experience-header">Отзывы владельцев <?=$d3[rcaption]?></h2>
-        <? if (!$_COOKIE[login]) { ?>
-        <span class="car-d2experience-info">Советы по ремонту, обслуживанию и тюнингу <?=$d3[rcaption]?>. С инструкциями и фотографиями от реальных владельцев.</span>
-        <? } ?>
-        <ul class="car-d2experience-tags">
-            <?
-		foreach ($d3[experience] as $key => $value) {
-            $query_string_delimiter = strpos($value[url], '?') ? '&amp;' : '?';
-            ?>
-            <li><a href="<?=$value[url].$query_string_delimiter?>utm_source=DRIVE&utm_medium=experience&<?=$utm_details?>" target=_blank><?=$value[caption]?></a>&nbsp;<?=$value[count]?></li>
-            <? } ?>
-        </ul>
-    </div>
-    <div class="hr"><hr></div>
-    <? } ?>
-
-    <? if (count($d3[cars])) { ?>
-    <div class="car-drive2 cf">
-        <h2 class="car-drive2-header"><?=$d3[rcaption]?> с фото в сообществе DRIVE2</h2>
-
-        <div class="car-drive2-links">
-            <? $c=0;
-	foreach ($d3[cars] as $key=>$value)
-            {
-            $c++;
-            ?>
-            <a href="<?=$value[url]?>?utm_source=DRIVE&utm_medium=review&<?=$utm_details?>" target="_blank" style="background-image: url(<?=$value[photo]?>);"></a>
-            <?
-	if ($c>13) break;
-            } ?>
+        {{> hr}}
+        {{#if d2Cars}}
+            <div class="car-drive2 cf">
+                <h2 class="car-drive2-header">{{brand.name}} с фото в сообществе DRIVE2</h2>
+                <div class="car-drive2-links">
+                    {{#each d2Cars}}
+                        <a href="{{this.url}}" target="_blank" style="background-image: url({{this.imageUrl}});"></a>
+                    {{/each}}
+                </div>
+                <div class="car-drive2-link">
+                    <a href="{{this.allCarsUrl}}">Посмотреть все</a>
+                </div>
+            </div>
+        {{/if}}
+        {{> hr}}
+        {{#if similar}}
+            <div class="car-similar">
+                <h2 class="car-similar-header">Похожие машины</h2>
+                <div class="car-similar-list">
+                    {{#each similar}}
+                        <a class="car-icon" href="{{this.url}}">
+                            <span class="car-icon-image">
+                                <img src="{{this.imageUrl}}" width="{{this.imageWidth}}" height="{{this.imageHeight}}">
+                            </span>
+                            <strong class="car-icon-caption">{{this.caption}}</strong>
+                        </a>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+        {{> hr}}
+        {{! TODO: Video ad }}
+        {{! TODO: Teasers }}
+        <div class="article-readmore news-list">
+            <script id="UK9QJ-cneMowGeHh">if (window.relap) window.relap.ar('UK9QJ-cneMowGeHh');</script>
         </div>
-        <div class="car-drive2-link"><a href="<?=$d3[carsurl].'r/'.$d3[brand]?>">Посмотреть все</a></div>
+        <div class="clear"></div>
     </div>
-
-    <div class="hr"><hr></div>
-    <? } ?>
-
-    <? // print_r ($d3); ?>
-
-    <? if (count ($d3[same])>0) { ?>
-    <div class="car-similar">
-        <h2 class="car-similar-header">Похожие машины</h2>
-        <div class="car-similar-list">
-
-            <? foreach ($d3[same] as $key=>$value) { ?>
-            <a class="car-icon" href="<?=$value[url]?>"><span class="car-icon-image"><img src="<?=$value[icon][src]?>" width="<?=$value[icon][width]?>" height="<?=$value[icon][height]?>"></span> <strong class="car-icon-caption"><?=$value[caption]?></strong></a>
-
-            <? } ?>
-
-        </div>
-    </div>
-
-    <div class="hr"><hr></div>
-
-    <? } ?>
-
-    <? include "tpl/inc_videoad.htm"; ?>
-
-    <div class="side-dv side-dv_aligned">
-        <? if (!$company[payed]) include "tpl/inc_teaser_bottom.htm"; ?>
-    </div>
-
-    <div class="article-readmore news-list">
-        <script id="UK9QJ-cneMowGeHh">if (window.relap) window.relap.ar('UK9QJ-cneMowGeHh');</script>
-    </div>
-
-    <div class="clear"></div>
-
-    <? if (!$company[payed]) include "tpl/inc_bottom.html"; ?>
-
-
-</div>
-
 </div>

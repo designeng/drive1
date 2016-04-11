@@ -23,8 +23,18 @@
         </div>
     </div>
     {{> backgroundSprite spriteClass=open-page-bottom}}
-    {{{dealersList}}}
-    {{{blogEntriesList}}}
+    {{#if dealersList}}
+        <h3 class="brand-buy-header">Купить {{brand.name}} у официального дилера в {{city.name}}</h3>
+        {{{dealersList}}}
+    {{/if}}
+    {{#if blogEntries}}
+        <div class="brand-company-blog-list">
+            <h3>Блоги компаний</h3>
+            <ul>
+                {{{blogEntries}}}
+            </ul>
+        </div>
+    {{/if}}
     <script>
         drv.brandFix();
     </script>
