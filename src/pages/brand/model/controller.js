@@ -21,6 +21,7 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         carIcon         : brandModelData.carIcon,
         ncap            : brandModelData.ncap,
         gallery         : brandModelData.gallery,
+        configurations  : brandModelData.configurations,
         similar         : brandModelData.similar,
 
         newsItems       : getNews(brandNewsData),
