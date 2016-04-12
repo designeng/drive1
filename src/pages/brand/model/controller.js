@@ -35,6 +35,7 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         gallery         : brandModelData.gallery,
         configurations  : brandModelData.configurations,
         similar         : brandModelData.similar,
+        experience      : brandModelData.experience,
 
         newsItems,
 
