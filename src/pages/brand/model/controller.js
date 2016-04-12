@@ -16,7 +16,6 @@ const composePageContentHtml = (brandModelData) => {
 }
 
 function controller(brandModelData, testDrivesBrandData, getCarcassFn) {
-
     let pageContentHtml = composePageContentHtml(brandModelData);
 
     return {
@@ -25,3 +24,5 @@ function controller(brandModelData, testDrivesBrandData, getCarcassFn) {
 }
 
 export default controller;
+
+// console.log(chalk.green("brandModelData:::::", brandModelData));

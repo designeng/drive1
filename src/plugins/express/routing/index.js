@@ -41,7 +41,7 @@ function routeMiddleware(resolver, facet, wire) {
 
             pipeline(tasks).then(
                 (context) => {
-                    console.log(chalk.green("context:::::", JSON.stringify(context.body)));
+                    // console.log(chalk.green("context:::::", JSON.stringify(context.body)));
                     res.status(200).end(context.body.html);
                 },
                 (error) => {

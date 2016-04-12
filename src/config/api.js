@@ -1,5 +1,4 @@
 import _  from 'underscore';
-import chalk from 'chalk';
 
 const config = {
     protocol: 'https',
@@ -52,10 +51,7 @@ export function getEndpoint(item, replacement) {
                 return result;
             }, urlRest);
         }
-        console.log(chalk.green("urlRest:::::", urlRest));
     }
     
-    return getBaseUrl() + endpoints[item];
+    return getBaseUrl() + urlRest;
 }
-
-// console.log(chalk.green("item:::::", item));
