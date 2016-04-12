@@ -27,7 +27,7 @@ export default {
         }
     },
 
-    // /items/test_drives?brand={brandName}
+    // endpoint: /items/test_drives?brand={brandName}
     testDrivesBrandEndpoint: {
         create: {
             module: (carModel) => {
@@ -45,7 +45,7 @@ export default {
         }
     },
 
-    // /items/news?brand={brandName} 
+    // endpoint: /items/news?brand={brandName} 
     brandNewsEndpoint: {
         create: {
             module: (carModel) => {
@@ -69,7 +69,7 @@ export default {
         name    : "Москва"
     },
 
-    // {{! /items/companies?brand={brandName}&city={cityId} }}
+    // endpoint: /items/companies?brand={brandName}&city={cityId}
     dealersEndpoint: {
         create: {
             module: (carModel, city) => {
