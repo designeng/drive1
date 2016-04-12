@@ -3,20 +3,32 @@ import chalk from 'chalk';
 
 import pageContent from '../../../templates/build/pages/model';
 
-const composePageContentHtml = (brandModelData) => {
+const getNews = (items) => {
+    return _.map(items, (item) => {
+        return item.caption.replace(/\{(.*?)\}/, function(match, aText) {
+            return '<a href="' + item.url + '">' + aText + '</a>';
+        })
+    });
+}
+
+const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsData) => {
+
     return pageContent({
+        brand           : brandModelData.brand,   
         caption         : brandModelData.caption,
         description     : brandModelData.description,
         gallery         : brandModelData.gallery,
         similar         : brandModelData.similar,
+
+        newsItems       : getNews(brandNewsData),
 
 
         // testDrives: 
     })
 }
 
-function controller(brandModelData, testDrivesBrandData, getCarcassFn) {
-    let pageContentHtml = composePageContentHtml(brandModelData);
+function controller(brandModelData, testDrivesBrandData, brandNewsData, getCarcassFn) {
+    let pageContentHtml = composePageContentHtml(brandModelData, testDrivesBrandData, brandNewsData);
 
     return {
         html: getCarcassFn(pageContentHtml)

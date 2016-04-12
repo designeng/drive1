@@ -45,12 +45,31 @@ export default {
         }
     },
 
+    // /items/news?brand={brandName} 
+    brandNewsEndpoint: {
+        create: {
+            module: (carModel) => {
+                return [getEndpoint('news'), {brand: carModel.brand}]
+            },
+            args: [
+                {$ref: 'carModel'}
+            ]
+        }
+    },
+
+    brandNewsData: {
+        request: {
+            endpoint: {$ref: 'brandNewsEndpoint'},
+        }
+    },
+
     body: {
         create: {
             module: controller,
             args: [
                 {$ref: 'brandModelData'},
                 {$ref: 'testDrivesBrandData'},
+                {$ref: 'brandNewsData'},
                 {$ref: 'getCarcassFn'}
             ]
         }
