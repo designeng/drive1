@@ -17,6 +17,9 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         brand           : brandModelData.brand,   
         caption         : brandModelData.caption,
         description     : brandModelData.description,
+        imageUrl        : brandModelData.imageUrl,
+        carIcon         : brandModelData.carIcon,
+        ncap            : brandModelData.ncap,
         gallery         : brandModelData.gallery,
         similar         : brandModelData.similar,
 
