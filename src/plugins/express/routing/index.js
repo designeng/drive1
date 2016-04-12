@@ -9,6 +9,7 @@ import isArticlePage    from '../../../utils/isArticlePage';
 import articlePageSpec  from '../../../pages/article/page.spec';
 
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
+import { createTasks, createTask } from '../../../utils/tasks';
 
 function routeMiddleware(resolver, facet, wire) {
     const target = facet.target;
@@ -22,14 +23,19 @@ function routeMiddleware(resolver, facet, wire) {
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
+            console.log(chalk.green("route.url:::::", route.url, req.params.brand, req.params.year, req.params.model));
+
+            if(req.params && req.params.brand) {
+                _.extend(environment, { brand: {name: req.params.brand} });
+            }
+
             // TODO: unshift task with environment spec wiring
             if(route.url === '/404error') {
-                const requestUrlTask = () => {
-                    const { query } = url.parse(req.url, true);
-                    return rootWire(_.extend(environment, { requestUrl: query.url }));
-                }
-                tasks.unshift(requestUrlTask);
+                const { query } = url.parse(req.url, true);
+                _.extend(environment, { requestUrl: query.url });
             }
+
+            tasks.unshift(createTask(environment));
 
             pipeline(tasks).then(
                 (context) => {

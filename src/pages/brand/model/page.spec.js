@@ -10,27 +10,27 @@ export default {
         requestPlugin,
     ],
 
-    topStoriesData: {
+    brandModelData: {
         request: {
-            endpoint: getEndpoint('topStories'),
+            endpoint: getEndpoint('brandModel'),
         }
     },
 
-    topVideosData: {
-        request: {
-            endpoint: getEndpoint('topVideos'),
+    // /items/test_drives?brand={brandName}
+    testDrivesBrandEndpoint: {
+        create: {
+            module: (brandName) => {
+                return [getEndpoint('testDrives'), {brand: brandName}]
+            },
+            args: [
+                {$ref: 'brand.name'}
+            ]
         }
     },
 
-    topBlogsData: {
+    testDrivesBrandData: {
         request: {
-            endpoint: getEndpoint('topBlogs'),
-        }
-    },
-
-    cellarData: {
-        request: {
-            endpoint: getEndpoint('numbers'),
+            endpoint: {$ref: 'testDrivesBrandEndpoint'},
         }
     },
 
@@ -38,10 +38,8 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'topStoriesData'},
-                {$ref: 'topVideosData'},
-                {$ref: 'topBlogsData'},
-                {$ref: 'cellarData'},
+                {$ref: 'brandModelData'},
+                {$ref: 'testDrivesBrandData'},
                 {$ref: 'getCarcassFn'},
             ]
         }

@@ -59,7 +59,7 @@ const routes = [
       {
             url: '/:brand/models/:year/:model',
             routeSpec: modelPageSpec
-      }
+      },
 
       // TODO: complete/remove
       {
