@@ -45,7 +45,8 @@
         {{> hr}}
         {{! TODO: Add this block conditionally }}
         <div class="car-builds">
-            <div class="car-builds-compare-all"><a target=_blank href="/compare/?<? foreach ($d3[builds] as $key => $value) { ?>id=<?=$value[id]?>&<? } ?>">Сравнить все комплектации</a></div>
+            {{! TODO: /compare/complectations button with valid endpoint }}
+            <div class="car-builds-compare-all"><a target=_blank href="/compare/complectations?brand=">Сравнить все комплектации</a></div>
             <h2 class="car-builds-header">Комплектации и цены {{caption}}</h2>
             <div class="car-builds-table">
                 <table>
