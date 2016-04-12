@@ -63,6 +63,31 @@ export default {
         }
     },
 
+    // should be recieved from city selector component. Default:
+    city: {
+        id      : 2191,
+        name    : "Москва"
+    },
+
+    // {{! /items/companies?brand={brandName}&city={cityId} }}
+    dealersEndpoint: {
+        create: {
+            module: (carModel, city) => {
+                return [getEndpoint('dealers'), {brand: carModel.brand, city: city.id}]
+            },
+            args: [
+                {$ref: 'carModel'},
+                {$ref: 'city'}
+            ]
+        }
+    },
+
+    dealersData: {
+        request: {
+            endpoint: {$ref: 'dealersEndpoint'},
+        }
+    },
+
     body: {
         create: {
             module: controller,
@@ -70,6 +95,8 @@ export default {
                 {$ref: 'brandModelData'},
                 {$ref: 'testDrivesBrandData'},
                 {$ref: 'brandNewsData'},
+                {$ref: 'dealersData'},
+                {$ref: 'city'},
                 {$ref: 'getCarcassFn'}
             ]
         }

@@ -30,6 +30,7 @@ export default {
                 {bounds: /([a-zA-Z0-9\.])+(.html|.htm)$/}
             ]
         },
+        routeNotFoundMiddleware: {},
         static: {
             dir: './public'
         },

@@ -3,6 +3,8 @@ import chalk from 'chalk';
 
 import pageContent  from '../../../templates/build/pages/model';
 import itemPlain    from '../../../templates/build/itemPlain';
+import dealersList  from '../../../templates/build/dealersList';
+import dealerItem   from '../../../templates/build/dealerItem';
 
 const getNewsArray = (items) => {
     return _.map(items, (item) => {
@@ -21,9 +23,22 @@ const getNews = (items) => {
     }, '');
 }
 
-const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsData) => {
+const getDealersList = (dealersData) => {
+    let dealersItems = _.reduce(dealersData.payers, (result, item) => {
+        result = result + dealerItem(item);
+        return result;
+    }, '');
+
+    return dealersList({
+        dealersItems,
+        totalCompaniesCount: dealersData.totalCompaniesCount
+    })
+}
+
+const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsData, dealersData, city) => {
 
     let newsItems = getNews(getNewsArray(brandNewsData));
+    let dealersList = getDealersList(dealersData);
 
     return pageContent({
         brand           : brandModelData.brand,   
@@ -36,16 +51,19 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         configurations  : brandModelData.configurations,
         similar         : brandModelData.similar,
         experience      : brandModelData.experience,
+        d2Cars          : brandModelData.d2Cars,
+
+        city            : city,
 
         newsItems,
-
+        dealersList,
 
         // testDrives: 
     })
 }
 
-function controller(brandModelData, testDrivesBrandData, brandNewsData, getCarcassFn) {
-    let pageContentHtml = composePageContentHtml(brandModelData, testDrivesBrandData, brandNewsData);
+function controller(brandModelData, testDrivesBrandData, brandNewsData, dealersData, city, getCarcassFn) {
+    let pageContentHtml = composePageContentHtml(brandModelData, testDrivesBrandData, brandNewsData, dealersData, city);
 
     return {
         html: getCarcassFn(pageContentHtml)

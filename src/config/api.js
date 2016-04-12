@@ -17,6 +17,7 @@ const endpoints = {
     cities                  : "/static/cities",
     news                    : "/items/news",
     testDrives              : "/items/test_drives",
+    dealers                 : "/items/companies",
     video                   : "/items/videos",
     models                  : "/items/cars/audi",   // TODO: remove hard coded brand name
 
