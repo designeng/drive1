@@ -10,20 +10,31 @@ export default {
         requestPlugin,
     ],
 
+    brandModelEndpoint: {
+        create: {
+            module: (carModel) => {
+                return getEndpoint('brandModel', carModel)
+            },
+            args: [
+                {$ref: 'carModel'}
+            ]
+        }
+    },
+
     brandModelData: {
         request: {
-            endpoint: getEndpoint('brandModel'),
+            endpoint: {$ref: 'brandModelEndpoint'},
         }
     },
 
     // /items/test_drives?brand={brandName}
     testDrivesBrandEndpoint: {
         create: {
-            module: (brandName) => {
-                return [getEndpoint('testDrives'), {brand: brandName}]
+            module: (carModel) => {
+                return [getEndpoint('testDrives'), {brand: carModel.brand}]
             },
             args: [
-                {$ref: 'brand.name'}
+                {$ref: 'carModel'}
             ]
         }
     },

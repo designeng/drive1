@@ -23,10 +23,12 @@ function routeMiddleware(resolver, facet, wire) {
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
-            console.log(chalk.green("route.url:::::", route.url, req.params.brand, req.params.year, req.params.model));
-
             if(req.params && req.params.brand) {
-                _.extend(environment, { brand: {name: req.params.brand} });
+                _.extend(environment, { carModel: {
+                    brand   : req.params.brand,
+                    year    : req.params.year,
+                    model   : req.params.model,
+                } });
             }
 
             // TODO: unshift task with environment spec wiring
