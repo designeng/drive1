@@ -41,7 +41,7 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
     let dealersList = getDealersList(dealersData);
 
     return pageContent({
-        brand           : brandModelData.brand,   
+        brand           : brandModelData.brand,
         caption         : brandModelData.caption,
         description     : brandModelData.description,
         imageUrl        : brandModelData.imageUrl,
