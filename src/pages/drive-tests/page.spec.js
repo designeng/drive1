@@ -12,7 +12,7 @@ export default {
         requestPlugin,
     ],
 
-    testDrivesRequest: {
+    testDrivesData: {
         request: {
             endpoint: getEndpoint('testDrives'),
         }
@@ -22,8 +22,8 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'brandsRequest'},
-                {$ref: 'testDrivesRequest'},
+                {$ref: 'brandsData'},
+                {$ref: 'testDrivesData'},
                 {$ref: 'getCarcassFn'},
             ]
         }

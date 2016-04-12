@@ -10,7 +10,7 @@ export default {
         requestPlugin,
     ], 
 
-    articleRequest: {
+    articleData: {
         request: {
             endpoint: [getEndpoint('article'), "/", {$ref: 'articleId'}],
         }
@@ -20,7 +20,7 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'articleRequest'},
+                {$ref: 'articleData'},
                 {$ref: 'articleId'},
                 {$ref: 'getCarcassFn'},
             ]

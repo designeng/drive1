@@ -13,7 +13,7 @@ export default {
         performancePlugin
     ],
 
-    news: {
+    newsData: {
         request: {
             url: getEndpoint('news'),
             params: {
@@ -32,7 +32,7 @@ export default {
         create: {
             module: getPage,
             args: [
-                {$ref: 'news'},
+                {$ref: 'newsData'},
                 {$ref: 'newsBlockTemplate'},
                 {$ref: 'pageTemplate'}
             ]

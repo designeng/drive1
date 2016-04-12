@@ -12,13 +12,13 @@ export default {
         requestPlugin
     ],
 
-    testDrivesRequest: {
+    testDrivesData: {
         request: {
             endpoint: getEndpoint('testDrives')
         }
     },
 
-    modelsRequest: {
+    modelsData: {
         request: {
             endpoint: getEndpoint('models')
         }
@@ -28,8 +28,8 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'modelsRequest'},
-                {$ref: 'testDrivesRequest'},
+                {$ref: 'modelsData'},
+                {$ref: 'testDrivesData'},
                 {$ref: 'getCarcassFn'}
             ]
         }

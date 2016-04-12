@@ -12,25 +12,25 @@ export default {
         requestPlugin,
     ],
 
-    topStoriesRequest: {
+    topStoriesData: {
         request: {
             endpoint: getEndpoint('topStories'),
         }
     },
 
-    topVideosRequest: {
+    topVideosData: {
         request: {
             endpoint: getEndpoint('topVideos'),
         }
     },
 
-    topBlogsRequest: {
+    topBlogsData: {
         request: {
             endpoint: getEndpoint('topBlogs'),
         }
     },
 
-    cellarRequest: {
+    cellarData: {
         request: {
             endpoint: getEndpoint('numbers'),
         }
@@ -40,10 +40,10 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'topStoriesRequest'},
-                {$ref: 'topVideosRequest'},
-                {$ref: 'topBlogsRequest'},
-                {$ref: 'cellarRequest'},
+                {$ref: 'topStoriesData'},
+                {$ref: 'topVideosData'},
+                {$ref: 'topBlogsData'},
+                {$ref: 'cellarData'},
                 {$ref: 'getCarcassFn'},
             ]
         }

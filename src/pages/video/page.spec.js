@@ -12,7 +12,7 @@ export default {
         requestPlugin,
     ],
 
-    videoRequest: {
+    videoData: {
         request: {
             endpoint: getEndpoint('video'),
         }
@@ -22,8 +22,8 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'videoRequest'},
-                {$ref: 'brandsRequest'},
+                {$ref: 'videoData'},
+                {$ref: 'brandsData'},
                 {$ref: 'getCarcassFn'},
             ]
         }

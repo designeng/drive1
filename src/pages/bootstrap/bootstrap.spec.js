@@ -10,13 +10,13 @@ export default {
         requestPlugin,
     ],
 
-    brandsRequest: {
+    brandsData: {
         request: {
             endpoint: getEndpoint('brands'),
         }
     },
 
-    citiesRequest: {
+    citiesData: {
         request: {
             endpoint: getEndpoint('cities'),
         }
@@ -26,8 +26,8 @@ export default {
         create: {
             module: getCarcassFn,
             args: [
-                {$ref: 'brandsRequest'},
-                {$ref: 'citiesRequest'},
+                {$ref: 'brandsData'},
+                {$ref: 'citiesData'},
             ]
         }
     }

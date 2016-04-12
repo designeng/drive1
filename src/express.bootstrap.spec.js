@@ -16,7 +16,7 @@ export default {
     // TODO: should be api endpoint?
     categories: _.keys(categories),
 
-    brandsRequest: {
+    brandsData: {
         request: {
             endpoint: getEndpoint('brands')
         }
@@ -26,7 +26,7 @@ export default {
         create: {
             module: pluck,
             args: [
-                {$ref: 'brandsRequest'},
+                {$ref: 'brandsData'},
                 'id'
             ]
         }
