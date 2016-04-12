@@ -1,17 +1,29 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
-import pageContent from '../../../templates/build/pages/model';
+import pageContent  from '../../../templates/build/pages/model';
+import itemPlain    from '../../../templates/build/itemPlain';
 
-const getNews = (items) => {
+const getNewsArray = (items) => {
     return _.map(items, (item) => {
-        return item.caption.replace(/\{(.*?)\}/, function(match, aText) {
-            return '<a href="' + item.url + '">' + aText + '</a>';
-        })
+        return {
+            caption: item.caption.replace(/\{(.*?)\}/, function(match, aText) {
+                return '<a href="' + item.url + '">' + aText + '</a>';
+            })
+        }
     });
 }
 
+const getNews = (items) => {
+    return _.reduce(items, (result, item) => {
+        result = result + itemPlain(item);
+        return result;
+    }, '');
+}
+
 const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsData) => {
+
+    let newsItems = getNews(getNewsArray(brandNewsData));
 
     return pageContent({
         brand           : brandModelData.brand,   
@@ -24,7 +36,7 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         configurations  : brandModelData.configurations,
         similar         : brandModelData.similar,
 
-        newsItems       : getNews(brandNewsData),
+        newsItems,
 
 
         // testDrives: 
