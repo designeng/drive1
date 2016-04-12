@@ -5,6 +5,7 @@ import driveTestsPageSpec     from './pages/drive-tests/page.spec';
 import videoPageSpec          from './pages/video/page.spec';
 import demoPageSpec           from './pages/demo/page.spec';
 import brandPageSpec           from './pages/brand/page.spec';
+import modelPageSpec           from './pages/brand/model/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
@@ -51,7 +52,16 @@ const routes = [
             url: '/video',
             routeSpec: videoPageSpec
       },
+      {
+            url: '/brand',
+            routeSpec: brandPageSpec
+      },
+      {
+            url: '/:brand/models/:year/:model',
+            routeSpec: modelPageSpec
+      }
 
+      // TODO: complete/remove
       {
             url: '/404error',
             routeSpec: notFoundSpec
@@ -60,10 +70,6 @@ const routes = [
             url: '/demo',
             routeSpec: demoPageSpec
       },
-      {
-            url: '/brand',
-            routeSpec: brandPageSpec
-      }
 ];
 
 _.each(routesUnderConstruction, (item) => {

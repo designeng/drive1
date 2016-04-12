@@ -1,0 +1,49 @@
+import wireDebugPlugin      from 'essential-wire/source/debug';
+import requestPlugin        from '../../../plugins/api/request';
+
+import { getEndpoint }   from '../../../config/api';
+import controller from './controller';
+
+export default {
+    $plugins: [
+        wireDebugPlugin,
+        requestPlugin,
+    ],
+
+    topStoriesData: {
+        request: {
+            endpoint: getEndpoint('topStories'),
+        }
+    },
+
+    topVideosData: {
+        request: {
+            endpoint: getEndpoint('topVideos'),
+        }
+    },
+
+    topBlogsData: {
+        request: {
+            endpoint: getEndpoint('topBlogs'),
+        }
+    },
+
+    cellarData: {
+        request: {
+            endpoint: getEndpoint('numbers'),
+        }
+    },
+
+    body: {
+        create: {
+            module: controller,
+            args: [
+                {$ref: 'topStoriesData'},
+                {$ref: 'topVideosData'},
+                {$ref: 'topBlogsData'},
+                {$ref: 'cellarData'},
+                {$ref: 'getCarcassFn'},
+            ]
+        }
+    }
+}
