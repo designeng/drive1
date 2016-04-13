@@ -26,8 +26,7 @@ function routeMiddleware(resolver, facet, wire) {
             let routeSpec = route.routeSpec;
             let environment = {};
 
-            logger.info('URL::::::', route.url);
-            console.log(chalk.green('URL::::::', route.url));
+            logger.info('URL:', route.url);
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
@@ -44,7 +43,6 @@ function routeMiddleware(resolver, facet, wire) {
                 } });
             }
 
-            // TODO: unshift task with environment spec wiring
             if(route.url === '/404error') {
                 const { query } = url.parse(req.url, true);
                 _.extend(environment, { requestUrl: query.url });
@@ -70,11 +68,14 @@ function routeMiddleware(resolver, facet, wire) {
 
 function articlePageMiddleware(resolver, facet, wire) {
     const target = facet.target;
+    const logfile = facet.options.logfile;
 
     wire(facet.options).then(({
         fragments
     }) => {
         let fragmentKeys = _.keys(fragments);
+
+        let logger = new Logger({file: logfile});
 
         target.get('*', function (req, res, next) {
             let requestUrl = req.url;
@@ -85,6 +86,8 @@ function articlePageMiddleware(resolver, facet, wire) {
             if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
 
                 var articleId = requestUrl.match(/([^\/]+)(?=\.\w+$)/)[0];
+
+                logger.info('Article Id:', articleId, ',' , req.url);
 
                 let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
 

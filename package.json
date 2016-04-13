@@ -13,7 +13,8 @@
     "smoke-demo": "NODE_ENV=smoke-demo node ./runner",
     "smoke": "NODE_ENV=smoke node ./runner",
     "refresh-wire": "rimraf -rf node_modules/essential-wire && npm install",
-    "test": "node ./curl-test"
+    "test": "node ./curl-test",
+    "postinstall": "rimraf -rf ./log && mkdir ./log"
   },
   "keywords": [],
   "author": "Denis Savenok <denissavenok@gmail.com> (http://designeng.github.io/)",

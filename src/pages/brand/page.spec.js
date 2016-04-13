@@ -16,7 +16,7 @@ export default {
     brandModelsEndpoint: {
         create: {
             module: (brand) => {
-                return getEndpoint('brandModels', brand)
+                return getEndpoint('brandModels', {brand: brand.id})
             },
             args: [
                 {$ref: 'brand'}
@@ -36,17 +36,11 @@ export default {
         }
     },
 
-    modelsData: {
-        request: {
-            endpoint: getEndpoint('models')
-        }
-    },
-
     body: {
         create: {
             module: controller,
             args: [
-                {$ref: 'modelsData'},
+                {$ref: 'brandModelsData'},
                 {$ref: 'testDrivesData'},
                 {$ref: 'brand'},
                 {$ref: 'getCarcassFn'}
