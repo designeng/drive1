@@ -76,11 +76,11 @@ const routes = [
       },
 ];
 
-// _.each(routesUnderConstruction, (item) => {
-//       routes.push({
-//             url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
-//             routeSpec: noopPageSpec
-//       })
-// });
+_.each(routesUnderConstruction, (item) => {
+      routes.push({
+            url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
+            routeSpec: noopPageSpec
+      })
+});
 
 export default routes;
