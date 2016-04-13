@@ -28,8 +28,8 @@ function processRoute(req, res, route) {
     let routeSpec = route.routeSpec;
     let environment = {};
 
-    logger.info('URL::::::', route.url);
-    console.log(chalk.green('URL::::::', route.url));
+    logger.info('URL::::::', req.url, route.url);
+    console.log(chalk.green('URL::::::', req.url, route.url));
 
     let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
