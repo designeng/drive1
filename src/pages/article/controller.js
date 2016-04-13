@@ -1,5 +1,3 @@
-import chalk from 'chalk';
-
 import articlePageContent   from '../../templates/build/pages/article';
 
 import articleHeader        from '../../templates/build/partials/articleHeader';
@@ -46,4 +44,10 @@ function controller(articleData, articleId, getCarcassFn) {
 
 export default controller;
 
+// tracing usage:
+// import chalk from 'chalk';
 // console.log(chalk.green("article:::::", JSON.stringify(article), articleId));
+
+// import Logger from '../../utils/logger';
+// let logger = new Logger({file: __dirname + '../../../../log/articleData.log'});
+// logger.info(articleData);

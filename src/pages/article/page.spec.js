@@ -10,9 +10,20 @@ export default {
         requestPlugin,
     ], 
 
+    articleEndpoint: {
+        create: {
+            module: (articleId) => {
+                return getEndpoint('article', {id: articleId})
+            },
+            args: [
+                {$ref: 'articleId'}
+            ]
+        }
+    },
+
     articleData: {
         request: {
-            endpoint: [getEndpoint('article'), "/", {$ref: 'articleId'}],
+            endpoint: {$ref: 'articleEndpoint'},
         }
     },
 

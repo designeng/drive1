@@ -20,11 +20,11 @@ const endpoints = {
     dealers                 : "/items/companies",
     video                   : "/items/videos",
 
+    article                 : "/item/{id}",
+
     brandModels             : "/items/cars/{brand}/models",
     brandModel              : "/items/cars/{brand}/models/{year}/{model}",
     brandModelComplectation : "/items/cars/{brand}/models/{year}/{model}/{complectation}",
-    // TODO: to rest:
-    article         : "/item"
 }
 
 function getBaseUrl() {

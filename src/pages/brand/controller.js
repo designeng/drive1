@@ -1,6 +1,8 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
+import Logger from '../../utils/logger';
+
 import moment from 'moment';
 
 moment.locale('ru');
@@ -37,6 +39,7 @@ const carIconsHtml = (items) => {
 };
 
 const composePageContentHtml = (carIconsData, testDrivesData, brand) => {
+
     return pageContent({
         testDrives: largeItemsHtml(testDrivesData.slice(0, 2)) + mediumItemsHtml(testDrivesData.slice(2, 14)),
         carIcons: carIconsHtml(carIconsData),
@@ -45,6 +48,9 @@ const composePageContentHtml = (carIconsData, testDrivesData, brand) => {
 };
 
 function controller(carIconsData, testDrivesData, brand, getCarcassFn) {
+    let logger = new Logger({file: __dirname + '../../../../log/testDrivesData.log'});
+    logger.info(testDrivesData);
+
     let pageContentHtml = composePageContentHtml(
         carIconsData,
         testDrivesData,

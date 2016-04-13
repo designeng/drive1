@@ -30,9 +30,21 @@ export default {
         }
     },
 
+    // endpoint: /items/test_drives?brand={brand.id}
+    testDrivesEndpoint: {
+        create: {
+            module: (brand) => {
+                return [getEndpoint('testDrives'), {brand: brand.id}]
+            },
+            args: [
+                {$ref: 'brand'}
+            ]
+        }
+    },
+
     testDrivesData: {
         request: {
-            endpoint: getEndpoint('testDrives')
+            endpoint: {$ref: 'testDrivesEndpoint'}
         }
     },
 

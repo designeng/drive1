@@ -5,6 +5,8 @@ import wireDebugPlugin      from 'essential-wire/source/debug';
 
 import { getEndpoint }      from './config/api';
 import requestPlugin        from './plugins/api/request';
+
+import brandsData           from './config/brands';
 import categories           from './config/categories';
 
 export default {
@@ -16,11 +18,7 @@ export default {
     // TODO: should be api endpoint?
     categories: _.keys(categories),
 
-    brandsData: {
-        request: {
-            endpoint: getEndpoint('brands')
-        }
-    },
+    brandsData: brandsData,
 
     brands: {
         create: {
