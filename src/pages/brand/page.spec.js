@@ -7,10 +7,28 @@ import controller from './controller';
 
 export default {
     $plugins: [
-        // wireDebugPlugin,
+        wireDebugPlugin,
         performancePlugin,
         requestPlugin
     ],
+
+    // endpoint: /items/cars/{brand}/models
+    brandModelsEndpoint: {
+        create: {
+            module: (brand) => {
+                return getEndpoint('brandModels', brand)
+            },
+            args: [
+                {$ref: 'brand'}
+            ]
+        }
+    },
+
+    brandModelsData: {
+        request: {
+            endpoint: {$ref: 'brandModelsEndpoint'}
+        }
+    },
 
     testDrivesData: {
         request: {

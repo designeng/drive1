@@ -7,6 +7,7 @@ import rootWire from 'essential-wire';
 
 import isArticlePage    from '../../../utils/isArticlePage';
 import articlePageSpec  from '../../../pages/article/page.spec';
+import brands           from '../../../config/brands';
 
 import Logger from '../../../utils/logger';
 
@@ -25,12 +26,17 @@ function routeMiddleware(resolver, facet, wire) {
             let routeSpec = route.routeSpec;
             let environment = {};
 
-            // logger.info('URL::::::', route.url);
+            logger.info('URL::::::', route.url);
             console.log(chalk.green('URL::::::', route.url));
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
-            if(req.params && req.params.brand) {
+            if(req.params && req.params.brand && !req.params.year && !req.params.model) {
+                _.extend(environment, { brand: {
+                    id: req.params.brand,
+                    name: _.find(brands, {id: req.params.brand})['name']
+                } });
+            } else if(req.params && req.params.brand && req.params.year && req.params.model) {
                 _.extend(environment, { carModel: {
                     brand   : req.params.brand,
                     year    : req.params.year,
