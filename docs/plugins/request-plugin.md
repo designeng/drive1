@@ -15,3 +15,12 @@ let endpoint = getEndpoint('brandModels', {brand: brand.id})
 ```
 let endpoint = [getEndpoint('testDrives'), {brand: brand.id}]
 ```
+и далее в wire-спецификации:
+
+```
+testDrivesData: {
+    request: {
+        endpoint: {$ref: 'testDrivesEndpoint'}
+    }
+}
+```
