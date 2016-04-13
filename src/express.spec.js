@@ -21,7 +21,8 @@ export default {
             webpackConfig: webpackConfig
         },
         routeMiddleware: {
-            routes: routes
+            routes: routes,
+            brands: {$ref: 'brands'}
         },
         articlePageMiddleware: {
             fragments: [

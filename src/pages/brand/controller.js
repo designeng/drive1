@@ -36,17 +36,19 @@ const carIconsHtml = (items) => {
     }, '');
 };
 
-const composePageContentHtml = (carIconsData, testDrivesData) => {
+const composePageContentHtml = (carIconsData, testDrivesData, brand) => {
     return pageContent({
         testDrives: largeItemsHtml(testDrivesData.slice(0, 2)) + mediumItemsHtml(testDrivesData.slice(2, 14)),
-        carIcons: carIconsHtml(carIconsData)
+        carIcons: carIconsHtml(carIconsData),
+        brand
     });
 };
 
-function controller(carIconsData, testDrivesData, getCarcassFn) {
+function controller(carIconsData, testDrivesData, brand, getCarcassFn) {
     let pageContentHtml = composePageContentHtml(
         carIconsData,
-        testDrivesData
+        testDrivesData,
+        brand
     );
 
     return {

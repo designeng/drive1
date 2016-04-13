@@ -30,6 +30,7 @@ export default {
             args: [
                 {$ref: 'modelsData'},
                 {$ref: 'testDrivesData'},
+                {$ref: 'brand'},
                 {$ref: 'getCarcassFn'}
             ]
         }

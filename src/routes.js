@@ -4,8 +4,8 @@ import newsPageSpec           from './pages/news/page.spec';
 import driveTestsPageSpec     from './pages/drive-tests/page.spec';
 import videoPageSpec          from './pages/video/page.spec';
 import demoPageSpec           from './pages/demo/page.spec';
-import brandPageSpec           from './pages/brand/page.spec';
-import modelPageSpec           from './pages/brand/model/page.spec';
+import brandPageSpec          from './pages/brand/page.spec';
+import brandModelPageSpec     from './pages/brand/model/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
@@ -53,12 +53,12 @@ const routes = [
             routeSpec: videoPageSpec
       },
       {
-            url: '/brand',
+            url: '/:brand',
             routeSpec: brandPageSpec
       },
       {
             url: '/:brand/models/:year/:model',
-            routeSpec: modelPageSpec
+            routeSpec: brandModelPageSpec
       },
 
       // TODO: complete/remove
