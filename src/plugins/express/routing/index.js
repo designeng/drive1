@@ -98,6 +98,7 @@ function articlePageMiddleware(resolver, facet, wire) {
 
                 pipeline(tasks).then(
                     (context) => {
+                        // logger.info('Article HTML:', context.body.html);
                         res.status(200).end(context.body.html);
                     },
                     (error) => {
