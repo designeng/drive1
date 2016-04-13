@@ -25,7 +25,8 @@ function routeMiddleware(resolver, facet, wire) {
             let routeSpec = route.routeSpec;
             let environment = {};
 
-            logger.info('URL::::::', route.url);
+            // logger.info('URL::::::', route.url);
+            console.log(chalk.green('URL::::::', route.url));
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
@@ -112,18 +113,6 @@ function routeNotFoundMiddleware(resolver, facet, wire) {
     resolver.resolve(target);
 }
 
-function cssAssets(resolver, facet, wire) {
-    const target = facet.target;
-    const main = facet.options.main;
-
-    target.get("/css/global.css", function (req, res) {
-        let result = fs.readFileSync(main);
-        res.status(200).end(result);
-    });
-
-    resolver.resolve(target);
-}
-
 export default function routeMiddlewarePlugin(options) {
     return {
         facets: {
@@ -136,9 +125,6 @@ export default function routeMiddlewarePlugin(options) {
             routeNotFoundMiddleware: {
                 'initialize:after': routeNotFoundMiddleware
             },
-            cssAssets: {
-                'initialize:after': cssAssets
-            }
         }
     }
 }

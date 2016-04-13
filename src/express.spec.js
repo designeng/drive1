@@ -20,26 +20,19 @@ export default {
 
     app: {
         expressApplication: true,
-        webpackMiddleware: {
-            webpackConfig: webpackConfig
-        },
         routeMiddleware: {
             routes: routes,
             logfile: './log/routeMiddleware.log',
-            brands: {$ref: 'brands'}
         },
-        articlePageMiddleware: {
-            fragments: [
-                {bounds: {$ref: 'categories'}},
-                {bounds: {$ref: 'brands'}, require: false},
-                {bounds: /([a-zA-Z0-9\.])+(.html|.htm)$/}
-            ]
-        },
+        // articlePageMiddleware: {
+        //     fragments: [
+        //         {bounds: {$ref: 'categories'}},
+        //         {bounds: {$ref: 'brands'}, require: false},
+        //         {bounds: /([a-zA-Z0-9\.])+(.html|.htm)$/}
+        //     ]
+        // },
         static: {
             dir: './public'
-        },
-        cssAssets: {
-            main: './public/assets/global.css'
         },
         favicon: {
             path: './public/assets/favicon.ico'

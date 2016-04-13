@@ -57,6 +57,10 @@ const routes = [
             routeSpec: brandPageSpec
       },
       {
+            url: '/:brand/models/:year/',
+            routeSpec: noopPageSpec
+      },
+      {
             url: '/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
@@ -72,11 +76,11 @@ const routes = [
       },
 ];
 
-_.each(routesUnderConstruction, (item) => {
-      routes.push({
-            url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
-            routeSpec: noopPageSpec
-      })
-});
+// _.each(routesUnderConstruction, (item) => {
+//       routes.push({
+//             url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
+//             routeSpec: noopPageSpec
+//       })
+// });
 
 export default routes;
