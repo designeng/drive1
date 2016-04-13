@@ -9,7 +9,7 @@ import routes from './routes';
 
 export default {
     $plugins: [
-        // wireDebugPlugin,
+        wireDebugPlugin,
         expressAppPlugin,
         webpackMiddlewarePlugin,
         expressRoutingMiddlewarePlugin
