@@ -7,6 +7,9 @@ import webpackConfig        from '../webpack.config';
 
 import routes from './routes';
 
+import findRemoveSync from'find-remove';
+findRemoveSync('./log', {extensions: ['.log']});
+
 export default {
     $plugins: [
         wireDebugPlugin,
@@ -22,6 +25,7 @@ export default {
         },
         routeMiddleware: {
             routes: routes,
+            logfile: './log/routeMiddleware.log',
             brands: {$ref: 'brands'}
         },
         articlePageMiddleware: {

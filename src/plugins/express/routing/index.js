@@ -8,18 +8,24 @@ import rootWire from 'essential-wire';
 import isArticlePage    from '../../../utils/isArticlePage';
 import articlePageSpec  from '../../../pages/article/page.spec';
 
+import Logger from '../../../utils/logger';
+
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 import { createTasks, createTask } from '../../../utils/tasks';
 
 function routeMiddleware(resolver, facet, wire) {
-    const target = facet.target;
+    const target    = facet.target;
+    const routes    = facet.options.routes;
+    const logfile   = facet.options.logfile;
 
-    const routes = facet.options.routes;
+    let logger = new Logger({file: logfile});
 
     routes.forEach(route => {
         target.get(route.url, function (req, res) {
             let routeSpec = route.routeSpec;
             let environment = {};
+
+            logger.info('URL::::::', route.url);
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
