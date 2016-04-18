@@ -1,3 +1,225 @@
-<div id="main">
+<div id="main" class="cf">
+    {{> backgroundSprite spriteClass=page-top-shadow}}
+    <div class="cf">
+        <div class="page-car-icon">
+            <a href="/{{brand.id}}/models/{{model.year}}/{{model.id}}">
+                <img src="{{carIcon}}">
+            </a>
+        </div>
+        <h1 class="car-build-header">
+            <a href="/{{brand.id}}">{{brand.name}}</a>&nbsp;› <a href="/{{brand.id}}/models/{{model.year}}/{{model.id}}">{{model.name}}</a>&nbsp;› {{caption}}
+        </h1>
+        <div id="build-title" class="hidden">{{model.name}} {{caption}}</div>
+        <div class="build-meta">{{carInfo.class}}. {{carInfo.doorAndSeats}}. Выпускается с&nbsp;{{carInfo.producedSince}} года. Родина бренда&nbsp;— {{carInfo.origin}}.</div>
+    </div>
+    {{#if price}}
+        <div class="build-price">
+            <div id="build-price-floater">
+                <div id="build-price-base" class="build-price-item build-price-item-final">
+                    <span class="build-price-item-price">{{priceFormatted}}</span><span class="build-price-item-sfx"> руб.</span>
+                    <div class="build-price-item-desc">базовая комплектация*</div>
+                    <div class="build-price-item-link">
+                        <a href="/companies/{{brand.id}}/">Где купить</a>
+                    </div>
+                    <div class="i build-price-shadow"></div>
+                </div>
+                <div id="build-price-wpacks" style="display: none;">
+                    <div class="build-price-item">
+                        <span class="build-price-item-sign">+</span><span id="build-price-val-delta" class="build-price-item-price"></span>
+                        <div class="build-price-item-desc">выбранные опции</div>
+                    </div>
+                    <div id="build-price-final" class="build-price-item build-price-item-final">
+                        <span class="build-price-item-sign">=</span><span id="build-price-val" class="build-price-item-price"></span> руб.
+                        <div class="build-price-item-desc">общая стоимость**</div>
+                        <div class="build-price-item-link"><a href="/companies/{{brand.id}}/">Где купить</a></div>
+                        <div class="i build-price-shadow"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="build-compare">
+                <span class="compare-button" data-action="compare.add" data-id="{{id}}">Добавить к сравнению</span><br>
+                <span data-action="page.print">Распечатать</span>
+            </div>
+        </div>
+    {{/if}}
+    <div class="build-photos gallery-horizontal" data-namespace="lightbox">
+        {{#each gallery}}
+            <a class="frame-photo gallery-horizontal-item" href="{{this.main}}" data-action="zoom">
+                <img src="{{this.small}}" width="240" height="180" alt="">
+                <span class="frame-photo-border"></span>
+            </a>
+        {{/each}}
+    </div>
+    <script>drv.framePhotos();</script>
+    <div class="car-teasers">
+        {{> hr}}
+        {{! TODO: AdFox banner }}
+    </div>
+    {{> hr}}
+    <div class="build-info">
+        <form id="build-info">
+            <div class="build-info-col">
+                <table class="car-build-table">
+                    <caption>Технические характеристики</caption>
+                    <tr>
+                        <th>Двигатель</th>
+                        <td>{{details.technicalData.engine.type}} ({{details.technicalData.engine.volume}} см³)</td>
+                        {{> optionCheckbox}}
+                    </tr>
+                    <tr>
+                        <th>Мощность</th>
+                        <td>{{details.technicalData.engine.power}} л. с.</td>
+                        {{> optionCheckbox}}
+                    </tr>
+                    <tr>
+                        <th>Коробка передач</th>
+                        <td>{{details.technicalData.transmission.type}} ({{details.technicalData.transmission.steps}} ступеней)</td>
+                        {{> optionCheckbox}}
+                    </tr>
+                    <tr>
+                        <th>Привод</th>
+                        {{details.technicalData.gearing}}
+                    </tr>
+                    <tr>
+                        <th>Разгон до сотни</th>
+                        {{details.zeroToSixty}} секунды
+                    </tr>
+                    <tr>
+                        <th>Максимальная скорость</th>
+                        {{details.maxSpeed}} км/ч
+                    </tr>
+                    <tr>
+                        <th>Расход топлива (л/100 км)<br>город / трасса / смешанный </th>
+                        {{fuelEconomy.city}} / {{fuelEconomy.highway}} / {{fuelEconomy.mixed}}
+                    </tr>
+                </table>
 
+                <table class="car-build-table">
+                    <caption>Кузов</caption>
+                    <tr>
+                        <th>Дорожный просвет</th>
+                        {{fuelEconomy.clearance}} мм
+                    </tr>
+                    <tr>
+                        <th>Габариты (длина &times; ширина &times; высота)</th>
+                        {{dimensions.length}} &times; {{dimensions.width}} &times; {{dimensions.height}}
+                    </tr>
+                    <tr>
+                        <th>Объём багажника</th>
+                        {{trunkVolume}} л
+                    </tr>
+                    <tr>
+                        <th>Объём топливного бака</th>
+                        {{fuelTankVolume}} л
+                    </tr>
+                    <tr>
+                        <th>Масса автомобиля</th>
+                        {{weight}} кг
+                    </tr>
+                </table>
+
+                <table class="car-build-table">
+                    <caption>Безопасность</caption>
+                    {{#each options.safety}}
+                        {{> configurationOption}}
+                    {{/each}}
+                </table>
+
+                <div class="dv-mobile">
+                    {{! TODO: Mobile AdFox ad }}
+                </div>
+
+                <table class="car-build-table">
+                    <caption>Комфорт в салоне</caption>
+                    {{#each options.comofort}}
+                        {{> configurationOption}}
+                    {{/each}}
+                </table>
+            </div>
+
+            <div class="build-dv">
+                {{! TODO: Button ad }}
+            </div>
+
+            <div class="build-info-col">
+                <table class="car-build-table">
+                    <caption>Комплектация {{caption}}</caption>
+                    {{#each options.specific}}
+                        {{> configurationOption}}
+                    {{/each}}
+                </table>
+            </div>
+        </form>
+    </div>
+
+    <script>new drv.PriceCalc({{price}});</script>
+
+    <div class="error-feedback"><span data-action="errorfb.show">Нашли ошибку? Пришлите — исправим!</span></div>
+
+    <div class="noprint">
+        {{> hr}}
+
+        {{! TODO: Video ad }}
+
+        {{#if other}}
+            <div class="car-builds">
+                <h2 class="car-builds-header">Другие комплектации {{model.name}}</h2>
+                <div class="car-builds-table">
+                    <table>
+                        <caption>{{brand.name}}</caption>
+                        <thead>
+                            <tr>
+                                <th class="car-builds-table-title">Как называется</th>
+                                <th class="car-builds-table-price">Цена</th>
+                                <th>Мотор</th>
+                                <th>л.с.</th>
+                                <th>Привод</th>
+                                <th>Коробка (передач)</th>
+                                <th class="car-builds-table-compare">Сравнение</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{#each other}}
+                            <tr>
+                                <th class="car-builds-table-title">
+                                    <a class="compare-link car-build-link" href="{{this.url}}">{{this.caption}}</a>
+                                </th>
+                                <td class="car-builds-table-price">
+                                    <a href="{{this.url}}">{{{this.price}}}</a>
+                                </td>
+                                <td><a href="{{this.url}}">{{{this.engine}}}</a></td>
+                                <td><a href="{{this.url}}">{{this.power}}</a></td>
+                                <td><a href="{{this.url}}">{{this.gearing}}</a></td>
+                                <td><a href="{{this.url}}">{{{this.transmission}}}</a></td>
+                                <td class="car-builds-table-compare">
+                                    <span class="compare-button" data-action="compare.add" data-id="{{this.id}}">добавить</span>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {{/if}}
+
+        {{> hr}}
+
+        <div class="side-dv side-dv_aligned">
+            {{! TODO: Bottom ad }}
+        </div>
+
+        <div class="article-readmore news-list">
+            {{! TODO: Relap script }}
+        </div>
+
+        {{> hr}}
+
+        <div class="build-notes">* Указаны ориентировочные цены на новые растаможенные автомобили в&nbsp;салонах официальных дилеров. Приведённые цены не&nbsp;учитывают возможные специальные предложения дилеров (скидки, подарки, льготы по&nbsp;оплате и&nbsp;так далее). Данная комплектация может отличаться от&nbsp;предлагаемых в&nbsp;автосалонах как ценой, так и&nbsp;номенклатурой. Продавец также может предложить дополнительное оборудование, аксессуары и&nbsp;услуги других фирм на&nbsp;своих условиях. Некоторые опции при заказе автомобиля у&nbsp;дилера могут быть впоследствии предложены вам в&nbsp;нескольких вариантах по&nbsp;различной цене (например, кожаная отделка салона, колёсные диски или&nbsp;аудиосистема).
+            <p>** Приведена ориентировочная стоимость автомобиля с выбранным набором опций. В реальности ассортимент опций и цены могут быть другими. Некоторые типы дополнительного оборудования могут поставляться в пакете или же не поставляться для некоторых комплектаций. Пожалуйста, уточняйте информацию у своего дилера.</p>
+        </div>
+
+        {{! TODO: Video ad }}
+
+        {{! TODO: Bottom ad }}
+    </div>
 </div>

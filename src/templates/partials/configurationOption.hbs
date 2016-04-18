@@ -1,0 +1,35 @@
+<tr>
+    <th>{{caption}}</th>
+    {{#if packageNumber}}
+        <td>
+            <span class="{{class}}" data-action="pack.tooltip" data-id="{{packageNumber}}">
+                {{text}}
+                <span class="price">{{priceFormatted}}</span> руб.
+            </span>
+        </td>
+        <td class="build-info-chk">
+            <input type="checkbox" value="{{price}}:{{packageNumber}}">
+        </td>
+    {{else}}
+        <td>
+            <span class="{{class}}">
+                {{#if priceFormatted}}
+                    <span class="price">{{priceFormatted}}</span> руб.
+                {{else}}
+                    {{text}}
+                {{/if}}
+            </span>
+        </td>
+        <td class="build-info-chk">
+            {{#if price}}
+                <input type="checkbox" value="{{price}}">
+            {{else}}
+                {{#if available}}
+                    <input type="checkbox" checked disabled>
+                {{else}}
+                    <input type="checkbox" disabled>
+                {{/if}}
+            {{/if}}
+        </td>
+    {{/if}}
+</tr>
