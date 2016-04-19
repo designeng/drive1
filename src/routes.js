@@ -59,15 +59,15 @@ const routes = [
             routeSpec: videoPageSpec
       },
       {
-            url: '/:brand',
+            url: '/brands/:brand',
             routeSpec: brandPageSpec
       },
       {
-            url: '/:brand/models/:year/',
+            url: '/brands/:brand/models/:year/',
             routeSpec: noopPageSpec
       },
       {
-            url: '/:brand/models/:year/:model',
+            url: '/brands/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
 
