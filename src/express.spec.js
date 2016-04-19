@@ -6,6 +6,7 @@ import webpackMiddlewarePlugin        from './plugins/express/webpack/middleware
 import webpackConfig        from '../webpack.config';
 
 import routes from './routes';
+import prevent from './prevent';
 
 import findRemoveSync from'find-remove';
 findRemoveSync('./log', {extensions: ['.log']});
@@ -22,6 +23,7 @@ export default {
         expressApplication: true,
         routeMiddleware: {
             routes: routes,
+            prevent: prevent,
             logfile: './log/routeMiddleware.log',
         },
         articlePageMiddleware: {

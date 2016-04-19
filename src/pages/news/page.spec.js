@@ -14,7 +14,7 @@ export default {
         create: {
             module: (brand, category) => {
                 if(category) {
-                    return [getEndpoint('news'), {category: category.id}];
+                    return [getEndpoint('news'), {category: category.id, count: 20}];
                 }
                 return brand ? [getEndpoint('news'), {brand: brand.id}] : getEndpoint('news');
             },

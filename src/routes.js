@@ -40,7 +40,15 @@ const routes = [
             url: '/main',
             routeSpec: mainPageSpec
       },
-      // standart page with news list for given category
+      {
+            url: '/drive-tests',
+            routeSpec: driveTestsPageSpec
+      },
+      {
+            url: '/video',
+            routeSpec: videoPageSpec
+      },
+      // page with news list for given category
       {
             url: '/:category',
             routeSpec: newsPageSpec
@@ -51,23 +59,15 @@ const routes = [
             routeSpec: newsPageSpec
       },
       {
-            url: '/drive-tests',
-            routeSpec: driveTestsPageSpec
-      },
-      {
-            url: '/video',
-            routeSpec: videoPageSpec
-      },
-      {
-            url: '/:brand',
+            url: '/brand/:brand',
             routeSpec: brandPageSpec
       },
       {
-            url: '/:brand/models/:year/',
+            url: '/brand/:brand/models/:year/',
             routeSpec: noopPageSpec
       },
       {
-            url: '/:brand/models/:year/:model',
+            url: '/brand/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
 
