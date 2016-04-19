@@ -40,10 +40,12 @@ const routes = [
             url: '/main',
             routeSpec: mainPageSpec
       },
+      // standart page with news list for given category
       {
-            url: '/news',
+            url: '/:category',
             routeSpec: newsPageSpec
       },
+      
       {
             url: '/news/:brand',
             routeSpec: newsPageSpec
