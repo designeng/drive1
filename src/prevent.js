@@ -24,9 +24,11 @@ export default function prevent(req, res, next) {
 
     let logger = new Logger({file: './log/prevent.log'});
     logger.info('firstToken:', firstToken);
+    logger.info('url:', req.url);
 
     if(firstToken.match(redirectRexeg)) {
-        res.redirect('/brands' + req.url);
+        let redirection = '/brands' + req.url;
+        res.redirect(redirection);
     } else {
         next();
     }
