@@ -24,7 +24,9 @@ function routeMiddleware(resolver, facet, wire) {
     routes.forEach(route => {
         target.get(route.url, function (req, res) {
             let routeSpec = route.routeSpec;
-            let environment = {};
+            let environment = {
+                brand: null
+            };
 
             logger.info('URL:', route.url);
 
