@@ -13,7 +13,7 @@ export default {
     newsEndpoint: {
         create: {
             module: (brand) => {
-                return brand.id ? [getEndpoint('news'), {brand: brand.id}] : getEndpoint('news');
+                return brand ? [getEndpoint('news'), {brand: brand.id}] : getEndpoint('news');
             },
             args: [
                 {$ref: 'brand'}
