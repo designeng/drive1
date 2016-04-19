@@ -1,11 +1,7 @@
 import _ from 'underscore';
-import chalk from 'chalk';
 
-import Logger from '../../utils/logger';
-
-import pageContent          from '../../templates/build/pages/news';
-
-import itemCompact          from '../../templates/build/itemCompact';
+import pageContent from '../../templates/build/pages/news';
+import itemCompact from '../../templates/build/itemCompact';
 
 const newsHtml = (items) => {
     return _.reduce(items, (result, item) => {
@@ -21,8 +17,6 @@ const composePageContentHtml = (newsData) => {
 }
 
 function controller(newsData, brand, getCarcassFn) {
-    let logger = new Logger({file: __dirname + '../../../../log/newsData.log'});
-    logger.info(newsData);
 
     let pageContentHtml = composePageContentHtml(
         newsData
