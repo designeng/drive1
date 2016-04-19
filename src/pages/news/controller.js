@@ -1,6 +1,8 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
+import Logger from '../../utils/logger';
+
 import pageContent          from '../../templates/build/pages/news';
 
 import itemCompact          from '../../templates/build/itemCompact';
@@ -18,8 +20,9 @@ const composePageContentHtml = (newsData) => {
     });
 }
 
-function controller(newsData, getCarcassFn) {
-    console.log(chalk.green("newsData:::::", newsData));
+function controller(newsData, brand, getCarcassFn) {
+    let logger = new Logger({file: __dirname + '../../../../log/newsData.log'});
+    logger.info(newsData);
 
     let pageContentHtml = composePageContentHtml(
         newsData
@@ -31,3 +34,7 @@ function controller(newsData, getCarcassFn) {
 }
 
 export default controller;
+
+// import Logger from '../../utils/logger';
+// let logger = new Logger({file: __dirname + '../../../../log/articleData.log'});
+// logger.info(articleData);

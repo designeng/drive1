@@ -10,9 +10,20 @@ export default {
         requestPlugin
     ],
 
+    newsEndpoint: {
+        create: {
+            module: (brand) => {
+                return brand.id ? [getEndpoint('news'), {brand: brand.id}] : getEndpoint('news');
+            },
+            args: [
+                {$ref: 'brand'}
+            ]
+        }
+    },
+
     newsData: {
         request: {
-            endpoint: getEndpoint('news'),
+            endpoint: {$ref: 'newsEndpoint'},
         }
     },
 
@@ -21,6 +32,7 @@ export default {
             module: controller,
             args: [
                 {$ref: 'newsData'},
+                {$ref: 'brand'},
                 {$ref: 'getCarcassFn'},
             ]
         }
