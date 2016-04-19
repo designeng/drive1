@@ -45,6 +45,10 @@ const routes = [
             routeSpec: newsPageSpec
       },
       {
+            url: '/news/:brand',
+            routeSpec: newsPageSpec
+      },
+      {
             url: '/drive-tests',
             routeSpec: driveTestsPageSpec
       },
