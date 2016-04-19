@@ -18,13 +18,15 @@ export default function prevent(req, res, next) {
     // res.send(redirectRexegStr);
     // return;
 
-    if(!firstToken) next();
+    // if(firstToken == 'brands') {
+    //     next();
+    // }
 
     let logger = new Logger({file: './log/prevent.log'});
     logger.info('firstToken:', firstToken);
 
     if(firstToken.match(redirectRexeg)) {
-        res.redirect('/brand' + req.url);
+        res.redirect('/brands' + req.url);
     } else {
         next();
     }
