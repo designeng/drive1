@@ -7,6 +7,7 @@ import rootWire from 'essential-wire';
 
 import isArticlePage    from '../../../utils/isArticlePage';
 import articlePageSpec  from '../../../pages/article/page.spec';
+import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
 
 import Logger from '../../../utils/logger';
@@ -25,12 +26,20 @@ function routeMiddleware(resolver, facet, wire) {
         target.get(route.url, function (req, res) {
             let routeSpec = route.routeSpec;
             let environment = {
-                brand: null
+                brand: null,
+                category: null
             };
 
             logger.info('URL:', route.url);
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
+
+            if(req.params && req.params.category) {
+                let category = _.find(categories, {id: req.params.category});
+                if(category) {
+                    _.extend(environment, { category });
+                }
+            }
 
             if(req.params && req.params.brand && !req.params.year && !req.params.model) {
                 _.extend(environment, { brand: {

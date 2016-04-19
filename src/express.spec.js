@@ -26,7 +26,7 @@ export default {
         },
         articlePageMiddleware: {
             fragments: [
-                {bounds: {$ref: 'categories'}},
+                {bounds: {$ref: 'categoryIds'}},
                 {bounds: {$ref: 'brands'}, require: false},
                 {bounds: /([a-zA-Z0-9\.])+(.html|.htm)$/}
             ],

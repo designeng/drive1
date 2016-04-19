@@ -15,8 +15,7 @@ export default {
         requestPlugin
     ],
 
-    // TODO: should be api endpoint?
-    categories: _.keys(categories),
+    categoryIds: _.map(categories, (item) => {return item.id}),
 
     brandsData: brandsData,
 
