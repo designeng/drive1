@@ -83,6 +83,10 @@ const categories = [
         "id": "blogs",
         "name": "Блоги компаний"
     },
+    {
+        "id": "columns",
+        "name": "Авторские колонки"
+    },
 ];
 
 export default categories;

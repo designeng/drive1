@@ -12,11 +12,15 @@ export default {
 
     newsEndpoint: {
         create: {
-            module: (brand) => {
+            module: (brand, category) => {
+                if(category) {
+                    return [getEndpoint('news'), {category: category.id}];
+                }
                 return brand ? [getEndpoint('news'), {brand: brand.id}] : getEndpoint('news');
             },
             args: [
-                {$ref: 'brand'}
+                {$ref: 'brand'},
+                {$ref: 'category'}
             ]
         }
     },
@@ -31,8 +35,9 @@ export default {
         create: {
             module: controller,
             args: [
-                {$ref: 'newsData'},
                 {$ref: 'brand'},
+                {$ref: 'category'},
+                {$ref: 'newsData'},
                 {$ref: 'getCarcassFn'},
             ]
         }
