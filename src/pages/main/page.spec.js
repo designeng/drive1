@@ -20,7 +20,7 @@ export default {
 
     topVideosData: {
         request: {
-            endpoint: getEndpoint('topVideos'),
+            endpoint: [getEndpoint('video'), {top: true}],
         }
     },
 

@@ -10,7 +10,6 @@ const config = {
 const endpoints = {
     topStories              : "/items/top_stories",
     topBlogs                : "/items/top_blogs",
-    topVideos               : "/items/top_videos",
     numbers                 : "/content/numbers",
     special                 : "/content/special",
     brands                  : "/static/brands",
