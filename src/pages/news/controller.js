@@ -10,16 +10,18 @@ const newsHtml = (items) => {
     }, '');
 }
 
-const composePageContentHtml = (newsData) => {
+const composePageContentHtml = (newsData, brand) => {
     return pageContent({
-        newsItems: newsHtml(newsData)
+        newsItems: newsHtml(newsData),
+        brand
     });
 }
 
 function controller(newsData, brand, getCarcassFn) {
 
     let pageContentHtml = composePageContentHtml(
-        newsData
+        newsData,
+        brand
     );
 
     return {

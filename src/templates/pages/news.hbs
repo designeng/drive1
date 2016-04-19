@@ -4,10 +4,7 @@
         <h1 class="page-header">{{category}}</h1>
     {{else}}
         <h1 class="page-header">
-            Новости
-            {{#if brand}}
-                <a href="/{{brand.id}}">{{brand.name}}</a>
-            {{/if}}
+            Новости {{#if brand}}<a href="/{{brand.id}}">{{brand.name}}</a>{{/if}}
         </h1>
     {{/if}}
     {{{adTeaser}}}
