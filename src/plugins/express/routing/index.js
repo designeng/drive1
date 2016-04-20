@@ -18,13 +18,13 @@ import { createTasks, createTask } from '../../../utils/tasks';
 function routeMiddleware(resolver, facet, wire) {
     const target    = facet.target;
     const routes    = facet.options.routes;
-    const prevent   = facet.options.prevent || function prevent(req, res, next) {next()};
+    const before    = facet.options.before || function before(req, res, next) {next()};
     const logfile   = facet.options.logfile;
 
     let logger = new Logger({file: logfile});
 
     routes.forEach(route => {
-        target.get(route.url, prevent, (req, res) => {
+        target.get(route.url, before, (req, res) => {
             let routeSpec = route.routeSpec;
             let environment = {
                 brand: null,
