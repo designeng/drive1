@@ -16,7 +16,7 @@ export default {
     brandModelsEndpoint: {
         create: {
             module: (brand) => {
-                return getEndpoint('brandModels', {brand: brand.id})
+                return getEndpoint('brandModels', {brand: brand.id});
             },
             args: [
                 {$ref: 'brand'}
@@ -30,11 +30,11 @@ export default {
         }
     },
 
-    // endpoint: /items/test_drives?brand={brand.id}
+    // endpoint: /items/test_drives/{brand}
     testDrivesEndpoint: {
         create: {
             module: (brand) => {
-                return [getEndpoint('testDrives'), {brand: brand.id}]
+                return getEndpoint('testDrives', {brand: brand.id});
             },
             args: [
                 {$ref: 'brand'}
