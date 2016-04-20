@@ -67,8 +67,7 @@ const routes = [
       // left for backwards compatibility with previous site version, 
       // redirect to '/brands/:brand/models/:year/:model'
       {
-            url: '/:brand/models/:year/:model',
-            routeSpec: brandModelPageSpec
+            url: '/:brand/models/:year/:model'
       },
 
       // TODO: complete/remove
