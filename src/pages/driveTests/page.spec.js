@@ -12,9 +12,21 @@ export default {
         requestPlugin,
     ],
 
+    // endpoint: /items/test_drives?brand={brand}
+    testDrivesEndpoint: {
+        create: {
+            module: (brand) => {
+                return brand ? getEndpoint('brandTestDrives', {brand: brand.id}) : getEndpoint('testDrives');
+            },
+            args: [
+                {$ref: 'brand'}
+            ]
+        }
+    },
+
     testDrivesData: {
         request: {
-            endpoint: getEndpoint('testDrives'),
+            endpoint: {$res: 'testDrivesEndpoint'},
         }
     },
 
