@@ -34,7 +34,7 @@ export default {
     testDrivesEndpoint: {
         create: {
             module: (brand) => {
-                return getEndpoint('testDrives', {brand: brand.id});
+                return getEndpoint('brandTestDrives', {brand: brand.id});
             },
             args: [
                 {$ref: 'brand'}
