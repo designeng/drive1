@@ -1,7 +1,7 @@
 import _  from 'underscore';
 import mainPageSpec           from './pages/main/page.spec';
-import newsPageSpec           from './pages/news/page.spec';
-import driveTestsPageSpec     from './pages/drive-tests/page.spec';
+import categoryNewsPageSpec   from './pages/categoryNews/page.spec';
+import driveTestsPageSpec     from './pages/driveTests/page.spec';
 import videoPageSpec          from './pages/video/page.spec';
 import demoPageSpec           from './pages/demo/page.spec';
 import brandPageSpec          from './pages/brand/page.spec';
@@ -51,12 +51,12 @@ const routes = [
       // page with news list for given category
       {
             url: '/:category',
-            routeSpec: newsPageSpec
+            routeSpec: categoryNewsPageSpec
       },
       
       {
             url: '/news/:brand',
-            routeSpec: newsPageSpec
+            routeSpec: categoryNewsPageSpec
       },
       {
             url: '/brands/:brand',
