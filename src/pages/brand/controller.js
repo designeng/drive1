@@ -1,8 +1,6 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
-import Logger from '../../utils/logger';
-
 import moment from 'moment';
 
 moment.locale('ru');
@@ -56,9 +54,6 @@ const composePageContentHtml = (carIconsData, testDrivesData, brandNewsData, bra
 };
 
 function controller(carIconsData, testDrivesData, brandNewsData, brand, getCarcassFn) {
-    let logger = new Logger({file: __dirname + '../../../../log/brandNewsData.log'});
-    logger.info(brandNewsData);
-
     let pageContentHtml = composePageContentHtml(carIconsData, testDrivesData, brandNewsData, brand);
 
     return {

@@ -7,7 +7,7 @@ import controller from './controller';
 
 export default {
     $plugins: [
-        // wireDebugPlugin,
+        wireDebugPlugin,
         performancePlugin,
         requestPlugin,
     ],
@@ -26,7 +26,7 @@ export default {
 
     testDrivesData: {
         request: {
-            endpoint: {$res: 'testDrivesEndpoint'},
+            endpoint: {$ref: 'testDrivesEndpoint'}
         }
     },
 
@@ -36,6 +36,8 @@ export default {
             args: [
                 {$ref: 'brandsData'},
                 {$ref: 'testDrivesData'},
+                {$ref: 'testDrivesEndpoint'},
+                {$ref: 'brand'},
                 {$ref: 'getCarcassFn'},
             ]
         }
