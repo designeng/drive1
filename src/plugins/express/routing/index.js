@@ -150,3 +150,8 @@ export default function routeMiddlewarePlugin(options) {
         }
     }
 }
+
+// -----TEST-----
+// res.setHeader('charset', 'utf-8');
+// return res.send(req.url);
+// -----TEST END-----

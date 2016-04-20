@@ -70,6 +70,10 @@ const routes = [
             url: '/brands/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
+      {
+            url: '/:brand/models/:year/:model',
+            routeSpec: brandModelPageSpec
+      },
 
       // TODO: complete/remove
       {
