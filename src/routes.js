@@ -56,6 +56,10 @@ const routes = [
             routeSpec: brandPageSpec
       },
       {
+            url: '/brands/:brand/drive-tests',
+            routeSpec: driveTestsPageSpec
+      },
+      {
             url: '/brands/:brand/models/:year/',
             routeSpec: noopPageSpec
       },
@@ -65,9 +69,12 @@ const routes = [
       },
 
       // left for backwards compatibility with previous site version, 
-      // redirect to '/brands/:brand/models/:year/:model'
+      // redirect to '/brands/:brand/models/:year/:model' etc.
       {
             url: '/:brand/models/:year/:model'
+      },
+      {
+            url: '/:brand/drive-tests'
       },
 
       // TODO: complete/remove
