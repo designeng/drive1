@@ -63,6 +63,9 @@ const routes = [
             url: '/brands/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
+
+      // left for backwards compatibility with previous site version, 
+      // redirect to '/brands/:brand/models/:year/:model'
       {
             url: '/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
