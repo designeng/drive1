@@ -48,7 +48,7 @@ const newsHtml = (items) => {
 const composePageContentHtml = (carIconsData, testDrivesData, brandNewsData, brand) => {
 
     return pageContent({
-        testDrives: largeItemsHtml(testDrivesData.slice(0, 1)) + mediumItemsHtml(testDrivesData.slice(1, 3)),
+        testDrives: largeItemsHtml(testDrivesData.slice(0, 1)) + mediumItemsHtml(testDrivesData.slice(1, 9)),
         carIcons: carIconsHtml(carIconsData),
         newsItems: newsHtml(brandNewsData),
         brand
