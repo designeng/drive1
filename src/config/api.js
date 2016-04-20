@@ -16,6 +16,7 @@ const endpoints = {
     cities                  : "/static/cities",
     news                    : "/items/news",
     testDrives              : "/items/test_drives",
+    brandTestDrives         : "/items/test_drives/{brand}",
     dealers                 : "/items/companies",
     video                   : "/items/videos",
 

@@ -16,7 +16,7 @@ export default {
     brandModelsEndpoint: {
         create: {
             module: (brand) => {
-                return getEndpoint('brandModels', {brand: brand.id})
+                return getEndpoint('brandModels', {brand: brand.id});
             },
             args: [
                 {$ref: 'brand'}
@@ -30,11 +30,11 @@ export default {
         }
     },
 
-    // endpoint: /items/test_drives?brand={brand.id}
+    // endpoint: /items/test_drives/{brand}
     testDrivesEndpoint: {
         create: {
             module: (brand) => {
-                return [getEndpoint('testDrives'), {brand: brand.id}]
+                return getEndpoint('brandTestDrives', {brand: brand.id});
             },
             args: [
                 {$ref: 'brand'}
@@ -48,12 +48,31 @@ export default {
         }
     },
 
+    // endpoint: /items/news?brand={brand}
+    brandNewsEndpoint: {
+        create: {
+            module: (brand) => {
+                return [getEndpoint('news'), {brand: brand.id}];
+            },
+            args: [
+                {$ref: 'brand'}
+            ]
+        }
+    },
+
+    brandNewsData: {
+        request: {
+            endpoint: {$ref: 'brandNewsEndpoint'}
+        }
+    },
+
     body: {
         create: {
             module: controller,
             args: [
                 {$ref: 'brandModelsData'},
                 {$ref: 'testDrivesData'},
+                {$ref: 'brandNewsData'},
                 {$ref: 'brand'},
                 {$ref: 'getCarcassFn'}
             ]

@@ -35,6 +35,10 @@ const brands = [
     "backgroundOffset": -174
   },
   {
+    "id": "buick",
+    "name": "Buick",
+  },
+  {
     "id": "cadillac",
     "name": "Cadillac",
     "backgroundOffset": -203

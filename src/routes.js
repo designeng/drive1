@@ -15,13 +15,6 @@ let routesUnderConstruction = [
       'companies',
       'talk',
       'talks',
-      'kunst',
-      'russia',
-      'autosport',
-      'spy',
-      'business',
-      'technic',
-      'columns',
       'about',
       'ad',
       'd2b',
@@ -63,6 +56,10 @@ const routes = [
             routeSpec: brandPageSpec
       },
       {
+            url: '/brands/:brand/drive-tests',
+            routeSpec: driveTestsPageSpec
+      },
+      {
             url: '/brands/:brand/models/:year/',
             routeSpec: noopPageSpec
       },
@@ -70,9 +67,14 @@ const routes = [
             url: '/brands/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
+
+      // left for backwards compatibility with previous site version, 
+      // redirect to '/brands/:brand/models/:year/:model' etc.
       {
-            url: '/:brand/models/:year/:model',
-            routeSpec: brandModelPageSpec
+            url: '/:brand/models/:year/:model'
+      },
+      {
+            url: '/:brand/drive-tests'
       },
 
       // TODO: complete/remove
