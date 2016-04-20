@@ -17,11 +17,24 @@
             <div id="brand-news-list" class="news-list">
                 {{! /items/news?brand={brandName} }}
                 {{{newsItems}}}
+                <div class="show-more-link show-more-trigger">
+                    <span class="news-list-more desktop-hidden">
+                        <a href="/news/{{brand.id}}">Посмотреть больше новостей</a>
+                    </span>
+                    <span class="news-list-more mobile-hidden">
+                        Посмотреть <a href="/news/{{brand.id}}">больше новостей</a>
+                        {{#if testDrives}}
+                        или <a href="/{{brand.id}}/drive-tests">тест-драйвов {{brand.name}}</a>
+                        {{/if}}
+                    </span>
+                </div>
             </div>
-            <div id="brand-td-list" class="top-news-list">
-                {{! /items/test_drives?brand={brandName} }}
-                {{{testDrives}}}
-            </div>
+            {{#if testDrives}}
+                <div id="brand-td-list" class="top-news-list">
+                    {{! /items/test_drives?brand={brandName} }}
+                    {{{testDrives}}}
+                </div>
+            {{/if}}
             <div class="i clip clip-bottom"></div>
         </div>
     </div>
