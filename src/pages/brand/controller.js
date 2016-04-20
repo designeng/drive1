@@ -17,6 +17,13 @@ import dealerItem           from '../../templates/build/dealerItem';
 import blogEntriesList      from '../../templates/build/blogEntriesList';
 import blogEntry            from '../../templates/build/blogEntry';
 
+const carIconsHtml = (items) => {
+    return _.reduce(items, (result, item) => {
+        result = result + carIcon(item);
+        return result;
+    }, '');
+};
+
 const largeItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
         result = result + itemLarge(item);
@@ -31,31 +38,28 @@ const mediumItemsHtml = (items) => {
     }, '');
 };
 
-const carIconsHtml = (items) => {
+const newsHtml = (items) => {
     return _.reduce(items, (result, item) => {
-        result = result + carIcon(item);
+        result = result + itemCompact(item);
         return result;
     }, '');
-};
+}
 
-const composePageContentHtml = (carIconsData, testDrivesData, brand) => {
+const composePageContentHtml = (carIconsData, testDrivesData, brandNewsData, brand) => {
 
     return pageContent({
         testDrives: largeItemsHtml(testDrivesData.slice(0, 1)) + mediumItemsHtml(testDrivesData.slice(1, 3)),
         carIcons: carIconsHtml(carIconsData),
+        newsItems: newsHtml(brandNewsData),
         brand
     });
 };
 
-function controller(carIconsData, testDrivesData, brand, getCarcassFn) {
-    let logger = new Logger({file: __dirname + '../../../../log/testDrivesData.log'});
-    logger.info(testDrivesData);
+function controller(carIconsData, testDrivesData, brandNewsData, brand, getCarcassFn) {
+    let logger = new Logger({file: __dirname + '../../../../log/brandNewsData.log'});
+    logger.info(brandNewsData);
 
-    let pageContentHtml = composePageContentHtml(
-        carIconsData,
-        testDrivesData,
-        brand
-    );
+    let pageContentHtml = composePageContentHtml(carIconsData, testDrivesData, brandNewsData, brand);
 
     return {
         html: getCarcassFn(pageContentHtml)
