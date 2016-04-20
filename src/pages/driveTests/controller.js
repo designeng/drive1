@@ -1,30 +1,9 @@
-// testDrives page!
-
 import _ from 'underscore';
-import chalk from 'chalk';
-
-import Logger from '../../utils/logger';
-
-import moment from 'moment';
-moment.locale('ru');
 
 import pageContent          from '../../templates/build/pages/testDrives';
-
 import brandFilter          from '../../templates/build/brandFilter';
-
 import itemLarge            from '../../templates/build/itemLarge';
 import itemMedium           from '../../templates/build/itemMedium';
-
-// const preprocessNews = (items) => {
-//     return _.map(items, (item) => {
-//         return _.extend({}, item, {
-//             time    : moment.unix(item.time).fromNow(),
-//             caption : item.caption.replace(/\{(.*?)\}/, function(match, aText) {
-//                 return '<a href="' + item.url + '">' + aText + '</a>';
-//             })
-//         });
-//     });
-// }
 
 // TODO: refactor to DRY
 const largeItemsHtml = (items) => {
@@ -64,11 +43,7 @@ const composePageContentHtml = (brandFilterData, testDrivesData) => {
     })
 }
 
-function controller(brandFilterData, testDrivesData, testDrivesEndpoint, brand, getCarcassFn) {
-
-    let logger = new Logger({file: __dirname + '../../../../log/testDrivesEndpoint.log'});
-    logger.info(testDrivesEndpoint);
-    logger.info(brand);
+function controller(brandFilterData, testDrivesData, getCarcassFn) {
 
     let pageContentHtml = composePageContentHtml(
         brandFilterData,
