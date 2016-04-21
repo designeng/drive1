@@ -1,5 +1,6 @@
 import express from 'express';
 import favicon from 'serve-favicon';
+import bodyParser from 'body-parser';
 
 // facets
 function startExpressServerFacet(resolver, facet, wire) {
@@ -36,6 +37,12 @@ function expressApplication(resolver, compDef, wire) {
         throw new Error("Please set true value to create Express application.")
     }
     const app = express();
+
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+
     resolver.resolve(app);
 }
 
