@@ -1,7 +1,8 @@
 import wireDebugPlugin      from 'essential-wire/source/debug';
 import expressAppPlugin     from './plugins/express/application';
 import expressRoutingMiddlewarePlugin from './plugins/express/routing';
-import webpackMiddlewarePlugin        from './plugins/express/webpack/middleware';
+import proxyMiddlewarePlugin from './plugins/express/proxy/middleware';
+import webpackMiddlewarePlugin from './plugins/express/webpack/middleware';
 
 import webpackConfig        from '../webpack.config';
 
@@ -18,7 +19,8 @@ export default {
         wireDebugPlugin,
         expressAppPlugin,
         webpackMiddlewarePlugin,
-        expressRoutingMiddlewarePlugin
+        expressRoutingMiddlewarePlugin,
+        proxyMiddlewarePlugin,
     ],
 
     app: {
