@@ -91,8 +91,6 @@ function articlePageMiddleware(resolver, facet, wire) {
 
                 var articleId = requestUrl.match(/([^\/]+)(?=\.\w+$)/)[0];
 
-                logger.info('Article Id:', articleId, ',' , req.url);
-
                 let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
 
                 const articleTask = () => {
@@ -102,7 +100,6 @@ function articlePageMiddleware(resolver, facet, wire) {
 
                 pipeline(tasks).then(
                     (context) => {
-                        // logger.info('Article HTML:', context.body.html);
                         res.status(200).end(context.body.html);
                     },
                     (error) => {
