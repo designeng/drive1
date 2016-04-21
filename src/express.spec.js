@@ -32,7 +32,7 @@ export default {
         },
         proxyMiddleware: {
             routes: [
-                {url: '/api/feedback', originUrl: originApiHost + '/api.php', method: 'POST'},
+                {url: '/api.php', originUrl: originApiHost + '/api.php', method: 'POST'},
             ]
         },
         articlePageMiddleware: {

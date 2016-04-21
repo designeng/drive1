@@ -7,6 +7,7 @@ import demoPageSpec           from './pages/demo/page.spec';
 import brandPageSpec          from './pages/brand/page.spec';
 import brandModelPageSpec     from './pages/brand/model/page.spec';
 import articlePageSpec        from './pages/article/page.spec';
+import feedbackPageSpec       from './pages/feedback/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
@@ -44,6 +45,10 @@ const routes = [
       {
             url: '/video',
             routeSpec: videoPageSpec
+      },
+      {
+            url: '/feedback',
+            routeSpec: feedbackPageSpec
       },
       // page with news list for given category
       {
