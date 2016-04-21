@@ -34,21 +34,19 @@ const testDrivesHtml = (items) => {
     }, '');
 }
 
-const composePageContentHtml = (brandFilterData, testDrivesData) => {
+const composePageContentHtml = (brandFilterData, testDrivesData, brand) => {
     return pageContent({
         brandFilter: brandFilter({
             brands: brandFilterData
         }),
         testDrives: largeItemsHtml(testDrivesData.slice(0, 2)) + mediumItemsHtml(testDrivesData.slice(2, 14)),
+        brand
     })
 }
 
-function controller(brandFilterData, testDrivesData, getCarcassFn) {
+function controller(brandFilterData, testDrivesData, brand, getCarcassFn) {
 
-    let pageContentHtml = composePageContentHtml(
-        brandFilterData,
-        testDrivesData
-    );
+    let pageContentHtml = composePageContentHtml(brandFilterData, testDrivesData, brand);
 
     return {
         html: getCarcassFn(pageContentHtml)
