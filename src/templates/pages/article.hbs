@@ -8,11 +8,8 @@
         {{else}}
             {{> articleHeader}}
         {{/if}}
-        <script>
-            var RndNum4NoCash = Math.round(Math.random() * 1000000000);
-            var ar_Tail='unknown'; if (document.referrer) ar_Tail = escape(document.referrer);
-            new Image().src = '//ad.adriver.ru/cgi-bin/rle.cgi?sid=1&bt=21&ad=546039&pid=2143214&bid=4107018&bn=4107018&rnd={{adriverRnd}}';
-        </script>
+        {{! TODO: Показывать этот partial только для статьи с id 56167dc195a656ecfa000023 }}
+        {{> widget_adriver}}
 		<span class="description">
 			<p class="lead" itemprop="description">
                 {{#if dropcap}}
@@ -56,7 +53,6 @@
         {{/if}}
         {{! TODO: Social block }}
         <div class="article-vk-widget">
-            <!-- VK Widget -->
             <div id="vk_subscribe"></div>
             <script type="text/javascript">
                 VK.Widgets.Subscribe("vk_subscribe", {mode: 2}, -48156068);
@@ -73,9 +69,8 @@
         {{> hr}}
     </div>
     <script>new drv.FeedSubs;</script>
-    {{! TODO: Mobile banner }}
-    {{! TODO: Teasers }}
+    {{> widget_teasers}}
     <div class="article-readmore news-list">
-        <script id="amVlT7V0P8U_ISEh">if (window.relap) window.relap.ar('amVlT7V0P8U_ISEh');</script>
+        {{> widget_relap id=amVlT7V0P8U_ISEh}}
     </div>
 </div>

@@ -1,7 +1,8 @@
 <div id="main">
     {{> backgroundSprite spriteClass=page-top-shadow}}
-    {{! TODO: AdFox side banner }}
-    {{! TODO: Teasers }}
+    <div class="brand-side-dv">
+        {{> widget_teasers}}
+    </div>
     <h1 class="brand-header">{{brand.name}} в России</h1>
     <div id="brand-icons-list">
         <input type="checkbox" id="expand-mobile-trigger" class="expand-mobile-trigger">
@@ -56,6 +57,8 @@
     <script>
         drv.brandFix();
     </script>
-    {{! TODO: Bottom ad }}
-    {{! TODO: Relap }}
+    {{> widget_adfoxBottom}}
+    <div class="brand-readmore">
+        {{> widget_relap id=1f7--nm4vUe94-Pj}}
+    </div>
 </div>

@@ -53,11 +53,12 @@
     <script>drv.framePhotos();</script>
     <div class="car-teasers">
         {{> hr}}
-        {{! TODO: AdFox banner }}
+        {{> widget_adfoxMobile}}
     </div>
     {{> hr}}
     <div class="build-info">
         <form id="build-info">
+            {{> script_configurationOptionsInit}}
             <div class="build-info-col">
                 <table class="car-build-table">
                     <caption>Технические характеристики</caption>
