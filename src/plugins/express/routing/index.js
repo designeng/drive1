@@ -17,7 +17,6 @@ function routeMiddleware(resolver, facet, wire) {
     const target    = facet.target;
     const routes    = facet.options.routes;
     const before    = facet.options.before || function before(req, res, next) {next()};
-    const logfile   = facet.options.logfile;
 
     routes.forEach(route => {
         target.get(route.url, before, (req, res) => {

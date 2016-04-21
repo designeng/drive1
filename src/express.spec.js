@@ -31,8 +31,7 @@ export default {
                 {bounds: {$ref: 'categoryIds'}},
                 {bounds: {$ref: 'brands'}, require: false},
                 {bounds: /([a-zA-Z0-9\.])+(.html|.htm)$/}
-            ],
-            logfile: './log/articlePageMiddleware.log',
+            ]
         },
         static: {
             dir: './public'
