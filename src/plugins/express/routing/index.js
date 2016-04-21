@@ -20,7 +20,9 @@ function routeMiddleware(resolver, facet, wire) {
 
     routes.forEach(route => {
         target.get(route.url, before, (req, res) => {
-            let routeSpec = route.routeSpec;
+            let routeSpec   = route.routeSpec;
+            let provide     = route.provide;
+
             let environment = {
                 brand: null,
                 category: null
@@ -46,6 +48,10 @@ function routeMiddleware(resolver, facet, wire) {
                     year    : req.params.year,
                     model   : req.params.model,
                 } });
+            }
+
+            if(provide) {
+                _.extend(environment, provide);
             }
 
             if(route.url === '/404error') {

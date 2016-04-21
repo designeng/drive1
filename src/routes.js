@@ -6,6 +6,7 @@ import videoPageSpec          from './pages/video/page.spec';
 import demoPageSpec           from './pages/demo/page.spec';
 import brandPageSpec          from './pages/brand/page.spec';
 import brandModelPageSpec     from './pages/brand/model/page.spec';
+import articlePageSpec        from './pages/article/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
@@ -15,13 +16,16 @@ let routesUnderConstruction = [
       'companies',
       'talk',
       'talks',
-      'about',
-      'ad',
-      'd2b',
-      'rewrite',
-      'moderation',
       'feedback'
 ];
+
+let footerLinks = {
+      'about'     : '4efbb68409b6028e21000009',
+      'ad'        : '4efbc1bd09b6026721000015',
+      'd2b'       : '4f01afda09b602e35300001e',
+      'rewrite'   : '4efbc00d09b6026721000014',
+      'moderation': '4f10c30409b602e449000000',
+};
 
 const routes = [
       // TODO: handle aliases?
@@ -88,10 +92,13 @@ const routes = [
       },
 ];
 
-_.each(routesUnderConstruction, (item) => {
-      routes.push({
+_.each(_.keys(footerLinks), (item) => {
+      routes.unshift({
             url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
-            routeSpec: noopPageSpec
+            routeSpec: articlePageSpec,
+            provide: {
+                  articleId: footerLinks[item]
+            }
       })
 });
 
