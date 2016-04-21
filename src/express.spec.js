@@ -11,6 +11,8 @@ import resolveRoutesConcurrency from './resolveRoutesConcurrency';
 import findRemoveSync from'find-remove';
 findRemoveSync('./log', {extensions: ['.log']});
 
+const originApiHost = 'https://dev.drive.ru';
+
 export default {
     $plugins: [
         wireDebugPlugin,
@@ -25,6 +27,11 @@ export default {
             routes: routes,
             before: resolveRoutesConcurrency,
             logfile: './log/routeMiddleware.log',
+        },
+        proxyMiddleware: {
+            routes: [
+                {url: '/api/feedback', originUrl: originApiHost + '/api.php', method: 'POST'},
+            ]
         },
         articlePageMiddleware: {
             fragments: [
