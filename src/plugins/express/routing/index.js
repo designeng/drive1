@@ -10,8 +10,6 @@ import articlePageSpec  from '../../../pages/article/page.spec';
 import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
 
-import Logger from '../../../utils/logger';
-
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 import { createTasks, createTask } from '../../../utils/tasks';
 
@@ -21,8 +19,6 @@ function routeMiddleware(resolver, facet, wire) {
     const before    = facet.options.before || function before(req, res, next) {next()};
     const logfile   = facet.options.logfile;
 
-    let logger = new Logger({file: logfile});
-
     routes.forEach(route => {
         target.get(route.url, before, (req, res) => {
             let routeSpec = route.routeSpec;
@@ -30,8 +26,6 @@ function routeMiddleware(resolver, facet, wire) {
                 brand: null,
                 category: null
             };
-
-            logger.info('URL:', route.url);
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
 
@@ -86,8 +80,6 @@ function articlePageMiddleware(resolver, facet, wire) {
         fragments
     }) => {
         let fragmentKeys = _.keys(fragments);
-
-        let logger = new Logger({file: logfile});
 
         target.get('*', function (req, res, next) {
             let requestUrl = req.url;

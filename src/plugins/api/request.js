@@ -1,8 +1,6 @@
 import axios from 'axios';
 import _ from 'underscore';
 
-import Logger from '../../utils/logger';
-
 function getEndpointRepresentedByArray(array) {
     return _.reduce(array, (result, item) => {
         if(_.isString(item)) {
@@ -48,10 +46,6 @@ function request(resolver, compDef, wire) {
         }
 
         endpoint = normalizeEndpoint(endpoint);
-
-        // log endpoint
-        let logger = new Logger({file: __dirname + '../../../../log/endpoint.log'});
-        logger.info(endpoint);
 
         axios[method](endpoint, {
             params

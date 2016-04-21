@@ -28,7 +28,3 @@ function controller(brand, category, newsData, getCarcassFn) {
 }
 
 export default controller;
-
-// import Logger from '../../utils/logger';
-// let logger = new Logger({file: __dirname + '../../../../log/articleData.log'});
-// logger.info(articleData);
