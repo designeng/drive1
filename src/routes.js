@@ -8,15 +8,14 @@ import brandPageSpec          from './pages/brand/page.spec';
 import brandModelPageSpec     from './pages/brand/model/page.spec';
 import articlePageSpec        from './pages/article/page.spec';
 import companiesPageSpec      from './pages/companies/page.spec';
+import talkPageSpec           from './pages/talk/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
 import notFoundSpec           from './pages/404/page.spec';
 
 let routesUnderConstruction = [
-      'companies',
       'talk',
-      'talks',
       'feedback'
 ];
 
@@ -45,6 +44,10 @@ const routes = [
       {
             url: '/video',
             routeSpec: videoPageSpec
+      },
+      {
+            url: '/talk',
+            routeSpec: talkPageSpec
       },
       {
             url: '/companies',
