@@ -13,7 +13,8 @@ import brands           from '../../../config/brands';
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 import { createTasks, createTask } from '../../../utils/tasks';
 
-const articleRexeg = /([^\/]+)(?=\.\w+$)/;
+const articleIdRexeg = /([^\/]+)(?=\.\w+$)/;
+const articleRexeg = /([a-zA-Z0-9\.])+(.html|.htm)/;
 
 function routeMiddleware(resolver, facet, wire) {
     const target    = facet.target;
@@ -111,7 +112,7 @@ function articlePageMiddleware(resolver, facet, wire) {
 
             if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
 
-                var articleId = requestUrl.match(articleRexeg)[0];
+                var articleId = requestUrl.match(articleIdRexeg)[0];
 
                 let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
 
