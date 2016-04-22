@@ -4,7 +4,6 @@
         {{! /items/top_stories#topNews }}
         {{{topNews}}}
     </div>
-
     <div id="index-op" class="hgr open-page">
         <div class="hgr open-page-i cf container-mobile">
             <div id="index-video">
@@ -12,14 +11,14 @@
                 {{! /items/top_videos }}
                 {{{topVideos}}}
             </div>
-
             <div id="index-news-list" class="news-list">
                 {{! /items/top_stories#mainNews }}
                 {{{mainNews}}}
                 <div class="show-more-link"><a class="index-news-list-more" href="/news/">Посмотреть больше новостей</a></div>
-                {{{adMobile}}}
+                <div class="dv-mobile">
+                    {{> widget_adfoxMiddleMobile}}
+                </div>
             </div>
-
             <div id="index-com-news">
                 <h3>Блоги компаний{{> ins}}</h3>
                 <ul>
@@ -36,5 +35,7 @@
     </script>
     {{! /content/numbers }}
     {{{suggestedReading}}}
-    {{{adBottom}}}
+    <div class="dv-bottom">
+        {{> widget_adfoxBottom}}
+    </div>
 </div>

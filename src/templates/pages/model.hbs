@@ -40,56 +40,68 @@
         <script>drv.framePhotos();</script>
         <div class="car-teasers">
             {{> hr}}
-            {{! TODO: Teasers }}
+            {{> widget_adfoxTop}}
         </div>
         {{> hr}}
-        {{! TODO: Add this block conditionally }}
-        <div class="car-builds">
-            {{! TODO: /compare/complectations button with valid endpoint }}
-            <div class="car-builds-compare-all"><a target=_blank href="/compare/complectations?brand=">Сравнить все комплектации</a></div>
-            <h2 class="car-builds-header">Комплектации и цены {{brand.name}} {{caption}}</h2>
-            <div class="car-builds-table">
-                <table>
-                    <caption>{{caption}}</caption>
-                    <thead>
-                        <tr>
-                            <th class="car-builds-table-title">Как называется</th>
-                            <th class="car-builds-table-price">Цена</th>
-                            <th>Мотор</th>
-                            <th>л.с.</th>
-                            <th>Привод</th>
-                            <th>Коробка (передач)</th>
-                            <th class="car-builds-table-compare">Сравнение</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {{#each configurations}}
-                        <tr>
-                            <th class="car-builds-table-title">
-                                <a class="compare-link car-build-link" href="{{this.url}}">{{this.caption}}</a>
-                            </th>
-                            <td class="car-builds-table-price">
-                                <a href="{{this.url}}">{{{this.price}}}</a>
-                            </td>
-                            <td><a href="{{this.url}}">{{{this.engine}}}</a></td>
-                            <td><a href="{{this.url}}">{{this.power}}</a></td>
-                            <td><a href="{{this.url}}">{{this.gearing}}</a></td>
-                            <td><a href="{{this.url}}">{{{this.transmission}}}</a></td>
-                            <td class="car-builds-table-compare">
-                                <span class="compare-button" data-action="compare.add" data-id="{{this.id}}">добавить</span>
-                            </td>
-                        </tr>
-                    {{/each}}
-                    {{! TODO: Table ad }}
-                    </tbody>
-                </table>
+        {{#if configurations}}
+            <div class="car-builds">
+                {{! TODO: /compare/complectations button with valid endpoint }}
+                <div class="car-builds-compare-all">
+                    <a target=_blank href="/compare/complectations?brand=">Сравнить все комплектации</a>
+                </div>
+                <h2 class="car-builds-header">Комплектации и цены {{brand.name}} {{caption}}</h2>
+                <div class="car-builds-table">
+                    <table>
+                        <caption>{{caption}}</caption>
+                        <thead>
+                            <tr>
+                                <th class="car-builds-table-title">Как называется</th>
+                                <th class="car-builds-table-price">Цена</th>
+                                <th>Мотор</th>
+                                <th>л.с.</th>
+                                <th>Привод</th>
+                                <th>Коробка (передач)</th>
+                                <th class="car-builds-table-compare">Сравнение</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each configurations}}
+                                <tr>
+                                    <th class="car-builds-table-title">
+                                        <a class="compare-link car-build-link" href="{{this.url}}">{{this.caption}}</a>
+                                    </th>
+                                    <td class="car-builds-table-price">
+                                        <a href="{{this.url}}">{{{this.price}}}</a>
+                                    </td>
+                                    <td><a href="{{this.url}}">{{{this.engine}}}</a></td>
+                                    <td><a href="{{this.url}}">{{this.power}}</a></td>
+                                    <td><a href="{{this.url}}">{{this.gearing}}</a></td>
+                                    <td><a href="{{this.url}}">{{{this.transmission}}}</a></td>
+                                    <td class="car-builds-table-compare">
+                                        <span class="compare-button" data-action="compare.add" data-id="{{this.id}}">добавить</span>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            {{! TODO: Instert this row in controller conditionally }}
+                            <tr class="dv-mobile-row">
+                                <td colspan="7">
+                                    {{> widget_adfoxMiddleMobile}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        {{/if}}
         {{> hr}}
-        {{! TODO: Video ad }}
-        {{! TODO: Button ad }}
+        {{> widget_adfoxVideo}}
         {{! /items/companies?brand={brandName}&city={cityId} }}
         {{#if dealersList}}
+            <div class="car-button">
+                <div class="buttons-dv">
+                    {{> widget_adfoxButton}}
+                </div>
+            </div>
             <h2 class="car-company-list-header">Купить {{brand.name}} у официального дилера в {{city.name}}</h2>
             {{{dealersList}}}
         {{/if}}
@@ -112,17 +124,18 @@
             {{/if}}
         </div>
         {{> hr}}
-        <div class="car-d2experience">
-            <h2 class="car-d2experience-header">Отзывы владельцев </h2>
-            {{! TODO: Only show this span for unauthenticated users }}
-            <span class="car-d2experience-info">Советы по ремонту, обслуживанию и тюнингу {{brand.name}}. С инструкциями и фотографиями от реальных владельцев.</span>
-            <ul class="car-d2experience-tags">
-                {{#each experience}}
-                    <li>
-                        <a href="{{this.url}}" target=_blank>{{this.caption}}</a>&nbsp;{{this.count}}</li>
-                {{/each}}
-            </ul>
-        </div>
+        {{#if experience}}
+            <div class="car-d2experience">
+                <h2 class="car-d2experience-header">Отзывы владельцев </h2>
+                {{! TODO: Only show this span for unauthenticated users }}
+                <span class="car-d2experience-info">Советы по ремонту, обслуживанию и тюнингу {{brand.name}}. С инструкциями и фотографиями от реальных владельцев.</span>
+                <ul class="car-d2experience-tags">
+                    {{#each experience}}
+                        <li><a href="{{this.url}}" target=_blank>{{this.caption}}</a>&nbsp;{{this.count}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
         {{> hr}}
         {{#if d2Cars}}
             <div class="car-drive2 cf">
@@ -154,11 +167,15 @@
             </div>
         {{/if}}
         {{> hr}}
-        {{! TODO: Video ad }}
-        {{! TODO: Teasers }}
+        <div class="side-dv side-dv_aligned">
+            {{> widget_teasers}}
+        </div>
         <div class="article-readmore news-list">
-            <script id="UK9QJ-cneMowGeHh">if (window.relap) window.relap.ar('UK9QJ-cneMowGeHh');</script>
+            {{> widget_relap id=UK9QJ-cneMowGeHh}}
         </div>
         <div class="clear"></div>
+        <div class="dv-bottom">
+            {{> widget_adfoxBottom}}
+        </div>
     </div>
 </div>

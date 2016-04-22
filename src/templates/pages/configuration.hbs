@@ -53,7 +53,7 @@
     <script>drv.framePhotos();</script>
     <div class="car-teasers">
         {{> hr}}
-        {{> widget_adfoxMobile}}
+        {{> widget_adfoxTop}}
     </div>
     {{> hr}}
     <div class="build-info">
@@ -102,7 +102,6 @@
                         {{fuelEconomy.city}} / {{fuelEconomy.highway}} / {{fuelEconomy.mixed}}
                     </tr>
                 </table>
-
                 <table class="car-build-table">
                     <caption>Кузов</caption>
                     <tr>
@@ -126,18 +125,15 @@
                         {{weight}} кг
                     </tr>
                 </table>
-
                 <table class="car-build-table">
                     <caption>Безопасность</caption>
                     {{#each options.safety}}
                         {{> configurationOption}}
                     {{/each}}
                 </table>
-
                 <div class="dv-mobile">
-                    {{! TODO: Mobile AdFox ad }}
+                    {{widget_adfoxMiddleMobile}}
                 </div>
-
                 <table class="car-build-table">
                     <caption>Комфорт в салоне</caption>
                     {{#each options.comofort}}
@@ -145,11 +141,11 @@
                     {{/each}}
                 </table>
             </div>
-
             <div class="build-dv">
-                {{! TODO: Button ad }}
+                <div class="buttons-dv">
+                    {{> widget_adfoxButton}}
+                </div>
             </div>
-
             <div class="build-info-col">
                 <table class="car-build-table">
                     <caption>Комплектация {{caption}}</caption>
@@ -160,16 +156,11 @@
             </div>
         </form>
     </div>
-
     <script>new drv.PriceCalc({{price}});</script>
-
     <div class="error-feedback"><span data-action="errorfb.show">Нашли ошибку? Пришлите — исправим!</span></div>
-
     <div class="noprint">
         {{> hr}}
-
-        {{! TODO: Video ad }}
-
+        {{> widget_adfoxVideo}}
         {{#if other}}
             <div class="car-builds">
                 <h2 class="car-builds-header">Другие комплектации {{model.name}}</h2>
@@ -210,25 +201,20 @@
                 </div>
             </div>
         {{/if}}
-
         {{> hr}}
-
         <div class="side-dv side-dv_aligned">
-            {{! TODO: Bottom ad }}
+            {{> widget_teasers}}
         </div>
-
         <div class="article-readmore news-list">
-            {{! TODO: Relap script }}
+            {{> widget_relap id=UK9QJ-cneMowGeHh}}
         </div>
-
         {{> hr}}
-
         <div class="build-notes">* Указаны ориентировочные цены на новые растаможенные автомобили в&nbsp;салонах официальных дилеров. Приведённые цены не&nbsp;учитывают возможные специальные предложения дилеров (скидки, подарки, льготы по&nbsp;оплате и&nbsp;так далее). Данная комплектация может отличаться от&nbsp;предлагаемых в&nbsp;автосалонах как ценой, так и&nbsp;номенклатурой. Продавец также может предложить дополнительное оборудование, аксессуары и&nbsp;услуги других фирм на&nbsp;своих условиях. Некоторые опции при заказе автомобиля у&nbsp;дилера могут быть впоследствии предложены вам в&nbsp;нескольких вариантах по&nbsp;различной цене (например, кожаная отделка салона, колёсные диски или&nbsp;аудиосистема).
             <p>** Приведена ориентировочная стоимость автомобиля с выбранным набором опций. В реальности ассортимент опций и цены могут быть другими. Некоторые типы дополнительного оборудования могут поставляться в пакете или же не поставляться для некоторых комплектаций. Пожалуйста, уточняйте информацию у своего дилера.</p>
         </div>
-
-        {{! TODO: Video ad }}
-
-        {{! TODO: Bottom ad }}
+        <div class="dv-bottom">
+            {{> widget_adfoxBottom}}
+        </div>
     </div>
 </div>
+{{> widget_adfoxBottomMobile}}
