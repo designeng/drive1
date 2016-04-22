@@ -54,10 +54,17 @@ function routeMiddleware(resolver, facet, wire) {
                 _.extend(environment, provide);
             }
 
+            const { query } = url.parse(req.url, true);
+
+            if(query.city) {
+                _.extend(environment, { cityId: query.city });
+            }
+
+            // TODO: 404error page
             if(route.url === '/404error') {
-                const { query } = url.parse(req.url, true);
                 _.extend(environment, { requestUrl: query.url });
             }
+            // END TODO:
 
             tasks.unshift(createTask(environment));
 

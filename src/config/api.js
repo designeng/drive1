@@ -25,9 +25,16 @@ const endpoints = {
     brandModels             : "/items/cars/{brand}/models",
     brandModel              : "/items/cars/{brand}/models/{year}/{model}",
     brandModelComplectation : "/items/cars/{brand}/models/{year}/{model}/{complectation}",
+
+    // raw:
+    companiesPage           : "/companies",
 }
 
-function getBaseUrl() {
+function getBaseUrl(mode) {
+    if(mode == 'raw') {
+        return config.protocol + '://' + config.host;
+    }
+
     return config.protocol + '://' + config.host + '/' + config.baseDir + '/' + config.version
 }
 
@@ -54,4 +61,8 @@ export function getEndpoint(item, replacement) {
     }
     
     return getBaseUrl() + urlRest;
+}
+
+export function getRawEndpoint(item) {
+    return getBaseUrl('raw') + endpoints[item];
 }
