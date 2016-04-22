@@ -9,15 +9,14 @@ import brandModelPageSpec     from './pages/brand/model/page.spec';
 import articlePageSpec        from './pages/article/page.spec';
 import companiesPageSpec      from './pages/companies/page.spec';
 import feedbackPageSpec       from './pages/feedback/page.spec';
+import talkPageSpec           from './pages/talk/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
 import notFoundSpec           from './pages/404/page.spec';
 
 let routesUnderConstruction = [
-      'companies',
       'talk',
-      'talks',
       'feedback'
 ];
 
@@ -50,6 +49,23 @@ const routes = [
       {
             url: '/feedback',
             routeSpec: feedbackPageSpec
+      },
+      {
+            url: '/talk',
+            routeSpec: talkPageSpec
+      },
+      {
+            url: '/talk/:brand',
+            routeSpec: talkPageSpec
+      },
+      // TODO: firstTalkId & secondTalkId - what they mean exactly?
+      {
+            url: '/talk/:brand/:firstTalkId',
+            routeSpec: talkPageSpec
+      },
+      {
+            url: '/talk/:brand/:firstTalkId/:secondTalkId',
+            routeSpec: talkPageSpec
       },
       {
             url: '/companies',
