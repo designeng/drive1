@@ -7,6 +7,7 @@ import demoPageSpec           from './pages/demo/page.spec';
 import brandPageSpec          from './pages/brand/page.spec';
 import brandModelPageSpec     from './pages/brand/model/page.spec';
 import articlePageSpec        from './pages/article/page.spec';
+import companiesPageSpec      from './pages/companies/page.spec';
 
 import noopPageSpec           from './pages/noop/page.spec';
 
@@ -44,6 +45,18 @@ const routes = [
       {
             url: '/video',
             routeSpec: videoPageSpec
+      },
+      {
+            url: '/companies',
+            routeSpec: companiesPageSpec
+      },
+      {
+            url: '/companies/:brand',
+            routeSpec: companiesPageSpec
+      },
+      {
+            url: '/companies/service/:brand',
+            routeSpec: companiesPageSpec
       },
       // page with news list for given category
       {

@@ -5,11 +5,19 @@ import favicon from 'serve-favicon';
 function startExpressServerFacet(resolver, facet, wire) {
     const port = facet.options.port;
     let target = facet.target;
+    const { verbose, naughtSupport } = facet.options;
     const server = target.listen(port, () => {
-        if (facet.options.verbose === true){
+        if (verbose === true) {
             const host = server.address().address;
             const port = server.address().port;
             console.info("==> 🌎  Express app listening at http://%s:%s", host, port);
+        }
+
+        if(naughtSupport === true) {
+            if (process.send) process.send('online');
+            process.on('message', (message) => {
+                if (message === 'shutdown') process.exit(0);
+            });
         }
     });
     resolver.resolve(target);

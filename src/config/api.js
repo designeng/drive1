@@ -25,15 +25,23 @@ const endpoints = {
     brandModels             : "/items/cars/{brand}/models",
     brandModel              : "/items/cars/{brand}/models/{year}/{model}",
     brandModelComplectation : "/items/cars/{brand}/models/{year}/{model}/{complectation}",
+
+    // raw:
+    companiesPage           : "/companies",
+    companiesBrandPage      : "/companies/{brand}",
 }
 
-function getBaseUrl() {
+function getBaseUrl(options) {
+    if(options && options.mode == 'raw') {
+        return config.protocol + '://' + config.host;
+    }
+
     return config.protocol + '://' + config.host + '/' + config.baseDir + '/' + config.version
 }
 
 export default config;
 
-export function getEndpoint(item, replacement) {
+export function getEndpoint(item, replacement, options) {
     let fragmentRegex = /{(.*?)}/g,
         urlRest;
 
@@ -53,5 +61,5 @@ export function getEndpoint(item, replacement) {
         }
     }
     
-    return getBaseUrl() + urlRest;
+    return getBaseUrl(options) + urlRest;
 }

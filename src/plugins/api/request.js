@@ -1,5 +1,6 @@
 import axios from 'axios';
 import _ from 'underscore';
+import chalk from 'chalk';
 
 function getEndpointRepresentedByArray(array) {
     return _.reduce(array, (result, item) => {

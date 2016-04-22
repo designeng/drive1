@@ -13,19 +13,30 @@ import brands           from '../../../config/brands';
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 import { createTasks, createTask } from '../../../utils/tasks';
 
+const articleIdRexeg = /([^\/]+)(?=\.\w+$)/;
+const articleRexeg = /([a-zA-Z0-9\.])+(.html|.htm)/;
+
 function routeMiddleware(resolver, facet, wire) {
     const target    = facet.target;
     const routes    = facet.options.routes;
     const before    = facet.options.before || function before(req, res, next) {next()};
 
     routes.forEach(route => {
-        target.get(route.url, before, (req, res) => {
+        target.get(route.url, before, (req, res, next) => {
             let routeSpec   = route.routeSpec;
             let provide     = route.provide;
 
+            // TODO: conflict resolving for routes [/news/*.html, /news/:brand etc.]
+            // think how to avoid plugin hack
+            if(req.url.match(articleRexeg)) {
+                return next();
+            }
+            // END TODO
+
             let environment = {
-                brand: null,
-                category: null
+                brand   : null,
+                city    : null,
+                category: null,
             };
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
@@ -54,10 +65,17 @@ function routeMiddleware(resolver, facet, wire) {
                 _.extend(environment, provide);
             }
 
+            const { query } = url.parse(req.url, true);
+
+            if(query.city) {
+                _.extend(environment, { city: {id: query.city }});
+            }
+
+            // TODO: 404error page
             if(route.url === '/404error') {
-                const { query } = url.parse(req.url, true);
                 _.extend(environment, { requestUrl: query.url });
             }
+            // END TODO:
 
             tasks.unshift(createTask(environment));
 
@@ -94,7 +112,7 @@ function articlePageMiddleware(resolver, facet, wire) {
 
             if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
 
-                var articleId = requestUrl.match(/([^\/]+)(?=\.\w+$)/)[0];
+                var articleId = requestUrl.match(articleIdRexeg)[0];
 
                 let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
 

@@ -42,7 +42,8 @@ export default {
         // routeNotFoundMiddleware: {},
         server: {
             port            : process.env.PORT || 3000,
-            verbose         : true
+            verbose         : true,
+            naughtSupport   : true
         }
     }
 }
