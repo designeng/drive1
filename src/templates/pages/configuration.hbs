@@ -53,11 +53,20 @@
     <script>drv.framePhotos();</script>
     <div class="car-teasers">
         {{> hr}}
-        {{! TODO: AdFox banner }}
+        {{> widget_adfoxMobile}}
     </div>
     {{> hr}}
     <div class="build-info">
         <form id="build-info">
+            <script>
+                new drv.Packs(
+                    {{#each packages}}
+                            '{{this.number}}',
+                            '<p>Пакет опций включает:</p><ul><li>{{this.description}}</li></ul><p><b>Цена&nbsp;<span class="price">&thinsp;{{this.priceFormatted}}</span>&nbsp;руб.</b></p>',
+                    {{/each}}
+                    ''
+                );
+            </script>
             <div class="build-info-col">
                 <table class="car-build-table">
                     <caption>Технические характеристики</caption>
