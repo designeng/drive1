@@ -26,6 +26,9 @@
         {{{articleContent}}}
     </div>
     <script>new drv.Article;</script>
+
+    {{! TODO: Poll }}
+
     {{#if gallery}}
         <div class="article-gallery">
             <h3>Крупным планом</h3>
@@ -40,6 +43,9 @@
             </div>
         </div>
     {{/if}}
+    <div class="dv-bottom">
+        {{> widget_adfoxBottom}}
+    </div>
     <div class="article-spacer" style="clear: both; margin: -20px 0; padding: 1px 0 0;"></div>
     <div class="article-social-container">
         {{#if commentsCount}}
@@ -69,8 +75,15 @@
         {{> hr}}
     </div>
     <script>new drv.FeedSubs;</script>
-    {{> widget_teasers}}
+    {{> widget_adfoxMiddleMobile}}
+    <div class="side-dv side-dv_aligned">
+        {{> widget_teasers}}
+    </div>
     <div class="article-readmore news-list">
         {{> widget_relap id=amVlT7V0P8U_ISEh}}
     </div>
 </div>
+{{! TODO: Call this method in controller instead }}
+<script>
+    drv.mobileIframePatch();
+</script>
