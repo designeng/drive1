@@ -13,15 +13,24 @@ import brands           from '../../../config/brands';
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 import { createTasks, createTask } from '../../../utils/tasks';
 
+const articleRexeg = /([^\/]+)(?=\.\w+$)/;
+
 function routeMiddleware(resolver, facet, wire) {
     const target    = facet.target;
     const routes    = facet.options.routes;
     const before    = facet.options.before || function before(req, res, next) {next()};
 
     routes.forEach(route => {
-        target.get(route.url, before, (req, res) => {
+        target.get(route.url, before, (req, res, next) => {
             let routeSpec   = route.routeSpec;
             let provide     = route.provide;
+
+            // TODO: conflict resolving for routes [/news/*.html, /news/:brand etc.]
+            // think how to avoid plugin hack
+            if(req.url.match(articleRexeg)) {
+                return next();
+            }
+            // END TODO
 
             let environment = {
                 brand   : null,
@@ -102,7 +111,7 @@ function articlePageMiddleware(resolver, facet, wire) {
 
             if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
 
-                var articleId = requestUrl.match(/([^\/]+)(?=\.\w+$)/)[0];
+                var articleId = requestUrl.match(articleRexeg)[0];
 
                 let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
 
