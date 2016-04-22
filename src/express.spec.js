@@ -1,7 +1,8 @@
 import wireDebugPlugin      from 'essential-wire/source/debug';
 import expressAppPlugin     from './plugins/express/application';
 import expressRoutingMiddlewarePlugin from './plugins/express/routing';
-import webpackMiddlewarePlugin        from './plugins/express/webpack/middleware';
+import proxyMiddlewarePlugin from './plugins/express/proxy/middleware';
+import webpackMiddlewarePlugin from './plugins/express/webpack/middleware';
 
 import webpackConfig        from '../webpack.config';
 
@@ -11,12 +12,15 @@ import resolveRoutesConcurrency from './resolveRoutesConcurrency';
 import findRemoveSync from'find-remove';
 findRemoveSync('./log', {extensions: ['.log']});
 
+const originApiHost = 'https://dev.drive.ru';
+
 export default {
     $plugins: [
         wireDebugPlugin,
         expressAppPlugin,
         webpackMiddlewarePlugin,
-        expressRoutingMiddlewarePlugin
+        expressRoutingMiddlewarePlugin,
+        proxyMiddlewarePlugin,
     ],
 
     app: {
@@ -25,6 +29,11 @@ export default {
             routes: routes,
             before: resolveRoutesConcurrency,
             logfile: './log/routeMiddleware.log',
+        },
+        proxyMiddleware: {
+            routes: [
+                {url: '/api/feedback', originUrl: originApiHost + '/api.php', method: 'POST'},
+            ]
         },
         articlePageMiddleware: {
             fragments: [

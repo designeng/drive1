@@ -1,0 +1,32 @@
+<div id="main">
+    <div class="spr page-top-shadow"></div>
+<h1>Обратная связь</h1>
+<div class="article">
+<p><span class="dropcap">З</span>десь вы можете отправить нам своё предложение, пожелание, сообщение об&nbsp;ошибке или что-то ещё. Мы&nbsp;внимательно прочитаем ваше послание, но&nbsp;просим учесть, что&nbsp;ответа не&nbsp;гарантируем. В&nbsp;переписку вступаем крайне редко.&nbsp;Спасибо.</p>
+</div>
+
+<form id="feedback-form" action="/api/feedback" class="form form-compact" method="post" novalidate data-action="submit:fform.default">
+    <div class="field">
+        <div class="legend">
+            <label for="feedback-name">Ваш email</label>
+        </div>
+        <input id="feedback-name" type="text" name="email" value="test@test.ru"  style="width: 430px;" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+    </div>
+    <div class="field">
+        <div class="legend">
+            <label for="feedback-text">Сообщение</label>
+        </div>
+        <textarea id="feedback-text" name="text" required value="test message" style="width: 430px; height: 200px; resize: vertical;"></textarea>
+    </div>
+    <div class="field">
+        <button class="sbutton sbutton-big" type="submit">Отправить</button>
+    </div>
+    <input type="hidden" name="mode" value="feedback">
+    <input type="hidden" name="url" value="/feedback"?>
+</form>
+<script>
+    drv.validatorAddRules('feedback-form',
+        ['email', 'Введите валидный email', 'pattern'],
+        ['text', 'Введите текст сообщения', 'required']);
+</script>
+</div>
