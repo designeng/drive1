@@ -28,10 +28,11 @@ const endpoints = {
 
     // raw:
     companiesPage           : "/companies",
+    companiesBrandPage      : "/companies/{brand}",
 }
 
-function getBaseUrl(mode) {
-    if(mode == 'raw') {
+function getBaseUrl(options) {
+    if(options && options.mode == 'raw') {
         return config.protocol + '://' + config.host;
     }
 
@@ -40,7 +41,7 @@ function getBaseUrl(mode) {
 
 export default config;
 
-export function getEndpoint(item, replacement) {
+export function getEndpoint(item, replacement, options) {
     let fragmentRegex = /{(.*?)}/g,
         urlRest;
 
@@ -60,9 +61,5 @@ export function getEndpoint(item, replacement) {
         }
     }
     
-    return getBaseUrl() + urlRest;
-}
-
-export function getRawEndpoint(item) {
-    return getBaseUrl('raw') + endpoints[item];
+    return getBaseUrl(options) + urlRest;
 }

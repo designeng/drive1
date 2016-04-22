@@ -50,6 +50,10 @@ const routes = [
             url: '/companies',
             routeSpec: companiesPageSpec
       },
+      {
+            url: '/companies/:brand',
+            routeSpec: companiesPageSpec
+      },
       // page with news list for given category
       {
             url: '/:category',

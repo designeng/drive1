@@ -24,8 +24,9 @@ function routeMiddleware(resolver, facet, wire) {
             let provide     = route.provide;
 
             let environment = {
-                brand: null,
-                category: null
+                brand   : null,
+                city    : null,
+                category: null,
             };
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
@@ -57,7 +58,7 @@ function routeMiddleware(resolver, facet, wire) {
             const { query } = url.parse(req.url, true);
 
             if(query.city) {
-                _.extend(environment, { cityId: query.city });
+                _.extend(environment, { city: {id: query.city }});
             }
 
             // TODO: 404error page

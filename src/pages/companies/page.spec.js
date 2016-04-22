@@ -1,7 +1,7 @@
 import wireDebugPlugin   from 'essential-wire/source/debug';
 import requestPlugin        from '../../plugins/api/request';
 
-import { getRawEndpoint } from '../../config/api';
+import { getEndpoint } from '../../config/api';
 
 import controller from './controller';
 
@@ -11,13 +11,26 @@ export default {
         requestPlugin,
     ],
 
-    companiesPageEndpoint: {
+    cityData: {
         create: {
-            module: (cityId) => {
-                return [getRawEndpoint('companiesPage'), {city: cityId, raw: true}];
+            module: (city) => {
+                return city ? city : {id: 2191}
             },
             args: [
-                {$ref: 'cityId'}
+                {$ref: 'city'}
+            ]
+        }
+    },
+
+    companiesPageEndpoint: {
+        create: {
+            module: (brand, city) => {
+                let rawEndpoint = brand ? getEndpoint('companiesBrandPage', {brand: brand.id}, {mode: 'raw'}) : getEndpoint('companiesPage', null, {mode: 'raw'});
+                return [rawEndpoint, {city: city, raw: true}];
+            },
+            args: [
+                {$ref: 'brand'},
+                {$ref: 'cityData'}
             ]
         }
     },
