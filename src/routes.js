@@ -29,13 +29,8 @@ let footerLinks = {
 };
 
 const routes = [
-      // TODO: handle aliases?
       {
             url: '/',
-            routeSpec: mainPageSpec
-      },
-      {
-            url: '/main',
             routeSpec: mainPageSpec
       },
       {
