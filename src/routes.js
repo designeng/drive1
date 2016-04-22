@@ -50,6 +50,19 @@ const routes = [
             routeSpec: talkPageSpec
       },
       {
+            url: '/talk/:brand',
+            routeSpec: talkPageSpec
+      },
+      // TODO: firstTalkId & secondTalkId - what they mean exactly?
+      {
+            url: '/talk/:brand/:firstTalkId',
+            routeSpec: talkPageSpec
+      },
+      {
+            url: '/talk/:brand/:firstTalkId/:secondTalkId',
+            routeSpec: talkPageSpec
+      },
+      {
             url: '/companies',
             routeSpec: companiesPageSpec
       },
