@@ -53,13 +53,13 @@ const routes = [
             url: '/talk/:brand',
             routeSpec: talkPageSpec
       },
-      // TODO: firstTalkId & secondTalkId - what they mean exactly?
+      // TODO: talkFirstId & talkSecondId - what they mean exactly?
       {
-            url: '/talk/:brand/:firstTalkId',
+            url: '/talk/:brand/:talkFirstId',
             routeSpec: talkPageSpec
       },
       {
-            url: '/talk/:brand/:firstTalkId/:secondTalkId',
+            url: '/talk/:brand/:talkFirstId/:talkSecondId',
             routeSpec: talkPageSpec
       },
       // /TODO
