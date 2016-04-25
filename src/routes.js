@@ -50,16 +50,16 @@ const routes = [
             routeSpec: talkPageSpec
       },
       {
-            url: '/talk/:brand',
+            url: '/talk/:theme',
             routeSpec: talkPageSpec
       },
       // TODO: talkFirstId & talkSecondId - what they mean exactly?
       {
-            url: '/talk/:brand/:talkFirstId',
+            url: '/talk/:theme/:talkFirstId',
             routeSpec: talkPageSpec
       },
       {
-            url: '/talk/:brand/:talkFirstId/:talkSecondId',
+            url: '/talk/:theme/:talkFirstId/:talkSecondId',
             routeSpec: talkPageSpec
       },
       // /TODO

@@ -9,6 +9,7 @@ import isArticlePage    from '../../../utils/isArticlePage';
 import articlePageSpec  from '../../../pages/article/page.spec';
 import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
+import themes           from '../../../config/themes';
 
 import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 import { createTasks, createTask } from '../../../utils/tasks';
@@ -37,6 +38,7 @@ function routeMiddleware(resolver, facet, wire) {
                 brand           : null,
                 city            : null,
                 category        : null,
+                theme           : null,
                 talkFirstId     : null,
                 talkSecondId    : null,
             };
@@ -61,6 +63,13 @@ function routeMiddleware(resolver, facet, wire) {
                     year    : req.params.year,
                     model   : req.params.model,
                 } });
+            }
+
+            // talk
+            if(req.params && req.params.theme) {
+                _.extend(environment, { 
+                    theme: _.find(brands, {id: req.params.theme}) || _.find(themes, {id: req.params.theme})
+                });
             }
 
             if(req.params && req.params.talkFirstId) {
