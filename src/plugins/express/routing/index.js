@@ -5,7 +5,8 @@ import chalk from 'chalk';
 import pipeline from 'when/pipeline';
 import rootWire from 'essential-wire';
 
-import isArticlePage    from '../../../utils/isArticlePage';
+import { isArticlePage, isCommentPage } from '../../../utils/page';
+
 import articlePageSpec  from '../../../pages/article/page.spec';
 import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
@@ -148,6 +149,8 @@ function articlePageMiddleware(resolver, facet, wire) {
                         res.status(500).end(error)
                     }
                 );
+            } else if (isCommentPage(requestUrlArr)) {
+                res.status(200).end("page with comments: " + requestUrl);
             }
         });
     })

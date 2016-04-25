@@ -6,13 +6,14 @@ import controller from './controller';
 
 export default {
     $plugins: [
-        // wireDebugPlugin,
+        wireDebugPlugin,
         requestPlugin,
     ], 
 
     articleEndpoint: {
         create: {
             module: (articleId) => {
+                console.log("articleId:::::", articleId);
                 return getEndpoint('article', {id: articleId})
             },
             args: [
