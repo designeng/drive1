@@ -29,6 +29,12 @@ const preprocessNews = (items) => {
 // TODO: refactor to DRY
 const largeNewsHtml = (items) => {
     return _.reduce(items, (result, item) => {
+        if ((items.indexOf(item) + 1) % 2 === 0) {
+            item.shadowClass = 'ncard-shl';
+        } else {
+            item.shadowClass = 'ncard-shr';
+        }
+
         result = result + itemLarge(item);
         return result;
     }, '');
