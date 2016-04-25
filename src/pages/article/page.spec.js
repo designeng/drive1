@@ -13,7 +13,6 @@ export default {
     articleEndpoint: {
         create: {
             module: (articleId) => {
-                console.log("articleId:::::", articleId);
                 return getEndpoint('article', {id: articleId})
             },
             args: [

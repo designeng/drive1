@@ -8,6 +8,8 @@ import rootWire from 'essential-wire';
 import { isArticlePage, isCommentPage } from '../../../utils/page';
 
 import articlePageSpec  from '../../../pages/article/page.spec';
+import commentsPageSpec from '../../../pages/talk/comments/page.spec';
+
 import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
 import themes           from '../../../config/themes';
@@ -124,33 +126,37 @@ function articlePageMiddleware(resolver, facet, wire) {
     }) => {
         let fragmentKeys = _.keys(fragments);
 
+        const renderNodePage = (requestUrl, nodePageSpec, res) => {
+            let articleId = requestUrl.match(articleIdRexeg)[0];
+
+            let tasks = [bootstrapTask, getRouteTask(nodePageSpec)];
+
+            const extraTask = () => {
+                return rootWire({ articleId });
+            }
+            tasks.unshift(extraTask);
+
+            pipeline(tasks).then(
+                (context) => {
+                    res.status(200).end(context.body.html);
+                },
+                (error) => {
+                    res.status(500).end(error)
+                }
+            );
+        }
+
         target.get('*', function (req, res, next) {
             let requestUrl = req.url;
             const requestUrlArr = requestUrl.split('/');
             // remove zero blank element
             requestUrlArr.shift();
 
+            // TODO: optimize code
             if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
-
-                var articleId = requestUrl.match(articleIdRexeg)[0];
-
-                let tasks = [bootstrapTask, getRouteTask(articlePageSpec)];
-
-                const articleTask = () => {
-                    return rootWire({ articleId });
-                }
-                tasks.unshift(articleTask);
-
-                pipeline(tasks).then(
-                    (context) => {
-                        res.status(200).end(context.body.html);
-                    },
-                    (error) => {
-                        res.status(500).end(error)
-                    }
-                );
+                renderNodePage(requestUrl, articlePageSpec, res);
             } else if (isCommentPage(requestUrlArr)) {
-                res.status(200).end("page with comments: " + requestUrl);
+                renderNodePage(requestUrl, commentsPageSpec, res);
             }
         });
     })

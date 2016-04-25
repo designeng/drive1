@@ -29,6 +29,7 @@ const endpoints = {
     // raw:
     companiesPage           : "/companies/{brand}",
     talkPage                : "/talk/{theme}/{talkFirstId}/{talkSecondId}",
+    commentsPage            : "/talk/comments/{id}.html",
 }
 
 function getBaseUrl(options) {
