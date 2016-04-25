@@ -1,0 +1,52 @@
+.company-col-1 {float: left; width: 573px;}
+.company-col-2 {float: right; width: 277px;}
+
+.company-left-col {width: 435px; float: left;}
+.company-right-col {width: 415px; float: right;}
+
+.company-add-btn {float: right; margin: 0 0 0 15px;}
+
+.company-photos .frame-index-1 {margin: 15px -21px 38px 15px;}
+.company-photos .frame-index-2 {margin: -140px -21px 38px 45px;}
+.company-photos .frame-index-3 {margin: -120px -21px 38px -10px;}
+
+.company-activities {margin: 0 0 20px 115px; color: #808080; font: 11px/13px sans-serif; text-shadow: 1px 1px #fff;}
+.company-activities li {margin: 0 0 7px 1.5em;}
+.company-activities li:before {content: '\2014\a0'; float: left; margin-left: -1.5em;}
+.ie7 .company-activities li {list-style-type: disc;}
+
+.company-pic {float: left; width: 100px; margin: 3px 20px 20px 0; line-height: 0;}
+
+.company-blog-list {margin: 0 0 10px;}
+.company-blog-list .nncard {margin-left: -25px;}
+.company-blog-list-desc {margin: 0 0 20px; font-size: 14px; color: #808080; text-shadow: 1px 1px #fff;}
+
+.company-forum-list {margin: 0 0 20px;}
+
+.company-forum-list-more {font-size: 11px;}
+.company-forum-list-btn {float: right;}
+
+.company-feedback {margin: 0 0 20px;;}
+.company-feedback-desc {font-size: 11px; color: #808080; text-shadow: 1px 1px #fff;}
+.company-feedback-disabled {color: #808080;}
+
+.company-contacts {clear: left; margin: 0 0 20px;}
+.company-contacts-address {margin: 0 0 5px; font: 14px/1.2 sans-serif;}
+.company-contacts-info {margin: 0 0 15px; font: 14px/1.2 sans-serif;}
+.company-contacts-info div {margin: 0 0 5px;}
+/*
+.company-contacts-info th,
+.company-contacts-info td {padding: 0 0 5px;}
+.company-contacts-info th {padding-right: .7em; text-align: right; font-weight: normal;}
+*/
+
+.contacts-map {width: 571px; height: 428px; border: 1px solid #fff; border-color: #d0d0d0 #fff #fff #d0d0d0;}
+
+.company-about {margin: 0 0 20px;}
+.company-about-text {font: 14px/1.5 sans-serif;}
+
+.company-list-brands {margin: 0 0 10px; overflow: hidden;}
+.company-list-brands li {float: left; margin: 0 1em 10px 0; font: 16px/1.2 sans-serif;}
+
+.company-list-cols {float: left; width: 176px; margin: 0 15px 20px 0;}
+.company-list-cols li {margin: 0 1em 10px 0; font: 16px/1.2 sans-serif;}

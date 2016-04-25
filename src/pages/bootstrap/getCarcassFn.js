@@ -17,6 +17,7 @@ import topControls          from '../../templates/build/topControls';
 import brandsList           from '../../templates/build/brandsList';
 
 import widget_adfoxTopMobile from '../../templates/build/widgets/widget_adfoxTopMobile';
+import additionalStyles     from '../../templates/build/partials/additionalStyles';
 import sprite               from '../../templates/build/partials/sprite';
 import backgroundSprite     from '../../templates/build/partials/backgroundSprite';
 import hr                   from '../../templates/build/partials/hr';
@@ -26,10 +27,11 @@ import registerPartials from '../../utils/handlebars/registerPartials';
 
 registerPartials({
     widget_adfoxTopMobile,
-    'sprite': sprite,
-    'backgroundSprite': backgroundSprite,
-    'ins': ins,
-    'hr': hr
+    additionalStyles,
+    sprite,
+    backgroundSprite,
+    ins,
+    hr
 });
 
 const headerHtml = (cities) => {
@@ -43,10 +45,12 @@ const headerHtml = (cities) => {
 
 function getCarcass(brands, cities) {
 
-    const getCarcassFn = (pageContentHtml) => {
+    const getCarcassFn = (pageContentHtml, styles) => {
         return carcass({
             htmlClass: '',
-            head: head(),
+            head: head(
+                styles
+            ),
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
                 header: headerHtml({
