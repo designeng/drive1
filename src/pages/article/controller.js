@@ -18,6 +18,7 @@ registerPartials({
 
 const composePageContentHtml = (articleData) => {
     return articlePageContent({
+        id: articleData.id,
         caption: articleData.caption,
         time: articleData.time,
         company: articleData.company,
