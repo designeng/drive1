@@ -1,6 +1,6 @@
 function controller(companiesPageData, getCarcassFn) {
     const additionalStyles = [
-        {path: '/css/companies.css'}
+        {path: '/css/company.css'}
     ];
     
     return {

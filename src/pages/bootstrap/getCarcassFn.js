@@ -69,11 +69,13 @@ const headerHtml = (cities) => {
 function getCarcass(brands, cities) {
 
     const getCarcassFn = (pageContentHtml, styles) => {
+        console.log("styles::::", styles);
         return carcass({
             htmlClass: '',
-            head: head(
+            head: head({
+                title: 'Drive.ru',
                 styles
-            ),
+            }),
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
                 header: headerHtml({
