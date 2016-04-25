@@ -60,6 +60,7 @@ export function getEndpoint(item, replacement, options) {
         }
     }
 
+    // TODO: test it
     // remove extra slashes from endpoint
     endpoint = endpoint.replace(/(\/{2})/g, '/');
 
