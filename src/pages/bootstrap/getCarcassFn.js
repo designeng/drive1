@@ -17,6 +17,18 @@ import topControls          from '../../templates/build/topControls';
 import brandsList           from '../../templates/build/brandsList';
 
 import widget_adfoxTopMobile from '../../templates/build/widgets/widget_adfoxTopMobile';
+import widget_adfoxMiddleMobile from '../../templates/build/widgets/widget_adfoxMiddleMobile';
+import widget_adfoxTop from '../../templates/build/widgets/widget_adfoxTop';
+import widget_adfoxSiteHeader from '../../templates/build/widgets/widget_adfoxSiteHeader';
+import widget_yandexMetrika from '../../templates/build/widgets/widget_yandexMetrika';
+import widget_teasers from '../../templates/build/widgets/widget_teasers';
+import widget_relap from '../../templates/build/widgets/widget_relap';
+import widget_adriver from '../../templates/build/widgets/widget_adriver';
+import widget_adfoxVideo from '../../templates/build/widgets/widget_adfoxVideo';
+import widget_adfoxButton from '../../templates/build/widgets/widget_adfoxButton';
+import widget_adfoxBottomMobile from '../../templates/build/widgets/widget_adfoxBottomMobile';
+import widget_adfoxBottom from '../../templates/build/widgets/widget_adfoxBottom';
+
 import additionalStyles     from '../../templates/build/partials/additionalStyles';
 import sprite               from '../../templates/build/partials/sprite';
 import backgroundSprite     from '../../templates/build/partials/backgroundSprite';
@@ -27,6 +39,17 @@ import registerPartials from '../../utils/handlebars/registerPartials';
 
 registerPartials({
     widget_adfoxTopMobile,
+    widget_adfoxMiddleMobile,
+    widget_adfoxBottomMobile,
+    widget_adfoxTop,
+    widget_adfoxBottom,
+    widget_adfoxSiteHeader,
+    widget_yandexMetrika,
+    widget_teasers,
+    widget_adriver,
+    widget_relap,
+    widget_adfoxVideo,
+    widget_adfoxButton,
     additionalStyles,
     sprite,
     backgroundSprite,
