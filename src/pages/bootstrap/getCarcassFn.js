@@ -69,7 +69,6 @@ const headerHtml = (cities) => {
 function getCarcass(brands, cities) {
 
     const getCarcassFn = (pageContentHtml, styles) => {
-        console.log("styles::::", styles);
         return carcass({
             htmlClass: '',
             head: head({

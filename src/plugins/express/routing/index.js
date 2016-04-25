@@ -34,9 +34,11 @@ function routeMiddleware(resolver, facet, wire) {
             // END TODO
 
             let environment = {
-                brand   : null,
-                city    : null,
-                category: null,
+                brand           : null,
+                city            : null,
+                category        : null,
+                talkFirstId     : null,
+                talkSecondId    : null,
             };
 
             let tasks = [bootstrapTask, getRouteTask(routeSpec)];
@@ -59,6 +61,14 @@ function routeMiddleware(resolver, facet, wire) {
                     year    : req.params.year,
                     model   : req.params.model,
                 } });
+            }
+
+            if(req.params && req.params.talkFirstId) {
+                _.extend(environment, { talkFirstId: req.params.talkFirstId });
+            }
+
+            if(req.params && req.params.talkSecondId) {
+                _.extend(environment, { talkSecondId: req.params.talkSecondId });
             }
 
             if(provide) {

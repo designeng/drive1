@@ -62,6 +62,7 @@ const routes = [
             url: '/talk/:brand/:firstTalkId/:secondTalkId',
             routeSpec: talkPageSpec
       },
+      // /TODO
       {
             url: '/companies',
             routeSpec: companiesPageSpec

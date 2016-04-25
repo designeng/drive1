@@ -25,8 +25,10 @@ export default {
     companiesPageEndpoint: {
         create: {
             module: (brand, city) => {
-                let rawEndpoint = brand ? getEndpoint('companiesBrandPage', {brand: brand.id}, {mode: 'raw'}) : getEndpoint('companiesPage', null, {mode: 'raw'});
-                return [rawEndpoint, {city: city.id, raw: true}];
+                brand = brand ? brand.id : null;
+                city = city.id;
+                let rawEndpoint = getEndpoint('companiesPage', {brand, city}, {mode: 'raw'});
+                return [rawEndpoint, {raw: true}];
             },
             args: [
                 {$ref: 'brand'},

@@ -27,10 +27,8 @@ const endpoints = {
     brandModelComplectation : "/items/cars/{brand}/models/{year}/{model}/{complectation}",
 
     // raw:
-    companiesPage           : "/companies",
-    companiesBrandPage      : "/companies/{brand}",
-    talkPage                : "/talk",
-    talkBrandPage           : "/talk/{brand}",
+    companiesPage           : "/companies/{brand}",
+    talkPage                : "/talk/{brand}/{talkFirstId}/{talkSecondId}",
 }
 
 function getBaseUrl(options) {
@@ -45,23 +43,27 @@ export default config;
 
 export function getEndpoint(item, replacement, options) {
     let fragmentRegex = /{(.*?)}/g,
-        urlRest;
+        endpoint = endpoints[item];
 
-    if(!endpoints[item]) {
+    if(!endpoint) {
         throw new Error('No such endpoint: ' + item);
-    } else {
-        urlRest = endpoints[item];
     }
 
     if(replacement) {
-        let matches = urlRest.match(fragmentRegex);
+        let matches = endpoint.match(fragmentRegex);
         if(matches) {
-            urlRest = _.reduce(matches, (result, item) => {
-                result = result.replace(item, replacement[item.slice(1).slice(0, -1)]);
+            endpoint = _.reduce(matches, (result, item) => {
+                let replaceWith = replacement[item.slice(1).slice(0, -1)];
+                result = replaceWith ? result.replace(item, replaceWith) : result.replace(item, '');
                 return result;
-            }, urlRest);
+            }, endpoint);
         }
     }
+
+    // remove extra slashes from endpoint
+    endpoint = endpoint.replace(/(\/{2})/g, '/');
+
+    endpoint = getBaseUrl(options) + endpoint;
     
-    return getBaseUrl(options) + urlRest;
+    return endpoint;
 }
