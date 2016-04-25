@@ -18,14 +18,14 @@ registerPartials({
 
 const composePageContentHtml = (articleData) => {
     return articlePageContent({
-        сaption: articleData.сaption,
+        caption: articleData.caption,
         time: articleData.time,
         company: articleData.company,
         dropcap: articleData.dropcap,
         video: articleData.video,
         lead: articleData.lead,
         gallery: articleData.gallery,
-        
+        category: articleData.category,
         articleContent: articleData.articleContent,
         commentsCount: articleData.commentsCount,
     })
