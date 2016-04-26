@@ -4,7 +4,7 @@ import url from 'url';
 import chalk from 'chalk';
 import pipeline from 'when/pipeline';
 
-import { isArticlePage, isCommentPage, isCompanyPage, isTalkPage } from '../../../utils/page';
+import { isArticlePage, isNodePage } from '../../../utils/page';
 
 import bootstrapSpec    from '../../../pages/bootstrap/bootstrap.spec';
 import articlePageSpec  from '../../../pages/article/page.spec';
@@ -149,24 +149,24 @@ function articlePageMiddleware(resolver, facet, wire) {
             // remove zero blank element
             requestUrlArr.shift();
 
-            // TODO: optimize code?
-            if(isCompanyPage(requestUrlArr)) {
+            if(isNodePage(requestUrlArr, {fragment: 'company'})) {
                 renderNodePage(requestUrl, nodePageSpec, res, {
                     additionalStyles: [{path: '/css/company.css'}],
                     endpoint: 'companyPage'
                 });
             } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
                 renderNodePage(requestUrl, articlePageSpec, res);
-            } else if (isCommentPage(requestUrlArr)) {
+            } else if (isNodePage(requestUrlArr, {fragment: 'comments'})) {
                 renderNodePage(requestUrl, nodePageSpec, res, {
                     additionalStyles: [{path: '/css/forum.css'}],
                     endpoint: 'commentsPage'
                 });
-            } else if (isTalkPage(requestUrlArr)) {
-                renderNodePage(requestUrl, nodePageSpec, res, {
-                    additionalStyles: [{path: '/css/forum.css'}],
-                    endpoint: 'talkPage'
-                });
+            } else if (isNodePage(requestUrlArr, {fragment: 'talk'})) {
+                res.status(200).end("some talk page::: " + requestUrl);
+                // renderNodePage(requestUrl, nodePageSpec, res, {
+                //     additionalStyles: [{path: '/css/forum.css'}],
+                //     endpoint: 'threadTalkPage'
+                // });
             } else {
                 // 404 ?
                 res.status(200).end("not recognized page::: " + requestUrl);

@@ -31,6 +31,8 @@ const endpoints = {
     companyPage             : "/company/{id}.html",
     talkPage                : "/talk/{theme}/{talkFirstId}/{talkSecondId}",
     commentsPage            : "/talk/comments/{id}.html",
+    // TODO: is it thread?
+    threadTalkPage          : "/talk/{id}.html",
 }
 
 function getBaseUrl(options) {
