@@ -6,6 +6,7 @@ import pipeline from 'when/pipeline';
 
 import { isArticlePage, isCommentPage } from '../../../utils/page';
 
+import bootstrapSpec    from '../../../pages/bootstrap/bootstrap.spec';
 import articlePageSpec  from '../../../pages/article/page.spec';
 import commentsPageSpec from '../../../pages/talk/comments/page.spec';
 
@@ -13,7 +14,6 @@ import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
 import themes           from '../../../config/themes';
 
-import { bootstrapTask, getRouteTask } from '../../../utils/tasks/specTasks';
 import { createTasks, createTask } from '../../../utils/tasks';
 
 const articleIdRexeg = /([^\/]+)(?=\.\w+$)/;
@@ -45,7 +45,7 @@ function routeMiddleware(resolver, facet, wire) {
                 talkSecondId    : null,
             };
 
-            let tasks = [bootstrapTask, getRouteTask(routeSpec)];
+            let tasks = createTasks([bootstrapSpec, routeSpec]);
 
             if(req.params && req.params.category) {
                 let category = _.find(categories, {id: req.params.category});
@@ -126,7 +126,7 @@ function articlePageMiddleware(resolver, facet, wire) {
         let fragmentKeys = _.keys(fragments);
 
         const renderNodePage = (requestUrl, nodePageSpec, res) => {
-            let tasks = [bootstrapTask, getRouteTask(nodePageSpec)];
+            let tasks = createTasks([bootstrapSpec, nodePageSpec]);
 
             let environment = {
                 articleId: requestUrl.match(articleIdRexeg)[0]
