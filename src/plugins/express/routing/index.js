@@ -44,6 +44,7 @@ function routeMiddleware(resolver, facet, wire) {
                 theme           : null,
                 talkFirstId     : null,
                 talkSecondId    : null,
+                requestUrl      : req.url,
             };
 
             let tasks = createTasks([bootstrapSpec, routeSpec]);
@@ -128,10 +129,11 @@ function articlePageMiddleware(resolver, facet, wire) {
     }) => {
         let fragmentKeys = _.keys(fragments);
 
-        const renderNodePage = (requestUrl, nodePageSpec, res, environment = {}) => {
+        const renderNodePage = (req, res, nodePageSpec, environment = {}) => {
+            let requestUrl = req.url;
             let tasks = createTasks([bootstrapSpec, nodePageSpec]);
 
-            _.extend(environment, { nodeId: requestUrl.match(articleIdRexeg)[0] });
+            _.extend(environment, { nodeId: requestUrl.match(articleIdRexeg)[0], requestUrl });
 
             tasks.unshift(createTask(environment));
 
@@ -152,14 +154,14 @@ function articlePageMiddleware(resolver, facet, wire) {
             requestUrlArr.shift();
 
             if(isNodePage(requestUrlArr, {fragment: 'company'})) {
-                renderNodePage(requestUrl, nodePageSpec, res, {
+                renderNodePage(req, res, nodePageSpec, {
                     additionalStyles: [{path: '/css/company.css'}],
                     endpoint: 'companyPage'
                 });
             } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
-                renderNodePage(requestUrl, articlePageSpec, res);
+                renderNodePage(req, res, articlePageSpec);
             } else if (isNodePage(requestUrlArr, {fragment: 'comments'})) {
-                renderNodePage(requestUrl, nodePageSpec, res, {
+                renderNodePage(req, res, nodePageSpec, {
                     additionalStyles: [{path: '/css/forum.css'}],
                     endpoint: 'commentsPage'
                 });

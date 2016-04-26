@@ -58,16 +58,19 @@ registerPartials({
     hr
 });
 
-const headerHtml = (cities) => {
+const headerHtml = (cities, receptionUrl) => {
     return header({
-        topControls: topControls(),
+        topControls: topControls({
+            receptionUrl,
+            signupUrl: 'TODO'
+        }),
         logo: logo(),
         citySelector: citySelector(cities),
         nav: nav()
     })
 }
 
-function getCarcass(brands, cities) {
+function getCarcass(brands, cities, receptionUrl) {
 
     const getCarcassFn = (pageContentHtml, styles) => {
         return carcass({
@@ -78,9 +81,7 @@ function getCarcass(brands, cities) {
             }),
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
-                header: headerHtml({
-                    cities
-                }),
+                header: headerHtml(cities, receptionUrl),
                 mobileNav: mobileNav(),
                 additionalNav: additionalNav(),
                 brandsList: brandsList({
