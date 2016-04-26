@@ -4,11 +4,12 @@ import url from 'url';
 import chalk from 'chalk';
 import pipeline from 'when/pipeline';
 
-import { isArticlePage, isCommentPage } from '../../../utils/page';
+import { isArticlePage, isCommentPage, isCompanyPage } from '../../../utils/page';
 
 import bootstrapSpec    from '../../../pages/bootstrap/bootstrap.spec';
 import articlePageSpec  from '../../../pages/article/page.spec';
 import commentsPageSpec from '../../../pages/talk/comments/page.spec';
+import companyPageSpec  from '../../../pages/companies/company/page.spec';
 
 import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
@@ -150,11 +151,16 @@ function articlePageMiddleware(resolver, facet, wire) {
             // remove zero blank element
             requestUrlArr.shift();
 
-            // TODO: optimize code
-            if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
+            // TODO: optimize code?
+            if(isCompanyPage(requestUrlArr)) {
+                renderNodePage(requestUrl, companyPageSpec, res);
+            } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
                 renderNodePage(requestUrl, articlePageSpec, res);
             } else if (isCommentPage(requestUrlArr)) {
                 renderNodePage(requestUrl, commentsPageSpec, res);
+            } else {
+                // 404 ?
+                res.status(200).end("not recognized page::: " + requestUrl);
             }
         });
     })

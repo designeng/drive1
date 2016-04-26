@@ -26,7 +26,13 @@ export function isArticlePage(requestUrlArr, firstBounds, middleBounds, lastBoun
     return isArticlePage;
 }
 
+// TODO: optimize
 export function isCommentPage(requestUrlArr) {
-    let commentsFragment = 'comments';
-    return _.indexOf(requestUrlArr, commentsFragment) != -1 ? true : false;
+    let targetFragment = 'comments';
+    return _.indexOf(requestUrlArr, targetFragment) != -1 ? true : false;
+}
+
+export function isCompanyPage(requestUrlArr) {
+    let targetFragment = 'company';
+    return _.indexOf(requestUrlArr, targetFragment) != -1 ? true : false;
 }

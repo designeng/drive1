@@ -28,6 +28,7 @@ const endpoints = {
 
     // raw:
     companiesPage           : "/companies/{brand}",
+    companyPage             : "/company/{id}.html",
     talkPage                : "/talk/{theme}/{talkFirstId}/{talkSecondId}",
     commentsPage            : "/talk/comments/{id}.html",
 }
