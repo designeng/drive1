@@ -8,7 +8,13 @@ export default function utmEnrich(data, utmItems) {
         .join('&');
 
     function enrich(item) {
-        item['utm'] = utmString;
+        if (item.url) {
+            let delimiter = item.url.indexOf('?') === -1 ? '?' : '&';
+
+            item.url += delimiter + utmString;
+        } else {
+            console.error('ERROR::::', 'No url property to enrich');
+        }
 
         return item;
     }
