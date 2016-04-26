@@ -1,6 +1,8 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
+import utmEnrich from '../../../utils/utmEnrich.js';
+
 import pageContent  from '../../../templates/build/pages/model';
 import itemPlain    from '../../../templates/build/itemPlain';
 import dealersList  from '../../../templates/build/dealersList';
@@ -40,6 +42,13 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
     let newsItems = getNews(getNewsArray(brandNewsData));
     let dealersList = getDealersList(dealersData);
 
+    const utmItems = {
+        source: 'DRIVE',
+        medium: 'experience',
+        campaign: brandModelData.brand.id,
+        content: brandModelData.caption
+    };
+
     return pageContent({
         brand           : brandModelData.brand,
         caption         : brandModelData.caption,
@@ -50,7 +59,7 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         gallery         : brandModelData.gallery,
         configurations  : brandModelData.configurations,
         similar         : brandModelData.similar,
-        experience      : brandModelData.experience,
+        experience      : utmEnrich(brandModelData.experience, utmItems),
         d2Cars          : brandModelData.d2Cars,
 
         city            : city,
