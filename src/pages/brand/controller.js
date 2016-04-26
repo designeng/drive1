@@ -1,9 +1,7 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
-import moment from 'moment';
-
-moment.locale('ru');
+import preprocessCaption    from '../../utils/preprocessCaption';
 
 import pageContent          from '../../templates/build/pages/brand';
 import itemLarge            from '../../templates/build/itemLarge';
@@ -54,6 +52,8 @@ const composePageContentHtml = (carIconsData, testDrivesData, brandNewsData, bra
 };
 
 function controller(carIconsData, testDrivesData, brandNewsData, brand, getCarcassFn) {
+    testDrivesData = preprocessCaption(testDrivesData, {mode: 'text'});
+    brandNewsData = preprocessCaption(brandNewsData, {mode: 'link'});
     let pageContentHtml = composePageContentHtml(carIconsData, testDrivesData, brandNewsData, brand);
 
     return {

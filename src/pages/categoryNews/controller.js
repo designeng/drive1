@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import preprocessCaption from '../../utils/preprocessCaption';
 
 import pageContent from '../../templates/build/pages/news';
 import itemCompact from '../../templates/build/itemCompact';
@@ -20,7 +21,7 @@ const composePageContentHtml = (brand, category, newsData) => {
 
 function controller(brand, category, newsData, getCarcassFn) {
 
-    let pageContentHtml = composePageContentHtml(brand, category, newsData);
+    let pageContentHtml = composePageContentHtml(brand, category, preprocessCaption(newsData, {mode: 'link'}));
 
     return {
         html: getCarcassFn(pageContentHtml)

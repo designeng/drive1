@@ -1,3 +1,5 @@
+import caption from '../../utils/caption';
+
 import articlePageContent   from '../../templates/build/pages/article';
 
 import articleHeader        from '../../templates/build/partials/articleHeader';
@@ -19,7 +21,7 @@ registerPartials({
 const composePageContentHtml = (articleData) => {
     return articlePageContent({
         id: articleData.id,
-        caption: articleData.caption,
+        caption: caption(articleData, {mode: 'text'}),
         time: articleData.time,
         company: articleData.company,
         dropcap: articleData.dropcap,

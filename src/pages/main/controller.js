@@ -1,8 +1,7 @@
 import _ from 'underscore';
 import chalk from 'chalk';
 
-import moment from 'moment';
-moment.locale('ru');
+import preprocessCaption from '../../utils/preprocessCaption';
 
 import pageContent          from '../../templates/build/pages/main';
 
@@ -14,17 +13,6 @@ import itemCompact          from '../../templates/build/itemCompact';
 // TODO: rename template?
 import videoThumbnail       from '../../templates/build/videoThumbnail';
 import blogEntry            from '../../templates/build/blogEntry';
-
-const preprocessNews = (items) => {
-    return _.map(items, (item) => {
-        return _.extend({}, item, {
-            time    : moment.unix(item.time).fromNow(),
-            caption : item.caption.replace(/\{(.*?)\}/, function(match, aText) {
-                return '<a href="' + item.url + '">' + aText + '</a>';
-            })
-        });
-    });
-}
 
 // TODO: refactor to DRY
 const largeNewsHtml = (items) => {
@@ -80,8 +68,8 @@ const composePageContentHtml = (topNews, mainNews, topVideos, topBlogs, cellar) 
 
 function controller(topStories, topVideos, topBlogs, cellar, getCarcassFn) {
 
-    let topNews     = topStories['topNews'];
-    let mainNews    = preprocessNews(topStories['mainNews']);
+    let topNews     = preprocessCaption(topStories['topNews'], {mode: 'text'});
+    let mainNews    = preprocessCaption(topStories['mainNews'], {mode: 'link'});
 
     let pageContentHtml = composePageContentHtml(
         topNews,

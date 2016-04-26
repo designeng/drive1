@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import preprocessCaption from '../../utils/preprocessCaption';
 
 import pageContent          from '../../templates/build/pages/testDrives';
 import brandFilter          from '../../templates/build/brandFilter';
@@ -46,7 +47,7 @@ const composePageContentHtml = (brandFilterData, testDrivesData, brand) => {
 
 function controller(brandFilterData, testDrivesData, brand, getCarcassFn) {
 
-    let pageContentHtml = composePageContentHtml(brandFilterData, testDrivesData, brand);
+    let pageContentHtml = composePageContentHtml(brandFilterData, preprocessCaption(testDrivesData, {mode: 'text'}), brand);
 
     return {
         html: getCarcassFn(pageContentHtml)
