@@ -3,7 +3,6 @@ import _  from 'underscore';
 import url from 'url';
 import chalk from 'chalk';
 import pipeline from 'when/pipeline';
-import rootWire from 'essential-wire';
 
 import { isArticlePage, isCommentPage } from '../../../utils/page';
 
@@ -127,14 +126,13 @@ function articlePageMiddleware(resolver, facet, wire) {
         let fragmentKeys = _.keys(fragments);
 
         const renderNodePage = (requestUrl, nodePageSpec, res) => {
-            let articleId = requestUrl.match(articleIdRexeg)[0];
-
             let tasks = [bootstrapTask, getRouteTask(nodePageSpec)];
 
-            const extraTask = () => {
-                return rootWire({ articleId });
+            let environment = {
+                articleId: requestUrl.match(articleIdRexeg)[0]
             }
-            tasks.unshift(extraTask);
+
+            tasks.unshift(createTask(environment));
 
             pipeline(tasks).then(
                 (context) => {
