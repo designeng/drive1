@@ -36,3 +36,8 @@ export function isCompanyPage(requestUrlArr) {
     let targetFragment = 'company';
     return _.indexOf(requestUrlArr, targetFragment) != -1 ? true : false;
 }
+
+export function isTalkPage(requestUrlArr) {
+    let targetFragment = 'talk';
+    return _.indexOf(requestUrlArr, targetFragment) != -1 ? true : false;
+}

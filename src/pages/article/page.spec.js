@@ -12,11 +12,11 @@ export default {
 
     articleEndpoint: {
         create: {
-            module: (articleId) => {
-                return getEndpoint('article', {id: articleId})
+            module: (nodeId) => {
+                return getEndpoint('article', {id: nodeId})
             },
             args: [
-                {$ref: 'articleId'}
+                {$ref: 'nodeId'}
             ]
         }
     },
@@ -32,7 +32,6 @@ export default {
             module: controller,
             args: [
                 {$ref: 'articleData'},
-                {$ref: 'articleId'},
                 {$ref: 'getCarcassFn'},
             ]
         }

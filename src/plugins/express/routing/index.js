@@ -4,12 +4,13 @@ import url from 'url';
 import chalk from 'chalk';
 import pipeline from 'when/pipeline';
 
-import { isArticlePage, isCommentPage, isCompanyPage } from '../../../utils/page';
+import { isArticlePage, isCommentPage, isCompanyPage, isTalkPage } from '../../../utils/page';
 
 import bootstrapSpec    from '../../../pages/bootstrap/bootstrap.spec';
 import articlePageSpec  from '../../../pages/article/page.spec';
 import commentsPageSpec from '../../../pages/talk/comments/page.spec';
-import companyPageSpec  from '../../../pages/companies/company/page.spec';
+
+import nodePageSpec     from '../../../pages/node/page.spec';
 
 import categories       from '../../../config/categories';
 import brands           from '../../../config/brands';
@@ -126,12 +127,10 @@ function articlePageMiddleware(resolver, facet, wire) {
     }) => {
         let fragmentKeys = _.keys(fragments);
 
-        const renderNodePage = (requestUrl, nodePageSpec, res) => {
+        const renderNodePage = (requestUrl, nodePageSpec, res, environment = {}) => {
             let tasks = createTasks([bootstrapSpec, nodePageSpec]);
 
-            let environment = {
-                articleId: requestUrl.match(articleIdRexeg)[0]
-            }
+            _.extend(environment, { nodeId: requestUrl.match(articleIdRexeg)[0] });
 
             tasks.unshift(createTask(environment));
 
@@ -153,11 +152,18 @@ function articlePageMiddleware(resolver, facet, wire) {
 
             // TODO: optimize code?
             if(isCompanyPage(requestUrlArr)) {
-                renderNodePage(requestUrl, companyPageSpec, res);
+                renderNodePage(requestUrl, nodePageSpec, res, {
+                    additionalStyles: [
+                        {path: '/css/company.css'}
+                    ],
+                    endpoint: 'companyPage'
+                });
             } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
                 renderNodePage(requestUrl, articlePageSpec, res);
             } else if (isCommentPage(requestUrlArr)) {
                 renderNodePage(requestUrl, commentsPageSpec, res);
+            } else if (isTalkPage(requestUrlArr)) {
+                renderNodePage(requestUrl, talkPageSpec, res);
             } else {
                 // 404 ?
                 res.status(200).end("not recognized page::: " + requestUrl);

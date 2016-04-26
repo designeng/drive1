@@ -37,7 +37,7 @@ const composePageContentHtml = (articleData) => {
     })
 }
 
-function controller(articleData, articleId, getCarcassFn) {
+function controller(articleData, getCarcassFn) {
 
     let pageContentHtml = composePageContentHtml(
         articleData
