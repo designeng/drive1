@@ -67,6 +67,9 @@ const composePageContentHtml = (topNews, mainNews, topVideos, topBlogs, cellar) 
 }
 
 function controller(topStories, topVideos, topBlogs, cellar, getCarcassFn) {
+    const additionalStyles = [
+        {path: '/css/index.css'}
+    ];
 
     let topNews     = preprocessCaption(topStories['topNews'], {mode: 'text'});
     let mainNews    = preprocessCaption(topStories['mainNews'], {mode: 'link'});
@@ -80,7 +83,7 @@ function controller(topStories, topVideos, topBlogs, cellar, getCarcassFn) {
     );
 
     return {
-        html: getCarcassFn(pageContentHtml)
+        html: getCarcassFn(pageContentHtml, additionalStyles)
     }
 }
 
