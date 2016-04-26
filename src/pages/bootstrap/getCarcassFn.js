@@ -62,7 +62,8 @@ const headerHtml = (cities, receptionUrl) => {
     return header({
         topControls: topControls({
             receptionUrl,
-            signupUrl: 'TODO'
+            signupUrl: 'TODO',
+            logoutUrl: 'TODO'
         }),
         logo: logo(),
         citySelector: citySelector(cities),
