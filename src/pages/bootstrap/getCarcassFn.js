@@ -4,6 +4,7 @@ import body                 from '../../templates/build/body';
 
 import citySelector         from '../../templates/build/citySelector';
 import additionalNav        from '../../templates/build/additionalNav';
+import scrollToTopButton    from '../../templates/build/scrollToTopButton';
 import bottomScripts        from '../../templates/build/bottomScripts';
 
 import footer               from '../../templates/build/footer';
@@ -86,7 +87,9 @@ function getCarcass(brands, cities) {
                     brands
                 }),
                 page: pageContentHtml,
-                footer: footer(),
+                footer: footer({
+                    scrollToTopButton: scrollToTopButton()
+                }),
                 bottomScripts: bottomScripts()
             })
         })
