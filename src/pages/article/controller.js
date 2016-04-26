@@ -52,7 +52,7 @@ export default controller;
 
 // tracing usage:
 // import chalk from 'chalk';
-// console.log(chalk.green("article:::::", JSON.stringify(article), articleId));
+// console.log(chalk.green("......"));
 
 // import Logger from '../../utils/logger';
 // let logger = new Logger({file: __dirname + '../../../../log/articleData.log'});

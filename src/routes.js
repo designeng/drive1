@@ -127,7 +127,7 @@ _.each(_.keys(footerLinks), (item) => {
             url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
             routeSpec: articlePageSpec,
             provide: {
-                  articleId: footerLinks[item]
+                  nodeId: footerLinks[item]
             }
       })
 });

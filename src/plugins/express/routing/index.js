@@ -8,7 +8,6 @@ import { isArticlePage, isCommentPage, isCompanyPage, isTalkPage } from '../../.
 
 import bootstrapSpec    from '../../../pages/bootstrap/bootstrap.spec';
 import articlePageSpec  from '../../../pages/article/page.spec';
-import commentsPageSpec from '../../../pages/talk/comments/page.spec';
 
 import nodePageSpec     from '../../../pages/node/page.spec';
 
@@ -153,17 +152,21 @@ function articlePageMiddleware(resolver, facet, wire) {
             // TODO: optimize code?
             if(isCompanyPage(requestUrlArr)) {
                 renderNodePage(requestUrl, nodePageSpec, res, {
-                    additionalStyles: [
-                        {path: '/css/company.css'}
-                    ],
+                    additionalStyles: [{path: '/css/company.css'}],
                     endpoint: 'companyPage'
                 });
             } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
                 renderNodePage(requestUrl, articlePageSpec, res);
             } else if (isCommentPage(requestUrlArr)) {
-                renderNodePage(requestUrl, commentsPageSpec, res);
+                renderNodePage(requestUrl, nodePageSpec, res, {
+                    additionalStyles: [{path: '/css/forum.css'}],
+                    endpoint: 'commentsPage'
+                });
             } else if (isTalkPage(requestUrlArr)) {
-                renderNodePage(requestUrl, talkPageSpec, res);
+                renderNodePage(requestUrl, nodePageSpec, res, {
+                    additionalStyles: [{path: '/css/forum.css'}],
+                    endpoint: 'talkPage'
+                });
             } else {
                 // 404 ?
                 res.status(200).end("not recognized page::: " + requestUrl);
