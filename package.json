@@ -23,6 +23,7 @@
     "axios": "^0.9.1",
     "body-parser": "^1.15.0",
     "chalk": "^1.1.1",
+    "crypto-js": "^3.1.6",
     "essential-wire": "git://github.com/designeng/essential-wire",
     "handlebars": "^4.0.5",
     "install": "^0.4.4",

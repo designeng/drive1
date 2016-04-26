@@ -103,6 +103,8 @@ function routeMiddleware(resolver, facet, wire) {
 
             pipeline(tasks).then(
                 (context) => {
+                    res.cookie('TEST_1234567', 'test');
+
                     // console.log(chalk.green("context:::::", JSON.stringify(context.body)));
                     res.status(200).end(context.body.html);
                 },
