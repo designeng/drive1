@@ -42,9 +42,16 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
     let newsItems = getNews(getNewsArray(brandNewsData));
     let dealersList = getDealersList(dealersData);
 
-    const utmItems = {
+    const experienceUtmItems = {
         source: 'DRIVE',
         medium: 'experience',
+        campaign: brandModelData.brand.id,
+        content: brandModelData.caption
+    };
+
+    const d2carsUtmItems = {
+        source: 'DRIVE',
+        medium: 'review',
         campaign: brandModelData.brand.id,
         content: brandModelData.caption
     };
@@ -59,14 +66,11 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         gallery         : brandModelData.gallery,
         configurations  : brandModelData.configurations,
         similar         : brandModelData.similar,
-        experience      : utmEnrich(brandModelData.experience, utmItems),
-        d2Cars          : brandModelData.d2Cars,
-
+        experience      : utmEnrich(brandModelData.experience, 'url', experienceUtmItems),
+        d2Cars          : utmEnrich(brandModelData.d2Cars, 'url', d2carsUtmItems),
         city            : city,
-
         newsItems,
         dealersList,
-
         // testDrives: 
     })
 }
