@@ -7,7 +7,6 @@ import articleMeta from '../../templates/build/partials/articleMeta';
 import articleTitle from '../../templates/build/partials/articleTitle';
 import brandedArticleHeader from '../../templates/build/partials/brandedArticleHeader';
 import hr from '../../templates/build/partials/hr';
-import socialLinkMobile from '../../templates/build/socialLinkMobile';
 
 import registerPartials from '../../utils/handlebars/registerPartials';
 
