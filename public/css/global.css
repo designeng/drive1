@@ -30,10 +30,10 @@ textarea {overflow: auto; vertical-align: top;}
 .cf {zoom: 1;}
 
 
-html {background: #494949 url(https://dev.drive.ru/images/bg.jpg) center top; color: #000; font: 12px/1.25 sans-serif; overflow-x: hidden; -pie-load-path: "/js";}
+html {background: #494949 url(/images/bg.jpg) center top; color: #000; font: 12px/1.25 sans-serif; overflow-x: hidden; -pie-load-path: "/js";}
 
 /* preload sprites  */
-body {background: url(https://dev.drive.ru/images/sprites.png?5) -9999px -9999px no-repeat;}
+body {background: url(/images/sprites.png?5) -9999px -9999px no-repeat;}
 
 a {color: #4b5b73; text-decoration: none;}
 a:hover {text-decoration: underline;}
@@ -48,11 +48,11 @@ h4 {margin: 0 0 10px; font: bold 12px/1.1 sans-serif;}
 .subheader {margin: -16px 0 15px; color: #808080; font: bold 15px/1.2 sans-serif; text-shadow: 1px 1px #fff;}
 
 .i,
-.spr {background-image: url(https://dev.drive.ru/images/sprites.png?5); background-repeat: no-repeat;}
+.spr {background-image: url(/images/sprites.png?5); background-repeat: no-repeat;}
 .i {display: block; overflow: hidden; text-indent: -9999px;}
-.ib {display: block; width: 40px; height: 28px; background: url(https://dev.drive.ru/images/brands-20.png) 0 28px no-repeat; overflow: hidden; text-indent: -9999px;}
-.vgr {background: url(https://dev.drive.ru/images/vgr.png?2) repeat-x;}
-.hgr {background: url(https://dev.drive.ru/images/hgr.png) repeat-y;}
+.ib {display: block; width: 40px; height: 28px; background: url(/images/brands-20.png) 0 28px no-repeat; overflow: hidden; text-indent: -9999px;}
+.vgr {background: url(/images/vgr.png?2) repeat-x;}
+.hgr {background: url(/images/hgr.png) repeat-y;}
 
 .dropcap {float: left; font: bold 60px/70px sans-serif; height: 67px; margin: 5px 7px -5px -25px; padding: 0 21px; color: #fff; text-shadow: 1px 1px rgba(185,0,37,.99);
 	background: #f03;
@@ -112,7 +112,7 @@ h4 {margin: 0 0 10px; font: bold 12px/1.1 sans-serif;}
 .buttons-dv .sbutton[disabled],
 .buttons-dv .sbutton[disabled]:hover {color: #b0d5aa; border-color: #b0d5aa; background: #fff; -pie-background: #fff;}
 
-.dvbutton{position:relative;display:inline-block;width:240px;height:60px;margin:0 13px 20px;padding:0 18px 1px;color:#fff;font:16px/18px sans-serif;outline:0;text-decoration:none;cursor:pointer;text-align:center;border:1px solid;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border-color:#3a5480 #3a5480 #293c5b;background:#566784;background:linear-gradient(#697a96,#425471);background:-webkit-linear-gradient(#697a96,#425471);text-shadow:0 -1px rgba(0,0,0,0.3);border-radius:2px;-webkit-box-shadow:0 1px 10px rgba(58,84,128,0.5),inset 0 1px rgba(255,255,255,0.4);box-shadow:0 1px 10px rgba(58,84,128,0.5),inset 0 1px rgba(255,255,255,0.4);vertical-align:middle}.ie .dvbutton{width:200px}.dvbutton:hover{border-color:#3f5b8b;border-bottom-color:#2e4366;background:#5d6f8b;background:linear-gradient(#72829c,#485b7b);background:-webkit-linear-gradient(#72829c,#485b7b);text-decoration:none}.dvbutton:active{padding:2px 19px 1px;border:0;background:#3a4a64;background:linear-gradient(#2f3c51,#465977);background:-webkit-linear-gradient(#2f3c51,#465977);-webkit-box-shadow:inset 1px 1px 6px rgba(0,0,0,0.2);box-shadow:inset 1px 1px 6px rgba(0,0,0,0.2)}.dvbutton i{display:inline-block;height:60px;vertical-align:middle}.dvbutton span{display:inline-block;position:relative;top:-1px;vertical-align:middle}.dvbutton-purple{border-color:#0fa400 #0fa400 #0c7400;background:#23a51c;background:linear-gradient(#34b233,#139805);background:-webkit-linear-gradient(#34b233,#139805);-webkit-box-shadow:0 1px 10px rgba(15,164,0,0.5),inset 0 1px rgba(255,255,255,0.4);box-shadow:0 1px 10px rgba(15,164,0,0.5),inset 0 1px rgba(255,255,255,0.4)}.dvbutton-purple:hover{border-color:#10b300;border-bottom-color:#0e8300;background:#26b21e;background:linear-gradient(#37be36,#15a705);background:-webkit-linear-gradient(#37be36,#15a705)}.dvbutton-purple:active{padding:2px 24px 1px;border:0;background:#118404;background:linear-gradient(#0d6703,#14a205);background:-webkit-linear-gradient(#0d6703,#14a205)}
+.dvbutton,.dvbutton i{height:60px}.dvbutton,.dvbutton i,.dvbutton span{display:inline-block;vertical-align:middle}.dvbutton{position:relative;width:240px;margin:0 13px 20px;padding:0 18px 1px;color:#fff;font:16px/18px sans-serif;outline:0;text-decoration:none;cursor:pointer;text-align:center;border:1px solid;box-sizing:border-box;border-color:#ba1400 #ba1400 #840d00;background:#d12112;background:-webkit-linear-gradient(#ef3124,#b31100);background:linear-gradient(#ef3124,#b31100);text-shadow:0 -1px rgba(0,0,0,.3);border-radius:2px;box-shadow:0 1px 10px rgba(186,20,0,.005),inset 0 1px rgba(255,255,255,.4)}.ie .dvbutton{width:200px}.dvbutton:hover{border-color:#c91600 #c91600 #930f00;background:#d92819;background:-webkit-linear-gradient(#f03e32,#c21200);background:linear-gradient(#f03e32,#c21200);text-decoration:none}.dvbutton:active{padding:2px 19px 1px;border:0;background:#9f0f00;background:-webkit-linear-gradient(#800c00,#bd1200);background:linear-gradient(#800c00,#bd1200);box-shadow:inset 1px 1px 6px rgba(0,0,0,.2)}.dvbutton span{position:relative;top:-1px}.dvbutton-purple{border-color:#ba1400 #ba1400 #840d00;background:#d12112;background:-webkit-linear-gradient(#ef3124,#b31100);background:linear-gradient(#ef3124,#b31100);box-shadow:0 1px 10px rgba(186,20,0,.005),inset 0 1px rgba(255,255,255,.4)}.dvbutton-purple:hover{border-color:#c91600 #c91600 #930f00;background:#d92819;background:-webkit-linear-gradient(#f03e32,#c21200);background:linear-gradient(#f03e32,#c21200)}.dvbutton-purple:active{padding:2px 24px 1px;border:0;background:#9f0f00;background:-webkit-linear-gradient(#800c00,#bd1200);background:linear-gradient(#800c00,#bd1200)}
 .dvbutton-p2{border-color:#7b2e8b #7b2e8b #572163;background:#7f4e8b;background:linear-gradient(#91609c,#6d3b79);background:-webkit-linear-gradient(#91609c,#6d3b79);-webkit-box-shadow:0 1px 10px rgba(123,46,139,0.5),inset 0 1px rgba(255,255,255,0.4);box-shadow:0 1px 10px rgba(123,46,139,0.5),inset 0 1px rgba(255,255,255,0.4)}.dvbutton-p2:hover{border-color:#853296;border-bottom-color:#61256e;background:#875493;background:linear-gradient(#9869a3,#764083);background:-webkit-linear-gradient(#9869a3,#764083)}.dvbutton-p2:active{padding:2px 24px 1px;border:0;background:#61346b;background:linear-gradient(#4e2a57,#733e80);background:-webkit-linear-gradient(#4e2a57,#733e80)}
 
 
@@ -139,7 +139,7 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 .nav-top-shade {background: #666; background: rgba(0,0,0,.5);}
 
 .top-announce {float: left; margin: 12px 0 0 30px; font: bold 12px/28px sans-serif; color: #fff;}
-.top-announce a {float: left; display: block; margin: 0 15px 0 0; padding: 0 10px; color: #fff; background: #9b3439 url(https://dev.drive.ru/images/vgr.png?2) 0 -1673px repeat-x;}
+.top-announce a {float: left; display: block; margin: 0 15px 0 0; padding: 0 10px; color: #fff; background: #9b3439 url(/images/vgr.png?2) 0 -1673px repeat-x;}
 .top-announce a:hover {text-decoration: none; background-color: #a5494d;}
 
 .top-announce-gray {color: #000;}
@@ -169,7 +169,7 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 
 
 /* logo & city selector */
-#logo {float: left; margin: 0; width: 190px; height: 100px; background: #f03 url(https://dev.drive.ru/images/logo.png?1) no-repeat; text-indent: -9999px;}
+#logo {float: left; margin: 0; width: 190px; height: 100px; background: #f03 url(/images/logo.png?1) no-repeat; text-indent: -9999px;}
 #city {position: absolute; left: 0; top: 70px; width: 130px; height: 26px; padding: 4px 0 0 56px; color: #fff; font: bold 11px/10px sans-serif; text-shadow: 1px 1px #c90711; cursor: pointer; overflow: hidden;}
 #city span {float: left; width: 102px; text-align: right;}
 #city .i {float: left; position: relative; width: 8px; height: 5px; margin: 3px 4px; background-position: -57px -118px;}
@@ -193,11 +193,11 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 #nav li strong,
 #nav span {float: left; width: 145px; height: 68px; padding: 32px 0 0; color: #fff; border-right: 1px solid #404d62; font-weight: normal; zoom: 1; text-decoration: none;}
 #nav .active a,
-#nav .active strong {background: rgba(255,255,255,.07);} /* background: #eb1c30 url(https://dev.drive.ru/images/vgr.png?2) 0 -1601px repeat-x; */
+#nav .active strong {background: rgba(255,255,255,.07);} /* background: #eb1c30 url(/images/vgr.png?2) 0 -1601px repeat-x; */
 #nav span {width: 40px; height: 54px; padding: 46px 0 0; cursor: pointer; text-align: left;}
 #nav .arr {position: static; width: 19px; height: 10px; margin: 0 0 0 12px; background-position: -57px -108px;}
 #nav li:hover {background: rgba(255,255,255,.07);}
-.ie #nav li:hover {background: url(https://dev.drive.ru/images/vgr.png?2) 0 -900px repeat-x;}
+.ie #nav li:hover {background: url(/images/vgr.png?2) 0 -900px repeat-x;}
 #nav li.active:hover {background: none;}
 .nav-arr span {border: 0 !important;}
 #nav .nav-sborder,
@@ -222,7 +222,7 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 /* open page */
 .open-page {position: relative; margin: 0 -25px;}
 .open-page,
-.open-page-i {background: url(https://dev.drive.ru/images/open-page-shadow.png) -90px 0 repeat-y;}
+.open-page-i {background: url(/images/open-page-shadow.png) -90px 0 repeat-y;}
 .open-page {background-color: #e8e8e8;}
 .open-page-i {min-height: 240px; background-position: 460px 0;}
 
@@ -251,7 +251,7 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 .bnav-list li:last-child {border-bottom: 1px solid #404d62;}
 .bnav-hover .bnav-list {background-color : #4b5b73;}
 .bnav-hover .bnav-list li:last-child {border-bottom: 0;}
-.bnav-list li {clear: left; float: left; width: 100%; border-top: 1px solid #404d62; background: url(https://dev.drive.ru/images/brands-20.png) 0 30px no-repeat;}
+.bnav-list li {clear: left; float: left; width: 100%; border-top: 1px solid #404d62; background: url(/images/brands-20.png) 0 30px no-repeat;}
 .bnav-list a,
 .bnav-list strong {float: left; width: 120px; padding: 0 0 0 45px; color: #fff; text-decoration: none;}
 .bnav-list span {display: none;}
@@ -263,14 +263,14 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 .bnav-list span a:hover {background-color: rgba(255,255,255,.07);}
 .ie .bnav-list-active .brand,
 .ie .bnav-list-hover .brand,
-.ie .bnav-list span a:hover {background: url(https://dev.drive.ru/images/vgr.png?2) 0 -900px repeat-x;}
+.ie .bnav-list span a:hover {background: url(/images/vgr.png?2) 0 -900px repeat-x;}
 .ie .bnav-list-active {background-color: #667388;}
 
-.bnav-list span {position: absolute; left: -160px; margin-top: -1px; font: normal 12px/29px sans-serif; background: #3d4752 url(https://dev.drive.ru/images/vgr.png?2) bottom repeat-x;}
+.bnav-list span {position: absolute; left: -160px; margin-top: -1px; font: normal 12px/29px sans-serif; background: #3d4752 url(/images/vgr.png?2) bottom repeat-x;}
 .bnav-list span a,
 .bnav-list span i,
 .bnav-list span strong {clear: left; float: left; width: 150px; padding: 0 0 0 10px; font-weight: normal;}
-.bnav-list span i {background-image: url(https://dev.drive.ru/images/sprites.png?5);}
+.bnav-list span i {background-image: url(/images/sprites.png?5);}
 
 .bnav a {visibility: hidden;}
 .bnav-visible a {visibility: visible;}
@@ -290,10 +290,11 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 .page-footer-totop .i {position: absolute; top: 43px; left: 12px; width: 19px; height: 10px; background-position: -229px -199px;}
 .page-footer-totop div {height: 100%;}
 .page-footer-totop:hover div {background: rgba(255,255,255,.15);}
-.ie .page-footer-totop:hover div {background: url(https://dev.drive.ru/images/vgr.png?2) 0 -900px repeat-x;}
+.ie .page-footer-totop:hover div {background: url(/images/vgr.png?2) 0 -900px repeat-x;}
 
 /* adv */
 .side-dv {float: right; position: relative; top: -20px; width: 262px; margin: 0 5px 20px 0; padding-top: 20px;}
+.side-dv_aligned {top: 35px; margin-bottom: 55px;}
 .side-dv-lnk {margin-top: -5px; font-size: 11px;}
 .side-dv-h {margin: 0 0 8px;}
 .side-dv-h .dd-block {float: left; margin: 0 20px 8px 0;}
@@ -305,7 +306,7 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 .dd-caption {display: block;}
 .dd-pic a {width: 230px; height: 130px; line-height: 0; background: #ccc;}
 .dd-pic img {float: left;}
-.dd-caption {padding: 0 0 10px; background: url(https://dev.drive.ru/images/dd/bg.png) 0 100% no-repeat;}
+.dd-caption {padding: 0 0 10px; background: url(/images/dd/bg.png) 0 100% no-repeat;}
 .dd-caption a {position: relative; display: block; padding: 10px; font: 14px/17px sans-serif;
 	background: #fff;
 	background: -moz-linear-gradient(#fff, #f0f0f0);
@@ -326,7 +327,7 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 .car-teasers .hr {margin-left: 25px; margin-right: 25px;}
 
 .ddadvhd-container {width: 1000px;}
-.ddadvhd {position: relative; float: left; width: 230px; margin: 0 0 8px; padding: 0 0 12px; background: url(https://dev.drive.ru/images/dd/bg.png) 0 100% no-repeat;}
+.ddadvhd {position: relative; float: left; width: 230px; margin: 0 0 8px; padding: 0 0 12px; background: url(/images/dd/bg.png) 0 100% no-repeat;}
 .ddadvhd-pic {line-height: 0;}
 .ddadvhd-pic a {display: block; width: 230px; height: 130px; background: #ccc;}
 .ddadvhd-pic img {float: left;}
@@ -371,7 +372,7 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 
 .article blockquote {margin-right: 0; font: 32px/1 sans-serif; color: #666;}
 
-.article-drive-mark {font: 12px/12px sans-serif; padding: 0 12px 0 0; margin: 0 0 0 5px; background: url(https://dev.drive.ru/images/sprites.png?5) -163px -220px no-repeat; zoom: 1;}
+.article-drive-mark {font: 12px/12px sans-serif; padding: 0 12px 0 0; margin: 0 0 0 5px; background: url(/images/sprites.png?5) -163px -220px no-repeat; zoom: 1;}
 
 .article-com-desc {float: right; width: 250px; padding: 20px; margin: 0 -125px 20px 20px; background: #fff; color: #808080; font: 11px/1.2 sans-serif;}
 
@@ -398,7 +399,8 @@ a.dv-special b {display: block; margin: 0 0 5px; font: bold 22px/24px Arial, san
 .article-commentslink {font-size: 15px; color: #808080; text-shadow: 1px 1px #fff; display: table-cell; vertical-align: middle;}
 .article-commentslink a {margin-right: .5em; text-shadow: none;}
 .article-commentslink-active {font-weight: bold;}
-.article-social {padding-left: 20px; line-height: 0; display: table-cell;}
+.article-social {padding-left: 10px; line-height: 0; display: table-cell;}
+.article-social-header {display: table-cell; padding-left: 20px; font-size: 15px; vertical-align: middle;}
 
 .fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr {display: none !important;}
 
@@ -461,7 +463,7 @@ td.afigure-main-sd-caption {vertical-align: bottom;}
 
 /* poll */
 .poll {float: left; clear: left; position: relative; z-index: 1; min-width: 300px; margin: 0 0 30px -25px; padding: 17px 30px 17px 25px; background: #f8f8f8; font: 14px/30px sans-serif; word-wrap: break-word;}
-.poll:after {content: ''; position: absolute; z-index: -1; right: -18px; bottom: -16px; width: 352px; height: 149px; background: url(https://dev.drive.ru/images/sprites.png?5) -644px -174px no-repeat;}
+.poll:after {content: ''; position: absolute; z-index: -1; right: -18px; bottom: -16px; width: 352px; height: 149px; background: url(/images/sprites.png?5) -644px -174px no-repeat;}
 .poll ul {line-height: 30px;}
 .poll h3 {font-size: 16px; margin: 0 0 10px 47px;}
 .poll-results em,
@@ -519,7 +521,7 @@ td.afigure-main-sd-caption {vertical-align: bottom;}
 .car-ncap-stars-empty {background-position: -207px -199px;}
 
 .frame-photo {float: left; position: relative; width: 240px; height: 180px; margin: -13px -21px 38px 0; line-height: 0; background: #808080; visibility: hidden;}
-.frame-photo-border {position: absolute; top: -23px; left: -25px; width: 290px; height: 225px; background: url(https://dev.drive.ru/images/pic-borders.png);}
+.frame-photo-border {position: absolute; top: -23px; left: -25px; width: 290px; height: 225px; background: url(/images/pic-borders.png);}
 .frame-photo-2 .frame-photo-border {background-position: 0 -225px;}
 .frame-photo-3 .frame-photo-border {background-position: 0 -450px;}
 .car .frame-photo {margin-top: -33px;}
@@ -661,7 +663,7 @@ td.afigure-main-sd-caption {vertical-align: bottom;}
 .sell-build-table td {padding: 6px 25px 6px 0; text-align: left; font: 14px/1.2 sans-serif;}
 .sell-build-table th {width: 40%; padding-left: 25px; font-weight: bold; white-space: nowrap;}
 .sell-build-table tr:nth-child(odd) {background: #f8f8f8;}
-.sell-build-table tr:nth-child(odd) td:last-child {background: #f8f8f8 url(https://dev.drive.ru/images/open-page-shadow.png) right repeat-y;}
+.sell-build-table tr:nth-child(odd) td:last-child {background: #f8f8f8 url(/images/open-page-shadow.png) right repeat-y;}
 
 .sell-build-list {margin: 0 25px 15px;}
 .sell-build-list ul {float: left; width: 185px; margin: 0 20px 0 0; font-size: 11px;}
@@ -724,7 +726,7 @@ a.ncard:hover {color: #f8f8f8; text-decoration: none;}
 .ncard-stub strong {display: block; font-weight: normal; line-height: 1.2; margin-top: 48px; text-align: center;}
 
 .ncard-shl ins,
-.ncard-shr ins {width: 100%; height: 100%; background: url(https://dev.drive.ru/images/open-page-shadow.png) repeat-y;}
+.ncard-shr ins {width: 100%; height: 100%; background: url(/images/open-page-shadow.png) repeat-y;}
 .ncard-shr ins {background-position: 100%;}
 
 .ncard-big {width: 460px; height: 260px; text-shadow: 1px 1px rgba(0,0,0,.25);}
@@ -758,7 +760,7 @@ a.vidcard:hover {text-decoration: none;}
 
 .map-wrapper {margin: 0 -25px;}
 .map-toggle {margin: 0 0 20px 25px;}
-.map-toggle .i {display: inline-block; width: 16px; height: 16px; margin: 0 8px 0 0; background-image: url(https://dev.drive.ru/images/i-googlemaps.png); vertical-align: middle;}
+.map-toggle .i {display: inline-block; width: 16px; height: 16px; margin: 0 8px 0 0; background-image: url(/images/i-googlemaps.png); vertical-align: middle;}
 .map-toggle-caption {color: #4b5b73; border-bottom: 1px dotted #4b5b73; cursor: pointer; line-height: 16px; outline: 0;}
 .map-canvas {padding-bottom: 20px;}
 #cmap {height: 520px;}
@@ -800,9 +802,9 @@ a.vidcard:hover {text-decoration: none;}
 	-pie-background: linear-gradient(#fdf9ca, #f0e995);
 	behavior: url(/css/pie.htc);
 }
-.compare-sideblock-title span {position: absolute; top: 50%; left: 50%; width: 14px; height: 77px; margin: -38px 0 0 -7px; background: url(https://dev.drive.ru/images/sprites.png?5) -461px -108px no-repeat; text-indent: -9999px; overflow: hidden;}
+.compare-sideblock-title span {position: absolute; top: 50%; left: 50%; width: 14px; height: 77px; margin: -38px 0 0 -7px; background: url(/images/sprites.png?5) -461px -108px no-repeat; text-indent: -9999px; overflow: hidden;}
 .compare-sideblock-open,
-.compare-sideblock-close {position: absolute; top: 8px; right: 0; width: 22px; height: 22px; background: url(https://dev.drive.ru/images/sprites.png?5) -249px -199px no-repeat; overflow: hidden; cursor: pointer;}
+.compare-sideblock-close {position: absolute; top: 8px; right: 0; width: 22px; height: 22px; background: url(/images/sprites.png?5) -249px -199px no-repeat; overflow: hidden; cursor: pointer;}
 .compare-sideblock-open {right: 5px; background-position: -271px -199px;}
 /*
 .compare-sideblock-close:hover {background-position: -339px -199px;}
@@ -846,7 +848,7 @@ a.vidcard:hover {text-decoration: none;}
 .ie .lightbox {behavior: url(/css/pie.htc);}
 .dialog-bg {position: absolute; z-index: 10; left: 0; top: 0; background: #000; background: rgba(0,0,0,0.4);}
 .ie .dialog-bg {filter: alpha(opacity=40);}
-.dialog-close {position: absolute; top: 0; right: 0; width: 22px; height: 22px; background: url(https://dev.drive.ru/images/sprites.png?5) -316px -199px no-repeat; overflow: hidden; cursor: pointer;}
+.dialog-close {position: absolute; top: 0; right: 0; width: 22px; height: 22px; background: url(/images/sprites.png?5) -316px -199px no-repeat; overflow: hidden; cursor: pointer;}
 .dialog-close:hover {background-position: -339px -199px;}
 .lightbox-content,
 .dialog-content {margin: 20px;}
@@ -858,7 +860,7 @@ a.vidcard:hover {text-decoration: none;}
 .lightbox-close {display: none;}
 
 /* spinner */
-.spinner {position: absolute; width: 16px; height: 16px; background: url(https://dev.drive.ru/images/sprites.png?5) no-repeat; overflow: hidden;}
+.spinner {position: absolute; width: 16px; height: 16px; background: url(/images/sprites.png?5) no-repeat; overflow: hidden;}
 .spin {position: relative; display: inline-block; width: 22px; height: 22px; vertical-align: middle;}
 
 /* pack */
@@ -882,9 +884,9 @@ a.vidcard:hover {text-decoration: none;}
 .bubble-top {margin-top: 7px;}
 .bubble-bottom {margin-bottom: 7px;}
 .bubble a {color: #000; text-decoration: underline;}
-.bubble-close-button {position: absolute; top: 0; right: 0; width: 14px; height: 14px; background: url(https://dev.drive.ru/images/sprites.png?5) -316px -222px no-repeat; overflow: hidden; cursor: pointer;}
+.bubble-close-button {position: absolute; top: 0; right: 0; width: 14px; height: 14px; background: url(/images/sprites.png?5) -316px -222px no-repeat; overflow: hidden; cursor: pointer;}
 .bubble-close-button:hover {background-position: -331px -222px;}
-.bubble-anchor {position: absolute; top: 100%; left: 15px; width: 25px; height: 16px; background: url(https://dev.drive.ru/images/sprites.png?5) -371px -108px no-repeat; pointer-events: none;}
+.bubble-anchor {position: absolute; top: 100%; left: 15px; width: 25px; height: 16px; background: url(/images/sprites.png?5) -371px -108px no-repeat; pointer-events: none;}
 .bubble-anchor-top-right,
 .bubble-anchor-top-left {top: -12px; height: 12px; background-position: -371px -124px;}
 .bubble-anchor-top-right,
@@ -914,7 +916,7 @@ a.vidcard:hover {text-decoration: none;}
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
-	background: #e0e0e0 url(https://dev.drive.ru/images/vgr.png?2) 0 -864px repeat-x;
+	background: #e0e0e0 url(/images/vgr.png?2) 0 -864px repeat-x;
 }
 .ie7 .t-btn {display: inline;}
 .t-btn span,
@@ -922,7 +924,7 @@ a.vidcard:hover {text-decoration: none;}
 .t-btn:hover span,
 .t-btn:hover a {background: rgba(255,255,255,.3);}
 .ie .t-btn:hover span,
-.ie .t-btn:hover a {background: url(https://dev.drive.ru/images/vgr.png?2) 0 -1020px repeat-x;}
+.ie .t-btn:hover a {background: url(/images/vgr.png?2) 0 -1020px repeat-x;}
 .t-btn-collapse-left {
 	-moz-border-radius-topleft: 0;
 	-moz-border-radius-bottomleft: 0;
@@ -940,7 +942,7 @@ a.vidcard:hover {text-decoration: none;}
 	border-bottom-right-radius: 0;
 }
 .t-btn-open,
-.t-btn-checked {padding: 1px; color: #fff; text-shadow: 1px 1px #5f6d83; border: 0; background: #5e6c82 url(https://dev.drive.ru/images/sprites.png?5) -171px -109px no-repeat; cursor: default;}
+.t-btn-checked {padding: 1px; color: #fff; text-shadow: 1px 1px #5f6d83; border: 0; background: #5e6c82 url(/images/sprites.png?5) -171px -109px no-repeat; cursor: default;}
 .t-btn-open span,
 .t-btn-checked span,
 .t-btn-open a,

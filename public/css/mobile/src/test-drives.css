@@ -1,0 +1,73 @@
+/**
+ * Test drives page
+ */
+
+@media screen and (max-width: 800px) {
+
+    /* Hide unnecessary blocks */
+
+    .testdrives-nav,
+    .test-drives-header {
+        display: none;
+    }
+
+    /* Overrides */
+
+    .testdrives {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .testdrives {
+        margin: 0;
+        width: auto;
+        order: 1;
+        flex-direction: column;
+    }
+    .testdrives .news-item-link__image {
+        max-width: 115px;
+        max-height: 67px;
+    }
+
+    .testdrives .news-item-caption__text {
+        color: rgb(68, 84, 111);
+        font: normal 15px/1.2 sans-serif;
+        width: auto;
+    }
+
+    .testdrives .news-item .i {
+        display: none;
+    }
+
+    .testdrives-all-mobile {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+    .testdrives .top-news-item {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+    }
+
+    .testdrives .image-fitter-mobile {
+        display: flex;
+        flex: 50%;
+        /* Android 4.2 fix */
+        width: 50%;
+    }
+
+    .testdrives .top-news-item__caption {
+        color: rgb(3, 3, 3);
+        position: static;
+        display: flex;
+        flex: 50%;
+        /* Android 4.2 fix */
+        width: 50%;
+    }
+
+    .testdrives .top-news-item .i {
+        display: none;
+    }
+}

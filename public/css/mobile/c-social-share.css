@@ -36,6 +36,12 @@
     .c-social-share__item--twitter:after {
         background-image: url(/images/social/twitter.svg);
     }
+    .c-social-share__item--telegram {
+        background: #27a5e7;
+    }
+    .c-social-share__item--telegram:after {
+        background-image: url(/images/social/telegram.svg);
+    }
     .c-social-share__item--fb {
         background: #4861a3;
     }

@@ -22,6 +22,7 @@ import widget_adfoxMiddleMobile from '../../templates/build/widgets/widget_adfox
 import widget_adfoxTop from '../../templates/build/widgets/widget_adfoxTop';
 import widget_adfoxSiteHeader from '../../templates/build/widgets/widget_adfoxSiteHeader';
 import widget_yandexMetrika from '../../templates/build/widgets/widget_yandexMetrika';
+import widget_yandexShare from '../../templates/build/widgets/widget_yandexShare';
 import widget_teasers from '../../templates/build/widgets/widget_teasers';
 import widget_relap from '../../templates/build/widgets/widget_relap';
 import widget_adriver from '../../templates/build/widgets/widget_adriver';
@@ -46,6 +47,7 @@ registerPartials({
     widget_adfoxBottom,
     widget_adfoxSiteHeader,
     widget_yandexMetrika,
+    widget_yandexShare,
     widget_teasers,
     widget_adriver,
     widget_relap,

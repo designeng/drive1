@@ -55,20 +55,24 @@
                 <a href="/talk/comments/{{id}}.html">Комментариев пока нет</a>
             </div>
         {{/if}}
-        {{! TODO: Social block }}
-        <div class="article-vk-widget">
-            <div id="vk_subscribe"></div>
-            <script type="text/javascript">
-                VK.Widgets.Subscribe("vk_subscribe", {mode: 2}, -48156068);
-            </script>
+        <div class="article-social-header">
+            Поделиться:
+        </div>
+        <div class="article-social">
+            {{> widget_yandexShare}}
         </div>
     </div>
     {{> hr}}
     <div class="feedsub">
         <div class="feedsub-close" data-action="feedsubs.close">Закрыть</div>
         <div class="feedsub-text">
-            <a class="sbutton sbutton-big sbutton-green feedsub-button" href="http://eepurl.com/bPK1R9" data-action="feedsubs.subs">Подписаться на рассылку</a>
-            Подпишитесь, чтобы ничего не пропустить. Каждый вечер мы будем присылать вам одно письмо со всеми опубликованными материалами. Просто и удобно.
+            <a class="sbutton sbutton-big feedsub-button mobile-hidden" href="http://goo.gl/00BXDg" data-action="feedsubs.subs">ВКонтакте</a>
+            <a class="sbutton sbutton-big feedsub-button mobile-hidden" href="https://goo.gl/LmTYos" data-action="feedsubs.subs">Facebook</a>
+            <a class="sbutton sbutton-big feedsub-button mobile-hidden" href="http://goo.gl/PM6moG" data-action="feedsubs.subs">Одноклассники</a>
+            <a class="sbutton sbutton-big sbutton-green feedsub-button mobile-hidden" href="http://eepurl.com/bPK1R9" data-action="feedsubs.subs">Рассылка</a>
+            <span class="desktop-hidden">Подпишитесь на новости:</span>
+            {{{mobileSocialLinks}}}
+            <span class="mobile-hidden">Подпишитесь на новости Драйва, чтобы ничего не пропустить.</span>
         </div>
         {{> hr}}
     </div>
@@ -81,7 +85,6 @@
         {{> widget_relap id='amVlT7V0P8U_ISEh'}}
     </div>
 </div>
-{{! TODO: Call this method in controller instead }}
 <script>
     drv.mobileIframePatch();
 </script>

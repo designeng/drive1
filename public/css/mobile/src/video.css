@@ -1,0 +1,54 @@
+/**
+ * Videos page
+ */
+
+@media screen and (max-width: 800px) {
+
+    /* Hide unnecessary blocks */
+
+    .video-header,
+    .testdrives-nav {
+        display: none;
+    }
+
+    /* Overrides */
+
+    h1.summary {
+        font: bold 20px/1.1 sans-serif;
+        width: auto;
+        padding: 12px 12px 0;
+    }
+
+    .vidcard-list {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .vidcard-list .vidcard {
+        margin: 10px 10px 0;
+    }
+        .vidcard .vidcard-caption {
+            font: normal 15px/1.2 sans-serif;
+        }
+
+    /* Quite a hack due to id selector priority over class selector */
+
+    #main.video-list-container {
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+    .vidcard-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .vidcard-list .vidcard {
+        flex: 50%;
+        margin: 0;
+    }
+        .vidcard .vidcard-caption {
+            font: inherit;
+        }
+}
