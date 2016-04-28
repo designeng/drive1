@@ -71,7 +71,9 @@
             <a class="sbutton sbutton-big feedsub-button mobile-hidden" href="http://goo.gl/PM6moG" data-action="feedsubs.subs">Одноклассники</a>
             <a class="sbutton sbutton-big sbutton-green feedsub-button mobile-hidden" href="http://eepurl.com/bPK1R9" data-action="feedsubs.subs">Рассылка</a>
             <span class="desktop-hidden">Подпишитесь на новости:</span>
-            {{{mobileSocialLinks}}}
+            {{#each socialLinksMobile}}
+                <a class="sbutton sbutton-big feedsub-button desktop-hidden" href="{{this.url}}" data-action="feedsubs.subs">{{this.caption}}</a>
+            {{/each}}
             <span class="mobile-hidden">Подпишитесь на новости Драйва, чтобы ничего не пропустить.</span>
         </div>
         {{> hr}}
