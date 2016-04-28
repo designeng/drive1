@@ -4,22 +4,11 @@ import requestPlugin        from '../../plugins/api/request';
 import { getEndpoint }   from '../../config/api';
 import getCarcassFn from './getCarcassFn';
 
-import receptionUrl from './receptionUrl';
-
 export default {
     $plugins: [
         // wireDebugPlugin,
         requestPlugin,
     ],
-
-    receptionUrl: {
-        create: {
-            module: receptionUrl,
-            args: [
-                {$ref: 'requestUrl'}
-            ]
-        }
-    }, 
 
     brandsData: {
         request: {
@@ -39,7 +28,6 @@ export default {
             args: [
                 {$ref: 'brandsData'},
                 {$ref: 'citiesData'},
-                {$ref: 'receptionUrl'},
             ]
         }
     }
