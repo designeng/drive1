@@ -26,6 +26,10 @@ const endpoints = {
     brandModel              : "/items/cars/{brand}/models/{year}/{model}",
     brandModelComplectation : "/items/cars/{brand}/models/{year}/{model}/{complectation}",
 
+    // reception
+    userProfile             : "/system/user_profile",
+    topControls             : "/system/controls",
+
     // raw:
     companiesPage           : "/companies/{brand}",
     companyPage             : "/company/{id}.html",

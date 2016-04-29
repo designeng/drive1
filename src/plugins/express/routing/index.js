@@ -23,16 +23,18 @@ const articleRexeg = /([a-zA-Z0-9\.])+(.html|.htm)/;
 function routeMiddleware(resolver, facet, wire) {
     const target    = facet.target;
     const routes    = facet.options.routes;
-    const before    = facet.options.before || function before(req, res, next) {next()};
+    const before    = facet.options.before || function before(request, response, next) {next()};
 
     routes.forEach(route => {
-        target.get(route.url, before, (req, res, next) => {
+        target.get(route.url, before, (request, response, next) => {
             let routeSpec   = route.routeSpec;
             let provide     = route.provide;
+            let success     = route.success;
+            let error       = route.error;
 
             // TODO: conflict resolving for routes [/news/*.html, /news/:brand etc.]
             // think how to avoid plugin hack
-            if(req.url.match(articleRexeg)) {
+            if(request.url.match(articleRexeg)) {
                 return next();
             }
             // END TODO
@@ -44,54 +46,66 @@ function routeMiddleware(resolver, facet, wire) {
                 theme           : null,
                 talkFirstId     : null,
                 talkSecondId    : null,
-                requestUrl      : req.url,
+                requestUrl      : request.url,
+                accessToken     : null,
+                targetUrl       : null,
             };
 
             let tasks = createTasks([bootstrapSpec, routeSpec]);
 
-            if(req.params && req.params.category) {
-                let category = _.find(categories, {id: req.params.category});
+            if(request.params && request.params.category) {
+                let category = _.find(categories, {id: request.params.category});
                 if(category) {
                     _.extend(environment, { category });
                 }
             }
 
-            if(req.params && req.params.brand && !req.params.year && !req.params.model) {
+            if(request.params && request.params.brand && !request.params.year && !request.params.model) {
                 _.extend(environment, { brand: {
-                    id: req.params.brand,
-                    name: _.find(brands, {id: req.params.brand})['name']
+                    id: request.params.brand,
+                    name: _.find(brands, {id: request.params.brand})['name']
                 } });
-            } else if(req.params && req.params.brand && req.params.year && req.params.model) {
+            } else if(request.params && request.params.brand && request.params.year && request.params.model) {
                 _.extend(environment, { carModel: {
-                    brand   : req.params.brand,
-                    year    : req.params.year,
-                    model   : req.params.model,
+                    brand   : request.params.brand,
+                    year    : request.params.year,
+                    model   : request.params.model,
                 } });
             }
 
             // talk
-            if(req.params && req.params.theme) {
+            if(request.params && request.params.theme) {
                 _.extend(environment, { 
-                    theme: _.find(brands, {id: req.params.theme}) || _.find(themes, {id: req.params.theme})
+                    theme: _.find(brands, {id: request.params.theme}) || _.find(themes, {id: request.params.theme})
                 });
             }
 
-            if(req.params && req.params.talkFirstId) {
-                _.extend(environment, { talkFirstId: req.params.talkFirstId });
+            if(request.params && request.params.talkFirstId) {
+                _.extend(environment, { talkFirstId: request.params.talkFirstId });
             }
 
-            if(req.params && req.params.talkSecondId) {
-                _.extend(environment, { talkSecondId: req.params.talkSecondId });
+            if(request.params && request.params.talkSecondId) {
+                _.extend(environment, { talkSecondId: request.params.talkSecondId });
             }
 
             if(provide) {
                 _.extend(environment, provide);
             }
 
-            const { query } = url.parse(req.url, true);
+            const { query } = url.parse(request.url, true);
 
             if(query.city) {
                 _.extend(environment, { city: {id: query.city }});
+            }
+
+            // TODO: add condition 'request url == local_reception'
+            if(query['.AMET'] && query['url']) {
+                let accessToken   = query['.AMET'];
+                // to redirect after reception connection
+                let targetUrl     = query['url'];
+                _.extend(environment, { accessToken, targetUrl });
+                // remove bootstrap task
+                tasks.shift();
             }
 
             // TODO: 404error page
@@ -102,18 +116,7 @@ function routeMiddleware(resolver, facet, wire) {
 
             tasks.unshift(createTask(environment));
 
-            pipeline(tasks).then(
-                (context) => {
-                    res.cookie('TEST_1234567', 'test');
-
-                    // console.log(chalk.green("context:::::", JSON.stringify(context.body)));
-                    res.status(200).end(context.body.html);
-                },
-                (error) => {
-                    console.log(chalk.red("error:::::", error));
-                    res.status(500).end(error)
-                }
-            );
+            pipeline(tasks).then(success(response), error(response));
         });
 
         resolver.resolve(target);
@@ -129,8 +132,8 @@ function articlePageMiddleware(resolver, facet, wire) {
     }) => {
         let fragmentKeys = _.keys(fragments);
 
-        const renderNodePage = (req, res, nodePageSpec, environment = {}) => {
-            let requestUrl = req.url;
+        const renderNodePage = (request, response, nodePageSpec, environment = {}) => {
+            let requestUrl = request.url;
             let tasks = createTasks([bootstrapSpec, nodePageSpec]);
 
             _.extend(environment, { nodeId: requestUrl.match(articleIdRexeg)[0], requestUrl });
@@ -139,41 +142,41 @@ function articlePageMiddleware(resolver, facet, wire) {
 
             pipeline(tasks).then(
                 (context) => {
-                    res.status(200).end(context.body.html);
+                    response.status(200).end(context.body.html);
                 },
                 (error) => {
-                    res.status(500).end(error)
+                    response.status(500).end(error)
                 }
             );
         }
 
-        target.get('*', function (req, res, next) {
-            let requestUrl = req.url;
+        target.get('*', function (request, response, next) {
+            let requestUrl = request.url;
             const requestUrlArr = requestUrl.split('/');
             // remove zero blank element
             requestUrlArr.shift();
 
             if(isNodePage(requestUrlArr, {fragment: 'company'})) {
-                renderNodePage(req, res, nodePageSpec, {
+                renderNodePage(request, response, nodePageSpec, {
                     additionalStyles: [{path: '/css/company.css'}],
                     endpoint: 'companyPage'
                 });
             } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
-                renderNodePage(req, res, articlePageSpec);
+                renderNodePage(request, response, articlePageSpec);
             } else if (isNodePage(requestUrlArr, {fragment: 'comments'})) {
-                renderNodePage(req, res, nodePageSpec, {
+                renderNodePage(request, response, nodePageSpec, {
                     additionalStyles: [{path: '/css/forum.css'}],
                     endpoint: 'commentsPage'
                 });
             } else if (isNodePage(requestUrlArr, {fragment: 'talk'})) {
-                res.status(200).end("some talk page::: " + requestUrl);
-                // renderNodePage(requestUrl, nodePageSpec, res, {
+                response.status(200).end("some talk page::: " + requestUrl);
+                // renderNodePage(requestUrl, nodePageSpec, response, {
                 //     additionalStyles: [{path: '/css/forum.css'}],
                 //     endpoint: 'threadTalkPage'
                 // });
             } else {
                 // 404 ?
-                res.status(200).end("not recognized page::: " + requestUrl);
+                response.status(200).end("not recognized page::: " + requestUrl);
             }
         });
     })
@@ -184,9 +187,9 @@ function articlePageMiddleware(resolver, facet, wire) {
 function routeNotFoundMiddleware(resolver, facet, wire) {
     const target = facet.target;
 
-    target.get("/*", function (req, res) {
-        console.log(chalk.red("NOT FOUND:::", req.url));
-        res.redirect('/404error?url=' + req.url);
+    target.get("/*", function (request, response) {
+        console.log(chalk.red("NOT FOUND:::", request.url));
+        response.redirect('/404error?url=' + request.url);
     });
 
     resolver.resolve(target);
@@ -209,6 +212,6 @@ export default function routeMiddlewarePlugin(options) {
 }
 
 // -----TEST-----
-// res.setHeader('charset', 'utf-8');
-// return res.send(req.url);
+// response.setHeader('charset', 'utf-8');
+// return response.send(request.url);
 // -----TEST END-----

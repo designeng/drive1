@@ -1,4 +1,5 @@
 import _  from 'underscore';
+import chalk from 'chalk';
 import mainPageSpec           from './pages/main/page.spec';
 import categoryNewsPageSpec   from './pages/categoryNews/page.spec';
 import driveTestsPageSpec     from './pages/driveTests/page.spec';
@@ -14,6 +15,31 @@ import talkPageSpec           from './pages/talk/page.spec';
 import noopPageSpec           from './pages/noop/page.spec';
 
 import notFoundSpec           from './pages/404/page.spec';
+
+import receptionSpec          from './reception.spec';
+
+const success = (response) => {
+      return (context) => {
+            response.status(200).end(context.body.html);
+      }
+}
+
+const successReception = (response) => {
+      return (context) => {
+            const {userid, login, email} = context.userProfileData;
+            response.cookie('userid', userid);
+            response.cookie('login', login);
+            response.cookie('email', email);
+            response.redirect(context.targetUrl);
+      }
+}
+
+const error = (response) => {
+      return (error) => {
+            console.log(chalk.red("error:::::", error));
+            response.status(500).end(error)
+      }
+}
 
 let routesUnderConstruction = [
       'talk',
@@ -31,27 +57,27 @@ let footerLinks = {
 const routes = [
       {
             url: '/',
-            routeSpec: mainPageSpec
+            routeSpec: mainPageSpec,
       },
       {
             url: '/drive-tests',
-            routeSpec: driveTestsPageSpec
+            routeSpec: driveTestsPageSpec,
       },
       {
             url: '/video',
-            routeSpec: videoPageSpec
+            routeSpec: videoPageSpec,
       },
       {
             url: '/feedback',
-            routeSpec: feedbackPageSpec
+            routeSpec: feedbackPageSpec,
       },
       {
             url: '/talk',
-            routeSpec: talkPageSpec
+            routeSpec: talkPageSpec,
       },
       {
             url: '/talk/:theme',
-            routeSpec: talkPageSpec
+            routeSpec: talkPageSpec,
       },
       // TODO: talkFirstId & talkSecondId - what they mean exactly?
       {
@@ -122,6 +148,10 @@ const routes = [
       },
 ];
 
+_.each(routes, (route) => {
+      _.extend(route, {success, error});
+});
+
 _.each(_.keys(footerLinks), (item) => {
       routes.unshift({
             url: new RegExp('^\/' + item + '(?:\/(?=$))?$', 'i'),
@@ -130,6 +160,13 @@ _.each(_.keys(footerLinks), (item) => {
                   nodeId: footerLinks[item]
             }
       })
+});
+
+routes.unshift({
+      url: '/local_reception',
+      routeSpec: receptionSpec,
+      success: successReception,
+      error,
 });
 
 export default routes;
