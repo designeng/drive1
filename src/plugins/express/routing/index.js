@@ -49,6 +49,7 @@ function routeMiddleware(resolver, facet, wire) {
                 requestUrl      : request.url,
                 accessToken     : null,
                 targetUrl       : null,
+                response        : null,
             };
 
             let tasks = createTasks([bootstrapSpec, routeSpec]);
@@ -103,7 +104,8 @@ function routeMiddleware(resolver, facet, wire) {
                 // to redirect after reception connection
                 let targetUrl     = query['url'];
 
-                _.extend(environment, { accessToken, targetUrl, response });
+                // _.extend(environment, { accessToken, targetUrl, response });
+                _.extend(environment, { accessToken, targetUrl });
                 // remove bootstrap task
                 tasks.shift();
             }

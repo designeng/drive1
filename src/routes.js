@@ -26,7 +26,8 @@ const success = (response) => {
 
 const successReception = (response) => {
       return (context) => {
-            // response.status(200).end(JSON.stringify(context.userProfileData));
+            // response.redirect(targetUrl);
+            response.status(200).end(JSON.stringify(context.userProfileData));
       }
 }
 
