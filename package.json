@@ -9,6 +9,7 @@
     "webpack": "npm run clean & NODE_ENV=client webpack --watch --config webpack.config.js",
     "runner": "NODE_ENV=build node ./runner",
     "start": "NODE_ENV=server COMPILATION_MODE=server node ./runner",
+    "debug": "NODE_ENV=server COMPILATION_MODE=server iron-node ./runner.js",
     "smoke-demo": "NODE_ENV=smoke-demo node ./runner",
     "smoke": "NODE_ENV=smoke node ./runner",
     "refresh-wire": "rimraf -rf node_modules/essential-wire && npm install",
