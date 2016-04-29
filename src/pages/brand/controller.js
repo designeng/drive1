@@ -43,7 +43,7 @@ const newsHtml = (items) => {
         result = result + itemCompact(item);
         return result;
     }, '');
-}
+};
 
 const composePageContentHtml = (carIconsData, testDrivesData, brandNewsData, brand) => {
     let testDrivePlaceholders = [];
