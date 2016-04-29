@@ -26,8 +26,11 @@ const success = (response) => {
 
 const successReception = (response) => {
       return (context) => {
-            // response.redirect(targetUrl);
-            response.status(200).end(JSON.stringify(context.userProfileData));
+            const {userid, login, email} = context.userProfileData;
+            response.cookie('userid', userid);
+            response.cookie('login', login);
+            response.cookie('email', email);
+            response.redirect(context.targetUrl);
       }
 }
 

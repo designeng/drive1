@@ -49,7 +49,6 @@ function routeMiddleware(resolver, facet, wire) {
                 requestUrl      : request.url,
                 accessToken     : null,
                 targetUrl       : null,
-                response        : null,
             };
 
             let tasks = createTasks([bootstrapSpec, routeSpec]);
@@ -99,12 +98,11 @@ function routeMiddleware(resolver, facet, wire) {
                 _.extend(environment, { city: {id: query.city }});
             }
 
+            // TODO: add condition 'request url == local_reception'
             if(query['.AMET'] && query['url']) {
                 let accessToken   = query['.AMET'];
                 // to redirect after reception connection
                 let targetUrl     = query['url'];
-
-                // _.extend(environment, { accessToken, targetUrl, response });
                 _.extend(environment, { accessToken, targetUrl });
                 // remove bootstrap task
                 tasks.shift();

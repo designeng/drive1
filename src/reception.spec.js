@@ -22,15 +22,8 @@ export default {
         create: {
             module: (userProfileData, targetUrl) => {
                 return userProfileData;
-                // response.cookie('userid', userProfileData.userid);
-                // response.cookie('login', userProfileData.login);
-                // response.cookie('email', userProfileData.email);
-                // response.cookie('targetUrl', targetUrl);
-
-                // return response.redirect(targetUrl);
             },
             args: [
-                // {$ref: 'response'},
                 {$ref: 'userProfileData'},
                 {$ref: 'targetUrl'},
             ]
