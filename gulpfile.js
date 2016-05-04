@@ -35,3 +35,10 @@ gulp.task('watch', function() {
     });
 });
 
+gulp.task('eslint', function() {
+    return gulp.src('src/**/*.js')
+        .pipe(eslint({
+            fix: true
+        }))
+        .pipe(eslint.format());
+});

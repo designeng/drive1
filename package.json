@@ -59,6 +59,8 @@
     "autoprefixer": "^6.0.3",
     "gulp-watch": "^4.3.5",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-eslint": "^1.0.0"
+    "gulp-eslint": "^1.0.0",
+    "eslint-config-defaults": "^9.0.0",
+    "babel-eslint": "latest"
   }
 }

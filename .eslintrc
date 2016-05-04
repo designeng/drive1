@@ -1,0 +1,11 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "extends": "./node_modules/eslint-config-defaults/configurations/eslint.js",
+    "rules": {
+        "no-trailing-spaces": 2,
+        "no-multi-spaces": 2
+    }
+}
