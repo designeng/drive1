@@ -1,8 +1,10 @@
 var gulp = require('gulp');
 var wrap = require('gulp-wrap');
 var handlebars = require('gulp-handlebars');
-var jscs = require('gulp-jscs');
-var stylish = require('gulp-jscs-stylish');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var watch = require('gulp-watch');
+var eslint = require('gulp-eslint');
 
 var buildTpl = function() {
     return wrap("module.exports = require('handlebars').template(<%= contents %>)");
@@ -19,8 +21,17 @@ gulp.task('build', function() {
         .pipe(gulp.dest('src/templates/build/'));
 });
 
-gulp.task('jscs', function() {
-    return gulp.src('src/**/*.js')
-        .pipe(jscs())
-        .pipe(stylish());
+gulp.task('css', function() {
+    return gulp.src('src/css/mobile/*')
+        .pipe(postcss(
+            [autoprefixer({browsers: ['> 2%']})]
+        ))
+        .pipe(gulp.dest('public/css/mobile/'));
 });
+
+gulp.task('watch', function() {
+    watch('src/css/mobile/*', function() {
+        gulp.start('css');
+    });
+});
+
