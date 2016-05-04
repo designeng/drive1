@@ -8,35 +8,31 @@ const config = {
 }
 
 const endpoints = {
-    topStories              : "/items/top_stories",
-    topBlogs                : "/items/top_blogs",
-    numbers                 : "/content/numbers",
-    special                 : "/content/special",
-    brands                  : "/static/brands",
-    cities                  : "/static/cities",
-    news                    : "/items/news",
-    testDrives              : "/items/test_drives",
-    brandTestDrives         : "/items/test_drives/{brand}",
-    dealers                 : "/items/companies",
-    video                   : "/items/videos",
-
-    article                 : "/item/{id}",
-
-    brandModels             : "/items/cars/{brand}/models",
-    brandModel              : "/items/cars/{brand}/models/{year}/{model}",
-    brandModelComplectation : "/items/cars/{brand}/models/{year}/{model}/{complectation}",
-
+    topStories: "/items/top_stories",
+    topBlogs: "/items/top_blogs",
+    numbers: "/content/numbers",
+    special: "/content/special",
+    brands: "/static/brands",
+    cities: "/static/cities",
+    news: "/items/news",
+    testDrives: "/items/test_drives",
+    brandTestDrives: "/items/test_drives/{brand}",
+    dealers: "/items/companies",
+    video: "/items/videos",
+    article: "/item/{id}",
+    brandModels: "/items/cars/{brand}/models",
+    brandModel: "/items/cars/{brand}/models/{year}/{model}",
+    modelConfiguration: "/items/cars/{brand}/models/{year}/{model}/{configuration}",
     // reception
-    userProfile             : "/system/user_profile",
-    topControls             : "/system/controls",
-
+    userProfile: "/system/user_profile",
+    topControls: "/system/controls",
     // raw:
-    companiesPage           : "/companies/{brand}",
-    companyPage             : "/company/{id}.html",
-    talkPage                : "/talk/{theme}/{talkFirstId}/{talkSecondId}",
-    commentsPage            : "/talk/comments/{id}.html",
+    companiesPage: "/companies/{brand}",
+    companyPage: "/company/{id}.html",
+    talkPage: "/talk/{theme}/{talkFirstId}/{talkSecondId}",
+    commentsPage: "/talk/comments/{id}.html",
     // TODO: is it thread?
-    threadTalkPage          : "/talk/{id}.html",
+    threadTalkPage: "/talk/{id}.html",
 }
 
 function getBaseUrl(options) {

@@ -65,12 +65,21 @@ function routeMiddleware(resolver, facet, wire) {
                     id: request.params.brand,
                     name: _.find(brands, {id: request.params.brand})['name']
                 } });
-            } else if(request.params && request.params.brand && request.params.year && request.params.model) {
+            } else if(request.params && request.params.brand && request.params.year && request.params.model && !request.params.configuration) {
                 _.extend(environment, { carModel: {
                     brand   : request.params.brand,
                     year    : request.params.year,
                     model   : request.params.model,
                 } });
+            } else if(request.params && request.params.brand && request.params.year && request.params.model && request.params.configuration) {
+                _.extend(environment, {
+                    carConfiguration: {
+                        brand: request.params.brand,
+                        year: request.params.year,
+                        model: request.params.model,
+                        configuration: request.params.configuration
+                    }
+                });
             }
 
             // talk

@@ -7,6 +7,7 @@ import videoPageSpec from './pages/video/page.spec';
 import demoPageSpec from './pages/demo/page.spec';
 import brandPageSpec from './pages/brand/page.spec';
 import brandModelPageSpec from './pages/brand/model/page.spec';
+import modelConfigurationPageSpec from './pages/brand/model/configuration/page.spec';
 import articlePageSpec from './pages/article/page.spec';
 import companiesPageSpec from './pages/companies/page.spec';
 import feedbackPageSpec from './pages/feedback/page.spec';
@@ -127,11 +128,18 @@ const routes = [
             url: '/brands/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
+      {
+            url: '/brands/:brand/models/:year/:model/:configuration',
+            routeSpec: modelConfigurationPageSpec
+      },
 
       // left for backwards compatibility with previous site version,
       // redirect to '/brands/:brand/models/:year/:model' etc.
       {
             url: '/:brand/models/:year/:model'
+      },
+      {
+            url: '/:brand/models/:year/:model/:configuration'
       },
       {
             url: '/:brand/drive-tests'
