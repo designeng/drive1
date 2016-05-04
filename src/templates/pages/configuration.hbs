@@ -16,7 +16,7 @@
         <div class="build-price">
             <div id="build-price-floater">
                 <div id="build-price-base" class="build-price-item build-price-item-final">
-                    <span class="build-price-item-price">{{priceFormatted}}</span><span class="build-price-item-sfx"> руб.</span>
+                    <span class="build-price-item-price">{{{priceFormatted}}}</span><span class="build-price-item-sfx"> руб.</span>
                     <div class="build-price-item-desc">базовая комплектация*</div>
                     <div class="build-price-item-link">
                         <a href="/companies/{{brand.id}}/">Где купить</a>
@@ -87,47 +87,56 @@
                     </tr>
                     <tr>
                         <th>Привод</th>
-                        {{details.technicalData.gearing}}
+                        <td>{{details.technicalData.gearing}}</td>
+                        {{> optionCheckbox}}
                     </tr>
                     <tr>
                         <th>Разгон до сотни</th>
-                        {{details.zeroToSixty}} секунды
+                        <td>{{details.technicalData.zeroToSixty}} секунды</td>
+                        {{> optionCheckbox}}
                     </tr>
                     <tr>
                         <th>Максимальная скорость</th>
-                        {{details.maxSpeed}} км/ч
+                        <td>{{details.technicalData.maxSpeed}} км/ч</td>
+                        {{> optionCheckbox}}
                     </tr>
                     <tr>
                         <th>Расход топлива (л/100 км)<br>город / трасса / смешанный </th>
-                        {{fuelEconomy.city}} / {{fuelEconomy.highway}} / {{fuelEconomy.mixed}}
+                        <td>{{details.technicalData.fuelEconomy.city}} / {{details.technicalData.fuelEconomy.highway}} / {{details.technicalData.fuelEconomy.mixed}}</td>
+                        {{> optionCheckbox}}
                     </tr>
                 </table>
                 <table class="car-build-table">
                     <caption>Кузов</caption>
                     <tr>
                         <th>Дорожный просвет</th>
-                        {{fuelEconomy.clearance}} мм
+                        <td>{{details.technicalData.clearance}} мм</td>
+                        {{> optionCheckbox}}
                     </tr>
                     <tr>
                         <th>Габариты (длина &times; ширина &times; высота)</th>
-                        {{dimensions.length}} &times; {{dimensions.width}} &times; {{dimensions.height}}
+                        <td>{{details.technicalData.dimensions.length}} &times; {{details.technicalData.dimensions.width}} &times; {{details.technicalData.dimensions.height}}</td>
+                        {{> optionCheckbox}}
                     </tr>
                     <tr>
                         <th>Объём багажника</th>
-                        {{trunkVolume}} л
+                        <td>{{details.technicalData.trunkVolume}} л</td>
+                        {{> optionCheckbox}}
                     </tr>
                     <tr>
                         <th>Объём топливного бака</th>
-                        {{fuelTankVolume}} л
+                        <td>{{details.technicalData.fuelTankVolume}} л</td>
+                        {{> optionCheckbox}}
                     </tr>
                     <tr>
                         <th>Масса автомобиля</th>
-                        {{weight}} кг
+                        <td>{{details.technicalData.weight}} кг</td>
+                        {{> optionCheckbox}}
                     </tr>
                 </table>
                 <table class="car-build-table">
                     <caption>Безопасность</caption>
-                    {{#each options.safety}}
+                    {{#each details.options.safety}}
                         {{> configurationOption}}
                     {{/each}}
                 </table>
@@ -136,7 +145,7 @@
                 </div>
                 <table class="car-build-table">
                     <caption>Комфорт в салоне</caption>
-                    {{#each options.comofort}}
+                    {{#each details.options.comfort}}
                         {{> configurationOption}}
                     {{/each}}
                 </table>
@@ -149,7 +158,7 @@
             <div class="build-info-col">
                 <table class="car-build-table">
                     <caption>Комплектация {{caption}}</caption>
-                    {{#each options.specific}}
+                    {{#each details.options.specific}}
                         {{> configurationOption}}
                     {{/each}}
                 </table>

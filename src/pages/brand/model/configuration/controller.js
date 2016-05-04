@@ -5,17 +5,29 @@ import utmEnrich from '../../../../utils/utmEnrich.js';
 
 import pageContent from '../../../../templates/build/pages/configuration';
 import optionCheckbox from '../../../../templates/build/partials/optionCheckbox';
+import configurationOption from '../../../../templates/build/partials/configurationOption';
 
 import registerPartials from '../../../../utils/handlebars/registerPartials';
 
 registerPartials({
-    optionCheckbox
+    optionCheckbox,
+    configurationOption
 });
 
 const composePageContentHtml = (modelConfigurationData) => {
 
     return pageContent({
-        brand: modelConfigurationData.brand
+        brand: modelConfigurationData.brand,
+        model: modelConfigurationData.model,
+        caption: modelConfigurationData.caption,
+        carInfo: modelConfigurationData.carInfo,
+        price: modelConfigurationData.price,
+        priceFormatted: modelConfigurationData.priceFormatted,
+        id: modelConfigurationData.id,
+        gallery: modelConfigurationData.gallery,
+        packages: modelConfigurationData.packages,
+        details: modelConfigurationData.details,
+        other: modelConfigurationData.other
     });
 };
 
