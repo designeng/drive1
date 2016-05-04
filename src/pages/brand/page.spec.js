@@ -52,7 +52,7 @@ export default {
     brandNewsEndpoint: {
         create: {
             module: (brand) => {
-                return [getEndpoint('news'), {brand: brand.id}];
+                return [getEndpoint('news'), {brand: brand.id, count: 8}];
             },
             args: [
                 {$ref: 'brand'}
