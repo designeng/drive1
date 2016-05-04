@@ -1,7 +1,7 @@
-import wireDebugPlugin      from 'essential-wire/source/debug';
-import requestPlugin        from '../../../plugins/api/request';
+import wireDebugPlugin from 'essential-wire/source/debug';
+import requestPlugin from '../../../plugins/api/request';
 
-import { getEndpoint }   from '../../../config/api';
+import { getEndpoint } from '../../../config/api';
 import controller from './controller';
 
 export default {
@@ -45,7 +45,7 @@ export default {
         }
     },
 
-    // endpoint: /items/news?brand={brandName} 
+    // endpoint: /items/news?brand={brandName}
     brandNewsEndpoint: {
         create: {
             module: (carModel) => {

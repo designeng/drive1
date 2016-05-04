@@ -1,4 +1,4 @@
-import _  from 'underscore';
+import _ from 'underscore';
 
 const config = {
     protocol: 'https',
@@ -73,6 +73,6 @@ export function getEndpoint(item, replacement, options) {
     endpoint = endpoint.replace(/(\/{2})/g, '/');
 
     endpoint = getBaseUrl(options) + endpoint;
-    
+
     return endpoint;
 }

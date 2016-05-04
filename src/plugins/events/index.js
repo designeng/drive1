@@ -8,7 +8,7 @@ function bindEventsFacet(resolver, compDef, wire) {
             let selector = item.class ? '.' + item.class : (item.id ? '#' + item.id : 'none')
             $(selector).on(item.event, item.handler);
         });
-        
+
         resolver.resolve(events)
     })
 }

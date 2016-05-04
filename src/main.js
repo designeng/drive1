@@ -1,11 +1,11 @@
-import wire         from 'essential-wire';
-import pipeline     from 'when/pipeline';
-import chalk        from 'chalk';
+import wire from 'essential-wire';
+import pipeline from 'when/pipeline';
+import chalk from 'chalk';
 
 import expressBootstrapSpec from './express.bootstrap.spec';
-import expressSpec          from './express.spec';
+import expressSpec from './express.spec';
 
-import Timer    from './utils/timer';
+import Timer from './utils/timer';
 
 let timer = new Timer();
 

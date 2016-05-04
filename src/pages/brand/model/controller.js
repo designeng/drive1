@@ -3,10 +3,10 @@ import chalk from 'chalk';
 
 import utmEnrich from '../../../utils/utmEnrich.js';
 
-import pageContent  from '../../../templates/build/pages/model';
-import itemPlain    from '../../../templates/build/itemPlain';
-import dealersList  from '../../../templates/build/dealersList';
-import dealerItem   from '../../../templates/build/dealerItem';
+import pageContent from '../../../templates/build/pages/model';
+import itemPlain from '../../../templates/build/itemPlain';
+import dealersList from '../../../templates/build/dealersList';
+import dealerItem from '../../../templates/build/dealerItem';
 
 const getNewsArray = (items) => {
     return _.map(items, (item) => {
@@ -71,7 +71,7 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         city            : city,
         newsItems,
         dealersList,
-        // testDrives: 
+        // testDrives:
     })
 }
 
