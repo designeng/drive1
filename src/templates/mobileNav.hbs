@@ -12,6 +12,12 @@
             </li>
         </ul>
         {{! /static/brands }}
-        {{{mobileBrandsList}}}
+        <ul class="nav-mobile-section">
+            {{#each brands}}
+                <li class="nav-mobile-item">
+                    <a class="nav-mobile-item__link" href="/{{this.id}}">{{this.name}}</a>
+                </li>
+            {{/each}}
+        </ul>
     </div>
 </div>

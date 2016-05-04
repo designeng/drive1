@@ -83,7 +83,9 @@ function getCarcass(brands, cities, receptionButtons) {
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
                 header: headerHtml(cities, receptionButtons),
-                mobileNav: mobileNav(),
+                mobileNav: mobileNav({
+                    brands
+                }),
                 additionalNav: additionalNav(),
                 brandsList: brandsList({
                     brands
