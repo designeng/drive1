@@ -33,7 +33,6 @@ import widget_adfoxButton from '../../templates/build/widgets/widget_adfoxButton
 import widget_adfoxBottomMobile from '../../templates/build/widgets/widget_adfoxBottomMobile';
 import widget_adfoxBottom from '../../templates/build/widgets/widget_adfoxBottom';
 
-import additionalStyles from '../../templates/build/partials/additionalStyles';
 import sprite from '../../templates/build/partials/sprite';
 import backgroundSprite from '../../templates/build/partials/backgroundSprite';
 import hr from '../../templates/build/partials/hr';
@@ -55,7 +54,6 @@ registerPartials({
     widget_relap,
     widget_adfoxVideo,
     widget_adfoxButton,
-    additionalStyles,
     sprite,
     backgroundSprite,
     ins,
@@ -74,13 +72,25 @@ const headerHtml = (cities, receptionButtons) => {
 }
 
 function getCarcass(brands, cities, receptionButtons) {
+    const defaultHeadScripts = [
+        {
+            async: 'async',
+            src: 'https://relap.io/api/v6/head.js?token=kuqS-X35GGSZrxwZ'
+        }
+    ];
 
-    const getCarcassFn = (pageContentHtml, styles) => {
+    const getCarcassFn = (
+        pageContentHtml,
+        additionalStyles,
+        additionalHeadScripts=defaultHeadScripts,
+        additionalBottomScripts=[]
+    ) => {
         return carcass({
             htmlClass: '',
             head: head({
                 title: 'Drive.ru',
-                styles
+                additionalStyles,
+                additionalHeadScripts
             }),
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
@@ -97,11 +107,12 @@ function getCarcass(brands, cities, receptionButtons) {
                     scrollToTopButton: scrollToTopButton()
                 }),
                 bottomScripts: bottomScripts(),
+                additionalBottomScripts,
                 compareBlock: compareBlock(),
-                socialShareBlock: socialShareBlock()
+                socialShareBlock: socialShareBlock(),
             })
         })
-    }
+    };
 
     return getCarcassFn;
 }

@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="/css/global.css?{{cacheReset}}">
     <link rel="stylesheet" href="/css/form.css?{{cacheReset}}">
     <link rel="stylesheet" href="/css/likely.css"/>
-    {{> additionalStyles}}
+    {{#each additionalStyles}}
+        <link rel="stylesheet" href="{{path}}"/>
+    {{/each}}
     
     <link rel="alternate" type="application/rss+xml" title="ДРАЙВ" href="//www.drive.ru/export/rss.xml">
     <link rel="stylesheet" type="text/css" href="/css/mobile/mobile-reset.css?{{cacheReset}}" />
@@ -32,6 +34,9 @@
     <script src="//cdn.optimizely.com/js/4505937734.js"></script>
     <script type="text/javascript" src="/js/adfox.asyn.code.ver3.js"> </script>
     <script type="text/javascript" src="/js/adfox.asyn.code.scroll.js"> </script>
+    {{#each additionalHeadScripts}}
+        <script type="text/javascript" {{this.async}} src="{{this.src}}"></script>
+    {{/each}}
 
     <script type="text/javascript">
         drv.toggleViewport();

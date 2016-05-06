@@ -66,7 +66,6 @@ const composePageContentHtml = (articleData) => {
 }
 
 function controller(articleData, getCarcassFn) {
-
     let pageContentHtml = composePageContentHtml(
         articleData
     );
