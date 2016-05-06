@@ -20,16 +20,13 @@
     <link rel="stylesheet" type="text/css" href="/css/mobile/mobile-reset.css?{{cacheReset}}" />
     <link rel="stylesheet" type="text/css" href="/css/mobile/mobile.css?{{cacheReset}}" media="screen and (max-device-width: 800px)" />
 
-    <script src="/js/core.js?{{cacheReset}}"></script>
-    {{! Debug }}
-    {{!
+    {{! TODO: Uncompressed JS used for debug purposes. Use bundled file (core.js) instead }}
     <script src="/js/_libs/closure-library/closure/goog/base.js"></script>
     <script src="/js/_source/deps.js"></script>
     <script>
         goog.LOCALE = 'ru-RU';
         goog.require('drive.all');
     </script>
-    }}
     <script src="/js/likely.js"></script>
     <script src="/js/async_af.js"></script>
     <script src="//cdn.optimizely.com/js/4505937734.js"></script>
