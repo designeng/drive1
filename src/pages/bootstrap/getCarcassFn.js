@@ -6,6 +6,7 @@ import citySelector from '../../templates/build/citySelector';
 import additionalNav from '../../templates/build/additionalNav';
 import scrollToTopButton from '../../templates/build/scrollToTopButton';
 import bottomScripts from '../../templates/build/bottomScripts';
+import compareBlock from '../../templates/build/compareBlock';
 
 import footer from '../../templates/build/footer';
 import header from '../../templates/build/header';
@@ -94,7 +95,8 @@ function getCarcass(brands, cities, receptionButtons) {
                 footer: footer({
                     scrollToTopButton: scrollToTopButton()
                 }),
-                bottomScripts: bottomScripts()
+                bottomScripts: bottomScripts(),
+                compareBlock: compareBlock()
             })
         })
     }
