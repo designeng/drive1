@@ -60,6 +60,7 @@ const composePageContentHtml = (articleData) => {
         gallery: articleData.gallery,
         category: articleData.category,
         articleContent: articleData.articleContent,
+        hreviewData: articleData.hreviewData,
         commentsCount: articleData.commentsCount,
         socialLinksMobile: socialLinks.slice(0, 2)
     });

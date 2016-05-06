@@ -3,6 +3,22 @@
     <div id="article" class="article cf hreview" itemscope itemtype="http://schema.org/NewsArticle">
         <meta itemprop="headline" content="{{сaption}}"/>
         <meta itemprop="datePublished" content="{{time}}"/>
+        <p class="dtreviewed" style="display: none">
+            <abbr class="value" title="{{time}}"></abbr>
+        </p>
+		<span class="type" style="display: none">
+        	<span class="value-title" title="product"></span>
+    	</span>
+        <a class="permalink" href="{{canonicalUrl}}" style="display: none"></a>
+        <div class="item" style="display: none">
+            {{#each hreviewData}}
+                <div class="hproduct">
+                    <abbr class="category" title="auto"></abbr>
+                    <span class="brand">{{this.brand}}</span>
+                    <span class="fn">{{this.details}}</span>
+                </div>
+            {{/each}}
+        </div>
         {{#if company.id}}
             {{> brandedArticleHeader}}
         {{else}}
@@ -24,6 +40,11 @@
             </p>
 		</span>
         {{{articleContent}}}
+        {{#each reviewData}}
+            <a class="reviewsurl" href="//www.drive.ru/{{this.brand}}/" style="display: none">
+                {{this.brand}} {{this.details}}
+            </a>
+        {{/each}}
     </div>
     <script>new drv.Article;</script>
     {{{poll}}}
