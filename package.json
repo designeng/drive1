@@ -61,6 +61,9 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-eslint": "^1.0.0",
     "eslint-config-defaults": "^9.0.0",
-    "babel-eslint": "latest"
+    "babel-eslint": "latest",
+    "gulp-closure-deps": "^0.4.0",
+    "gulp-closure-compiler": "^0.3.1",
+    "extend": "^3.0.0"
   }
 }

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RSA tests</title>
+	<!--
+	<script src="../../../closure-library/closure/goog/base.js"></script>
+	<script src="bigint.js"></script>
+	<script src="barrett.js"></script>
+	<script src="rsa.js"></script>
+	-->
+	<script src="rsa.min.js"></script>
+</head>
+<body>
+
+<form id="login" action="http://localhost.drive2.ru/reception/default.aspx" method="post">
+	<input type="text" name="login" value="olegufaev">
+	<input type="text" name="rsa_password" value="">
+	<input type="hidden" name="loginpage_form" value="1">
+	<button>Try to login</button>
+</form>
+
+<script>
+var exponent = '010001';
+var key = 'ae751d7e075dc38162aaf2de28184cbf2037ad5ed3e10a0e597d22b245499ff9bfe22d3809a20cb4245404dd5dc6b0213dadf5324997f8458f56467a02d1c8b1';
+var s = rsa.encrypt(exponent, key, 'qwaszx');
+document.getElementById('login').rsa_password.value = s;
+</script>
+
+
+</body>
+</html>
