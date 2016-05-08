@@ -61,6 +61,10 @@ const routes = [
             routeSpec: mainPageSpec,
       },
       {
+            url: '/404error',
+            routeSpec: notFoundSpec
+      },
+      {
             url: '/drive-tests',
             routeSpec: driveTestsPageSpec,
       },
@@ -150,10 +154,6 @@ const routes = [
       },
 
       // TODO: complete/remove
-      {
-            url: '/404error',
-            routeSpec: notFoundSpec
-      },
       {
             url: '/demo',
             routeSpec: demoPageSpec
