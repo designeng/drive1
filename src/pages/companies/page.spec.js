@@ -25,12 +25,15 @@ export default {
     companiesPageEndpoint: {
         create: {
             module: (brand, sectionFirstId, sectionSecondId, city) => {
-                console.log("sectionFirstId, sectionSecondId::::", sectionFirstId, sectionSecondId);
-                
-                brand = brand ? brand.id : null;
                 city = city.id;
-                let rawEndpoint = getEndpoint('companiesPage', {brand, city}, {mode: 'raw'});
-                return [rawEndpoint, {raw: true}];
+                if(sectionFirstId && sectionSecondId) {
+                    let rawEndpoint = getEndpoint('companiesSectionPage', {sectionFirstId, sectionSecondId}, {mode: 'raw'});
+                    return [rawEndpoint, {raw: true}];
+                } else {
+                    brand = brand ? brand.id : null;
+                    let rawEndpoint = getEndpoint('companiesPage', {brand, city}, {mode: 'raw'});
+                    return [rawEndpoint, {raw: true}];
+                }
             },
             args: [
                 {$ref: 'brand'},

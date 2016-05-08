@@ -28,6 +28,7 @@ const endpoints = {
     topControls: "/system/controls",
     // raw:
     companiesPage: "/companies/{brand}",
+    companiesSectionPage: "/companies/{sectionFirstId}/{sectionSecondId}",
     companyPage: "/company/{id}.html",
     talkPage: "/talk/{theme}/{talkFirstId}/{talkSecondId}",
     commentsPage: "/talk/comments/{id}.html",
