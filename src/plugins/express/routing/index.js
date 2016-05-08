@@ -194,8 +194,8 @@ function articlePageMiddleware(resolver, facet, wire) {
                 //     endpoint: 'threadTalkPage'
                 // });
             } else {
-                // 404 ?
-                response.status(200).end("not recognized page::: " + requestUrl);
+                // to 404error handler
+                next();
             }
         });
     })

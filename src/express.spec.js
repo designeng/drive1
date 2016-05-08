@@ -50,7 +50,7 @@ export default {
         favicon: {
             path: './public/assets/favicon.ico'
         },
-        // routeNotFoundMiddleware: {},
+        routeNotFoundMiddleware: {},
         server: {
             port            : process.env.PORT || 3000,
             verbose         : true,
