@@ -106,7 +106,7 @@ drive.XhrRequests = {
 drive.xhrInfo = new goog.structs.Map(
   drive.XhrRequests.BRAND_MODELS_INFO,
   {
-    url: goog.XHR_DEBUG ? '/_fish/json.model-info.htm' : '/suggest.php',
+    url: goog.XHR_DEBUG ? '/_fish/json.model-info.htm' : '/api/suggest',
     xhrMethod: bru.net.xhr.Method.GET,
     behaviour: bru.net.xhr.Behaviour.SHOW_ERRORS//,
     //priority: 100
@@ -114,7 +114,6 @@ drive.xhrInfo = new goog.structs.Map(
 
   drive.XhrRequests.COMPARE_BUILDS_INFO,
   {
-    // url: goog.XHR_DEBUG ? '/_fish/json.build-info.htm' : '/compare.php',
     url: goog.XHR_DEBUG ? '/_fish/json.build-info.htm' : '/api/compare',
     xhrMethod: bru.net.xhr.Method.GET
   },
