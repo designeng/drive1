@@ -158,7 +158,9 @@ _.each(_.keys(footerLinks), (item) => {
             routeSpec: articlePageSpec,
             provide: {
                   nodeId: footerLinks[item]
-            }
+            },
+            success,
+            error,
       })
 });
 
