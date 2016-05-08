@@ -99,6 +99,14 @@ function routeMiddleware(resolver, facet, wire) {
                 _.extend(environment, { talkSecondId: request.params.talkSecondId });
             }
 
+            if(request.params && request.params.sectionFirstId) {
+                _.extend(environment, { sectionFirstId: request.params.sectionFirstId });
+            }
+
+            if(request.params && request.params.sectionSecondId) {
+                _.extend(environment, { sectionSecondId: request.params.sectionSecondId });
+            }
+
             if(provide) {
                 _.extend(environment, provide);
             }
