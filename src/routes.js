@@ -102,6 +102,10 @@ const routes = [
             url: '/companies/service/:brand',
             routeSpec: companiesPageSpec
       },
+      {
+            url: '/companies/:sectionFirstId/:sectionSecondId',
+            routeSpec: companiesPageSpec
+      },
       // page with news list for given category
       {
             url: '/:category',

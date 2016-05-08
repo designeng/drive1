@@ -46,6 +46,8 @@ function routeMiddleware(resolver, facet, wire) {
                 theme           : null,
                 talkFirstId     : null,
                 talkSecondId    : null,
+                sectionFirstId  : null,
+                sectionSecondId : null,
                 requestUrl      : request.url,
                 accessToken     : null,
                 targetUrl       : null,
