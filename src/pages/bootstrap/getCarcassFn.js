@@ -40,6 +40,8 @@ import ins from '../../templates/build/partials/ins';
 
 import registerPartials from '../../utils/handlebars/registerPartials';
 
+import packageJson from '../../../package.json';
+
 registerPartials({
     widget_adfoxTopMobile,
     widget_adfoxMiddleMobile,
@@ -90,7 +92,8 @@ function getCarcass(brands, cities, receptionButtons) {
             head: head({
                 title: 'Drive.ru',
                 additionalStyles,
-                additionalHeadScripts
+                additionalHeadScripts,
+                cacheReset: packageJson.version,
             }),
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
