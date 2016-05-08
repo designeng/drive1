@@ -114,7 +114,8 @@ drive.xhrInfo = new goog.structs.Map(
 
   drive.XhrRequests.COMPARE_BUILDS_INFO,
   {
-    url: goog.XHR_DEBUG ? '/_fish/json.build-info.htm' : '/compare.php',
+    // url: goog.XHR_DEBUG ? '/_fish/json.build-info.htm' : '/compare.php',
+    url: goog.XHR_DEBUG ? '/_fish/json.build-info.htm' : '/api/compare',
     xhrMethod: bru.net.xhr.Method.GET
   },
 

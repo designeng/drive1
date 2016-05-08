@@ -9,7 +9,9 @@ function proxyMiddleware(resolver, facet, wire) {
         let method = route.method.toLowerCase() || 'get';
 
         target[method](route.url, function (req, res) {
-            // let query = url.parse(req.url, true).query;
+
+            let query = url.parse(req.url, true).query;
+
             // let originUrl = route.originUrl;
             // originUrl.slice(-1) != '/' ? originUrl += '/' : void 0;
             // let restParams = req.params;
@@ -19,18 +21,18 @@ function proxyMiddleware(resolver, facet, wire) {
             //     }
             // }
 
-            console.log('req.body.email:::', req.body.email);
-            console.log('req.body.text:::', req.body.text);
-            console.log('req.body.mode:::', req.body.mode);
-            console.log('req.body.url:::', req.body.url);
+            // TODO: for post method?
+            // feedback page options:
+            // {
+            //     email:  req.body.email,
+            //     text:   req.body.text,
+            //     mode:   req.body.mode,
+            //     url:    req.body.url,
+            // }
+            
+            let options = method === 'get' ? { params: query } : {};
 
-            // axios[method](originUrl, { params: query })
-            axios[method](route.originUrl, {
-                    email:  req.body.email,
-                    text:   req.body.text,
-                    mode:   req.body.mode,
-                    url:    req.body.url,
-                })
+            axios[method](route.originUrl, options)
                 .then(response => {
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify(response.data));
