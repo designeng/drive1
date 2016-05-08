@@ -17,7 +17,7 @@ function getEndpointRepresentedByArray(array) {
 }
 
 function normalizeEndpoint(endpoint) {
-    return _.isString(endpoint) ? endpoint : (_.isArray(endpoint) ? 
+    return _.isString(endpoint) ? endpoint : (_.isArray(endpoint) ?
         getEndpointRepresentedByArray(endpoint)
         : new Error('[requestPlugin:] Endpoint should be a string or array.'))
 }

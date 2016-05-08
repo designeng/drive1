@@ -1,22 +1,23 @@
-import _  from 'underscore';
+import _ from 'underscore';
 import chalk from 'chalk';
-import mainPageSpec           from './pages/main/page.spec';
-import categoryNewsPageSpec   from './pages/categoryNews/page.spec';
-import driveTestsPageSpec     from './pages/driveTests/page.spec';
-import videoPageSpec          from './pages/video/page.spec';
-import demoPageSpec           from './pages/demo/page.spec';
-import brandPageSpec          from './pages/brand/page.spec';
-import brandModelPageSpec     from './pages/brand/model/page.spec';
-import articlePageSpec        from './pages/article/page.spec';
-import companiesPageSpec      from './pages/companies/page.spec';
-import feedbackPageSpec       from './pages/feedback/page.spec';
-import talkPageSpec           from './pages/talk/page.spec';
+import mainPageSpec from './pages/main/page.spec';
+import categoryNewsPageSpec from './pages/categoryNews/page.spec';
+import driveTestsPageSpec from './pages/driveTests/page.spec';
+import videoPageSpec from './pages/video/page.spec';
+import demoPageSpec from './pages/demo/page.spec';
+import brandPageSpec from './pages/brand/page.spec';
+import brandModelPageSpec from './pages/brand/model/page.spec';
+import modelConfigurationPageSpec from './pages/brand/model/configuration/page.spec';
+import articlePageSpec from './pages/article/page.spec';
+import companiesPageSpec from './pages/companies/page.spec';
+import feedbackPageSpec from './pages/feedback/page.spec';
+import talkPageSpec from './pages/talk/page.spec';
 
-import noopPageSpec           from './pages/noop/page.spec';
+import noopPageSpec from './pages/noop/page.spec';
 
-import notFoundSpec           from './pages/404/page.spec';
+import notFoundSpec from './pages/404/page.spec';
 
-import receptionSpec          from './reception.spec';
+import receptionSpec from './reception.spec';
 
 const success = (response) => {
       return (context) => {
@@ -106,7 +107,7 @@ const routes = [
             url: '/:category',
             routeSpec: categoryNewsPageSpec
       },
-      
+
       {
             url: '/news/:brand',
             routeSpec: categoryNewsPageSpec
@@ -127,11 +128,18 @@ const routes = [
             url: '/brands/:brand/models/:year/:model',
             routeSpec: brandModelPageSpec
       },
+      {
+            url: '/brands/:brand/models/:year/:model/:configuration',
+            routeSpec: modelConfigurationPageSpec
+      },
 
-      // left for backwards compatibility with previous site version, 
+      // left for backwards compatibility with previous site version,
       // redirect to '/brands/:brand/models/:year/:model' etc.
       {
             url: '/:brand/models/:year/:model'
+      },
+      {
+            url: '/:brand/models/:year/:model/:configuration'
       },
       {
             url: '/:brand/drive-tests'

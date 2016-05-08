@@ -1,7 +1,7 @@
-import wireDebugPlugin   from 'essential-wire/source/debug';
-import requestPlugin     from './plugins/api/request';
+import wireDebugPlugin from 'essential-wire/source/debug';
+import requestPlugin from './plugins/api/request';
 
-import { getEndpoint }   from './config/api';
+import { getEndpoint } from './config/api';
 
 export default {
     $plugins: [

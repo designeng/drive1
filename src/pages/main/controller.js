@@ -3,16 +3,16 @@ import chalk from 'chalk';
 
 import preprocessCaption from '../../utils/preprocessCaption';
 
-import pageContent          from '../../templates/build/pages/main';
+import pageContent from '../../templates/build/pages/main';
 
 // TODO: rename template?
-import itemLarge            from '../../templates/build/itemLarge';
-import itemMedium           from '../../templates/build/itemMedium';
-import itemCompact          from '../../templates/build/itemCompact';
+import itemLarge from '../../templates/build/itemLarge';
+import itemMedium from '../../templates/build/itemMedium';
+import itemCompact from '../../templates/build/itemCompact';
 
 // TODO: rename template?
-import videoThumbnail       from '../../templates/build/videoThumbnail';
-import blogEntry            from '../../templates/build/blogEntry';
+import videoThumbnail from '../../templates/build/videoThumbnail';
+import blogEntry from '../../templates/build/blogEntry';
 
 // TODO: refactor to DRY
 const largeNewsHtml = (items) => {
@@ -71,8 +71,8 @@ function controller(topStories, topVideos, topBlogs, cellar, getCarcassFn) {
         {path: '/css/index.css'}
     ];
 
-    let topNews     = preprocessCaption(topStories['topNews'], {mode: 'text'});
-    let mainNews    = preprocessCaption(topStories['mainNews'], {mode: 'link'});
+    let topNews = preprocessCaption(topStories['topNews'], {mode: 'text'});
+    let mainNews = preprocessCaption(topStories['mainNews'], {mode: 'link'});
 
     let pageContentHtml = composePageContentHtml(
         topNews,

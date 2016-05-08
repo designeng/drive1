@@ -1,10 +1,10 @@
 import _ from 'underscore';
 import preprocessCaption from '../../utils/preprocessCaption';
 
-import pageContent          from '../../templates/build/pages/testDrives';
-import brandFilter          from '../../templates/build/brandFilter';
-import itemLarge            from '../../templates/build/itemLarge';
-import itemMedium           from '../../templates/build/itemMedium';
+import pageContent from '../../templates/build/pages/testDrives';
+import brandFilter from '../../templates/build/brandFilter';
+import itemLarge from '../../templates/build/itemLarge';
+import itemMedium from '../../templates/build/itemMedium';
 
 // TODO: refactor to DRY
 const largeItemsHtml = (items) => {

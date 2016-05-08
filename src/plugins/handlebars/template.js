@@ -1,5 +1,5 @@
-import Handlebars   from 'handlebars';
-import adler32      from 'adler-32';
+import Handlebars from 'handlebars';
+import adler32 from 'adler-32';
 import { DATA_CHECKSUM } from '../constants';
 
 const calculatePrefix = Handlebars.compile("<div {{ DATA_CHECKSUM }} ='{{ checksum }}'>");

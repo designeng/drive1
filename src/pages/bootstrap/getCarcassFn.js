@@ -1,21 +1,23 @@
-import carcass              from '../../templates/build/carcass';
-import head                 from '../../templates/build/head';
-import body                 from '../../templates/build/body';
+import carcass from '../../templates/build/carcass';
+import head from '../../templates/build/head';
+import body from '../../templates/build/body';
 
-import citySelector         from '../../templates/build/citySelector';
-import additionalNav        from '../../templates/build/additionalNav';
-import scrollToTopButton    from '../../templates/build/scrollToTopButton';
-import bottomScripts        from '../../templates/build/bottomScripts';
+import citySelector from '../../templates/build/citySelector';
+import additionalNav from '../../templates/build/additionalNav';
+import scrollToTopButton from '../../templates/build/scrollToTopButton';
+import bottomScripts from '../../templates/build/bottomScripts';
+import compareBlock from '../../templates/build/compareBlock';
+import socialShareBlock from '../../templates/build/socialShareBlock';
 
-import footer               from '../../templates/build/footer';
-import header               from '../../templates/build/header';
-import keywords             from '../../templates/build/keywords';
-import logo                 from '../../templates/build/logo';
-import mobileMenuTrigger    from '../../templates/build/mobileMenuTrigger';
-import mobileNav            from '../../templates/build/mobileNav';
-import nav                  from '../../templates/build/nav';
-import topControls          from '../../templates/build/topControls';
-import brandsList           from '../../templates/build/brandsList';
+import footer from '../../templates/build/footer';
+import header from '../../templates/build/header';
+import keywords from '../../templates/build/keywords';
+import logo from '../../templates/build/logo';
+import mobileMenuTrigger from '../../templates/build/mobileMenuTrigger';
+import mobileNav from '../../templates/build/mobileNav';
+import nav from '../../templates/build/nav';
+import topControls from '../../templates/build/topControls';
+import brandsList from '../../templates/build/brandsList';
 
 import widget_adfoxTopMobile from '../../templates/build/widgets/widget_adfoxTopMobile';
 import widget_adfoxMiddleMobile from '../../templates/build/widgets/widget_adfoxMiddleMobile';
@@ -31,11 +33,10 @@ import widget_adfoxButton from '../../templates/build/widgets/widget_adfoxButton
 import widget_adfoxBottomMobile from '../../templates/build/widgets/widget_adfoxBottomMobile';
 import widget_adfoxBottom from '../../templates/build/widgets/widget_adfoxBottom';
 
-import additionalStyles     from '../../templates/build/partials/additionalStyles';
-import sprite               from '../../templates/build/partials/sprite';
-import backgroundSprite     from '../../templates/build/partials/backgroundSprite';
-import hr                   from '../../templates/build/partials/hr';
-import ins                  from '../../templates/build/partials/ins';
+import sprite from '../../templates/build/partials/sprite';
+import backgroundSprite from '../../templates/build/partials/backgroundSprite';
+import hr from '../../templates/build/partials/hr';
+import ins from '../../templates/build/partials/ins';
 
 import registerPartials from '../../utils/handlebars/registerPartials';
 
@@ -53,7 +54,6 @@ registerPartials({
     widget_relap,
     widget_adfoxVideo,
     widget_adfoxButton,
-    additionalStyles,
     sprite,
     backgroundSprite,
     ins,
@@ -72,18 +72,32 @@ const headerHtml = (cities, receptionButtons) => {
 }
 
 function getCarcass(brands, cities, receptionButtons) {
+    const defaultHeadScripts = [
+        {
+            async: 'async',
+            src: 'https://relap.io/api/v6/head.js?token=kuqS-X35GGSZrxwZ'
+        }
+    ];
 
-    const getCarcassFn = (pageContentHtml, styles) => {
+    const getCarcassFn = (
+        pageContentHtml,
+        additionalStyles,
+        additionalHeadScripts=defaultHeadScripts,
+        additionalBottomScripts=[]
+    ) => {
         return carcass({
             htmlClass: '',
             head: head({
                 title: 'Drive.ru',
-                styles
+                additionalStyles,
+                additionalHeadScripts
             }),
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
                 header: headerHtml(cities, receptionButtons),
-                mobileNav: mobileNav(),
+                mobileNav: mobileNav({
+                    brands
+                }),
                 additionalNav: additionalNav(),
                 brandsList: brandsList({
                     brands
@@ -92,10 +106,13 @@ function getCarcass(brands, cities, receptionButtons) {
                 footer: footer({
                     scrollToTopButton: scrollToTopButton()
                 }),
-                bottomScripts: bottomScripts()
+                bottomScripts: bottomScripts(),
+                additionalBottomScripts,
+                compareBlock: compareBlock(),
+                socialShareBlock: socialShareBlock(),
             })
         })
-    }
+    };
 
     return getCarcassFn;
 }

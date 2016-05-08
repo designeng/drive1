@@ -1,10 +1,10 @@
-import wireDebugPlugin   from 'essential-wire/source/debug';
-import requestPlugin     from '../../plugins/api/request';
+import wireDebugPlugin from 'essential-wire/source/debug';
+import requestPlugin from '../../plugins/api/request';
 import performancePlugin from '../../plugins/performance';
 
 import { preprocessNews, getPage } from './preprocessors';
 
-import { getEndpoint }   from '../../config/api';
+import { getEndpoint } from '../../config/api';
 
 export default {
     $plugins: [

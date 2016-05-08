@@ -30,10 +30,20 @@
                     </span>
                 </div>
             </div>
-                <div id="brand-td-list" class="top-news-list">
-                    {{! /items/test_drives?brand={brandName} }}
-                    {{{testDrives}}}
-                </div>
+            <div id="brand-td-list" class="top-news-list">
+                {{! /items/test_drives?brand={brandName} }}
+                {{{testDrives}}}
+                {{#if testDrives}}
+                    <div class="show-more-link desktop-hidden">
+			            <span class="news-list-more">
+				            <a href="/{{brand.id}}/drive-tests">Посмотреть больше тест-драйвов</a>
+			            </span>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="dv-mobile dv-mobile_reordered">
+                {{> widget_adfoxMiddleMobile}}
+            </div>
             <div class="i clip clip-bottom"></div>
         </div>
     </div>

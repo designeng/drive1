@@ -1,6 +1,6 @@
-import wireDebugPlugin   from 'essential-wire/source/debug';
-import requestPlugin     from '../../plugins/api/request';
-import _                 from 'underscore';
+import wireDebugPlugin from 'essential-wire/source/debug';
+import requestPlugin from '../../plugins/api/request';
+import _ from 'underscore';
 
 import controller from './controller';
 

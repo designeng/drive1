@@ -1,19 +1,19 @@
 import fs from 'fs';
-import _  from 'underscore';
+import _ from 'underscore';
 import url from 'url';
 import chalk from 'chalk';
 import pipeline from 'when/pipeline';
 
 import { isArticlePage, isNodePage } from '../../../utils/page';
 
-import bootstrapSpec    from '../../../pages/bootstrap/bootstrap.spec';
-import articlePageSpec  from '../../../pages/article/page.spec';
+import bootstrapSpec from '../../../pages/bootstrap/bootstrap.spec';
+import articlePageSpec from '../../../pages/article/page.spec';
 
-import nodePageSpec     from '../../../pages/node/page.spec';
+import nodePageSpec from '../../../pages/node/page.spec';
 
-import categories       from '../../../config/categories';
-import brands           from '../../../config/brands';
-import themes           from '../../../config/themes';
+import categories from '../../../config/categories';
+import brands from '../../../config/brands';
+import themes from '../../../config/themes';
 
 import { createTasks, createTask } from '../../../utils/tasks';
 
@@ -21,16 +21,16 @@ const articleIdRexeg = /([^\/]+)(?=\.\w+$)/;
 const articleRexeg = /([a-zA-Z0-9\.])+(.html|.htm)/;
 
 function routeMiddleware(resolver, facet, wire) {
-    const target    = facet.target;
-    const routes    = facet.options.routes;
-    const before    = facet.options.before || function before(request, response, next) {next()};
+    const target = facet.target;
+    const routes = facet.options.routes;
+    const before = facet.options.before || function before(request, response, next) {next()};
 
     routes.forEach(route => {
         target.get(route.url, before, (request, response, next) => {
-            let routeSpec   = route.routeSpec;
-            let provide     = route.provide;
-            let success     = route.success;
-            let error       = route.error;
+            let routeSpec = route.routeSpec;
+            let provide = route.provide;
+            let success = route.success;
+            let error = route.error;
 
             // TODO: conflict resolving for routes [/news/*.html, /news/:brand etc.]
             // think how to avoid plugin hack
@@ -65,17 +65,26 @@ function routeMiddleware(resolver, facet, wire) {
                     id: request.params.brand,
                     name: _.find(brands, {id: request.params.brand})['name']
                 } });
-            } else if(request.params && request.params.brand && request.params.year && request.params.model) {
+            } else if(request.params && request.params.brand && request.params.year && request.params.model && !request.params.configuration) {
                 _.extend(environment, { carModel: {
                     brand   : request.params.brand,
                     year    : request.params.year,
                     model   : request.params.model,
                 } });
+            } else if(request.params && request.params.brand && request.params.year && request.params.model && request.params.configuration) {
+                _.extend(environment, {
+                    carConfiguration: {
+                        brand: request.params.brand,
+                        year: request.params.year,
+                        model: request.params.model,
+                        configuration: request.params.configuration
+                    }
+                });
             }
 
             // talk
             if(request.params && request.params.theme) {
-                _.extend(environment, { 
+                _.extend(environment, {
                     theme: _.find(brands, {id: request.params.theme}) || _.find(themes, {id: request.params.theme})
                 });
             }
@@ -100,9 +109,9 @@ function routeMiddleware(resolver, facet, wire) {
 
             // TODO: add condition 'request url == local_reception'
             if(query['.AMET'] && query['url']) {
-                let accessToken   = query['.AMET'];
+                let accessToken = query['.AMET'];
                 // to redirect after reception connection
-                let targetUrl     = query['url'];
+                let targetUrl = query['url'];
                 _.extend(environment, { accessToken, targetUrl });
                 // remove bootstrap task
                 tasks.shift();

@@ -13,8 +13,8 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.hbs/, loader: "handlebars-template-loader", exclude: /node_modules/ },
-            {   
-                test: /\.js$/, 
+            {
+                test: /\.js$/,
                 loader: 'babel',
                 exclude: /node_modules/
             }

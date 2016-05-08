@@ -1,8 +1,8 @@
-import wireDebugPlugin      from 'essential-wire/source/debug';
-import performancePlugin    from '../../plugins/performance';
-import requestPlugin        from '../../plugins/api/request';
+import wireDebugPlugin from 'essential-wire/source/debug';
+import performancePlugin from '../../plugins/performance';
+import requestPlugin from '../../plugins/api/request';
 
-import { getEndpoint }   from '../../config/api';
+import { getEndpoint } from '../../config/api';
 import controller from './controller';
 
 export default {
@@ -52,7 +52,7 @@ export default {
     brandNewsEndpoint: {
         create: {
             module: (brand) => {
-                return [getEndpoint('news'), {brand: brand.id}];
+                return [getEndpoint('news'), {brand: brand.id, count: 8}];
             },
             args: [
                 {$ref: 'brand'}

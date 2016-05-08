@@ -1,9 +1,9 @@
 import _ from 'underscore';
 
-import pageContent          from '../../templates/build/pages/videos';
+import pageContent from '../../templates/build/pages/videos';
 
-import brandFilter          from '../../templates/build/brandFilter';
-import videoThumbnail       from '../../templates/build/videoThumbnail';
+import brandFilter from '../../templates/build/brandFilter';
+import videoThumbnail from '../../templates/build/videoThumbnail';
 
 const brandFilterHtml = (items) => {
     return _.reduce(items, (result, item) => {

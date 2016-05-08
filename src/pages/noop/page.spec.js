@@ -1,4 +1,4 @@
-import wireDebugPlugin   from 'essential-wire/source/debug';
+import wireDebugPlugin from 'essential-wire/source/debug';
 
 import controller from './controller';
 
