@@ -184,10 +184,17 @@ function articlePageMiddleware(resolver, facet, wire) {
             // remove zero blank element
             requestUrlArr.shift();
 
+            console.log("requestUrl:::::", requestUrl);
+
             if(isNodePage(requestUrlArr, {fragment: 'company'})) {
                 renderNodePage(request, response, nodePageSpec, {
                     additionalStyles: [{path: '/css/company.css'}],
                     endpoint: 'companyPage'
+                });
+            } else if (isNodePage(requestUrlArr, {fragment: 'talk'})) {
+                renderNodePage(request, response, nodePageSpec, {
+                    additionalStyles: [{path: '/css/forum.css'}],
+                    endpoint: 'commentsPage'
                 });
             } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
                 renderNodePage(request, response, articlePageSpec);
@@ -196,12 +203,6 @@ function articlePageMiddleware(resolver, facet, wire) {
                     additionalStyles: [{path: '/css/forum.css'}],
                     endpoint: 'commentsPage'
                 });
-            } else if (isNodePage(requestUrlArr, {fragment: 'talk'})) {
-                response.status(200).end("some talk page::: " + requestUrl);
-                // renderNodePage(requestUrl, nodePageSpec, response, {
-                //     additionalStyles: [{path: '/css/forum.css'}],
-                //     endpoint: 'threadTalkPage'
-                // });
             } else {
                 if(requestUrl.match(articleRexeg)) {
                     renderNodePage(request, response, nodePageSpec, {
