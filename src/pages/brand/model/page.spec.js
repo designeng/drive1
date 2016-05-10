@@ -27,11 +27,11 @@ export default {
         }
     },
 
-    // endpoint: /items/test_drives?brand={brandName}
+    // endpoint: /items/test_drives/{brandName}
     testDrivesBrandEndpoint: {
         create: {
             module: (carModel) => {
-                return [getEndpoint('testDrives'), {brand: carModel.brand}]
+                return getEndpoint('testDrives', {brand: carModel.brand})
             },
             args: [
                 {$ref: 'carModel'}

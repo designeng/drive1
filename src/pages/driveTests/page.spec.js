@@ -12,7 +12,7 @@ export default {
         requestPlugin,
     ],
 
-    // endpoint: /items/test_drives?brand={brand}
+    // endpoint: /items/test_drives/{brand}
     testDrivesEndpoint: {
         create: {
             module: (brand) => {
