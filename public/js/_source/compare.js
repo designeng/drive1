@@ -298,6 +298,8 @@ drive.Compare.prototype.getData_ = function() {
     var buttons = goog.dom.getElementsByClass('compare-button');
 
     var q = new goog.Uri.QueryData();
+    var ids = [];
+
     for (var i = 0, id; id = this.data_[i]; i += 2) {
 
       // Выставлять состояние кнопок нужно только для Сравнения,
@@ -315,8 +317,10 @@ drive.Compare.prototype.getData_ = function() {
         }
       }
 
-      q.add('id', id);
+      ids.push(id);
     }
+
+    q.add('ids', ids.join(','));
     drive.xhr.send(drive.XhrRequests.COMPARE_BUILDS_INFO, q, this.render_, this);
   }
 };
