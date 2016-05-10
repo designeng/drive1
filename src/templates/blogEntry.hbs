@@ -1,13 +1,13 @@
 {{#if company}}
     <li>
         <a class="index-com-news-caption" href="/company/{{company.id}}.html">{{company.name}}</a><br>
-        {{{caption}}}
+        <a href="{{url}}">{{{caption}}}</a>
     </li>
 {{else}}
     {{#if brand}}
         <li>
             <a class="index-com-news-caption" href="/{{brand.id}}">{{brand.name}}</a><br>
-            {{{caption}}}
+            <a href="{{url}}">{{{caption}}}</a>
         </li>
     {{/if}}
 {{/if}}
