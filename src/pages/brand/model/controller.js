@@ -26,15 +26,19 @@ const getNews = (items) => {
 }
 
 const getDealersList = (dealersData) => {
-    let dealersItems = _.reduce(dealersData.payers, (result, item) => {
-        result = result + dealerItem(item);
-        return result;
-    }, '');
+    if(dealersData.length) {
+        let dealersItems = _.reduce(dealersData.payers, (result, item) => {
+            result = result + dealerItem(item);
+            return result;
+        }, '');
 
-    return dealersList({
-        dealersItems,
-        totalCompaniesCount: dealersData.totalCompaniesCount
-    })
+        return dealersList({
+            dealersItems,
+            totalCompaniesCount: dealersData.totalCompaniesCount
+        });
+    } else {
+        return "";
+    }
 }
 
 const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsData, dealersData, city) => {
