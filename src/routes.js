@@ -156,12 +156,6 @@ const routes = [
       {
             url: '/:brand/drive-tests'
       },
-
-      // TODO: complete/remove
-      {
-            url: '/demo',
-            routeSpec: demoPageSpec
-      },
 ];
 
 _.each(routes, (route) => {
