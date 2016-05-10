@@ -156,11 +156,15 @@ function articlePageMiddleware(resolver, facet, wire) {
     }) => {
         let fragmentKeys = _.keys(fragments);
 
-        const renderNodePage = (request, response, nodePageSpec, environment = {}) => {
+        const renderNodePage = (request, response, nodePageSpec, environment = {}, options = {}) => {
             let requestUrl = request.url;
             let tasks = createTasks([bootstrapSpec, nodePageSpec]);
 
-            _.extend(environment, { nodeId: requestUrl.match(articleIdRexeg)[0], requestUrl });
+            if(options.mode === 'raw') {
+                _.extend(environment, { nodeId: false, requestUrl });
+            } else {
+                _.extend(environment, { nodeId: requestUrl.match(articleIdRexeg)[0], requestUrl });
+            }
 
             tasks.unshift(createTask(environment));
 
@@ -199,8 +203,15 @@ function articlePageMiddleware(resolver, facet, wire) {
                 //     endpoint: 'threadTalkPage'
                 // });
             } else {
-                // to 404error handler
-                next();
+                if(requestUrl.match(articleRexeg)) {
+                    renderNodePage(request, response, nodePageSpec, {
+                        additionalStyles: [],
+                        endpoint: requestUrl
+                    }, {mode: 'raw'});
+                } else {
+                    // 404error handler
+                    response.status(200).end("NOT FOUND:::" + request.url);
+                }
             }
         });
     })

@@ -14,7 +14,13 @@ export default {
     pageEndpoint: {
         create: {
             module: (nodeId, endpoint) => {
-                let rawEndpoint = getEndpoint(endpoint, { id: nodeId }, {mode: 'raw'});
+                let rawEndpoint;
+
+                if(!nodeId) {
+                    return [getEndpoint(endpoint, {}, {mode: 'raw'}), {raw: true}];
+                }
+
+                rawEndpoint = getEndpoint(endpoint, { id: nodeId }, {mode: 'raw'});
                 return [rawEndpoint, {raw: true}];
             },
             args: [

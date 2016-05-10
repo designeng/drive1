@@ -48,6 +48,12 @@ function getBaseUrl(options) {
 export default config;
 
 export function getEndpoint(item, replacement, options) {
+    // for endpoints exeptions such as '/supercars/drive-test/2007/11/22/681054/nalyot_na_lyod.html'
+    if(item.indexOf('/') != -1) {
+        endpoint = getBaseUrl(options) + item;
+        return endpoint;
+    }
+
     let fragmentRegex = /{(.*?)}/g,
         endpoint = endpoints[item];
 
