@@ -51,6 +51,7 @@ function routeMiddleware(resolver, facet, wire) {
                 requestUrl      : request.url,
                 accessToken     : null,
                 targetUrl       : null,
+                blogId          : null,
             };
 
             let tasks = createTasks([bootstrapSpec, routeSpec]);
@@ -105,6 +106,10 @@ function routeMiddleware(resolver, facet, wire) {
 
             if(request.params && request.params.sectionSecondId) {
                 _.extend(environment, { sectionSecondId: request.params.sectionSecondId });
+            }
+
+            if(request.params && request.params.blogId) {
+                _.extend(environment, { blogId: request.params.blogId });
             }
 
             if(provide) {

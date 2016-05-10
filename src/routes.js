@@ -110,6 +110,10 @@ const routes = [
             url: '/companies/:sectionFirstId/:sectionSecondId',
             routeSpec: companiesPageSpec
       },
+      {
+            url: '/blog/company/:blogId',
+            routeSpec: companiesPageSpec
+      },
       // page with news list for given category
       {
             url: '/:category',
