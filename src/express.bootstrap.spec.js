@@ -8,6 +8,8 @@ import { getEndpoint } from './config/api';
 import brandsData from './config/brands';
 import categories from './config/categories';
 
+import helpers from './utils/handlebars/helpers';
+
 export default {
     $plugins: [
         wireDebugPlugin,
