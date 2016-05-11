@@ -6,7 +6,6 @@ import citySelector from '../../templates/build/citySelector';
 import additionalNav from '../../templates/build/additionalNav';
 import scrollToTopButton from '../../templates/build/scrollToTopButton';
 import bottomScripts from '../../templates/build/bottomScripts';
-import compareBlock from '../../templates/build/compareBlock';
 import socialShareBlock from '../../templates/build/socialShareBlock';
 
 import footer from '../../templates/build/footer';
@@ -84,8 +83,9 @@ function getCarcass(brands, cities, receptionButtons) {
     const getCarcassFn = (
         pageContentHtml,
         additionalStyles,
-        additionalHeadScripts=defaultHeadScripts,
-        additionalBottomScripts=[]
+        additionalHeadScripts = defaultHeadScripts,
+        additionalBottomScripts = [],
+        optionalBlocks = {}
     ) => {
         return carcass({
             htmlClass: '',
@@ -111,7 +111,7 @@ function getCarcass(brands, cities, receptionButtons) {
                 }),
                 bottomScripts: bottomScripts(),
                 additionalBottomScripts,
-                compareBlock: compareBlock(),
+                compareBlock: optionalBlocks.compareBlock,
                 socialShareBlock: socialShareBlock(),
             })
         })

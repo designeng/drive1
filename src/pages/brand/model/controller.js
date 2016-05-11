@@ -7,6 +7,7 @@ import pageContent from '../../../templates/build/pages/model';
 import itemPlain from '../../../templates/build/itemPlain';
 import dealersList from '../../../templates/build/dealersList';
 import dealerItem from '../../../templates/build/dealerItem';
+import compareBlock from '../../../templates/build/compareBlock';
 
 const getNewsArray = (items) => {
     return _.map(items, (item) => {
@@ -83,7 +84,7 @@ function controller(brandModelData, testDrivesBrandData, brandNewsData, dealersD
     let pageContentHtml = composePageContentHtml(brandModelData, testDrivesBrandData, brandNewsData, dealersData, city);
 
     return {
-        html: getCarcassFn(pageContentHtml)
+        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()})
     }
 }
 

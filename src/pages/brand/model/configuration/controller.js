@@ -6,6 +6,7 @@ import utmEnrich from '../../../../utils/utmEnrich.js';
 import pageContent from '../../../../templates/build/pages/configuration';
 import optionCheckbox from '../../../../templates/build/partials/optionCheckbox';
 import configurationOption from '../../../../templates/build/partials/configurationOption';
+import compareBlock from '../../../../templates/build/compareBlock';
 
 import registerPartials from '../../../../utils/handlebars/registerPartials';
 
@@ -35,7 +36,7 @@ function controller(modelConfigurationData, getCarcassFn) {
     let pageContentHtml = composePageContentHtml(modelConfigurationData);
 
     return {
-        html: getCarcassFn(pageContentHtml)
+        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()})
     }
 }
 

@@ -14,6 +14,7 @@ import dealersList from '../../templates/build/dealersList';
 import dealerItem from '../../templates/build/dealerItem';
 import blogEntriesList from '../../templates/build/blogEntriesList';
 import blogEntry from '../../templates/build/blogEntry';
+import compareBlock from '../../templates/build/compareBlock';
 
 const MIN_TEST_DRIVES_NUMBER = 3;
 
@@ -77,7 +78,7 @@ function controller(carIconsData, testDrivesData, brandNewsData, brand, getCarca
     let pageContentHtml = composePageContentHtml(carIconsData, testDrivesData, brandNewsData, brand);
 
     return {
-        html: getCarcassFn(pageContentHtml)
+        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()})
     };
 }
 
