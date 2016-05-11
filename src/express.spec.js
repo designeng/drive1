@@ -33,8 +33,8 @@ export default {
         proxyMiddleware: {
             routes: [
                 {url: '/api/feedback', originUrl: originApiHost + '/api.php', method: 'POST'},
-                {url: '/api/compare', originUrl: originApiHost + '/compare.php', method: 'GET'},
-                {url: '/api/compare/index', originUrl: originApiHost + '/compare', method: 'GET', headers: {'Content-Type': 'text/html;charset=utf-8'}},
+                {url: '/api/compare', originUrl: originApiHost + '/compare.php', method: 'GET', outputFormat: 'json'},
+                {url: '/api/compare/index', originUrl: originApiHost + '/compare', method: 'GET', outputFormat: 'html'},
                 {url: '/api/suggest', originUrl: originApiHost + '/suggest.php', method: 'GET'},
             ]
         },

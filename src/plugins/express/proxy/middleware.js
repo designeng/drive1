@@ -1,5 +1,9 @@
 import url from 'url';
 import axios from 'axios';
+import _ from 'underscore';
+
+// import Logger from '../../../utils/logger';
+// let logger = new Logger({file: __dirname + '../../../../../log/proxy.log'});
 
 function proxyMiddleware(resolver, facet, wire) {
     const target = facet.target;
@@ -34,9 +38,23 @@ function proxyMiddleware(resolver, facet, wire) {
 
             axios[method](route.originUrl, options)
                 .then(response => {
-                    let headers = route.headers || { 'Content-Type': 'application/json' };
+                    let outputFormat = route.outputFormat,
+                        headers = route.headers || {},
+                        output;
+
+                    if(outputFormat == 'html') {
+                        _.extend(headers, {'Content-Type': 'text/html; charset=utf-8'});
+                        output = response.data;
+                    } else if(outputFormat == 'plain') {
+                        _.extend(headers, {'Content-Type': 'text/plain'});
+                        output = response.data;
+                    } else if(outputFormat == 'json' || !outputFormat) { //default
+                        _.extend(headers, {'Content-Type': 'application/json'});
+                        output = JSON.stringify(response.data);
+                    }
+
                     res.writeHead(200, headers);
-                    res.end(response.data);
+                    res.end(output);
                 })
                 .catch(error => {
                     console.error("ERROR::::", error);
