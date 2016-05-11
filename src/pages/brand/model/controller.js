@@ -5,6 +5,8 @@ import utmEnrich from '../../../utils/utmEnrich.js';
 
 import pageContent from '../../../templates/build/pages/model';
 import itemPlain from '../../../templates/build/itemPlain';
+import configurationListItem from '../../../templates/build/configurationListItem';
+import configurationListItemAd from '../../../templates/build/configurationListItemAd';
 import dealersList from '../../../templates/build/dealersList';
 import dealerItem from '../../../templates/build/dealerItem';
 import compareBlock from '../../../templates/build/compareBlock';
@@ -17,14 +19,25 @@ const getNewsArray = (items) => {
             })
         }
     });
-}
+};
+
+const getConfigurationList = (items) => {
+    return _.reduce(items, (result, item) => {
+        if (items.indexOf(item) === 1) {
+            result += configurationListItemAd();
+        }
+
+        result = result + configurationListItem(item);
+        return result;
+    }, '');
+};
 
 const getNews = (items) => {
     return _.reduce(items, (result, item) => {
         result = result + itemPlain(item);
         return result;
     }, '');
-}
+};
 
 const getDealersList = (dealersData) => {
     if(dealersData.length) {
@@ -40,12 +53,13 @@ const getDealersList = (dealersData) => {
     } else {
         return "";
     }
-}
+};
 
 const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsData, dealersData, city) => {
 
     let newsItems = getNews(getNewsArray(brandNewsData));
     let dealersList = getDealersList(dealersData);
+    let configurations = getConfigurationList(brandModelData.configurations);
 
     const experienceUtmItems = {
         source: 'DRIVE',
@@ -69,16 +83,16 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         carIcon         : brandModelData.carIcon,
         ncap            : brandModelData.ncap,
         gallery         : brandModelData.gallery,
-        configurations  : brandModelData.configurations,
         similar         : brandModelData.similar,
         experience      : utmEnrich(brandModelData.experience, 'url', experienceUtmItems),
         d2Cars          : utmEnrich(brandModelData.d2Cars, 'url', d2carsUtmItems),
         city            : city,
+        configurations,
         newsItems,
-        dealersList,
+        dealersList
         // testDrives:
-    })
-}
+    });
+};
 
 function controller(brandModelData, testDrivesBrandData, brandNewsData, dealersData, city, getCarcassFn) {
     let pageContentHtml = composePageContentHtml(brandModelData, testDrivesBrandData, brandNewsData, dealersData, city);
