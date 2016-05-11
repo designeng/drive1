@@ -26,6 +26,10 @@ const carIconsHtml = (items) => {
 
 const largeItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
+        if (items.indexOf(item) === 0) {
+            item.shadowClass = 'ncard-shl';
+        }
+
         result = result + itemLarge(item);
         return result;
     }, '');
@@ -33,6 +37,10 @@ const largeItemsHtml = (items) => {
 
 const mediumItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
+        if ((items.indexOf(item) + 1) % 2 !== 0) {
+            item.shadowClass = 'ncard-shl';
+        }
+
         result = result + itemMedium(item);
         return result;
     }, '');
@@ -50,9 +58,8 @@ const composePageContentHtml = (carIconsData, testDrivesData, brandNewsData, bra
 
     if (testDrivesData.length === 0) {
         testDrivePlaceholders = testDrivePlaceholderLarge();
-    } else if (testDrivesData.length < MIN_TEST_DRIVES_NUMBER) {
-        testDrivePlaceholders = Array(MIN_TEST_DRIVES_NUMBER - testDrivesData.length).fill(testDrivePlaceholder()).join('');
-
+    } else if (testDrivesData.length % 2 === 0) {
+        testDrivePlaceholders = testDrivePlaceholder();
     }
 
     return pageContent({

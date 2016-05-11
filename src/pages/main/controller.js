@@ -30,6 +30,12 @@ const largeNewsHtml = (items) => {
 
 const mediumNewsHtml = (items) => {
     return _.reduce(items, (result, item) => {
+        if ((items.indexOf(item) + 1) % 2 === 0) {
+            item.shadowClass = 'ncard-shr';
+        } else if ((items.indexOf(item) + 1) % 3 === 0) {
+            item.shadowClass = 'ncard-shl';
+        }
+
         result = result + itemMedium(item);
         return result;
     }, '');
