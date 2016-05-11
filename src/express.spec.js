@@ -34,6 +34,7 @@ export default {
             routes: [
                 {url: '/api/feedback', originUrl: originApiHost + '/api.php', method: 'POST'},
                 {url: '/api/compare', originUrl: originApiHost + '/compare.php', method: 'GET'},
+                {url: '/api/compare/index', originUrl: originApiHost + '/index.php', method: 'GET'},
                 {url: '/api/suggest', originUrl: originApiHost + '/suggest.php', method: 'GET'},
             ]
         },
