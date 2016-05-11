@@ -25,6 +25,8 @@ drive.Compare = function() {
 
   this.list_ = goog.dom.getElementByClass('compare-sideblock-list', this.element_);
 
+  this.ids_ = goog.dom.getElementByClass('compare-sideblock-ids', this.element_);
+
   this.title_ = goog.dom.getElementByClass('compare-sideblock-title', this.element_);
 
   this.close_ = goog.dom.getElementByClass('compare-sideblock-close', this.element_);
@@ -333,6 +335,7 @@ drive.Compare.prototype.saveData_ = function() {
   var cookie = this.data_.join(',');
   goog.net.cookies.set(drive.Compare.COMPARE_COOKIE_NAME,
       cookie, drive.Compare.COOKIE_MAXAGE, '/'/*, 'drive.ru'*/);
+  this.updateIds_();
 };
 
 
@@ -366,6 +369,18 @@ drive.Compare.prototype.renderItem_ = function(id, name, url, opt_unchecked) {
   goog.dom.dataset.set(el, 'id', id);
   el.innerHTML = html;
   goog.dom.appendChild(this.list_, el);
+  this.updateIds_();
+};
+
+/**
+ * @private
+ */
+drive.Compare.prototype.updateIds_ = function() {
+  var ids = [];
+  for (var i = 0, j; j = this.data_[i]; i += 2) {
+    ids.push(j);
+  }
+  this.ids_.setAttribute('value', ids.join(','));
 };
 
 
