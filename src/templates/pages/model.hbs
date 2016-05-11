@@ -65,29 +65,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each configurations}}
-                                <tr>
-                                    <th class="car-builds-table-title">
-                                        <a class="compare-link car-build-link" href="{{this.url}}">{{this.caption}}</a>
-                                    </th>
-                                    <td class="car-builds-table-price">
-                                        <a href="{{this.url}}">{{{this.price}}}</a>
-                                    </td>
-                                    <td><a href="{{this.url}}">{{{this.engine}}}</a></td>
-                                    <td><a href="{{this.url}}">{{this.power}}</a></td>
-                                    <td><a href="{{this.url}}">{{this.gearing}}</a></td>
-                                    <td><a href="{{this.url}}">{{{this.transmission}}}</a></td>
-                                    <td class="car-builds-table-compare">
-                                        <span class="compare-button" data-action="compare.add" data-id="{{this.id}}">добавить</span>
-                                    </td>
-                                </tr>
-                            {{/each}}
-                            {{! TODO: Instert this row in controller conditionally }}
-                            <tr class="dv-mobile-row">
-                                <td colspan="7">
-                                    {{> widget_adfoxMiddleMobile}}
-                                </td>
-                            </tr>
+                            {{{configurations}}}
                         </tbody>
                     </table>
                 </div>
