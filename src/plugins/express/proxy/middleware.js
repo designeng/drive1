@@ -34,7 +34,8 @@ function proxyMiddleware(resolver, facet, wire) {
 
             axios[method](route.originUrl, options)
                 .then(response => {
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    let headers = route.headers || { 'Content-Type': 'text/html;charset=utf-8' };
+                    res.writeHead(200, headers);
                     res.end(JSON.stringify(response.data));
                 })
                 .catch(error => {
