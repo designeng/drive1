@@ -144,7 +144,8 @@ drive.xhrInfo = new goog.structs.Map(
 
   drive.XhrRequests.POLL,
   {
-    url: '/api.php',
+    // url: '/api.php',
+    url: '/api/poll',
     behaviour: bru.net.xhr.Behaviour.SHOW_ERRORS
   },
 

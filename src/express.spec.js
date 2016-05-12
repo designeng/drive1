@@ -33,6 +33,7 @@ export default {
         proxyMiddleware: {
             routes: [
                 {url: '/api/feedback', originUrl: originApiHost + '/api.php', method: 'POST'},
+                {url: '/api/poll', originUrl: originApiHost + '/api.php', method: 'POST', outputFormat: 'json', forwardCookies: true},
                 {url: '/api/compare', originUrl: originApiHost + '/compare.php', method: 'GET', outputFormat: 'json'},
                 {url: '/api/compare/index', originUrl: originApiHost + '/compare', method: 'GET', outputFormat: 'html'},
                 {url: '/api/suggest', originUrl: originApiHost + '/suggest.php', method: 'GET'},

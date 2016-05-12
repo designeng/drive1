@@ -50,6 +50,8 @@ const composePageContentHtml = (articleData, votingData) => {
         return 0.5 - Math.random()
     });
 
+    logger.info(votingData, parseInt(votingData.value))
+
     return articlePageContent({
         id: articleData.id,
         caption: caption(articleData, {mode: 'text'}),
@@ -68,6 +70,7 @@ const composePageContentHtml = (articleData, votingData) => {
         commentsCount: articleData.commentsCount,
         socialLinksMobile: socialLinks.slice(0, 2),
         poll: poll({
+            id: articleData.id, 
             voted: parseInt(votingData.value),
             question: articleData.poll.question,
             options: articleData.poll.options,
@@ -80,8 +83,6 @@ function controller(articleData, votingData, getCarcassFn) {
         articleData,
         votingData
     );
-
-    logger.info(votingData)
 
     return {
         html: getCarcassFn(pageContentHtml)

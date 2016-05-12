@@ -27,6 +27,9 @@ const success = (response) => {
 const successReception = (response) => {
       return (context) => {
             const {userid, login, email} = context.userProfileData;
+
+            console.log("userid, login, email", userid, login, email);
+            
             response.cookie('userid', userid);
             response.cookie('login', login);
             response.cookie('email', email);

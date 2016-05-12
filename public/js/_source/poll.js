@@ -44,6 +44,7 @@ drive.Poll.prototype.onVote_ = function(context) {
  * @private
  */
 drive.Poll.prototype.voteCallback_ = function(data, button, element) {
+  console.info("data:::::", data);
   var html = data['html'];
   if (!html) {
     return;

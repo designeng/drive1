@@ -1,4 +1,4 @@
-{{#if voted}}
+{{#unless voted}}
     <div class="poll" data-id="{{id}}">
         <h3>{{{question}}}</h3>
         <ul class="poll-list">
@@ -24,4 +24,4 @@
             {{/each}}
         </ul>
     </div>
-{{/if}}
+{{/unless}}
