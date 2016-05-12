@@ -52,6 +52,7 @@ function routeMiddleware(resolver, facet, wire) {
                 accessToken     : null,
                 targetUrl       : null,
                 blogId          : null,
+                cookies         : null,
             };
 
             let tasks = createTasks([bootstrapSpec, routeSpec]);
@@ -122,6 +123,10 @@ function routeMiddleware(resolver, facet, wire) {
                 _.extend(environment, { city: {id: query.city }});
             }
 
+            if(request.cookies) {
+                _.extend(environment, { cookies: request.cookies});
+            }
+
             // TODO: add condition 'request url == local_reception'
             if(query['.AMET'] && query['url']) {
                 let accessToken = query['.AMET'];
@@ -159,6 +164,10 @@ function articlePageMiddleware(resolver, facet, wire) {
         const renderNodePage = (request, response, nodePageSpec, environment = {}, options = {}) => {
             let requestUrl = request.url;
             let tasks = createTasks([bootstrapSpec, nodePageSpec]);
+
+            if(request.cookies) {
+                _.extend(environment, { cookies: request.cookies});
+            }
 
             if(options.mode === 'raw') {
                 _.extend(environment, { nodeId: false, requestUrl });

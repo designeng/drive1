@@ -27,11 +27,30 @@ export default {
         }
     },
 
+    votingEndpoint: {
+        create: {
+            module: (cookies, nodeId) => {
+                return [getEndpoint('voting'), {voter_id: cookies.userid, item_id: nodeId}];
+            },
+            args: [
+                {$ref: 'cookies'},
+                {$ref: 'nodeId'}
+            ]
+        }
+    },
+
+    votingData: {
+        request: {
+            endpoint: {$ref: 'votingEndpoint'},
+        }
+    },
+
     body: {
         create: {
             module: controller,
             args: [
                 {$ref: 'articleData'},
+                {$ref: 'votingData'},
                 {$ref: 'getCarcassFn'},
             ]
         }

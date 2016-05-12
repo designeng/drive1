@@ -1,6 +1,7 @@
 import caption from '../../utils/caption';
 
 import articlePageContent from '../../templates/build/pages/article';
+import poll from '../../templates/build/poll';
 
 import articleHeader from '../../templates/build/partials/articleHeader';
 import articleMeta from '../../templates/build/partials/articleMeta';
@@ -10,6 +11,9 @@ import hr from '../../templates/build/partials/hr';
 
 import registerPartials from '../../utils/handlebars/registerPartials';
 
+import Logger from '../../utils/logger';
+let logger = new Logger({file: __dirname + '../../../../log/voting.log'});
+
 registerPartials({
     'articleHeader': articleHeader,
     'articleMeta': articleMeta,
@@ -18,7 +22,7 @@ registerPartials({
     'hr': hr
 });
 
-const composePageContentHtml = (articleData) => {
+const composePageContentHtml = (articleData, votingData) => {
     let socialLinks = [
         {
             caption: 'ВКонтакте',
@@ -62,14 +66,22 @@ const composePageContentHtml = (articleData) => {
         articleContent: articleData.articleContent,
         hreviewData: articleData.hreviewData,
         commentsCount: articleData.commentsCount,
-        socialLinksMobile: socialLinks.slice(0, 2)
+        socialLinksMobile: socialLinks.slice(0, 2),
+        poll: poll({
+            voted: parseInt(votingData.value),
+            question: articleData.poll.question,
+            options: articleData.poll.options,
+        }),
     });
 }
 
-function controller(articleData, getCarcassFn) {
+function controller(articleData, votingData, getCarcassFn) {
     let pageContentHtml = composePageContentHtml(
-        articleData
+        articleData,
+        votingData
     );
+
+    logger.info(votingData)
 
     return {
         html: getCarcassFn(pageContentHtml)

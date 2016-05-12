@@ -1,6 +1,7 @@
 import express from 'express';
 import favicon from 'serve-favicon';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 // facets
 function startExpressServerFacet(resolver, facet, wire) {
@@ -50,6 +51,8 @@ function expressApplication(resolver, compDef, wire) {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
+
+    app.use(cookieParser());
 
     resolver.resolve(app);
 }

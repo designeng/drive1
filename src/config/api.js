@@ -20,6 +20,7 @@ const endpoints = {
     dealers: "/items/companies",
     video: "/items/videos",
     article: "/item/{id}",
+    voting: "/system/verify_voter",
     brandModels: "/items/cars/{brand}/models",
     brandModel: "/items/cars/{brand}/models/{year}/{model}",
     modelConfiguration: "/items/cars/{brand}/models/{year}/{model}/{configuration}",

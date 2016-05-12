@@ -1,25 +1,25 @@
 {{#if voted}}
     <div class="poll" data-id="{{id}}">
-        <h3>{{question}}</h3>
+        <h3>{{{question}}}</h3>
         <ul class="poll-list">
             {{#each options}}
                 <li>
-                    <button class="sbutton sbutton-small" type="button" value="{{@index}}" data-action="poll.vote">{{@index}}.</button><span>{{this.value}}</span>
+                    <button class="sbutton sbutton-small" type="button" value="{{@index}}" data-action="poll.vote">{{@index}}.</button><span>{{{this.value}}}</span>
                 </li>
             {{/each}}
         </ul>
     </div>
 {{else}}
     <div class="poll poll-results">
-        <h3>{{question}}</h3>
+        <h3>{{{question}}}</h3>
         <ul class="poll-list">
             {{#each options}}
                 <li>
-                    <strong><?=$votepc[$key]?>%</strong>
+                    <strong>{{this.percentage}}%</strong>
                     <em>
                         <em style="width: {{this.percentage}}%"></em>
                     </em>
-                    <span>{{this.value}}</span>
+                    <span>{{{this.value}}}</span>
                 </li>
             {{/each}}
         </ul>
