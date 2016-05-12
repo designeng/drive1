@@ -9,6 +9,12 @@ import itemMedium from '../../templates/build/itemMedium';
 // TODO: refactor to DRY
 const largeItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
+        if ((items.indexOf(item) + 1) % 2 === 0) {
+            item.shadowClass = 'ncard-shl';
+        } else {
+            item.shadowClass = 'ncard-shr';
+        }
+
         result = result + itemLarge(item);
         return result;
     }, '');
@@ -16,6 +22,12 @@ const largeItemsHtml = (items) => {
 
 const mediumItemsHtml = (items) => {
     return _.reduce(items, (result, item) => {
+        if ((items.indexOf(item) + 1) % 2 === 0) {
+            item.shadowClass = 'ncard-shr';
+        } else if ((items.indexOf(item) + 2) % 4 === 0) {
+            item.shadowClass = 'ncard-shl';
+        }
+
         result = result + itemMedium(item);
         return result;
     }, '');
