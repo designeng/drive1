@@ -54,6 +54,7 @@ const composePageContentHtml = (brandFilterData, testDrivesData, brand) => {
             active: brand ? brand.id : null
         }),
         testDrives: largeItemsHtml(testDrivesData.slice(0, 2)) + mediumItemsHtml(testDrivesData.slice(2, 14)),
+        testDrivesMore: mediumItemsHtml(testDrivesData.slice(14)),
         brand
     })
 }
