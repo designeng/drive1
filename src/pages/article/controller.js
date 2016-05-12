@@ -11,8 +11,8 @@ import hr from '../../templates/build/partials/hr';
 
 import registerPartials from '../../utils/handlebars/registerPartials';
 
-import Logger from '../../utils/logger';
-let logger = new Logger({file: __dirname + '../../../../log/voting.log'});
+// import Logger from '../../utils/logger';
+// let logger = new Logger({file: __dirname + '../../../../log/voting.log'});
 
 registerPartials({
     'articleHeader': articleHeader,
@@ -49,8 +49,6 @@ const composePageContentHtml = (articleData, votingData) => {
     socialLinks.sort(() => {
         return 0.5 - Math.random()
     });
-
-    logger.info(votingData, parseInt(votingData.value))
 
     return articlePageContent({
         id: articleData.id,
