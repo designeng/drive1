@@ -39,7 +39,7 @@ const composePageContentHtml = (brandFilterData, testDrivesData, brand) => {
     return pageContent({
         brandFilter: brandFilter({
             brands: brandFilterData,
-            active: brand.id,
+            active: brand ? brand.id : null
         }),
         testDrives: largeItemsHtml(testDrivesData.slice(0, 2)) + mediumItemsHtml(testDrivesData.slice(2, 14)),
         brand
