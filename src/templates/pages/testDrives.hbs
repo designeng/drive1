@@ -1,5 +1,5 @@
 <div id="main" class="cf">
-    <div class="spr page-top-shadow"></div>
+    {{> backgroundSprite spriteClass='page-top-shadow'}}
     {{! /static/brands }}
     {{{brandFilter}}}
     <h1 class="test-drives-header">
@@ -22,9 +22,16 @@
                     <div class="i clip clip-bottom"></div>
                 </div>
             </div>
-            <div class="spr open-page-bottom"></div>
+            {{> backgroundSprite spriteClass='open-page-bottom'}}
         </div>
-        {{{showMoreButton}}}
+        <div class="testdrives-more">
+            {{#if testDrivesMore}}
+                <span class="sbutton sbutton-big show-more-link" data-action="testdrives.more">Показать ещё</span>
+            {{/if}}
+            {{#if brand}}
+                <a href="/drive-tests" class="sbutton sbutton-big mobile-hidden">Посмотреть все тест-драйвы</a>
+            {{/if}}
+        </div>
     {{else}}
         <div id="article" class="article cf">
         Мы сожалеем, но по этому бренду тест-драйвов нет.
