@@ -218,7 +218,7 @@ function articlePageMiddleware(resolver, facet, wire) {
                     }, {mode: 'raw'});
                 } else {
                     // 404error handler
-                    response.status(200).end("NOT FOUND:::" + request.url);
+                    response.status(200).end("NOT FOUND:(*) " + request.url);
                 }
             }
         });

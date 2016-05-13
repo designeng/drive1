@@ -1,9 +1,10 @@
 import url from 'url';
-import axios from 'axios';
 import _ from 'underscore';
 
-// import Logger from '../../../utils/logger';
-// let logger = new Logger({file: __dirname + '../../../../../log/proxy.log'});
+import axios from 'axios';
+
+import Logger from '../../../utils/logger';
+let logger = new Logger({file: __dirname + '../../../../../log/proxy.log'});
 
 const prepareData = (data) => {
     let str = [];
@@ -32,10 +33,27 @@ function proxyMiddleware(resolver, facet, wire) {
                 _.extend(headers, {'Cookie': req.get('Cookie')});
             }
 
+            let data = prepareData(req.body);
+
+            // logger.info("QUERY::::", query);
+
+            axios[method](route.originUrl, {
+                data,
+                headers
+            })
+            .then(response => {
+                res.writeHead(200, headers);
+                res.end(response.data);
+            })
+            .catch(error => {
+                res.writeHead(200, headers);
+                res.end("ERROR:" + output);
+            });
+
             axios({
                 method: method,
                 url: route.originUrl,
-                data: prepareData(req.body),
+                data,
                 params: query,
                 headers
             }).then(response => {
@@ -53,11 +71,14 @@ function proxyMiddleware(resolver, facet, wire) {
                     output = JSON.stringify(response.data);
                 }
 
+                // logger.info("SUCCESS:::", output);
+
                 res.writeHead(200, headers);
                 res.end(output);
             })
             .catch(error => {
                 console.error("ERROR::::", error);
+
                 res.setHeader('charset', 'utf-8');
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify(error));
