@@ -86,6 +86,7 @@ const composePageContentHtml = (brandModelData, testDrivesBrandData, brandNewsDa
         similar         : brandModelData.similar,
         experience      : utmEnrich(brandModelData.experience, 'url', experienceUtmItems),
         d2Cars          : utmEnrich(brandModelData.d2Cars, 'url', d2carsUtmItems),
+        allD2CarsUrl    : brandModelData.allD2CarsUrl,
         city            : city,
         configurations,
         newsItems,
