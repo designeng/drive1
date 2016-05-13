@@ -67,7 +67,9 @@ const headerHtml = (cities, receptionButtons) => {
             receptionButtons
         }),
         logo: logo(),
-        citySelector: citySelector(cities),
+        citySelector: citySelector({
+            cities
+        }),
         nav: nav()
     })
 }
