@@ -3,8 +3,8 @@ import _ from 'underscore';
 
 import axios from 'axios';
 
-import Logger from '../../../utils/logger';
-let logger = new Logger({file: __dirname + '../../../../../log/proxy.log'});
+// import Logger from '../../../utils/logger';
+// let logger = new Logger({file: __dirname + '../../../../../log/proxy.log'});
 
 const prepareData = (data) => {
     let str = [];
