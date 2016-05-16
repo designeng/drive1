@@ -15,10 +15,9 @@ import categories from '../../../config/categories';
 import brands from '../../../config/brands';
 import themes from '../../../config/themes';
 
-import { createTasks, createTask } from '../../../utils/tasks';
+import { ARTICLE_REGEX, ARTICLE_ID_REGEX} from '../../../config/themes';
 
-const articleIdRexeg = /([^\/]+)(?=\.\w+$)/;
-const articleRexeg = /([a-zA-Z0-9\.])+(.html|.htm)/;
+import { createTasks, createTask } from '../../../utils/tasks';
 
 function routeMiddleware(resolver, facet, wire) {
     const target = facet.target;
@@ -34,7 +33,7 @@ function routeMiddleware(resolver, facet, wire) {
 
             // TODO: conflict resolving for routes [/news/*.html, /news/:brand etc.]
             // think how to avoid plugin hack
-            if(request.url.match(articleRexeg)) {
+            if(request.url.match(ARTICLE_REGEX)) {
                 return next();
             }
             // END TODO
@@ -172,7 +171,7 @@ function articlePageMiddleware(resolver, facet, wire) {
             if(options.mode === 'raw') {
                 _.extend(environment, { nodeId: false, requestUrl });
             } else {
-                _.extend(environment, { nodeId: requestUrl.match(articleIdRexeg)[0], requestUrl });
+                _.extend(environment, { nodeId: requestUrl.match(ARTICLE_ID_REGEX)[0], requestUrl });
             }
 
             tasks.unshift(createTask(environment));
@@ -211,7 +210,7 @@ function articlePageMiddleware(resolver, facet, wire) {
                     endpoint: 'commentsPage'
                 });
             } else {
-                if(requestUrl.match(articleRexeg)) {
+                if(requestUrl.match(ARTICLE_REGEX)) {
                     renderNodePage(request, response, nodePageSpec, {
                         additionalStyles: [],
                         endpoint: requestUrl
