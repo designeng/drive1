@@ -22,10 +22,14 @@ export function isArticlePage(requestUrlArr, firstBounds, middleBounds, lastBoun
         isArticlePage *= 1;
     }
 
-    isArticlePage = _.reduce(requestUrlArr, (result, item) => {
-        let multiplier = isMatch(middleBounds, item);
-        return result *= multiplier;
-    }, isArticlePage)
+    if(requestUrlArr.length) {
+        isArticlePage = _.reduce(requestUrlArr, (result, item) => {
+            let multiplier = isMatch(middleBounds, item);
+            return result *= multiplier;
+        }, isArticlePage)
+    }
+
+    console.log("isArticlePage::::", isArticlePage);
 
     return isArticlePage;
 }
