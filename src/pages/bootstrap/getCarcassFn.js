@@ -60,10 +60,11 @@ registerPartials({
     hr
 });
 
-const headerHtml = (cities, receptionButtons) => {
+const headerHtml = (cities, receptionButtons, specialTitleData) => {
     return header({
         topControls: topControls({
-            receptionButtons
+            receptionButtons,
+            specialTitleData
         }),
         logo: logo(),
         citySelector: citySelector({
@@ -73,7 +74,7 @@ const headerHtml = (cities, receptionButtons) => {
     })
 }
 
-function getCarcass(brands, cities, receptionButtons) {
+function getCarcass(brands, cities, receptionButtons, specialTitleData) {
     const defaultHeadScripts = [
         {
             async: 'async',
@@ -109,7 +110,7 @@ function getCarcass(brands, cities, receptionButtons) {
             }),
             body: body({
                 mobileMenuTrigger: mobileMenuTrigger(),
-                header: headerHtml(cities, receptionButtons),
+                header: headerHtml(cities, receptionButtons, specialTitleData),
                 mobileNav: mobileNav({
                     brands
                 }),

@@ -33,6 +33,7 @@ const endpoints = {
     companyPage: "/company/{id}.html",
     companyBlogPage: "/blog/company/{blogId}",
     talkPage: "/talk/{theme}/{talkFirstId}/{talkSecondId}",
+    talkCompanyPage: "/talk/company/{talkCompanyId}",
     commentsPage: "/talk/comments/{id}.html",
     // TODO: is it thread?
     threadTalkPage: "/talk/{id}.html",

@@ -13,15 +13,22 @@ export default {
 
     talkPageEndpoint: {
         create: {
-            module: (theme, talkFirstId, talkSecondId) => {
-                theme = theme ? theme.id : null;
-                let rawEndpoint = getEndpoint('talkPage', {theme, talkFirstId, talkSecondId}, {mode: 'raw'});
-                return [rawEndpoint, {raw: true}];
+            module: (theme, talkFirstId, talkSecondId, talkCompanyId) => {
+                let rawEndpoint;
+                if(talkCompanyId) {
+                    rawEndpoint = getEndpoint('talkCompanyPage', {talkCompanyId}, {mode: 'raw'});
+                    return [rawEndpoint, {raw: true}];
+                } else {
+                    theme = theme ? theme.id : null;
+                    rawEndpoint = getEndpoint('talkPage', {theme, talkFirstId, talkSecondId}, {mode: 'raw'});
+                    return [rawEndpoint, {raw: true}];
+                }
             },
             args: [
                 {$ref: 'theme'},
                 {$ref: 'talkFirstId'},
                 {$ref: 'talkSecondId'},
+                {$ref: 'talkCompanyId'},
             ]
         }
     },

@@ -45,6 +45,7 @@ function routeMiddleware(resolver, facet, wire) {
                 theme           : null,
                 talkFirstId     : null,
                 talkSecondId    : null,
+                talkCompanyId   : null,
                 sectionFirstId  : null,
                 sectionSecondId : null,
                 requestUrl      : request.url,
@@ -98,6 +99,10 @@ function routeMiddleware(resolver, facet, wire) {
 
             if(request.params && request.params.talkSecondId) {
                 _.extend(environment, { talkSecondId: request.params.talkSecondId });
+            }
+
+            if(request.params && request.params.talkCompanyId) {
+                _.extend(environment, { talkCompanyId: request.params.talkCompanyId });
             }
 
             if(request.params && request.params.sectionFirstId) {

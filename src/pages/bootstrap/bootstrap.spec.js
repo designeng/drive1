@@ -50,6 +50,12 @@ export default {
         }
     },
 
+    specialTitleData: {
+        request: {
+            endpoint: getEndpoint('special')
+        }
+    },
+
     getCarcassFn: {
         create: {
             module: getCarcassFn,
@@ -57,6 +63,7 @@ export default {
                 {$ref: 'brandsData'},
                 {$ref: 'citiesData'},
                 {$ref: 'receptionButtons'},
+                {$ref: 'specialTitleData'},
             ]
         }
     }
