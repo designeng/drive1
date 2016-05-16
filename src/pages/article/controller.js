@@ -67,12 +67,12 @@ const composePageContentHtml = (articleData, votingData) => {
         hreviewData: articleData.hreviewData,
         commentsCount: articleData.commentsCount,
         socialLinksMobile: socialLinks.slice(0, 2),
-        poll: poll({
+        poll: articleData.poll? poll({
             id: articleData.id, 
             voted: parseInt(votingData.value),
             question: articleData.poll.question,
             options: articleData.poll.options,
-        }),
+        }) : null,
     });
 }
 
