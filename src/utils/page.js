@@ -14,10 +14,6 @@ export function isArticlePage(requestUrlArr, firstBounds, middleBounds, lastBoun
     let first = requestUrlArr.shift();
     let last = requestUrlArr.pop();
 
-    if(!requestUrlArr.length) {
-        return 0;
-    }
-
     if(isMatch(firstBounds, first) && isMatch(lastBounds, last)) {
         isArticlePage *= 1;
     }
@@ -28,8 +24,6 @@ export function isArticlePage(requestUrlArr, firstBounds, middleBounds, lastBoun
             return result *= multiplier;
         }, isArticlePage)
     }
-
-    console.log("isArticlePage::::", isArticlePage);
 
     return isArticlePage;
 }

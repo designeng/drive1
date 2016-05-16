@@ -203,7 +203,6 @@ function articlePageMiddleware(resolver, facet, wire) {
                     endpoint: 'commentsPage'
                 });
             } else if(isArticlePage(requestUrlArr, fragments[0].bounds, fragments[1].bounds, fragments[2].bounds)) {
-                console.log("ARTICLE PAGE:::", requestUrl);
                 renderNodePage(request, response, articlePageSpec);
             } else if (isNodePage(requestUrlArr, {fragment: 'comments'})) {
                 renderNodePage(request, response, nodePageSpec, {
@@ -212,7 +211,6 @@ function articlePageMiddleware(resolver, facet, wire) {
                 });
             } else {
                 if(requestUrl.match(ARTICLE_REGEX)) {
-                    console.log("NOT ARTICLE PAGE:::", requestUrl);
                     renderNodePage(request, response, nodePageSpec, {
                         additionalStyles: [],
                         endpoint: requestUrl
