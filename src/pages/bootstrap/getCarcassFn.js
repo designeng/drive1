@@ -10,7 +10,6 @@ import socialShareBlock from '../../templates/build/socialShareBlock';
 
 import footer from '../../templates/build/footer';
 import header from '../../templates/build/header';
-import keywords from '../../templates/build/keywords';
 import logo from '../../templates/build/logo';
 import mobileMenuTrigger from '../../templates/build/mobileMenuTrigger';
 import mobileNav from '../../templates/build/mobileNav';
@@ -82,19 +81,30 @@ function getCarcass(brands, cities, receptionButtons) {
         }
     ];
 
+    const defaultKeywords = '';
+    const defaultDescription = 'Автомобильные новости, тест-драйвы с видео и фото. Каталог машин с описанием и ценами. Отзывы владельцев авто.';
+    const defaultTitle = 'ДРАЙВ';
+
     const getCarcassFn = (
         pageContentHtml,
         additionalStyles,
         additionalHeadScripts = defaultHeadScripts,
         additionalBottomScripts = [],
-        optionalBlocks = {}
+        optionalBlocks = {},
+        seo = {
+            keywords: defaultKeywords,
+            description: defaultDescription,
+            title: defaultTitle
+        }
     ) => {
         return carcass({
             htmlClass: '',
             head: head({
-                title: 'Drive.ru',
+                title: seo.title,
                 additionalStyles,
                 additionalHeadScripts,
+                keywords: seo.keywords,
+                description: seo.description,
                 cacheReset: packageJson.version,
             }),
             body: body({

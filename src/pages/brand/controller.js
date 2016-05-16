@@ -12,7 +12,6 @@ import testDrivePlaceholderLarge from '../../templates/build/testDrivePlaceholde
 import carIcon from '../../templates/build/carIcon';
 import dealersList from '../../templates/build/dealersList';
 import dealerItem from '../../templates/build/dealerItem';
-import blogEntriesList from '../../templates/build/blogEntriesList';
 import blogEntry from '../../templates/build/blogEntry';
 import compareBlock from '../../templates/build/compareBlock';
 
