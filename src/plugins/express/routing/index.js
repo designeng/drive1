@@ -15,7 +15,7 @@ import categories from '../../../config/categories';
 import brands from '../../../config/brands';
 import themes from '../../../config/themes';
 
-import { ARTICLE_REGEX, ARTICLE_ID_REGEX} from '../../../config/themes';
+import { ARTICLE_REGEX, ARTICLE_ID_REGEX} from '../../../config/constants';
 
 import { createTasks, createTask } from '../../../utils/tasks';
 
