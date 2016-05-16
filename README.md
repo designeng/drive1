@@ -13,7 +13,7 @@ npm run smoke
 ```
 
 ##Hot replacement
-Activity logs here:
+If your are gount to use hot replacement, your will find activity logs here:
 ```
 http://localhost:3000/__webpack_hmr
 ```
