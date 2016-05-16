@@ -83,6 +83,10 @@ const routes = [
             routeSpec: talkPageSpec,
       },
       {
+            url: '/talk/company/:talkCompanyId',
+            routeSpec: talkPageSpec,
+      },
+      {
             url: '/talk/:theme',
             routeSpec: talkPageSpec,
       },
