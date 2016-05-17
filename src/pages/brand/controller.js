@@ -75,9 +75,19 @@ function controller(carIconsData, testDrivesData, brandNewsData, brand, getCarca
     testDrivesData = preprocessCaption(testDrivesData, {mode: 'text'});
     brandNewsData = preprocessCaption(brandNewsData, {mode: 'link'});
     let pageContentHtml = composePageContentHtml(carIconsData, testDrivesData, brandNewsData, brand);
+    let seo = {
+        title: brand.name + ': цены, комплектации, тест-драйвы, отзывы, форум, фото, видео — ДРАЙВ',
+        keywords: brand.name + ', купить ' + brand.name +  ", " + brand.name + ' цена, ' +
+            brand.name + ' комплектация, купить ' + brand.name + ' в Москве' + ', новый ' +
+            brand.name + ', ' + brand.name + ' фото, ' + brand.name + ' видео, ' + brand.name +
+            ' отзывы владельцев, официальный дилер ' + brand.name,
+        description: 'Выберите новый ' + brand.name +
+            ' на ДРАЙВЕ. Цены, комплектации, тест-драйвы, фото и отзывы реальных владельцев. Купите у официального дилера ' +
+            brand.name + ' в Москве'
+    };
 
     return {
-        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()})
+        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()}, seo)
     };
 }
 
