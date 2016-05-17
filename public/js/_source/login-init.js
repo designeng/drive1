@@ -22,8 +22,8 @@ drive.loginInit = function() {
     var logoutEl = goog.dom.getElement('nav-top-logout');
 
     this.handler_.listen(logoutEl, goog.events.EventType.CLICK, function() {
-      goog.net.cookies.remove(drive.loginInit.LOGIN_COOKIE_NAME);
-      goog.net.cookies.remove(drive.loginInit.USERID_COOKIE_NAME);
+      goog.net.cookies.remove(drive.loginInit.LOGIN_COOKIE_NAME, '/');
+      goog.net.cookies.remove(drive.loginInit.USERID_COOKIE_NAME, '/');
     });
 
     userEl.innerHTML = '<strong>' + login + '</strong>';// +
