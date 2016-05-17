@@ -33,6 +33,7 @@ const successReception = (response) => {
             response.cookie('userid', userid);
             response.cookie('login', login);
             response.cookie('email', email);
+
             response.redirect(context.targetUrl);
       }
 }

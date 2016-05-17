@@ -12,7 +12,7 @@ import helpers from './utils/handlebars/helpers';
 
 export default {
     $plugins: [
-        wireDebugPlugin,
+        // wireDebugPlugin,
     ],
 
     categoryIds: _.map(categories, (item) => {return item.id}),

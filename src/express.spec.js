@@ -16,7 +16,7 @@ const originApiHost = 'https://dev.drive.ru';
 
 export default {
     $plugins: [
-        wireDebugPlugin,
+        // wireDebugPlugin,
         expressAppPlugin,
         webpackMiddlewarePlugin,
         expressRoutingMiddlewarePlugin,

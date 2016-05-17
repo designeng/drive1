@@ -33,7 +33,7 @@ function routeMiddleware(resolver, facet, wire) {
 
             // TODO: conflict resolving for routes [/news/*.html, /news/:brand etc.]
             // think how to avoid plugin hack
-            if(request.url.match(ARTICLE_REGEX)) {
+            if(request.url.match(ARTICLE_REGEX) && request.url.indexOf('/local_reception?') == -1) {
                 return next();
             }
             // END TODO
