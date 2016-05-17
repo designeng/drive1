@@ -11,6 +11,7 @@ import articlePageSpec from './pages/article/page.spec';
 import companiesPageSpec from './pages/companies/page.spec';
 import feedbackPageSpec from './pages/feedback/page.spec';
 import talkPageSpec from './pages/talk/page.spec';
+import searchPageSpec from './pages/search/page.spec';
 
 import noopPageSpec from './pages/noop/page.spec';
 
@@ -64,8 +65,12 @@ const routes = [
             routeSpec: mainPageSpec,
       },
       {
+            url: '/sitesearch',
+            routeSpec: searchPageSpec,
+      },
+      {
             url: '/404error',
-            routeSpec: notFoundSpec
+            routeSpec: notFoundSpec,
       },
       {
             url: '/drive-tests',

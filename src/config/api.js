@@ -37,6 +37,7 @@ const endpoints = {
     commentsPage: "/talk/comments/{id}.html",
     // TODO: is it thread?
     threadTalkPage: "/talk/{id}.html",
+    sitesearch: "/sitesearch",
 }
 
 function getBaseUrl(options) {

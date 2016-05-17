@@ -53,6 +53,7 @@ function routeMiddleware(resolver, facet, wire) {
                 targetUrl       : null,
                 blogId          : null,
                 cookies         : null,
+                queryString     : null,
             };
 
             let tasks = createTasks([bootstrapSpec, routeSpec]);
@@ -125,6 +126,10 @@ function routeMiddleware(resolver, facet, wire) {
 
             if(query.city) {
                 _.extend(environment, { city: {id: query.city }});
+            }
+
+            if(query.q) {
+                _.extend(environment, { queryString: query.q});
             }
 
             if(request.cookies) {
