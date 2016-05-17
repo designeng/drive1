@@ -4,7 +4,7 @@ function controller(companiesPageData, getCarcassFn) {
     ];
 
     return {
-        html: getCarcassFn(companiesPageData, additionalStyles)
+        html: getCarcassFn(companiesPageData, {additionalStyles: additionalStyles})
     }
 }
 

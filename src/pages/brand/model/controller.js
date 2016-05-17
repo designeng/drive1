@@ -99,8 +99,12 @@ function controller(brandModelData, testDrivesBrandData, brandNewsData, dealersD
     let pageContentHtml = composePageContentHtml(brandModelData, testDrivesBrandData, brandNewsData, dealersData, city);
 
     return {
-        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()})
-    }
+        html: getCarcassFn(pageContentHtml, {
+            optionalBlocks: {
+                compareBlock: compareBlock()
+            }
+        })
+    };
 }
 
 export default controller;

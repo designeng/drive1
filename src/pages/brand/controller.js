@@ -87,7 +87,12 @@ function controller(carIconsData, testDrivesData, brandNewsData, brand, getCarca
     };
 
     return {
-        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()}, seo)
+        html: getCarcassFn(pageContentHtml, {
+            optionalBlocks: {
+                compareBlock: compareBlock()
+            },
+            seo: seo
+        })
     };
 }
 

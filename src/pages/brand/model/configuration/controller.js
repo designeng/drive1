@@ -36,8 +36,12 @@ function controller(modelConfigurationData, getCarcassFn) {
     let pageContentHtml = composePageContentHtml(modelConfigurationData);
 
     return {
-        html: getCarcassFn(pageContentHtml, null, null, null, {compareBlock: compareBlock()})
-    }
+        html: getCarcassFn(pageContentHtml, {
+            optionalBlocks: {
+                compareBlock: compareBlock()
+            }
+        })
+    };
 }
 
 export default controller;

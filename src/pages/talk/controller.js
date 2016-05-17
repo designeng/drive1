@@ -5,7 +5,7 @@ function controller(talkPageData, getCarcassFn) {
     ];
 
     return {
-        html: getCarcassFn(talkPageData, additionalStyles)
+        html: getCarcassFn(talkPageData, {additionalStyles: additionalStyles})
     }
 }
 
