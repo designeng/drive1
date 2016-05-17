@@ -88,12 +88,12 @@ function getCarcass(brands, cities, receptionButtons, specialTitleData) {
 
     const getCarcassFn = (
         pageContentHtml,
-        options
+        options = {}
     ) => {
         let {
-            additionalStyles,
+            additionalStyles = [],
             additionalHeadScripts = defaultHeadScripts,
-            additionalBottomScripts,
+            additionalBottomScripts = [],
             optionalBlocks = {},
             seo = {
                 title: defaultTitle,
