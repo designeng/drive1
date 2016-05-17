@@ -1,0 +1,12 @@
+image: node: v5.5.0
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
+
+run_job:
+  script:
+    - npm start
