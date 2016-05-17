@@ -89,7 +89,7 @@ function controller(topStories, topVideos, topBlogs, cellar, getCarcassFn) {
     );
 
     return {
-        html: getCarcassFn(pageContentHtml, additionalStyles)
+        html: getCarcassFn(pageContentHtml, {additionalStyles: additionalStyles})
     }
 }
 

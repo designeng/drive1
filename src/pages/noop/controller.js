@@ -1,7 +1,7 @@
 function controller(getCarcassFn) {
 
     return {
-        html: getCarcassFn("Under constructioin")
+        html: getCarcassFn('Under construction')
     }
 }
 

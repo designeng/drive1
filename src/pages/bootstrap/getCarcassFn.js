@@ -88,16 +88,20 @@ function getCarcass(brands, cities, receptionButtons, specialTitleData) {
 
     const getCarcassFn = (
         pageContentHtml,
-        additionalStyles,
-        additionalHeadScripts = defaultHeadScripts,
-        additionalBottomScripts = [],
-        optionalBlocks = {},
-        seo = {
-            keywords: defaultKeywords,
-            description: defaultDescription,
-            title: defaultTitle
-        }
+        options
     ) => {
+        let {
+            additionalStyles,
+            additionalHeadScripts = defaultHeadScripts,
+            additionalBottomScripts,
+            optionalBlocks = {},
+            seo = {
+                title: defaultTitle,
+                keywords: defaultKeywords,
+                description: defaultDescription
+            }
+        } = options;
+
         return carcass({
             htmlClass: '',
             head: head({
